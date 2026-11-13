@@ -2,7 +2,8 @@
 
 Usage:
     uv run python -m review_triage.labeling export   # data/raw -> sheet + sample metadata
-    uv run python -m review_triage.labeling import   # filled sheet -> gold_dev.csv / gold_test.csv
+    uv run python -m review_triage.labeling import [sheet]  # filled .xlsx or .csv export
+                                                            # -> gold_dev.csv / gold_test.csv
 """
 
 import sys
@@ -58,6 +59,9 @@ def export_sheet(sample: pd.DataFrame, path: Path) -> None:
 
 
 def read_sheet(path: Path) -> pd.DataFrame:
+    """Read a filled sheet: the local .xlsx or a CSV export of the Google Sheets copy."""
+    if path.suffix == ".csv":
+        return pd.read_csv(path, dtype=str)[SHEET_COLUMNS]
     ws = load_workbook(path, read_only=True).active
     rows = list(ws.iter_rows(values_only=True))
     return pd.DataFrame(rows[1:], columns=rows[0])[SHEET_COLUMNS]
@@ -75,7 +79,7 @@ def import_sheet(sheet_path: Path, sample_path: Path) -> pd.DataFrame:
     return validate_labels(gold)
 
 
-def main(command: str) -> None:
+def main(command: str, sheet_path: Path | None = None) -> None:
     LABELS_DIR.mkdir(parents=True, exist_ok=True)
     if command == "export":
         if SHEET_PATH.exists():
@@ -85,7 +89,7 @@ def main(command: str) -> None:
         export_sheet(sample, SHEET_PATH)
         print(f"wrote {len(sample)} reviews to {SHEET_PATH}")
     elif command == "import":
-        gold = import_sheet(SHEET_PATH, SAMPLE_PATH)
+        gold = import_sheet(sheet_path or SHEET_PATH, SAMPLE_PATH)
         for split, part in gold.groupby("split"):
             out = LABELS_DIR / f"gold_{split}.csv"
             part.drop(columns="split").to_csv(out, index=False)
@@ -95,4 +99,7 @@ def main(command: str) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "")
+    main(
+        sys.argv[1] if len(sys.argv) > 1 else "",
+        Path(sys.argv[2]) if len(sys.argv) > 2 else None,
+    )

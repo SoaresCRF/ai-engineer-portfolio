@@ -46,6 +46,20 @@ def test_sheet_hides_score_and_round_trips(sample, tmp_path):
     assert gold.loc["b", "review_score"] == 5  # metadata merged back from the sample
 
 
+def test_import_accepts_csv_export(sample, tmp_path):
+    df, sample_path = sample
+    csv = tmp_path / "export.csv"
+    df[["review_id", "text"]].assign(
+        categoria=["nao_recebido", "elogio_sem_problema"],
+        sentimento=["negativo", "positivo"],
+        urgencia=["alta", "baixa"],
+    ).to_csv(csv, index=False)
+
+    gold = import_sheet(csv, sample_path)
+
+    assert list(gold["categoria"]) == ["nao_recebido", "elogio_sem_problema"]
+
+
 def test_import_rejects_unlabeled_rows(sample, tmp_path):
     df, sample_path = sample
     sheet = tmp_path / "sheet.xlsx"
