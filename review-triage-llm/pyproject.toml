@@ -34,3 +34,5 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.ruff.lint.per-file-ignores]
 # Prompt text is model input: wrapping it would change what the model reads.
 "src/review_triage/prompts.py" = ["E501"]
+# Kaggle notebooks import the package only after adding the uploaded bundle to sys.path.
+"notebooks/*.ipynb" = ["E402"]
