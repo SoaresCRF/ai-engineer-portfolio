@@ -73,7 +73,7 @@ Part of the student's throughput gain comes from the shorter prompt: the fine-tu
 
 Patterns shared by both LLMs (test set):
 
-- **`neutro` sentiment is the hardest class.** Of 40 neutral reviews, the teacher gets 16 right and the student 10. Calm reports of a problem ("ainda estou no aguardo") get read as `negativo`; mild praise as `positivo`. Most of the student's 4-point sentiment gap is here (6 of 8 reviews): it learned the teacher's bias and amplified it.
+- **`neutro` sentiment is the hardest class.** Of 40 neutral reviews, the teacher gets 16 right and the student 10. Calm questions about a problem ("Gostaria de saber quando vou receber meu pedido [...] Aguardo uma posicao") get read as `negativo`; plain confirmations ("Recebi corretamente.") as `positivo`. Most of the student's 4-point sentiment gap is here (6 of 8 reviews): it learned the teacher's bias and amplified it.
 - **`outro` is under-used.** Recall is 0.28 (teacher) and 0.22 (student): vague or off-topic reviews get forced into a concrete category, mostly `atendimento_vendedor` or `produto_errado_ou_incompleto`. That is why `atendimento_vendedor` precision is only 0.43–0.47.
 - **Urgency over-escalates.** About 20 of 68 `media` reviews are predicted `alta` by each model. The rule is "`alta` only if the customer asks for an action"; the models escalate on tone. In a support queue this errs on the safe side, but the predicted `alta` queue is ~45% larger than the true one (65 vs 45).
 - **Nothing breaks.** Zero invalid JSON across 300 gold and 5,000 silver reviews, without constrained decoding.
@@ -182,7 +182,7 @@ src/review_triage/
   data.py          Olist download and review sampling
   labeling.py      gold labeling sheet export/import
   baseline.py      A: TF-IDF + logistic regression
-  teacher.py       B: zero-shot inference on a T4
+  teacher.py       B: few-shot inference on a T4
   student.py       C: QLoRA training and inference
   evaluate.py      accuracy, macro-F1, valid-JSON rate, paired bootstrap CIs
   report.py        assembles results/final.json

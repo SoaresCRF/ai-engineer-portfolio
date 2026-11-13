@@ -1,4 +1,4 @@
-"""Teacher LLM inference: zero-shot predictions on gold and silver labels for training.
+"""Teacher LLM inference: few-shot predictions on gold, and silver labels for training.
 
 Runs on a Kaggle T4 GPU (see notebooks/02_teacher_labels.ipynb). torch/transformers are
 imported inside functions so the rest of the package works on machines without them.

@@ -1,6 +1,6 @@
 # PLAN — review-triage-llm
 
-> Status: **rascunho para aprovação** · Criado em 2026-11-12 · Prazo de entrega: **2026-11-17**
+> Status: **concluído em 2026-11-13** (resultados no [README](README.md)) · Criado em 2026-11-12 · Prazo de entrega: **2026-11-17**
 > Restrições: custo zero (sem API paga, sem GPU própria), 5 dias.
 
 ## 1. Objetivo
@@ -136,12 +136,12 @@ review-triage-llm/
 
 ## 7. Critérios de entrega (Definition of Done)
 
-- [ ] `results/final.json` com macro-F1, acurácia, JSON válido %, latência p50/p95, vazão e custo/1k estimado para A, B e C, todos no mesmo test gold.
-- [ ] Test usado uma única vez, com a data registrada no README.
-- [ ] Modelo publicado no HF com model card: dados, licença, uso pretendido, limitações e métricas.
-- [ ] Space público funcionando com exemplos prontos.
-- [ ] README do projeto com problema, arquitetura, como rodar, métricas, demo e o que não funcionou.
-- [ ] Testes passando (`pytest`), lint limpo (`ruff`), nenhum segredo no repo.
+- [x] `results/final.json` com macro-F1, acurácia, JSON válido %, latência p50/p95, vazão e custo/1k estimado para A, B e C, todos no mesmo test gold.
+- [x] Test usado uma única vez, com a data registrada no README.
+- [x] Modelo publicado no HF com model card: dados, licença, uso pretendido, limitações e métricas.
+- [ ] ~~Space público funcionando com exemplos prontos.~~ Cortado: o HF passou a exigir plano pago para Spaces Gradio; a demo roda localmente (`app/app.py`).
+- [x] README do projeto com problema, arquitetura, como rodar, métricas, demo e o que não funcionou.
+- [x] Testes passando (`pytest`), lint limpo (`ruff`), nenhum segredo no repo.
 
 ## 8. Riscos e mitigação
 

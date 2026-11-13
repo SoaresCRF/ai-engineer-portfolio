@@ -1,4 +1,4 @@
-"""Output contract shared by every approach (baseline, zero-shot LLM, fine-tuned LLM).
+"""Output contract shared by every approach (baseline, few-shot LLM, fine-tuned LLM).
 
 Keys and label values are Portuguese on purpose: they are the product's data contract
 for PT-BR reviews, not code identifiers. See docs/labeling_guide.md for definitions.

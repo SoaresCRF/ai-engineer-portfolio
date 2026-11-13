@@ -1,4 +1,4 @@
-"""Prompt and output parsing shared by every LLM approach (teacher zero-shot and student).
+"""Prompt and output parsing shared by every LLM approach (few-shot teacher and fine-tuned student).
 
 The same parser is used for all approaches so JSON-validity numbers are comparable.
 """

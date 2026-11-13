@@ -23,7 +23,7 @@ A LoRA adapter for [Qwen/Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) tha
 {"categoria": "nao_recebido", "sentimento": "negativo", "urgencia": "alta"}
 ```
 
-It is the "student" of a teacher/student experiment. [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), prompted zero-shot with a few examples, labeled 5,000 reviews. This 4.7× smaller model was then fine-tuned on those silver labels. Both models were scored against 300 reviews labeled by hand.
+It is the "student" of a teacher/student experiment. [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), prompted with three few-shot examples and no fine-tuning, labeled 5,000 reviews. This 4.7× smaller model was then fine-tuned on those silver labels. Both models were scored against 300 reviews labeled by hand.
 
 The prompt and the output parser ship with this repo in `review_triage/` (`prompts.py`, `schema.py`). Code, labeling guide, notebooks and evaluation: [review-triage-llm on GitHub](https://github.com/SoaresCRF/ai-engineer-portfolio/tree/main/review-triage-llm).
 
@@ -51,10 +51,10 @@ Speed on one Kaggle T4 GPU, both models 4-bit:
 
 | | Teacher 8B | Student 1.7B |
 |---|---|---|
-| Batched throughput | 0.72 reviews/s | 2.6 reviews/s |
+| Batched throughput | 0.71 reviews/s | 2.6 reviews/s |
 | Batch-1 latency p50 / p95 | 3.82 s / 4.05 s | 3.09 s / 3.32 s |
 
-The student matches the teacher on `categoria` and `urgencia` at 3.5× the batched throughput. It is worse on `sentimento`: the `neutro` class is hard for both models (teacher 16/40 correct, student 10/40), and the student pushes more neutral reviews to `negativo` or `positivo`. Batch-1 latency barely improves, because short generations on a T4 are dominated by per-token overhead, not model size.
+The student matches the teacher on `categoria` and `urgencia` at 3.7× the batched throughput. It is worse on `sentimento`: the `neutro` class is hard for both models (teacher 16/40 correct, student 10/40), and the student pushes more neutral reviews to `negativo` or `positivo`. Batch-1 latency barely improves, because short generations on a T4 are dominated by per-token overhead, not model size.
 
 A paired bootstrap over the 200 test reviews (95% CI) confirms the sentiment gap (teacher +4.0 accuracy points, CI [+1.0, +7.5]) and finds no significant teacher–student difference on `categoria` or `urgencia`.
 

@@ -1,7 +1,7 @@
 [project]
 name = "review-triage"
 version = "0.1.0"
-description = "Triage PT-BR customer reviews into structured JSON: classic baseline vs zero-shot LLM vs QLoRA fine-tuned small LLM"
+description = "Triage PT-BR customer reviews into structured JSON: classic baseline vs few-shot LLM vs QLoRA fine-tuned small LLM"
 readme = "README.md"
 authors = [
     { name = "SoaresCRF", email = "103540321+SoaresCRF@users.noreply.github.com" }
