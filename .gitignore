@@ -26,3 +26,6 @@ venv/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Build outputs (e.g. Kaggle upload bundles)
+**/dist/
