@@ -104,6 +104,11 @@ def train(
         processing_class=tokenizer,
         peft_config=lora,
     )
+    # LoRA weights on a 4-bit Qwen3 come out bfloat16 (the checkpoint's dtype), and the
+    # fp16 GradScaler can't unscale bf16 grads on a T4. Train the adapter in float32.
+    for param in trainer.model.parameters():
+        if param.requires_grad:
+            param.data = param.data.float()
     start = time.perf_counter()
     result = trainer.train()
     seconds = time.perf_counter() - start
