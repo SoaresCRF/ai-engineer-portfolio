@@ -9,6 +9,7 @@ from review_triage.data import (
     load_reviews,
     mask_pii,
     sample_gold,
+    sample_silver,
     validate_labels,
 )
 
@@ -75,6 +76,22 @@ def test_sample_gold_is_stratified_split_and_deterministic():
     assert (counts["dev"] == GOLD_DEV_PER_SCORE).all()
     assert (counts["test"] == GOLD_TEST_PER_SCORE).all()
     assert gold.equals(sample_gold(df))
+
+
+def test_sample_silver_excludes_gold_and_balances_scores():
+    df = pd.DataFrame(
+        {
+            "review_id": [f"r{i}" for i in range(100)],
+            "review_score": [SCORES[i % len(SCORES)] for i in range(100)],
+            "text": ["x"] * 100,
+        }
+    )
+    excluded = {"r0", "r1", "r2"}
+
+    silver = sample_silver(df, exclude_ids=excluded, per_score=10)
+
+    assert not set(silver["review_id"]) & excluded
+    assert (silver["review_score"].value_counts() == 10).all()
 
 
 def test_validate_labels_normalizes_case_and_rejects_unknown_values():

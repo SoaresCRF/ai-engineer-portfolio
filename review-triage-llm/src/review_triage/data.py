@@ -18,6 +18,8 @@ SCORES = (1, 2, 3, 4, 5)
 # 5-star praise and leave too few complaints to measure the rarer categories.
 GOLD_DEV_PER_SCORE = 20
 GOLD_TEST_PER_SCORE = 40
+# 5 scores x 1,000 = 5,000 silver reviews; fits one Kaggle T4 session (see PLAN.md 3.3).
+SILVER_PER_SCORE = 1_000
 
 # Order matters: CPF must be masked before the looser phone pattern eats it.
 PII_PATTERNS = (
@@ -90,6 +92,18 @@ def sample_gold(df: pd.DataFrame, seed: int = SEED) -> pd.DataFrame:
         picked = picked.assign(split=["dev"] * GOLD_DEV_PER_SCORE + ["test"] * GOLD_TEST_PER_SCORE)
         parts.append(picked)
     # Shuffle so the labeler can't infer the star score from position.
+    return pd.concat(parts).sample(frac=1, random_state=seed).reset_index(drop=True)
+
+
+def sample_silver(
+    df: pd.DataFrame, exclude_ids: set[str], per_score: int = SILVER_PER_SCORE, seed: int = SEED
+) -> pd.DataFrame:
+    """Training pool for LLM (silver) labels, balanced by score like the gold set."""
+    pool = df[~df["review_id"].isin(exclude_ids)]
+    parts = [
+        pool[pool["review_score"] == score].sample(n=per_score, random_state=seed)
+        for score in SCORES
+    ]
     return pd.concat(parts).sample(frac=1, random_state=seed).reset_index(drop=True)
 
 
