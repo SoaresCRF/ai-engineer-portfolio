@@ -25,7 +25,7 @@ A LoRA adapter for [Qwen/Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) tha
 
 It is the "student" of a teacher/student experiment. [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), prompted zero-shot with a few examples, labeled 5,000 reviews. This 4.7× smaller model was then fine-tuned on those silver labels. Both models were scored against 300 reviews labeled by hand.
 
-The prompt and the output parser ship with this repo in `review_triage/` (`prompts.py`, `schema.py`).
+The prompt and the output parser ship with this repo in `review_triage/` (`prompts.py`, `schema.py`). Code, labeling guide, notebooks and evaluation: [review-triage-llm on GitHub](https://github.com/SoaresCRF/ai-engineer-portfolio/tree/main/review-triage-llm).
 
 ## Labels
 
