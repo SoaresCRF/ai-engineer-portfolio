@@ -1,0 +1,301 @@
+review_id,order_id,review_score,text,delivered,late,split
+b9ab2727d6f716233dc0c4075ca4ea10,d6559cf575d2b2a2ca5f8c1932094e70,4,Ok. Ok conforme anunciado,True,False,test
+4e1f047c50205d65d05e9052aff05ea9,2f913d8514e1297d2b7543d5e7a6f90d,5,"Eu ainda não montei as araras, mas aparentemente, são muito boas. Elas são enormes. Eu achei que vale muito à pena.",True,False,test
+8c66dd624cd8603b364f4548c5a729c7,aa7e9053d6514094d6d72f1ef2c2bbd6,3,"O produto demorou bastante para chegar, e recebi email avisando q estavam com dificuldade na entrega, acredito q foi por conta dos correios e nào da loja... Mas foi no prazo",True,False,test
+68626454f84a5fa45e577fe49a81037b,6d46be495109b4798339bb7ac0bfaa9e,1,"estou no aguardo,ainda do produto",True,True,dev
+dabbc6a240a91423a91461ca3ce74bd0,0159c6355a4e32f6ac68d838e2228150,4,"Recomento. Produto entregue, fim de semana irei montar.",True,False,test
+415c84ed4e011fac81b2bd159a933c43,7f2f85c505ae0a210577c5c65ad4e65b,4,Não manda mais pelo correio o correio de Santa Catarina de Itajai e uma Bosta não entregam na residencia tem que ir buscar la....,True,False,test
+0fddcc327b775a6d94c60424b81b6585,16fdf4a442f237c6092adf2a86443dc9,4,Produto bonito de ótima qualidade!!!,True,False,dev
+8ec5c536743c0ea50dfd694536104e60,b9f65a22c4594715663d2ad060df1b6c,2,Tive que ir buscar no correio. Paguei frete p entregar na minha residência!,True,False,test
+bde7ccced6733d653c292c217144c498,065d4f458013cd9c9e716f8be1ca00d1,1,"No acompanhamento de pedidos o status está como entregue, contudo o produto nunca chegou na minha casa.",True,False,dev
+6073d0f8cab2ec24fed2d63060fbf1ba,cbf012d904aadfcf846e4e8d16192616,3,"Não é muito bonito, mas de resto, até que esta servindo.",True,False,test
+e12876368abaae4fe5eb67fb6bd7ebac,f6e6afb31fd4986da7ac663a6b0c93b4,4,"Bom. Produto bom, chegou no prazo limite.",True,True,test
+a992dd82e333f006157661b1b647fe92,9ea386e9542809c5955f1b89354c5e5c,1,recebi apenas 1 kit (vermelho) não recebi o amarelo. espero retorno o quanto antes para resolver. obrigado,True,False,test
+a2002fa8143883ad76e2a5aa18fcb2c1,cb53cf5b28f49e1d2f166c5abe50c31c,4,chegou rapido. boa entrega,True,False,test
+1d465071cc6fcd828b98d87444b464d9,1cee73866d7513dbc499639d14020ce4,1,O stark está maculando sua marca com estes convênios com outros fornecedores. Fornecedor sem controle de estoque! Me fez perder tempo aguardando o produto e depois de quase 10 dias cancelou,False,False,test
+dc3e103632ee9834f935d648898b075e,9d6e82d895f71ace96e14e85f57bcdf7,4,"O Produto chegou muito rápido! Entrega antes do prazo, faz apenas um dia que estou usando, até o momento está funcionando bem, porém faz um barulho desagradável e enjoado. Não sei se isso é normal...",True,False,dev
+8471ae8ca269a22195387af8742febbe,ba207c0bbc57d7da1d6ef7ebc895fec4,4,Recomendável. É um bom fornecedor. Nada a reclamar.,True,False,test
+8edd0fafd93d51e034ba3c9e68552cf2,9f0c24c74a6da307a862a27b63886f1c,5,Tudo dentro do previsto.,True,False,test
+52ef81efad8a139dda777f6eb5b7c263,c1dc9326b9f99f2db29af061a59cbe8d,4,"Ótimo. Gostamos muito do produto,veio exatamente como consta no anuncio,chegou no prazo ,cor exata azul marinho,custo beneficio maravilhoso, excelente!!!!! Recomendamos simmmm😍😍😍",True,True,test
+6a68895c962ab9b633fca7d2a08e310d,908260019f25b12feacd1911f2f08525,3,Quase um mês de atraso na entrega,True,False,test
+8601288d82420ea89d75d1e8e316b816,55fe3844ec031c3bf60449b7e37d4d85,3,COMPREI 03 PRODUTOS E RECEBI 02 COM QUEM EU RECLAMO.,True,False,test
+368345f5a941e8757376276bf39c5b6d,7e52365eb2fa03f8f4ed8a69da1e7fc4,2,"comprei 2 toner hp ce278a e só recebi 1 e ainda emitiram a nota fiscal com 2 produtos. Estou até agora, esperando a entrega do segundo toner já entrei em contato com a targaryen e ainda não me retornaram",True,False,dev
+3a13e888fc6b598dc81d9cce694edc5f,b80264e091caa14505dc8e800902c80c,2,Não veio oprotetor de escapamento!!,True,False,test
+72093b147d797e6abbdf569bf07bf57f,e996c39018a2d8a9e46fbbbbb10ee3a7,5,Toalha do maior campeão do Brasil maravilhosa,True,False,dev
+03a0087389b6b7547091ac57fb438b10,cab33fc76d60b48dd6a512e892c54437,5,CAPA DE COLCHÃO. TUDO ÓTIMO,True,False,dev
+3b154c210f1a1abaec031cd605b8c1f5,2b4c98424c04c927d4f10fd35a3e3558,2,"Achei Q desta vez,o produto deixou a desejar,muito fraco demas",True,False,test
+5a4f0fe15c7a914e40cabe9a06d81513,e04f1da1f48bf2bbffcf57b9824f76e1,1,"Até agora não recebi o produto, e já foi descontado 2 prestações no meu cartão, estou esperando solução do stark para não tomar medidas mais drásticas.",False,False,test
+9530ae60fdfa290e3c8a921cacc987b5,ba09602fc04f661e829787eb7ac331e7,5,Amei 😊,True,False,test
+0f9938b13bc6e801ea8b19d7ce100f0a,a11ebb9e9f1a018eea99fe7105f2d897,5,"Amei o produto, e chegou bem antes do prazo de entrega. Eu recomendo essa loja.",True,False,test
+1a8260d7ca17779c0cb18dc4fe2a7a44,e7a5701bb4e7ef276c46b8bc82100d14,3,Prazo de entrega muito longo! 20 dias pra entregar um boneco e com pagamento de frete de 24.90 de frete! Esperava mais rapidez na entrega!,True,True,test
+d04bf0f58aec6ea447a3551b90f7c1dd,f18cb9c90909f11a7adabc63fb188f19,4,"Foi entregue apenas parte do pedido, a saia para cama box não veio.",True,True,test
+63c3c4d4d649b079f00e4b15553fcf1a,4174ab02f93138dbcae799299d390233,1,"Horrivel o atendimento. Fiz a compra, o produto não foi entregue,a nota foi emitida dia 21/05/18 a entrega era para o dia 15/05/18, estou aguardando reembolso, não recomendo a loja, horrível, nunca mais comprarei com eles !",True,True,dev
+9d24cc0f680e853ebf91de8d1ae80c4a,0f1657174bf9b83165da972c16b656f5,3,"Produto diferente. Paguei o frete, porém, não vêm em casa o produto, outra coisa a foto do produto foi uma, o que foi entregue foi outro produto. Que por sua vez não veio pronto pra ser usado, tive que cortar pra usar.",True,False,test
+9d88de3dfdee595681d37a3aca23b0b9,ab98ff74321e38f5374c79cd84819ec8,1,Está faltando um relogio.,True,False,test
+5c3b0040cb3ce54ad69c715e16f818e8,dc43b4be2ecaa2252af476b7f87f01a8,1,2. nao gostei da pelicula levei pra um profissinal colocar porem ela ficou cheira de bolinhas de ar ele fez de td mas ele proprio nao recomendou,True,False,test
+95e3afa5debb8d42cd07cd5347694afd,3516e5d5f67c23496363aa89756c4cba,4,"O produto tem-se mostrado excelente, só não dei cinco estrelas pois demorou chegar, no entanto, o atraso foi por conta dos correios.",True,True,test
+98647d266a9aca582be10f5b3a6102a2,1146fb180e28dfbfdbfabd7249026429,2,"Em 27/2 fiz a compra, solicitando 2 lustres pendentes do tipo bola mexicana, mas recebi só 1. O tempo de entrega até surpreendeu, mas do que adianta se veio metade do pedido? Aguardo esclarecimentos.",True,False,test
+80eb21e2b268c4a97571439673929ad2,9eecf4b8716283fcb0f026e1308cc805,1,aconteceu algo na entrega e eu não recebi ainda o produto. ninguém me explicou ainda o que foi essa ocorrência,True,True,dev
+63f0470b226a104fd3a8b520d63adefe,778c4b126dadc4564077343c319a97e7,2,So acho que esta demorando muito,True,True,test
+cf459b97007da6a2740414e1a5e50a0e,1a8c121e292cdf1a297a0bfb45858d3a,1,"Loja péssima! Demorou chegar, veio o produto errado e quantidade errada. Desculpe mas essa loja só fez coisas erradas. Entrei em contato com vocês e pedi meu dinheiro de volta. E quero devolver o pro",True,False,test
+859aa93d0c75ba706d381b03f563884d,d85e7bfbf3642aa30c49c490a914d140,2,tomar cuidado. não veio uma NF com o valor total da compra.,True,False,dev
+3058dd3c26b382fae64f265dc1bd3274,829dd3ef512422255299763d6cce8f96,2,Só achei elas bem fraquinhas mesmo com o preço baixo achei que se tratava de uma promoção e não de toalhas pequenas e frágeis,True,False,test
+75ed80f68d731eeb23e6b508e5cb9fbd,ccbd198eb55e22f3b2240d1605961c5f,2,Gostei mas veio com a mola de apoio das folhas quebrada de resto está perfeita,False,False,dev
+89f81655e1b216619bb03a23abf3be87,d652490ad180f9a1a2a4e6e6772b50c5,5,otimo. hiper recomendo,True,False,test
+55364e6856e976a5bf9989577a7e2963,39a8a29adbacd6bb73e50c85e4e69888,2,"Muito difícil a colocação , ficou cheio de bolhas, é opaco tira definição e brilho da tela. NÃO GOSTEI não recomendo.",True,False,dev
+57a98434e0b800995fdf93cd22dffc79,8013932c4c00036478bea6424e783117,2,"Recebi o produto, na verdade comprei a case para um tablet 10.1 e não serviu, então as medidas dessa case não deve estar correta.",True,False,dev
+d741e7f4cf36c3cbe07339b6150048c7,ac446e82125c862fbe4c638d69f807bb,2,Esperei até? o último dia do prazo para entrega e não chegou o meu produto conforme o combinado,False,False,dev
+cbc2037b5029b3467703402c6c5d2baf,136e42854980018398bfe35a8eecf470,4,só me causou estranheza que o vidro do perfume não veio lacrado com o plástico. com isso dá margem para desconfiar a originalidade do produto.,True,False,test
+418b8097324417c39fd8e5a0b60bea85,f80a22b75de2f7ef552287c042b55904,4,O produto chegou no praso,True,False,test
+d571ab32d973c7e1afe387fbed465df2,ecac5badffe4c7227c7d6ac1a33fd6d5,2,"o produto e bom, porem a foto es diferente o zíper do produto é branco real e branco e ficou horrível bolsa rose com zíper branco.",True,False,test
+1792971275893870276abda12034cae4,a794d432d0990aa47220cda510a0a872,4,Entrega rápida e bom custo benefício. Relógio automático Winner excelente. Pena que que a bússola e o termômetro do relógio Oulm sejam só enfeite.,True,False,test
+6420912fcbf7fdb3d2b8cf00b6fcc304,972570f8874c3f706d151201aca20e08,4,Ótimo produto mais o manual deveria vir em português tb.,True,False,dev
+be3db85fbf93c6d04f28a20788c55ecb,ee0eea7eab4735c851dddf163cf434cc,3,entrega fora do prazo,True,True,test
+b1463c62ff9debf627075584d4a5c11d,a9d8070e7b21efa5414c183c918eb4d3,4,"Gostei do produto, é bonito e recebi antes do prazo, recomendo a loja.",True,False,test
+766e8a3d1b8927baa391b7c022549e9b,30300815be5e1666c028d3c07e86f847,2,"01 termometro veio quebrado, preciso de outro.",True,False,dev
+04cb3c989227f3c43db2faf826388e6c,9287c71f6d416c275d1f98e7e945f64d,5,Muito Boa. Excelente!,True,False,test
+2c8c5e6470be702ec64b646de2e72c4a,d2e58ee8581dcfe3133f8edcbd413722,5,"Comprou chegou. Pra mim,é o melhor Site de compras.",True,False,test
+ed705dc6d6ac85100ac9136c5c59caf2,bc36a6d118d0b05ade471f42c007f030,2,"Gostaria de saber quando vou receber meu pedido, porque eu acho que se veio entregar a nao tem pra receber, deve haver outras tentativas. Aguardo uma posicao.",True,True,test
+95a31582487005fcc1cf30907d86454e,b77c7b2203310a5160f61121eaf97415,2,"Sempre gostei de comprar nas lannister, mas essa entrega deixou a desejar.",True,True,test
+ff917b12bef2336777ef8034f44d927c,ada812c7806382c3085a5f5024bc17ca,4,recomendo. Foi uma experiência sem nenhum fato negativo.,True,False,dev
+35250e6736bac909c0791aa6e5317d1c,707a334be449a3283d0312d4290d8077,1,Ruim. Comprei o produto capa de máquina lavar e secar Samsung 10.1kg e recebi o produto modelo Samsumg referente à 7.5 kg.,True,False,test
+d410389a9766f37a6f93fb70dab28455,bde5784e34d5ba860afb5f85d4d97433,4,"Entrega Rapida. Produtio chegou bem antes do previsto, a garrafa chegou sem nenhum problema aparente agora farei o teste de uso para saber se a garrafa é boa.",True,False,test
+af64e6ad98a3979e11c42f322e1b7a67,0922ee1619de7b995648e5a8407afb91,1,"Recebi apenas a rede, não foi enviado os ganchos. Favor entrar em contato.",True,False,test
+459d0b27d6be17f93c37a5694b5e58a2,1982a20c2a9d116da964e488d59eebe7,1,PRODUTO NÃO CHEGOU DENTRO DO PRAZO INFORMADO,False,False,dev
+67353b4431b8245c242740690f0c32a8,1b5a25c6c507c850755e92c42bc30359,4,Luminárias. gostei do produto,True,False,dev
+a35f9c4bf623315b3697492a4678a549,7ef7d4f03d667e9166770e61047606f3,3,"Não é que o produto seja ruim, é que achei que era menor, quando chegou achei grande demais. Mas é uma ótima carteira.",True,False,test
+462305393581bbb206458b4591950ce9,d6f9e75b25f4d86db87bf9c7e6d14a4b,1,Péssimo serviço,False,False,test
+ea2cc07c6fbdcf7ce85d5377fc4dfe93,acb3a4ba3d4d4b0c57cd93736fa61558,1,não recebi meus produtos e nem o ressarcimento dos mesmos. no aguardo,False,False,test
+5df1865626cb737cfdddc58a184664be,343c79502b5f394194fbf53ba4a561c1,5,Lindos!. Os copos são lindos e chegaram antes do prazo.,True,False,dev
+49e3a388c41aec2711c27fe722b77154,3ae0851b6ee221c9db69aa800b869e3f,1,Há uma grande dificuldade em contactar o fornecedor para resolver qualquer problema.,True,True,test
+c55ec8f6e4c91c6cc194437451ea29cf,7581e8b8156b3dee7b8898cd0120ad19,4,Muito bem atendida chegou antes do prazo,True,False,dev
+f13c48ea52de0e3d27a850faaf2b0d7d,996205a42aa5c733caed84046b376508,2,Fiz o teste do produto mais ele nao sendo reconhecido pelo XBOX 360,True,False,test
+7a7edb4d464f61401138e6b955b2e72e,d630523e4ead4d29e7dd497f1a47b90e,3,Produto nao foi entregue ainda. Por isso nao é possivel fazer uma avaliaçao adequada,True,False,dev
+8873956053907bb59971c559b7da63bd,ab6ccded40dba2056dfa826368b5adf3,4,Veio separado do outro produto.,True,False,test
+f28333526642856567ebb8504b060803,1853610c46a77ba436f5e06e16ec8302,4,"Recebi o produto correto, porem veio quebrado na ponta. Gostaria de ver como posso proceder?",True,False,dev
+b08ac1eab54c23a6d26f2afb5517cd78,0f93d63baf9f573e2d349ff7f1873f75,3,"Produto chegou antes do prazo,material bom",True,False,dev
+b1fe0958525057d8ed78fa7c7f9149bc,e497f72041dc38eaa6794c1c143e8005,5,super recomendo. que esta agilidade e qualidade de serviço seja ininterrupta.,True,False,test
+221dd8583f1485b0bfa58753e9dbae47,d04757c9594f6b1953682f34c0b1086c,2,Recebido apenas 1 unidade do produto. Sendo que comprei 2 (duas). Não consigo entrar em contato com a central para verificação.,True,False,test
+c84049c42940addc4d9b725ee5456da6,bad80abf6bc799b1c731a90f1a761689,2,"Recebi pedido incompleto. Foi entregue somente parte do pedido, sendo que os produtos eram da mesma loja",True,False,test
+a9a569ae5ab1238db904c9d24a35f4a8,f062eadab4f6382208fe17ca7fbaaec3,2,"Comprei dois produtos no mesmo dia, de 2 fornecedores ( lojas) diferentes. A Saraiva me entregou antes do prazo, a targaryen não compriu o prazo para entrega que era dia 01.06! Ainda estou aguardando!",False,False,dev
+e88c505513661bee786bcced0ddf0b61,f0c53ca3e5e7561fb1ff79116340d113,5,super satisfeito com site. recomendo o produto muito bom,True,False,test
+5b33612a28b8c2393237cdd891c491e0,ed6c7b5afbec5a527361ec20374e4057,3,"produto bom, mas não tão bem acabado quanto na foto",True,False,test
+30db776c838bab79380fd706a0da24ef,ca836e631fd3b9408c19cf18ee331e08,3,O site não informou que os cartuchos da impressora HP que comprei eram remanufaturados. Pensei que estava comprando o produto novo original.,True,False,test
+981ba53ec3fadf604fe979d265e9ac9b,6066a9bffba977ef146cf6f56ce9bd5b,1,Nunca mais eu comprou nas Américas,True,True,dev
+5fd6984cc7a57a05fdbbc49db46fc096,b33ba27bcc778a34f2d46f4138302b14,3,"Recebi apenas o suporte de teto, o coletor de pilhas ainda não.",True,False,dev
+c69161611b03ec1636f97c5631db6637,68490c57a7a7ef7602fec9765720fc48,2,"Produto divergente. Adquiri o produto c rodízios, entendi q fosse c 4 rodas de apoio no pé. Porém recebi o gaveteiro sem as rodinhas, com o apoio dos 4 pés estáticos.",True,False,dev
+278a8e511b5be7848071f47011c52c9b,c801ee070159af89f5ce2b8c03e9e032,2,Pagamos para a entrega ser feita em nossa residência e não para retirarmos nos Correios.,True,True,test
+3bc7e5898ed7ffd7c8f640884d8b9b18,0a791a17784db64bbc47f6b666011d9e,2,"produto veio muito avariado, com tintas falhadas, no rosto do boneco, escudo do capitão américa arranhado e não fica preso no suporte e o braço ""molenga""",True,False,test
+e7f74c9e32dca6a1df3c27fc752d2f18,d0b61531bc87dd7b8815c8ce1682ec0c,2,"Efetuei a compra d uma pulseira e um berloque. Foi gerado um único pedido e um único código de rastreamento. O berloque chegou, porém a pulseira não foi entregue.Aguardo resposta e entrega da pulseira",True,False,dev
+e42fae5637cb7fdadbf376e39f237a5c,2f3adad02b8b0314fd094fac9fe907b7,1,Recebi o produto errado comprei um modelo e veio outro,True,False,dev
+d7c65b7c92d37a501a5a531d6a811e7a,e30bc9599660c657ce6cf351f1a98b5f,1,"O produto não foi satisfatório para mim, ele é a pilha eu um elétrico, não tem rádio, pequeno, não foi aprovado pela minha família.",True,False,dev
+498dab710667eedba06ef0c940fa423e,61ff26ac3b205fc54a7431bb3b032cf0,4,"Embora não venha a descrição da cor, as fotos sugerem que a máscara é preta, no entanto, a que foi entregue é azul e amarela.",True,False,dev
+cfd672ef810b24373155f6903ff69835,9550c6dde457784adf6688cea59cd6b8,2,"Ruim. não foi cumprido o prazo da entrega na data prometida e até hj 10/08/2018 não recebi a mercadoria, falta de compromisso, no minimo teria que ter dado uma satisfação, mas não o cliente tem que correr",True,True,test
+168af4a20b7aad22fd975d036dd0cd54,aa1a6dd9036736db780b2cd007f68a52,2,"O relógio que eu comprei da marca Oakley é falso, estou no aguardo de uma solução para meu problema que me agrade.",True,False,dev
+54c1a60f597466ed74fd548d0a329e71,f80a2d6485e38a437fca857efb7b1b66,4,50% pessima. Esse produto foi comprado dia 11/4 até hoje não chegou posso saber porque ja faz um mês e 20 dias que comprei 2 jogos t toalha banhão entrega estava prevista para o dia 24/4 até hoje não chegou posso,False,False,test
+63ce4901a793a21bfc50b15675ed363c,41dd783cbf5ec4b60c957ee73e88f82c,1,Não recebi esse produto.. e sem previsão de chegar..,False,False,test
+37964849651a59fb73847335d0a7a2ce,07ad2a87dfce684f0b6a23886db925c9,1,Eu comprei o Produto descrito acima (ORIGINAL) e recebi o produto reciclado. Só o utilizei pela urgência.,True,False,dev
+85cf46d93ab23bd3d0d08689c570eb6c,96bd9c3ad7366522a8a0ef40301faeb5,3,"Não foi entrega total da mercadoria, só entregaram 01 kit sendo que na nota fiscal foi faturado 02 kits",True,False,test
+e558040a9657116f79412efb2705ed48,832ad6ddb27af590780d3419c9c34624,3,"Ainda não usei o produto, chegou lacrado, só espero que seja original.",True,False,test
+60565a6a0dccd29f0cefe65a88d0a467,ecece91c3d1b87ff38070137b454c50c,5,top. top,True,False,test
+e92a3870d71ff35337704fd650c6aa77,54145c3186301069402e7e07a5e14d2d,2,"Comprei esse kit cozinha que teria que vir c kit pia, mantimentos e codimentos. Porém o kit codimentos não veio. As tampas de alumínio vieram arranhadas e as bolinhas das latas são adesivos e não pin",True,False,dev
+a00038427ff0a7cc00e46913907d67fa,cbaa06517efa6c48a336a917c53e2561,4,Muito bom. Poderia ser excelente se o suporte não tivesse vindo com defeito. Foi só o suporte. O restante está perfeito,True,False,test
+161a5fbb76adb8ba80008e5053308b79,8796f3e2ab6a3baee74225a78c550c0a,2,O produto chegou incompleto,True,False,dev
+d999efbe30333f72b2fcf3a37df5a41b,b08f7ce910570d89714767d4610943b0,1,"Bom dia, este produto já passou da data prevista de entrega, não recomendo está loja, aguardo retorno",True,True,test
+629f2535484855f3c034ab8a686deb4b,08ff2ba0393c3492409f044754015f74,4,"Muito bom. O produto chegou antes do prazo previsto,",True,False,dev
+77036e050a15156f98c6efd1926992b1,fc22b5be95b78b75981e0941fde2d34c,5,O cartucho que comprei chegou dentro do prazo e a validade é bem longa! Estou muito satisfeito!,True,False,test
+6bfda53b611b714e20a0fe4f4f6bdb28,8976e414a71ffb7657a71e5180e47b02,4,"A entrega foi super rápida, produto de ótima qualidade.",True,False,test
+fdda4f6ef4af55a3bb72dbef7bb55f24,5128bbf180434cd939884e273629de98,3,Ainda não chegou produto. Espero que o produto chegue em breve. Permaneço no aguardo.,True,True,test
+d619442dbe62c8a4708722ebc1f96036,6f199c0873866afaadffaa53f4808a21,1,"RECOMENDO A LOJA, MAS O PERFUME NÃO. TEM CHEIRO DE NADA!",True,False,dev
+5e3221f50cc7bddbdca3911bbfc8abfd,9cb8098ab14d7f21e32786b85f62f5e2,4,muito bom!,True,True,dev
+840fb058924a4a7daa2cee32691138e2,77de735385f248a39145574246962d8e,2,Ola Minha reclamacao por enquanto o tamanho do relogio Achei muito pequeno,True,False,test
+a2816bcc2768ffd1de185a4162cae0a8,85390f5003d9b2084c226bac317cca79,3,O tapete parecia bem mais alto (os pelos) do que na verdade era. Ainda por cima veio cortado torto.,True,False,dev
+f188e279452a4580396ad1690dd43ecd,3482fd5db03ecb3857123956a9eeb1a0,5,"Eu Super Recomendo.. excelente a entrega foi super rápida, estão de parabéns.",True,False,test
+ecd47c74ec819f1501925a83c59d9eaa,b79c15d698bc94cd61de571f5c6cbcb2,2,"RECEBI APENAS O CUBO MÁGICO, AINDA NÃO RECEBI OS TAPETES.",True,False,test
+388d0584caf7a075f6c8bb6e67d7e00b,9f614c4a6839e4c60280aa7c70913658,5,TOP. Entrega muito rápida...Parabéns,True,False,dev
+7ad194b887cc02077be5563541b64b70,f76b895a9902ad634abed7eec3211a10,5,"Bom. Fiquei satisfeito com o produto,a loja entregou todo certinho..indico a todos.",True,False,dev
+af3d2087c223d8a5d46773a54c09e30b,a4cae3a44a6aeebd2b30ccf5cf828d89,2,"xxx. Não recebi, não posso avaliar.",True,False,test
+b418d5653392263667a48a3bf1ba9c68,f57f638b140f81ca2f2df180747bb46f,3,Demorou mas chegou tudo certo.,True,False,test
+b1087c9530bba1f1aca49b91ee06af6a,fa6d3eb110ceb1c2b98c7d158c6d1671,5,"Recebi o produto perfeitamente e até antes do prazo esperado, eu recomendo.",True,False,test
+69f89bb8a5a603dd3ef8e2087443bf18,86e574a0701d15590bf31783bc7de5dc,4,gostei muito do produto atendeu todas as minhas expectativas.,True,False,dev
+d80458d49691046cabaf5a2d1bc5dc1b,877c56a87d1eefa29773ebc703954287,4,"super recomendo americana. produto muito bom, porem bem pequeno.",True,False,test
+782ee11f014ed36ea1e161a0cd20d883,dbe2d1c6c34f5c31bb6736e1720c9b7e,1,Nao recebi o prpduto. Nao recebi o meu produto. Mandaram um outro produto em nome de Vinicius Silva pela loja Techno Gadget (Mega TG) uma barra de exercicios. Gostaria de saber onde esta o produto que comprei,False,False,test
+32301d938b0be55ff998110fa2de27c6,0ff91985e1cbf76b8e97b408d735f7b6,3,Faz pouca coisa . O produto e bom !,True,False,test
+bb504c087ba9d970e3e9e0e3e16912f0,c0ed812b599ef187f8d89f8723dda7e8,4,Recebi o produto antes do prazo td ok. Recomendo a todos.,True,False,dev
+38bcaf95057f842c3b64408733eaab1b,ca36cc19c0a413c8f724ae07323cd2cc,3,Só recebi um produto. Consta que já recebi os dois. Não recebi a sapateira.,True,False,test
+3da449f3f42e2495affe48dc7060e7cd,0814daa4d12a646aeb73c429d5852f4d,3,boa. cortina de blackout normal.,True,False,dev
+3b5f3f3862edca0f641b27640c5aa17f,0ceeef56025eee22241c8d510ada51a7,5,Produtos poderião ter um prazo mais curto para entrega.,True,False,dev
+6a59897f51914dc07226fb474462c9a8,3f63743b561bfda616e23f460bd70d58,1,Recebi apenas 3 fitas de 10 compradas na encomenda. Por isso ainda não vou avaliar como satisfatória a entrega. Faltam materiais conprados. O prazo ainda está dentro do previsto,True,False,test
+de9427387f9b813711ebb08b973bacb2,d664b2039deb4f567ef5367877766cf6,3,"gostaria muito de dizer que estou satisfeito,produtos entregue faltando item,no momento nao recomendo",True,False,dev
+efe482e1a22003d7012aee54f2445ece,d7856ff09c1797f7b7ebffae1cbd483f,4,"o produto excelente, entrega demorou mais q o previsto. Mas fui avisada que iria demorar um pouco mais",False,False,dev
+5563a907e576cf31a7493fe3ddf40b7f,bf3358fdaf47c7a9abf288008dc1ec59,5,super satisfeita. produto foi além das minha expectativas.,True,False,test
+88b68c2cd3f38d9fa50a6c10d0fe38fe,3aa0a75931f649d9e3e83aaa9d6a95e7,3,"Gostaria de saber como proceder para receber o produto, pois ainda o quero.",False,False,dev
+de315454bf99b99e3a442ed08f972313,e0353eeedba2f065dcb285de34e49f03,2,Produto danificado. Recebi o produto com a caixa toda violada e o produto veio com avaria na regulagem de altura,True,False,test
+fe6305df1ed44d12e01290cbe8d92cf3,20aac17e27ac5fb3ebbf44a26b0e2d3c,3,Dizia de 3 a 5 dias uteis após aprovação pgto contei 5 dias uteis comprei dia 4 sábado tinha esperança entrega antes contei de segunda a sexta recebi dia 13.,True,False,test
+e531cf1aebca7e96e2e55a08b44c0e2d,a908872306574c9405b29a838aee5521,2,Entrega parcial. Recebi somente 1 item.....faltam os 2 jogos de lençol e a compra está no site do baratheon como entrega efetuada. Peço para verificar o ocorrido e informar qusndobirei receber os itens faltantes.,True,False,test
+d616c8b2fc1e9b6e150b77e78967a4ea,1da5abde88d474271f7a8d3dc9206c6a,5,A experiência da compra foi muito satisfatória.,True,False,test
+82858e50b5c8165e82df91e7e3310b87,d857d0a4f3a11a5edda482cd70b6008a,5,"muito bom. tudo perfeito prazo, preço, qualidade...",True,False,test
+a3119ba4817c4b1cd43ff94481303c96,fbecebecbe32df9dc3411b1e35b5484c,3,"O produto atende à função, porém o cabo é rígido demais. Difícil de enrolar e desenrolar para guardar. Preferiria que fosse mais maleável",True,False,test
+c0664eafebcdc02cb8ef8279d1dde825,c9f1715aa7997f1ebfb8560a516d92fd,3,"recomendo. Foi entregue dentro do prazo estabelecido , mas, este prazo é muito longo.",True,False,test
+161599190455cba07885b8354ff07fde,2cfc25c768542047dde9549da3f65fa8,3,A loja me enviou a película azul e eu tinha adquirido a transparente. portanto não vou usar.,True,False,test
+3bdf54aab6fde663450c39b2cac03c69,af85e6e8c9f67f653b51429df7839001,1,Empresa sem credibilidade.,True,True,dev
+71d3388f71d75c44554318cfd5c4e34c,777f517b51cac586a9532d1d8b596c10,2,"Apesar de estar dentro do prazo prometido, demorou quase 3 semanas para chegar. Prazo muito além do praticado no mercado.",True,False,test
+5e78482ee783451be6026e5cf0c72de1,ff763b73e473d03c321bcd5a053316e8,3,Não sei que haverá acontecido os demais chegaram,True,False,test
+53f631153506b6c7558d7c82e2d2b8a5,1a4ce6e380dae0771ca218753b0739a1,3,É uma loja muito boa mais infelizmente demora pra entregar,True,True,test
+f4d8d18b95d1901fc319946c4b93acac,7a53fed7f9006ef9325efa365e6a1992,3,nao recebi. aguardando o produto desde dia 13,True,True,dev
+58e01b6333af5ba559f9f00e10521112,cb5e5871967a2d2ff1594d2a652fa290,4,recebi no prazo e conforme anuncio,True,False,test
+f6edf8c672a0f3059b9385d2df9ce17b,8b19f852c0580c73cd463337086a312f,5,Entrega realizada maravilhosamente 10 dias antes do prazo.,True,False,test
+f3cb6ec8ea25d2da084ad439e68d9229,86a6d09b2d1149ef6c9e0f8bf09d3a7b,3,"A entrega ocorreu dentro do prazo, porém paguei frete, mas tive que ir no correio buscar, neste caso o frete deveria ser mais barato",True,False,dev
+0d53eac38f4797fcdadf26d7810dacb3,3d7d60b10ba4b43cf6f6d5df2e933f67,2,"muito caro, e mesmo comprando mais itens, vai ficando mais caro...",True,False,dev
+dc2faf0586833fc2ba199a2af71dfa60,1429d024a5b24651ee03fd7216d95247,1,"cor errada. veio na cor errado, pedi uma cor e veio outro",True,False,test
+c7904f887693da0000f7fe5066d726cb,30dfb5b33bf44683be3e2f7df4bdd769,2,Não veio na caixa o moedor de pimenta,True,False,test
+ff93b4bb31907ac89b2fbdd698be4137,469693e7d8d566a64be410892965da82,5,"Produto conforme o anuncio,adorei o tamanho é muito bom,chegou antes do prazo",True,False,test
+f9980752bb555599ef9eb236ce859386,8a20e2954602a0738f264299255fd5af,2,Não tenho como avaliar até receber o produto. Espero que me dêem uma posição de qdo irão entrega-lo.,False,False,test
+daa029fd2a148240b4c6a5fb6be71e88,5be92ef6cf4a42ece07ad8bc3c00c70b,4,Recomendo. Gostei de adquirir produtos desta loja. Estou satisfeita.,True,False,test
+46e8c1cb0c0907e92889eca7a68fa119,3e8c191415aece16ba1ac896f535b484,3,Enganado. O produto foi roubado no dia 24/04/18 no correio e a loja não se prontificou em enviar um novo.,False,False,test
+b06a3ab8a866b7f1bcba942dfa181695,08cb000ba1516a67d8d9fbbe5f9a1091,5,"Excelente. Cortina linda,material maleavel me surpreendi",True,False,test
+15b233e8abd6650012705744e9b2e735,77e6a10b9f7d2c7a06295e3098afac8c,5,"Produto excelente. Entrega super rapida antes do prazo, produto muito bom atende as necessecidades",True,False,dev
+b8eb7e24f827ffab134707c0d179e4c3,681c82d8dee3250b148aaabdd68a59ff,4,"tudo certo, produto dentro do padrao.",True,False,test
+7e4dca270c9b10bc993ca798303a57b4,d1cbdd8ef126f25f75c37e56508061ee,2,A qualidade da bolsa deve melhorar.,True,False,dev
+f3cece7583fe7b6fb5a1ac93d3ea2a26,f53f689b6008c22da247ed23e3c0b685,4,"Produto bonito conforme vi no site, chegou antes do tempo, apenas as tampas que não fecham direito (elas ficam folgadas, acredito que seja essa a proposta) no mais o conjunto é lindo Recom. a compra",True,False,dev
+9d0796cafe08bb0cb55874a82204d4c5,cf26282d538d870cf5e212b2f6c572b5,2,"A empresa precisa fazer um estudo dos correios para onde vão a mercadoria, ainda não recebi o produto pois o mesmo está preso desdo dia 22/11 em um correio de reputação ruim.",True,False,test
+92e417fdde5d694a1ea425cf9b2b49e8,ca1aeded94b48bff9b434a7512cee7ce,4,Recebi o produto conforme o anúncio...,True,False,test
+420b33123a841358052e902d57743c69,3223c7798d7a714bf9d03c6e231869e6,3,dentro das minhas espectativas,True,False,test
+8b350f59e2c0ab921ad9cd8ec0c5a127,97ef2707f46b7d685e1da2b0c67be7fd,1,"Sempre comprei no stark e a entrega sempre foi rápida, mas agora este produto não foi entregue.",True,True,dev
+d89514564e2fdf256486b50b8c52e127,f99f27c6436299deb7afb301de293eba,1,Além de demorar muito na entrega ainda veio errado.,True,True,test
+ba21ebe780a1a1fc89f50fafca589dc0,71bd50400074bcb6afdacdccb82a5478,1,Gostaria de saber se vou ou não receber. Se sim qual o prazo?,True,True,test
+14ed0b712913e0b6158a1c3fd35ff97d,7e27277184720891692df939d3a7b048,3,Bom. Bom atendimento,True,False,test
+c464dedef5088d33edff8a78a1ac4492,5c6e2b3612d27ef59e6a4a062b8d6cda,5,Recebi antes do prqzo,True,False,test
+317424786f416435834d8cea3d02112f,1930118fbe694636a60c0d5f97c32597,5,Os produtos são de ótima qualidade.,True,False,dev
+6e74e5f2a1e45e98ea8f8a876b146576,a260362d840e55aa9895f1012776a329,3,Recebi e o produto dentro do esperado,True,False,test
+4157b2c159fb239f4b0bd8856138e4cf,ff9770f7299db492e5fe01b4a231341b,1,"Comprei e paguei por um produto que nao veio,a oferta era de um combo com 2 pacotes,comprei e paguei por 2 combos,ou seja 4 pacotes,e me enviaram apenas 2 pacotes.quando vou receber o restante????????",True,False,test
+4a02a700b8ef996c8806eee6e1302476,717255f43d5c9b702e9bc8c7d03a82ad,2,Recomendo parcialmente. Eu sofro de uma dor muscular no ombro esquerdo e no pescoço também lado esquerdo já fiz vários testes com o referido produto seguindo o que manda o manual porém até o momento ainda não obtive sucesso,True,False,test
+1af17bb68d492bd5939de744802bb434,a574fbd4ec3b7064ac9a3817ee71c044,4,Entregou no prazo,True,False,test
+511b26a15bebb13d818460e0b1e9649b,dea1d0da023a5aaf8113087fb08ce6c3,5,Entrega antes do prazo e produto de qualidade!,True,False,dev
+0aa8b628ffe8130e26b668f9f3a2f6ef,f7310018040436b01ab03f81b301b5de,1,Realizei minha compra no dia 10/10 porém só chegou 1 produto sendo que paguei por 3 unidades MOP Spray. Estou muito insatisfeita inclusive com o atendimento.,True,False,test
+21f25d5e273223345f0955497c7f1ac4,39a37ffff66dc65f24af1a3ee533330f,2,"So recebi a cola NF 001063, o iten estufa ainda nao chegou.. por favor me de.um retorno o quanto antes",True,False,test
+14c8ff2792c36a11bc966fb5ed6d781e,e2384e27d52c798743c71c9f2c57763a,5,super recomendo. Produto excelente,True,False,dev
+fa1ba64ab9e0b665df02130b735d7ef7,33f49de8c93f34764335c37dd65f63ad,3,Entrega passou do prazo mas o produto chegou!,True,False,dev
+ea0bd223587de0d11dda627671dac08c,e2557098c56afd06a929b32a63b5f856,1,depois de pago o boleto sem o produto tem que ficar ate o praso de entrega pra saber que nao tem o que comprou.,False,False,test
+a255c1249960fd41cc75c59f8ba8ab1f,070f532c26f2505352210937089dfc79,5,Excelente amei,True,False,test
+1a41024a69f98c495962be70be0519ab,1e0efbb6f899f5f08e26951b1e170387,3,porem não recebi meus produtos Ainda,True,False,test
+93c742231df17620eadf882e2a435e60,d3b0d8353eadc4ba7ff0b60f87949a02,4,recomendo. Bonitinho!,True,False,test
+4a93de6c66dee67442f7cbd44428f399,37cd892c7a6275aecbe6dfdcee8de6b7,1,"Produto errado. Parceiro ruim e metodologia da lannister péssimo. Já tem quase um mês que recebi o produto errado, tive de comprar novamente e as Lojas lannister não tomam nenhuma atitude, só ficam enviando pesquis",True,False,dev
+5c61c9b2c8e3428d9672e541021eb752,a10d28a5b468b2812345d39efa239454,5,Produto muito bom. Recomendo,True,False,test
+84fd4822a52f6b9979785b8b622cdbf9,6659002983cbc0fc582729e3aa1feaa8,5,"Bom produto,. Bom produto chegou rápido!",True,False,test
+24c3a55d5d2f3e053285adbc913e7b2c,f27ae17adead1c0c2c6bff69eeb86231,2,Vocês deveria não cobrar a taxa de entrega pois eu tive que ir retirar o produto no correio. No qual eu tive que pagar 15 reais de Uber para ir retirar e mais 12 reais para voltar para minha casa,True,False,test
+e346daea3db3095a261b9b6b098c2824,03b2144a8822e91cc05da7907f21ea1f,5,Preço compatível e entrega rápida! Valeu a pena.,True,False,dev
+4fe8b2665e1eae868b729a5b3149228c,caa18d06d1387d719412906fd4cb2063,5,Veio exatamente como o imaginado... Muito linda !!,True,False,dev
+449a58bf335b2d69226f1df75ccd4577,b1e83743987d023e63838e2fe9149231,3,Produto não chegou mas bem provável que é por causa da deficiência dos correios,True,True,test
+bae472fad885da38be6f18b6ebf2b3d4,b86149c8139bc8a77792c2b24942a0db,2,"Comprei uma lixeira para cozinha, conforme a foto com suporte somente para o pé da lixeira, veio o suporte errado para banheiro com porta papel higiênico.",True,False,test
+88853b30cf3362c56a2a2401beac2c97,a1011d45b3b442fc2af90299beb134a2,1,"Pedido pela metade. Recebi apenas um produto, e não dois, como paguei. Quero urgente o resto do pedido, pois tenho pressa",True,False,test
+5ef92067b11aa8f999ace9e9edcda377,63ad650ce1c19577c3eaa386f8752701,2,Recebi apenas a bolsa a cortina não recebi.,True,False,dev
+e02b4ce57f76291650cfcd5cde6e1bb6,8ea1a1b5bb41e4093d30dbd5d3466b69,3,"Nao vale a pena a reclamação, mas encomendei um carticho preto e outro colorido e recebi dois pretos",True,False,test
+caf82f85835a54ba56aacd9913ac9a48,6054edadd122478439d42520ff966ebb,4,"Só erraram em não mandar a placa em um saca anti estatística pois, mandaram em saco bolha Norma branca este plástico não é estático pode danificar a placa Aconselho em mandar em um saco bolha rosa",True,True,test
+8a77bc5e0bc311136ec1f4cf9e751922,a3a45c1c1ea8a1242a535611257bb20e,4,Excelente produto e a entrega chegou antes do prazo previsto!!! Ótimo,True,False,test
+3fb6b4c6e81ec8cb23d2dce1d1244c18,422c7b02842de5256c6ae63a6898a64f,5,Mto bom .. Atendido bem antes do prazo super recomendo,True,False,dev
+43c846975cad387b7c0a36aad510f825,ad818323f40e1a353eb3a3874d138c51,1,"comprei um aparelho para voltagem 220(sta Catarina), enviaram 110.Em contato com a Diluka Power disseram que mandariam um transforormadorque foi recebido, mas pinos não combinam,teria comprar um T",True,False,dev
+f72656934801e60fa43f205ecadfa393,8b5a4b2799bee31ca06187259aea4da5,5,Gostei do produto comprado,True,False,test
+8cec77dc80da36eaab2ed7cee563fcbd,50ab8a54c2060cccdabcf4ad996be719,5,"Comprei e não recebi, tá se tornando rotina, vocês vão perder seus clientes",True,True,test
+4b037b608183a7497dfefc055c650f85,8fec3000dd1edabf27f78ee06f3abebe,1,"Produto errado. Comprei a caixa de simparic com 3 comprimidos e entregaram a caixa com apenas 1 comprimido, solicitei a troca no dia 29/08 e ainda não tive nenhum retorno.",True,False,test
+bec0f19154af731fede4c12d5ff015e0,fe4e63c3ce772bf558a089b256e4e8d7,4,OK OTIMO,False,False,test
+e712c1926494c9c15bc92dc00d942e7a,0e5e60b0cddf73f60eb73fac19f590cf,1,comprei dois produtos há mais de um mês e não recebi nenhum,False,False,dev
+69f6d217c7d4c0b36b433190c3a24bc9,037ce5266460af220f19d497b130e737,3,"Pedi a devolução, pois o produto veio errado",True,False,dev
+17b8e11b72cd14fde38bfb145e694043,39f4de18c3b28bba19ed3eeac7b9ee33,1,Recebi um produto similar ao que pedi e não veio nota fiscal na caixa,True,False,test
+f61d84c3ff77d70dbcff0ee5613205dc,c106f2772c1c3227637339f5d1833f5f,4,"O suporte poderia ser melhor e ter marcação para os parafusos, estética é boa",True,False,test
+bcf7dd2c24a86c6548fabecd32dad1c5,7ac8109e735f29d8982f4503586fe59f,3,"NÃO PUDE IR BUSCAR. Então eu não conseguir buscar o pacote no Correios, como eu faço agora? Pra pegá-lo de volta",True,True,test
+f4c45c40809a44ae0b2ca81d936bf2f4,aea446ff4ed3972ae041cdad9d4bc2c4,4,"Sem problemas,tudo certo",True,False,test
+d9de70c2b76a47c50b9c8d5d0b8783f7,48e785adb7ad7f98808fead60f65fd80,5,Produto entregue antes do prazo descrito Veio exatamente o que comprei Pode confiar,True,False,test
+19fc370b403059e06300bcde9375e7f0,5b33e5b23e569f404e6eccbbce3e0aa4,3,"Site seguro, rastreamento do produto é entrega ok",True,False,dev
+daf6f0b7c153fa0cc1689f28000ec087,beb19a07c97b17bc12756b493b5d59c0,2,Gostei da saia de cama box ... recomendado,True,False,dev
+253c1413b2b550b3799ee9b7f53ed20f,0b16257b1b7ee0922ea03954f2cae85a,3,"sim, recomendo ***. Quando da compra me foi dito que o produto seria entregue até o dia 10/08/2018 E até o momento não foi entregue...",False,False,dev
+4ca57be78a2cfd23b8b341521800054f,28143b0b8baca7bc05bdcde9a7c65bd3,3,Entrega atrasada,True,True,dev
+2d92f1b2210a85ae62db52eaaf16ac82,4bcfd4cbbe95542bb16ad7ba325e2dfa,5,boa. excelente,True,False,test
+3db041dd46e9935752c691a2093799c2,51eaae3287e04efba45a51f52098fc88,1,Produto não recomendo não ler em nenhum dispositivo,True,False,dev
+2213fbf4f043524f6972d782182c2211,b2b4ad3f3df69da791d642a9bfc387e6,2,Ótima avaliação,True,False,dev
+20d90b1b01f94ec963c81b8d5bdbb14f,cc76aaca069f9c7127c3403e8eabd100,5,Ótima loja,True,False,test
+179527c47972453d440d9f65626945e4,20c60f23d0f1231ad895fde039554666,2,"Comprei 2 relógios, mas só foi entregue 1",True,False,dev
+e775c41a3df4e0792c5802b7c2b12231,9feb8a417a078949bf56e26f46bae06d,1,"O prazo de entrega foi estipula para 19 de julho a compra foi feita em 26 de junho e ainda não foi entregue, ou seja razo de entrega não foi cumprido conforme anunciado no site na hora da compra.",True,True,test
+e28f17ec89ee0890280c31351636d911,5af1697f659a5873ed7f793544b2b98d,5,O produto chegou no prazo certo.,True,False,test
+e3612b7b9f5872e01bbddd0ff19f184c,57c432fd96e9d52639f048eb1b2a5b10,3,atraso. comprei kit de berco a mais de um mes e ainda nao foi entregue,False,False,test
+d32a3cc0cb656424d0a871c906fd2bae,701a1cb9e6b39469d8ec105565f33277,1,"Paguei passagem para retirar o produto nos Correios quero o ressarcimento do frete ,se até o dia 1 não me derem uma resposta no dia 2 irei ao Procon.",True,False,test
+642f5ab2258732442350a0d8f4b9bf94,c982c1af10010b2f227a2ceb69a994fa,3,"Até agora não recebi, tem coisas que chega atrasada. Outras chegam no prazo certo. As toalhas estão atrasada.",True,True,dev
+bdf4a0e8489ee09f8c4f3ffee39761fd,9653aa56f1bb2b338e77d1ea26a885f6,5,"Compra recebida, nota 10 para as lannister",True,False,test
+014295912d0bb13c6cbb868e17746d1e,fb4d41fc71d5a2350b182caae19fbd37,4,Produto original. Produto com etiqueta de autenticidade.,True,False,test
+7824e64db6fc3e9cae4c82ded323f6c5,688904e4bf47962bfa787f67c04ec8ce,3,"O relógio chegou sem funcionar, e não é original Oakley.",True,False,test
+d4469da4ea0680551bd2f446a5e45a28,03c6fd082fce47bdd5e0dc1f81a9626f,1,pessimo. produto com defeito.,True,False,test
+22d2c8858b0c2a3536a1fae8f6b1a0f0,544f1ebc2ee31c6f923a4feba2e0677e,5,"Aprovado. Chegou um pouco antes do prazo, isso é bom",True,False,test
+422b20b6a634cb813a9de69f81b07c07,12464d1f4f0401e086966a5333ae812a,2,Nota Fiscal. O produto é bom porém a nota fiscal veio com o nome da pessoa que recebeu sendo que o pedido foi feito em meu cpf. Caso precise trocar ou fazer alguma coisa não vou poder porque está em outro nome,True,False,test
+b2d976dd8ce9f84823d532c7012e8e26,feebdfdb4759bd4600d52547c81b4fa8,2,ate o momento nao foi entregue meu pedido,False,False,test
+bb2248044ef05f97a951d72d14b87eff,7791d87e3629a61832a9cee326042181,4,So não vale entregador pedindo unzinho pro guaraná...,True,False,test
+f43a40e3aeea1ea9f281a59766856812,eb30798770640f6c632d2cab023ec58d,4,"entrega muito no prazo, produto muito bom",True,False,test
+08b81923931bbcc896c568970363f6e3,632d5f1544d56eb72ec8566d324f4d06,1,Paguei e ainda não recebi e com toda certeza não receberei. Um simples controle remoto. Péssimo serviço. Loja não recomendada. Paguei à vista. A data de compra foi 13/12.,True,True,test
+2f85e0a149ced94af2d778e0b8d41ee4,0fb0e71d92a103ce203e4b32be458d9b,5,Facil troca. Otimo produto e de fácil substituição no aparelho. Demorei nem 2 min para troca,True,True,dev
+744735fcd27d70e2b66177b8276bbd63,950751565654ebfd1a4665d3c818e694,5,"Produto corresponde ao descrito, é ótimo!",True,False,test
+144adb6251deee040208e17ab8c0826a,d25091a3e5d9d4a0a83ad9413f8828d2,5,"Ótimo produto. O relógio é lindo, minha esposa adorou.",True,False,dev
+a3d308c5563d93a99c7896bf7ff94e80,a80aedf3acd66b4cd4f63901251af78f,4,"adorei o produto;; recebi antes do prazo combinado ,, ficou muito bonito",True,False,dev
+f62e21bd38a4ec9d8db698fb82f5faa4,9156fc69417fcbcd95042aa80d9eaaab,1,Recebi o produto diferente da foto e faltando uma tesoura.E ninguém até agora resolveu para mim! Não recomendo! Não comprem!,True,False,dev
+29d6274ba6dec3960147fcd7ce97dbf3,a728ee4ebe3964a5a4ab8b0409eaabc1,1,"Segundo cancelamento do mesmo item no site lannister.com. Fiz duas compras em lojas diferentes, as duas canceladas, faz quase 3 meses que estou aguardando o produto. E demora demais para avisar.",False,False,test
+b5e6b62fa352f2da2c929eabc180be78,79f61e04126281ee53dfb2a9d04f2179,2,"É bonito, mas o material é bem frágil. Não recomendo.",True,False,test
+6f9225f44067f545bf8c2a9bafbf72bb,42d99f88e122c545af5b33aff4bec141,5,Vou recomendar para meus amigos.,True,False,test
+d4adfea6ec8fc541be646d30d00f63f5,c765801ff1022b82d664e0a1b114d4b2,4,"As pulseiras vieram corretas, iguais a da foto, material bacana e resistente.",True,False,test
+b7b89f7d333509e26e9492d79f9d3719,782b00205051ed11c71726e9554e788e,5,"A entrega foi dentro do prazo, bem embalada e a empresa comunicou todos os passos da compra e entrega do produto",True,False,test
+bec0d37f12daa998d391f6f126e12903,8d684f38cd1edd267da04f1d65ec5eff,4,Bons panos de pratos !,True,False,test
+e090a8c264b25368b737f79d30ced5be,fcf380438c697a895901151d7a333c5c,3,"O cartucho parece igual/compatível, mas não encaixa perfeito na máquina. Conferi o pedido e os códigos e estão corretos, a falha é de encaixe. Por sorte encaixou noutra máquina que usa o mesmo tipo de",True,False,test
+6749375d5c948e64891771cee455bd70,866f5476165c062d96e0db0aed03c96a,1,"Estou aguardando ansiosa pela cuba, para entregar uma obra e até hoje nada o que faço para saber quando vai chegar.",True,True,test
+1686bca09c7be45162427995db82d480,5a7ca318214b5a70fd94e277af9643f1,4,"Baixar o valor do frete, tem sido um pouco caro",True,False,test
+de3bd84fd91ea1554b2afefc0e6513c4,c14e0917a7e78c27cc4af1053e2d77f8,3,"Chegou, porém não é só isso que conta, apesar de estar dentro do prazo a entrega demorou. O rastreio vc só consegue se ligar para a lannister para saber, motivo esse que não dei menos estrelas.",True,False,test
+b1d8ad7775f8adca2fe77ce377bbe666,ff8d0c8b5c1e8bdd6f8e3170f6fd62fd,4,"O frasco é bem frágil, quando tirei a fita adesiva que prendia a tampa ela descascou toda. Ainda não foi utilizado.",True,False,dev
+c62442eeb748d8adf74f0e9e053d97bf,219fda9e83f9a3ac8e1baa10d6cc6366,4,"Tudo certo, no prazo e o produto muito bom tb.",True,False,test
+c8bfa0f68c3ea2609a02bd52b1ea276a,5db31af449c668e4ed0b7efb00f802c1,5,A entrega ocorreu rapidíssima. Me surpreendeu!,True,False,dev
+1c1686a8e031498fb7a0ef51a84acadd,c3483e54e973d333c6365c217f4422b9,1,"Não recebi meu pedido, não retornaram os emails que enviei pedindo informações de entrega. Pela falta de compromisso e pelo desrespeito ao cliente(consumidor) realizei o cancelamento.",True,True,dev
+83c1973edf0d7f69fe893a3d123eb2e5,c6bbde0cc0abfd5ffa9ab6da2d7391d5,2,um dos dois prudutos veio com defeito. cancelei o produto,True,False,test
+5caca29ffffe9086162ca51303817420,6ea2f835b4556291ffdc53fa0b3b95e8,1,"Inicialmente, na data da compra o produto era para ser entregue até 21/12. Hoje é dia 27/12 e não chegou ainda.",True,True,test
+890b24c7291cb85ef3c81d177178088c,e9b878264e94e17134221e4e9afd378b,3,AINDA NÃO RECEBI O PRODUTO,False,False,dev
+5edc46de6751f0a5162597d2fe8c195f,707977c86502593ef9aa22201fbcbde5,1,Não recebi ainda é prazo era dia 12 o que eu faço agora?,True,True,dev
+b205a55ba51a0d6ff3dd08d51954f4cf,b14127bfb817fb9d5883aacd257bb447,3,"Telefone celular. Nenhum chip cabe, nem com adaptador!Estou buscando solução mais prática.Caso não consiga, terei que trocar o produto.Recebi dia 17/8.",True,False,dev
+28139c556144ad169481ff0da5012056,ffce02d92a959d8894c8568d7a0f6435,2,AS CORES DA ESTAMPA NÃO SÃO VIBRANTES COMO NA FOTO DO SITE. É MEIO DESBOTADO E FICA MEIO DESFOCASO.,True,False,test
+eb405e9fd14f486306d0c66bafb5228d,371c8cf0e8b96be301f7c2648b9846e3,1,Gostaria de um vale troca! Aguardando número de postagem.,True,False,test
+96813c044224f5c1ea4226e2083b1f9a,044d94a4ac73b24fe28ff5293ac35bd8,2,recebi 2 dos 3 produtos desejados,True,False,test
+05180b5c590d947fc6036bb45255ebed,9cfc94a00cf39aa53d8f701fade170b9,4,Recebi corretamente.,True,False,test
+67d4885715f633777265347d720ac53f,18c4a899f72e91da02c87e3242cfbe77,1,O meu produto não chegou pra mim estou desapontado pois se trata do segundo produto que fica solto por aí e eu esperando todos os dias acho uma falta de respeito para comigo.,True,True,test
+3d48be6d0b39e4383f614cd7baa9d038,845686dd9137013d73ed42078be18809,2,"dúvida sobre luminária. Não recebi o Kit ainda das tres luminárias. Sabem me informar, por favor, o status. Obrigada,",True,False,test
+d680f26e27023bd7b495589581ef7b7d,72b5838d29bbaafa945d07bcbc2d7d31,1,comprei um lençol de solteiro e a loja me enviou um lençol de casal. Solicito a troca,True,False,test
+f671df2dcf50e3822c9c64adc824cd32,c9e34cb3b2bd60fe61896bef7a946678,5,"A mesma é um pouco pesada, mais tranquila para trabalhar",True,False,dev
+79789912b048662bfc97db16131a94f3,d63fe1f1621db3763f40ec20a4a8b338,1,"Primeiro que minha compra estava vinculada a outra, e eu não consegui um dos produtos (celular). Então vou pagar por um produto inútil para mim, uma vez que não consegui cancelar a compra.",True,False,dev
+daaaf9b939433dfba6377055b246489c,94f522c26f2681ad053b999e34e7b317,2,Gostaria de sabe o que aconteceu com meu produto estou desepicionada com as lojas lannister.Preciso urgente de uma posição da loja pois a primeira prestação no cartão está sendo paga.,True,True,test
+e6aec979f229602453f04345e48c8bc0,4076407d388d4127cf7edc12c2782ed8,3,Bom custo benefício.,True,False,test
+a096e8952867d580352f684759a44c0f,028dc52e12ddda803ec1e35eb0b7b0d9,5,Já comprei diversas vezes e sempre recebi tudo corretamente e muito rápido. Eu recomendo. Loja de confianca. Nota 10!,True,False,test
+12a9f249966e5caca7926c30c73b97cf,bb535f122a301b2b48f02befcedfcad5,3,A primeira vez que eu comprei veio certinho ...já o segundo perfume até agora não chegou e minha fatura já chegou com. O valor comprado,True,True,dev
+e8490adfb4bebeb4a0ebc665122bee16,828c70c1568ca1b635a1b59baa592bb8,5,Porque o produto não chegou ainda.,True,True,test
+da12b976ff87792384caedae4c87cd59,d8c637c43a0a5a1c7ee79aad5ae359a2,5,"SUPER RECOMENDO. Mercadoria foi entregue bem antes do prazo, exatamente oque comprei, produto maravilhoso, atende minhas necessidade. Estou muito feliz!",True,False,dev
+c73e7cf5d94e37b8634053c9316ab8fc,0a8c0300318aedd7b66f6dbc27409ece,1,não tenho opinião faz mais de um mês e ainda não recebi o produto. até o momento foi pessimo,True,True,test
+85107a1dcf6d0ecc4e46eba9f50a8efa,b2f848c14ae4b774fd3a0842aa435a5b,1,"Produto ruim de má qualidade. Laterais da cortina desfiando / desmanchando. Para um produto de 165,00, não condiz . Insatisfeito.",True,False,test
+bd9fefd22d37f7517e49ff68f43def15,e1d588525687728bd046a5808e6556b8,3,"Estava dentro do prazo, mas acho que poderia ter entregue antes.",True,False,test
+72ce5ecb356f910b132c85da360051ad,f9d794ef7ae3d5df8951beb4029a7e93,4,Ótimo custo benefício... Comprei pra dar de presente e a pessoa adorou. Fragrância moderna e nada enjoativa.,True,False,dev
+61df21845d99d8f27e751cbc434c134a,f161d2927f0847f8fd74ebeb8a7b3a80,5,Adorei o site recomendo comprei e chegou antes do prazo que foi dado,True,False,test
+d5765e60d1584b271bf2076b8d8b71bd,672dabc5c0363afbe1ef39abf10ad92e,4,Eu recebi 5 dos 6 almofadas que pedii. Cadê o último???,True,False,dev
+c9fa49205d25cfcb9f9166c94ceb965a,5fb7722468335f3e0c49814fb820fff6,3,"Adorei o produto... Adorei o investimento, apesar que só testei por enquanto. Porém segundo as resenhas que eu venho na internet o produto vem com a luva térmica e certificado, porém a minha não veio nada além do manual",True,False,test
+6116940245b9e994dafbe8f1330016b3,2f0406761edfc84594b3ff458e5ddc6a,1,QUERO DEVOLVER O PRODUTO PORQUE NÃO TEM A MESMA FÓRMULA DO OPTYMEMORI DO SITE DO ORIGINAL.,True,False,test
+8a3612278f6d65838cf45eb143e09301,4c8649cbc5b80495a3d6df0ef599072c,1,"Veio estragada, os ilhoes soltos. N indico",True,False,test
+e30530548ef68bfca99d5e18982e3650,73db7f6cd086270ffe2e67b8379385bf,4,"Achei que o produto demorou a chegar, mas chegou em boas condições.",True,False,test
+a3effa5eadee6e2f75af645ce36e4862,2552ad5f4b7eb7bc0650f3e1a4a1d678,5,só tenho que parabenizar todos voceis ....,True,False,dev
+7751f2853341c4c59f589164fc02898c,97c5a4acc0915c5bd17e5a3256693ef6,1,"Produto veio com defeito. Produto veio com defeito não funciona, bem vou pedir troca, o preço não vale a dor de cabeça, fui em uma elétrica e comprei um prestasse.",True,False,test
+501a5eb991d3e435dd56cf83679c0697,23a8531948bc865dee9fcdbacea311eb,3,Esperava q o produto fosse bordado e não de tecido costurando.,True,False,test
+5db0428467517d8eea2a259d187c8edc,9048f1cdb0bbc082cc3bdd315f052bf3,5,Otimo. Recomendo a loja e os produtos são de ótima qualidade,True,False,test
+05f6958e034faa4a5e6623010b56765d,6f51b9ddebdbc1c999a68bf0cabe83e8,4,super recomendo. Recomendo.,True,False,dev
+727ecc596bb62b69e14b4153ad58aef8,4d9fde0f41ed6d10cf0353449abf49aa,5,Entrega no prazo e produto conforme especificações.,True,False,dev
+90467e68d8367851bea4a1ece83906ee,070d6fe21e7d454b11f1cb27ca2c15c0,3,o produto é razoavel ! envio do produto embalagem propria! chegou td amassado quase q danificou !,True,False,test
+cce82504bdf83079efd285c8f9246750,c3a4f2b35690a1938c71e4543dc6cb18,3,Entrega dentro do prazo. Mas ainda tenho um pedido na shoptaime e até agora não recebi.,True,False,dev
+756b9640119efc87a3edcb18eaeecea5,b48c1dd4cb4c98e4dceeb753c952c961,3,Tem que ter responsabilidade,True,False,test
+e144681952b0736e09fc0643ffb909ce,ea3da9210148306e5b1bbb843c19e65f,2,Só achei que o perfume não fixa bem sai logo o cheiro.,True,False,test
+d38c2458335ad219ac242af5c53a41b7,d95ca1fcb72812383e41e2eb7ca65dc2,2,Eu comprei 4 rádios e so recebi 3. Estou esperando o restante.,True,False,test
+2a11a0349f41560338d86eac8a3242c8,c4d7d5a8e5e6c168142085d231c65b79,4,"Gostei muito fabuloso , porém tenho uma dúvida pois a pá de mexer de teflon deu uma enrugada não sei se é normal gostaria de saber",True,False,test
+f406e97b00d06af1d5cab0fcde7afca5,c76851af7999b8aa431fe982f3fd1126,3,Tudo certo. Antes do prazo. Recomendo.,True,False,dev
+1c5126988da5a57e2c3f324d44ef0b82,f0c1fadfe3832d32c7a44b37530c9e2c,5,Produto Ok. Produto entregue conforme anunciado. Bom custo beneficio!Recomendo!,True,False,test
+d8ee84e8b2c300ba039fa2dd12a231c2,24b5077ff1a5cfb489ffaf2a6ae71f43,1,Recebi o produto diferente do que comprei,True,False,test
+c16c3cb47d8291ea00b446e32ecfa531,d2f6b89578aee72f553aad3c76098e63,4,RECOMENDO. PRODUTO MUITO BOM,True,False,dev
+79dec548891d0737a6fa7e71fb0385e5,d646d163f7d7fceab2954628f695a033,2,"O produto faz o que promete, a entrega chegou no prazo, entretanto a loja não emitiu a nota fiscal.",True,False,dev
+36272a624d93914a3fc574b0f9fad77b,0abc7357d2bbb06a7d4d0b2a24d4ebd3,2,Chegou o produto errado,True,False,test
+1e2fb4fae1ba30a2cd748d7b5902c6f4,f74a620e4d4599312c1832ca0afe0588,5,Boa loja. Adorei,True,False,test
+cd97c51e3ae02c42c6bb290b2d49ce15,d9137c81bf939fd8a1934f77b701422c,2,Satisfatório. Esperava um produto de maior qualidade.,True,False,test
