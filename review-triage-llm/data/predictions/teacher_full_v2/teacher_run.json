@@ -1,0 +1,38 @@
+{
+  "mode": "full",
+  "model_id": "Qwen/Qwen3-8B",
+  "quantize_4bit": true,
+  "prompt_version": "0f83769b",
+  "gpu": "Tesla T4",
+  "gpu_count": 2,
+  "python": "3.13.16",
+  "torch": "2.11.0+cu130",
+  "transformers": "5.22.2",
+  "bitsandbytes": "0.50.2",
+  "run_at_utc": "2026-11-13T04:12:54Z",
+  "splits": {
+    "dev": {
+      "n": 100,
+      "seconds": 139.4,
+      "reviews_per_s": 0.72,
+      "valid_json_rate": 1.0
+    },
+    "test": {
+      "n": 200,
+      "seconds": 283.3,
+      "reviews_per_s": 0.71,
+      "valid_json_rate": 1.0
+    },
+    "silver": {
+      "n": 5000,
+      "seconds": 7093.5,
+      "reviews_per_s": 0.7,
+      "valid_json_rate": 1.0
+    }
+  },
+  "latency_batch1": {
+    "n": 30,
+    "p50_s": 3.816397380500348,
+    "p95_s": 4.045297124000172
+  }
+}
