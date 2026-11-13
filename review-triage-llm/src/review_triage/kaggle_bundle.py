@@ -1,7 +1,7 @@
 """Build the folder uploaded once as a private Kaggle Dataset for the GPU notebooks.
 
-It carries review texts only (no gold labels, so the test answers never leave this repo)
-plus the package code the notebooks import.
+It carries review texts only (no gold labels, so the test answers never leave this repo),
+the teacher's silver labels the student trains on, and the package code the notebooks import.
 
 Usage:
     uv run python -m review_triage.kaggle_bundle   # -> dist/kaggle/review-triage-data.zip
@@ -14,12 +14,16 @@ import pandas as pd
 
 from review_triage.data import load_reviews, sample_silver
 from review_triage.labeling import LABELS_DIR, PROJECT_DIR, RAW_DIR
+from review_triage.schema import LABEL_FIELDS
 
 BUNDLE_DIR = PROJECT_DIR / "dist" / "kaggle" / "review-triage-data"
 PACKAGE_DIR = Path(__file__).resolve().parent
 # Only what GPU notebooks import; data/labeling need local files and extra deps.
-PACKAGE_FILES = ("__init__.py", "schema.py", "prompts.py", "teacher.py")
+PACKAGE_FILES = ("__init__.py", "schema.py", "prompts.py", "teacher.py", "student.py")
 TEXT_COLUMNS = ["review_id", "text"]
+# Teacher run whose silver labels train the student (prompt 0f83769b).
+SILVER_LABELS = PROJECT_DIR / "data" / "predictions" / "teacher_full_v2" / "teacher_silver.csv"
+SILVER_LABEL_COLUMNS = [*TEXT_COLUMNS, "valid_json", *LABEL_FIELDS]
 
 
 def build(bundle_dir: Path = BUNDLE_DIR) -> Path:
@@ -34,12 +38,19 @@ def build(bundle_dir: Path = BUNDLE_DIR) -> Path:
 
     silver = sample_silver(load_reviews(RAW_DIR), exclude_ids=gold_ids)
     silver[[*TEXT_COLUMNS, "review_score"]].to_csv(bundle_dir / "silver_pool.csv", index=False)
+    labels = pd.read_csv(SILVER_LABELS)
+    if not gold_ids.isdisjoint(labels["review_id"]):
+        raise ValueError(f"{SILVER_LABELS} contains gold reviews")
+    labels[SILVER_LABEL_COLUMNS].to_csv(bundle_dir / "teacher_silver.csv", index=False)
 
     for name in PACKAGE_FILES:
         shutil.copy2(PACKAGE_DIR / name, bundle_dir / "review_triage" / name)
 
     archive = shutil.make_archive(str(bundle_dir), "zip", root_dir=bundle_dir)
-    print(f"gold dev/test: {len(gold['dev'])}/{len(gold['test'])}, silver: {len(silver)}")
+    print(
+        f"gold dev/test: {len(gold['dev'])}/{len(gold['test'])}, "
+        f"silver pool: {len(silver)}, silver labels: {len(labels)}"
+    )
     return Path(archive)
 
 
