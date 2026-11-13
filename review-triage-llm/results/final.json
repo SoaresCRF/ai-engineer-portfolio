@@ -1,0 +1,75 @@
+{
+  "split": "test",
+  "evaluated_on": "2026-11-13",
+  "cost_assumption": "GPU time only, T4 at $0.35/h (Google Cloud on-demand)",
+  "approaches": {
+    "A_baseline_tfidf": {
+      "n": 200,
+      "categoria": {
+        "accuracy": 0.775,
+        "macro_f1": 0.6967
+      },
+      "sentimento": {
+        "accuracy": 0.795,
+        "macro_f1": 0.7316
+      },
+      "urgencia": {
+        "accuracy": 0.745,
+        "macro_f1": 0.7353
+      },
+      "valid_rate": 1.0,
+      "hardware": "laptop CPU",
+      "latency_batch1_p50_s": 0.0021,
+      "latency_batch1_p95_s": null,
+      "reviews_per_s_batched": null,
+      "gpu_usd_per_1k_reviews": 0.0
+    },
+    "B_teacher_qwen3_8b": {
+      "n": 200,
+      "categoria": {
+        "accuracy": 0.87,
+        "macro_f1": 0.7816
+      },
+      "sentimento": {
+        "accuracy": 0.84,
+        "macro_f1": 0.7701
+      },
+      "urgencia": {
+        "accuracy": 0.82,
+        "macro_f1": 0.8138
+      },
+      "valid_rate": 1.0,
+      "hardware": "1x Tesla T4, 4-bit",
+      "latency_batch1_p50_s": 3.816,
+      "latency_batch1_p95_s": 4.045,
+      "reviews_per_s_batched": 0.71,
+      "gpu_usd_per_1k_reviews": 0.1369
+    },
+    "C_student_qwen3_1.7b_qlora": {
+      "n": 200,
+      "categoria": {
+        "accuracy": 0.855,
+        "macro_f1": 0.7713
+      },
+      "sentimento": {
+        "accuracy": 0.8,
+        "macro_f1": 0.6938
+      },
+      "urgencia": {
+        "accuracy": 0.825,
+        "macro_f1": 0.8185
+      },
+      "valid_rate": 1.0,
+      "hardware": "1x Tesla T4, 4-bit",
+      "latency_batch1_p50_s": 3.091,
+      "latency_batch1_p95_s": 3.323,
+      "reviews_per_s_batched": 2.63,
+      "gpu_usd_per_1k_reviews": 0.037
+    }
+  },
+  "one_off_gpu_usd": {
+    "teacher_silver_labeling": 0.6896,
+    "student_training": 0.5606
+  },
+  "bootstrap_ci": "bootstrap_test.json"
+}

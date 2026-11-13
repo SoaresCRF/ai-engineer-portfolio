@@ -33,7 +33,7 @@ Definitions and tie-break rules (several problems: the most severe wins) are in 
 - **Data:** reviews with text from the public [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 - **Gold:** 300 reviews labeled by hand, blind (text only, no star rating), split 100 dev / 200 test. Gold reviews never appear in the silver set or the few-shot examples (checked by tests and by the Kaggle bundle builder).
 - **Silver:** 5,000 other reviews labeled by the teacher (100% valid JSON). A and C both learn from them, so the comparison isolates the model, not the data.
-- **Discipline:** the prompt was revised once, on dev. The test set was scored once, on 2026-11-13, after every decision was frozen ([data/predictions/final_test_eval.json](data/predictions/final_test_eval.json)).
+- **Discipline:** the prompt was revised once, on dev. The test set was scored once, on 2026-11-13, after every decision was frozen ([results/final.json](results/final.json): quality, latency, throughput and cost of A, B and C in one file).
 - All three approaches share one parser (`review_triage.prompts.parse_output`), so valid-JSON rates are comparable.
 
 ## Results
@@ -46,7 +46,7 @@ Gold test set, n = 200. Accuracy / macro-F1:
 | B. Qwen3-8B teacher | **0.870** / **0.78** | **0.840** / **0.77** | 0.820 / 0.81 | 100% |
 | C. Qwen3-1.7B student | 0.855 / 0.77 | 0.800 / 0.69 | **0.825** / **0.82** | 100% |
 
-With 200 reviews, one review is 0.5 points. To separate real gaps from noise, a paired bootstrap (2,000 resamples of the test reviews, the same reviews for every approach) gives 95% CIs for each difference in accuracy ([data/predictions/final_test_bootstrap.json](data/predictions/final_test_bootstrap.json), which also has macro-F1):
+With 200 reviews, one review is 0.5 points. To separate real gaps from noise, a paired bootstrap (2,000 resamples of the test reviews, the same reviews for every approach) gives 95% CIs for each difference in accuracy ([results/bootstrap_test.json](results/bootstrap_test.json), which also has macro-F1):
 
 | Difference in accuracy (points) | categoria | sentimento | urgencia |
 |---|---|---|---|
@@ -78,6 +78,59 @@ Patterns shared by both LLMs (test set):
 - **Urgency over-escalates.** About 20 of 68 `media` reviews are predicted `alta` by each model. The rule is "`alta` only if the customer asks for an action"; the models escalate on tone. In a support queue this errs on the safe side, but the predicted `alta` queue is ~45% larger than the true one (65 vs 45).
 - **Nothing breaks.** Zero invalid JSON across 300 gold and 5,000 silver reviews, without constrained decoding.
 
+### Annotated examples
+
+16 of the 84 test reviews where at least one model missed at least one field. T = teacher, S = student; only the fields with an error are shown. Texts are verbatim, typos included.
+
+**Keyword shortcuts.** The models react to words instead of meaning:
+
+| Review | Gold | T | S | Comment |
+|---|---|---|---|---|
+| "Recebi antes do prqzo" | `elogio_sem_problema` | `atraso_entrega` | `atraso_entrega` | "prazo" (here misspelled) pulls toward delivery delay, even when it arrived early. |
+| "Entrega realizada maravilhosamente 10 dias antes do prazo." | `elogio_sem_problema` | `atraso_entrega` | ✓ | Same shortcut; the student fixed it here... |
+| "Aprovado. Chegou um pouco antes do prazo, isso é bom" | `elogio_sem_problema` | ✓ | `atraso_entrega` | ...and fell for it here. Distillation copies the bias, not each individual answer. |
+| "Ainda não usei o produto, chegou lacrado, só espero que seja original." | `elogio_sem_problema` / `baixa` | `nao_recebido` / `media` | `nao_recebido` / `alta` | "Ainda não" + "chegou" read as "not received yet". The student escalates to `alta`. |
+
+**`neutro` vs `positivo`.** Short factual confirmations are the biggest single source of sentiment errors:
+
+| Review | Gold | T | S | Comment |
+|---|---|---|---|---|
+| "Recebi corretamente." | `neutro` | `positivo` | `positivo` | Gold treats "it arrived as promised" as neutral; both models read it as praise. About 10 similar cases ("Entregou no prazo", "Recebi no prazo e conforme anuncio"...). |
+| "O produto chegou no prazo certo." | `neutro` | ✓ | `positivo` | The teacher is inconsistent on the same pattern, so the silver labels are too. |
+
+This boundary is genuinely ambiguous: a human could defend `positivo`. It is a labeling-guide problem as much as a model problem, which matches the bootstrap result that no model beats TF-IDF on sentiment.
+
+**Calm complaints read as negative:**
+
+| Review | Gold | T | S | Comment |
+|---|---|---|---|---|
+| "Nao vale a pena a reclamação, mas encomendei um carticho preto e outro colorido e recebi dois pretos" | `neutro` | `negativo` | `negativo` | The customer explicitly downplays it; the models see "wrong item" and assume anger. |
+| "Gostaria de um vale troca! Aguardando número de postagem." | `neutro` | `negativo` | `negativo` | A request, not a complaint. |
+
+**Urgency over-escalation.** The guide says `alta` only when the customer asks for an action:
+
+| Review | Gold | T | S | Comment |
+|---|---|---|---|---|
+| "Quase um mês de atraso na entrega" | `media` | `alta` | `alta` | A serious problem, but no request. The models escalate on severity. |
+| "Eu comprei 4 rádios e so recebi 3. Estou esperando o restante." | `media` | `alta` | `alta` | Borderline: "estou esperando" is close to a request. A reasonable labeler could say `alta`. |
+| "[...] Produto veio com defeito não funciona, bem vou pedir troca [...]" | `alta` | ✓ | `media` | The opposite error: an explicit exchange request the student missed. |
+
+**Tie-break rules not applied:**
+
+| Review | Gold | T | S | Comment |
+|---|---|---|---|---|
+| "So recebi a cola NF 001063, o iten estufa ainda nao chegou.." | `produto_errado_ou_incompleto` | `nao_recebido` | `nao_recebido` | Rule: part of the order received is "incomplete", not "not received". Neither model applies it. |
+| "Nao recebi o meu produto. Mandaram um outro produto [...]" | `nao_recebido` | ✓ | `produto_errado_ou_incompleto` | Two problems; the most severe wins. The teacher gets the priority right, the student does not. |
+
+**`outro` gets forced into a real category:**
+
+| Review | Gold | T | S | Comment |
+|---|---|---|---|---|
+| "Não é que o produto seja ruim, é que achei que era menor [...] Mas é uma ótima carteira." | `outro` / `positivo` / `baixa` | `produto_errado_ou_incompleto` / `neutro` / `media` | same as T | Personal taste is `outro`. Both models invent a defect and get all three fields wrong. |
+| "Péssimo serviço" | `outro` | `atendimento_vendedor` | `atendimento_vendedor` | Too vague to know whose service. The models' guess is plausible; the gold is a judgment call. |
+
+**Gold noise.** At least one gold label looks wrong on re-reading: "Adorei o produto... [as resenhas dizem que] vem com a luva térmica e certificado, porém a minha não veio nada além do manual" is gold `positivo` / `baixa`, models `negativo` / `media`. A missing item is a problem without a request, so by the guide `media` is right and the models are. With one labeler and no second pass, a few such errors are expected; they cut both ways and do not change the comparison.
+
 What did not work, or was not tried:
 
 - The first prompt (`63b2f291`) scored 0.69 macro-F1 on dev sentiment (1 of 8 neutral right). Rewriting the `neutro` definition with concrete phrasings moved it to 0.82 on dev, but the test set shows the problem is only partly solved.
@@ -105,7 +158,13 @@ uv run python -m review_triage.kaggle_bundle
 # 3. Baseline and evaluation
 uv run python -m review_triage.baseline data/predictions/teacher_full_v2/teacher_silver.csv dev
 uv run python -m review_triage.evaluate data/predictions/student_v1/student_dev.csv data/labels/gold_dev.csv
-uv run python -m review_triage.evaluate bootstrap data/labels/gold_test.csv     baseline=data/predictions/baseline_test.csv     teacher=data/predictions/teacher_full_v2/teacher_test.csv     student=data/predictions/student_v1/student_test.csv
+# final test evaluation (run once)
+uv run python -m review_triage.baseline data/predictions/teacher_full_v2/teacher_silver.csv test
+uv run python -m review_triage.evaluate bootstrap data/labels/gold_test.csv \
+    baseline=data/predictions/baseline_test.csv \
+    teacher=data/predictions/teacher_full_v2/teacher_test.csv \
+    student=data/predictions/student_v1/student_test.csv > results/bootstrap_test.json
+uv run python -m review_triage.report   # results/final.json
 ```
 
 Local demo on CPU (~10 s per review; downloads the base model and the adapter):
@@ -126,10 +185,12 @@ src/review_triage/
   teacher.py       B: zero-shot inference on a T4
   student.py       C: QLoRA training and inference
   evaluate.py      accuracy, macro-F1, valid-JSON rate, paired bootstrap CIs
+  report.py        assembles results/final.json
   kaggle_bundle.py dataset upload for Kaggle
 notebooks/         Kaggle notebooks for B and C
 data/labels/       gold dev/test labels
 data/predictions/  every model's predictions and run metadata
+results/           final test results and bootstrap CIs
 hf/MODEL_CARD.md   Hugging Face model card
 app/app.py         Gradio demo
 ```

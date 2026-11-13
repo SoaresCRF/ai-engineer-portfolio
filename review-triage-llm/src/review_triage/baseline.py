@@ -76,6 +76,7 @@ def main(silver_path: str, split: str) -> None:
     report = score(preds, gold) | {
         "latency_ms_p50_cpu": round(single_item_latency_ms(models, gold["text"].tolist()), 2)
     }
+    (PREDICTIONS_DIR / f"baseline_{split}_run.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
 
 
