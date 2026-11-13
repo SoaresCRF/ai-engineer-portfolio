@@ -6,6 +6,8 @@ Short answer: on two of three fields, yes. A Qwen3-1.7B student trained on 5,000
 
 Model: [SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora](https://huggingface.co/SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora)
 
+![Local Gradio demo: a review goes in, the student returns categoria, sentimento and urgencia as JSON in about 10 s on CPU](docs/demo.gif)
+
 ## The task
 
 Each review becomes one line of JSON:
