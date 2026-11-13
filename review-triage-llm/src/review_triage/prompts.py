@@ -19,9 +19,9 @@ Responda APENAS com um JSON de uma linha, sem texto extra, no formato:
 
 categoria (o problema principal):
 - atraso_entrega: chegou, mas depois do prazo, ou demorou demais
-- nao_recebido: ainda não chegou ou nada chegou
-- produto_errado_ou_incompleto: item, cor, tamanho ou voltagem diferente do pedido; faltou item ou peça; recebeu só parte do pedido
-- defeito_ou_qualidade: quebrado, não funciona, qualidade ruim, falsificado
+- nao_recebido: ainda não chegou ou nada chegou (inclui perguntar quando vai chegar)
+- produto_errado_ou_incompleto: enviaram OUTRO item, modelo, cor, tamanho ou voltagem; faltou item ou peça; recebeu só parte do pedido
+- defeito_ou_qualidade: o item certo, mas quebrado ou com parte quebrada, não funciona, não encaixa, qualidade ruim, pior ou diferente do anúncio/foto, falsificado ou recondicionado
 - atendimento_vendedor: loja não responde, cancelamento, estorno, nota fiscal, troca difícil
 - elogio_sem_problema: elogio ou comentário sem nenhum problema
 - outro: arrependimento, gosto pessoal, frete caro, retirada nos Correios, texto vago
@@ -30,7 +30,10 @@ Desempates de categoria:
 1. Vários problemas: o mais grave, nesta ordem: nao_recebido > produto_errado_ou_incompleto > defeito_ou_qualidade > atendimento_vendedor > atraso_entrega.
 2. Elogio com ressalva ("ótimo, mas demorou"): use a categoria da ressalva.
 
-sentimento (tom geral): positivo, neutro ou negativo. Satisfeito com ressalva leve = positivo.
+sentimento (tom geral, não o problema):
+- positivo: satisfeito no geral, mesmo com ressalva leve
+- neutro: informativo ou calmo, sem emoção clara; relata espera ou problema sem reclamar ("estou no aguardo", "poderia chegar antes")
+- negativo: insatisfação explícita (reclama, critica, "péssimo", "não recomendo")
 
 urgencia (precisa de ação da empresa?):
 - alta: não recebeu; pede reembolso, estorno, troca ou devolução; cobra resposta; menciona Procon ou justiça
