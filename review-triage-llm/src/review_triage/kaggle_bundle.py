@@ -38,10 +38,15 @@ def build(bundle_dir: Path = BUNDLE_DIR) -> Path:
 
     silver = sample_silver(load_reviews(RAW_DIR), exclude_ids=gold_ids)
     silver[[*TEXT_COLUMNS, "review_score"]].to_csv(bundle_dir / "silver_pool.csv", index=False)
-    labels = pd.read_csv(SILVER_LABELS)
-    if not gold_ids.isdisjoint(labels["review_id"]):
-        raise ValueError(f"{SILVER_LABELS} contains gold reviews")
-    labels[SILVER_LABEL_COLUMNS].to_csv(bundle_dir / "teacher_silver.csv", index=False)
+    # The teacher run produces the silver labels, so its bundle is built without them;
+    # rebuild after downloading teacher outputs to get the student's training data.
+    n_labels = 0
+    if SILVER_LABELS.exists():
+        labels = pd.read_csv(SILVER_LABELS)
+        if not gold_ids.isdisjoint(labels["review_id"]):
+            raise ValueError(f"{SILVER_LABELS} contains gold reviews")
+        labels[SILVER_LABEL_COLUMNS].to_csv(bundle_dir / "teacher_silver.csv", index=False)
+        n_labels = len(labels)
 
     for name in PACKAGE_FILES:
         shutil.copy2(PACKAGE_DIR / name, bundle_dir / "review_triage" / name)
@@ -49,7 +54,7 @@ def build(bundle_dir: Path = BUNDLE_DIR) -> Path:
     archive = shutil.make_archive(str(bundle_dir), "zip", root_dir=bundle_dir)
     print(
         f"gold dev/test: {len(gold['dev'])}/{len(gold['test'])}, "
-        f"silver pool: {len(silver)}, silver labels: {len(labels)}"
+        f"silver pool: {len(silver)}, silver labels: {n_labels or 'none yet (teacher run)'}"
     )
     return Path(archive)
 

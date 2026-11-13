@@ -204,7 +204,8 @@ uv run python -c "from pathlib import Path; from review_triage.data import downl
 uv run python -m review_triage.labeling export   # 300-review blind labeling sheet
 uv run python -m review_triage.labeling import   # validated gold_dev.csv / gold_test.csv
 
-# 2. Kaggle bundle (texts only, no gold labels), then run the notebooks on Kaggle
+# 2. Kaggle bundle (texts only, no gold labels), then run the notebooks on Kaggle.
+#    Build it once before the teacher run and again after it, to add the silver labels.
 uv run python -m review_triage.kaggle_bundle
 #    notebooks/02_teacher_labels.ipynb  -> data/predictions/teacher_full_v2/  (MODE = "dev" first, then "full")
 #    notebooks/03_train_qlora.ipynb     -> data/predictions/student_v1/
