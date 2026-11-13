@@ -127,4 +127,4 @@ app/app.py         Gradio demo
 
 ## License
 
-Reviews and derived labels come from the Olist dataset (CC BY-NC-SA 4.0), so the gold labels and the adapter are released for non-commercial use with attribution.
+Code: MIT ([LICENSE](../LICENSE)). Reviews and derived labels come from the Olist dataset (CC BY-NC-SA 4.0), so the gold labels and the adapter are released for non-commercial use with attribution.

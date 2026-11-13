@@ -8,10 +8,12 @@ Portfolio projects focused on applied GenAI / LLM engineering, themed around foo
 
 | Folder | Project | Status |
 |--------|---------|--------|
-| [`review-triage-llm/`](review-triage-llm/) | Fine-tuning a small LLM to triage PT-BR customer reviews into structured JSON (category, sentiment, urgency), compared against a classic baseline and a large zero-shot LLM | Planning |
+| [`review-triage-llm/`](review-triage-llm/) | Fine-tuning a small LLM to triage PT-BR customer reviews into structured JSON (category, sentiment, urgency), compared against a classic baseline and a large zero-shot LLM. Model on [Hugging Face](https://huggingface.co/SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora) | Done |
 
 ## Conventions
 
 - Public or synthetic data only. No third-party brands or logos.
 - Every project README covers: problem, architecture, how to run, metrics and a demo.
 - Secrets live in local `.env` files, which are never committed.
+
+Code is MIT-licensed ([LICENSE](LICENSE)). Data and models derived from third-party datasets keep the dataset's license, stated in each project's README.
