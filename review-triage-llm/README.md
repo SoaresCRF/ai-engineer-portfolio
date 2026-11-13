@@ -2,7 +2,7 @@
 
 **Can a small LLM fine-tuned with QLoRA match a 4.7× larger open LLM at triaging real Brazilian Portuguese customer reviews into structured JSON, at a fraction of the cost?**
 
-Short answer: on two of three fields, yes. A Qwen3-1.7B student trained on 5,000 labels produced by a few-shot Qwen3-8B teacher ties the teacher on `categoria` and `urgencia`, loses about 4 points on `sentimento`, and runs 3.7× faster in batch. Both LLMs beat a TF-IDF baseline by 5–9 accuracy points. Everything ran on free Kaggle T4s; the whole experiment would cost about $1.30 in rented GPU time.
+Short answer: on two of three fields, yes. A Qwen3-1.7B student trained on 5,000 labels produced by a few-shot Qwen3-8B teacher ties the teacher on `categoria` and `urgencia`, loses 4 accuracy points on `sentimento` (the only statistically clear gap), and runs 3.7× faster in batch. Both LLMs beat a TF-IDF baseline by 7–10 points on `categoria` and `urgencia`; on `sentimento`, neither LLM is clearly better than the baseline. Everything ran on free Kaggle T4s; the whole experiment would cost about $1.30 in rented GPU time.
 
 Model: [SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora](https://huggingface.co/SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora)
 
@@ -46,7 +46,15 @@ Gold test set, n = 200. Accuracy / macro-F1:
 | B. Qwen3-8B teacher | **0.870** / **0.78** | **0.840** / **0.77** | 0.820 / 0.81 | 100% |
 | C. Qwen3-1.7B student | 0.855 / 0.77 | 0.800 / 0.69 | **0.825** / **0.82** | 100% |
 
-With 200 reviews, one review is 0.5 points, so gaps under ~3 points are noise. The student agrees with the teacher on 93–94% of test reviews in each field.
+With 200 reviews, one review is 0.5 points. To separate real gaps from noise, a paired bootstrap (2,000 resamples of the test reviews, the same reviews for every approach) gives 95% CIs for each difference in accuracy ([data/predictions/final_test_bootstrap.json](data/predictions/final_test_bootstrap.json), which also has macro-F1):
+
+| Difference in accuracy (points) | categoria | sentimento | urgencia |
+|---|---|---|---|
+| Teacher − student | +1.5 [−1.5, +4.5] | **+4.0 [+1.0, +7.5]** | −0.5 [−4.0, +3.0] |
+| Teacher − baseline | **+9.5 [+4.0, +15.0]** | +4.5 [−1.5, +10.5] | **+7.5 [+2.0, +13.0]** |
+| Student − baseline | **+8.0 [+3.0, +13.5]** | +0.5 [−4.5, +5.5] | **+8.0 [+3.0, +13.5]** |
+
+Bold: the CI excludes zero. The student's only real loss is sentiment (macro-F1 −7.6 [−13.4, −1.9]). And on sentiment, a TF-IDF model trained on the same silver labels is statistically as good as either LLM: extra model capacity buys little until `neutro` is better defined and labeled. The student agrees with the teacher on 93–94% of test reviews in each field.
 
 ### Speed and cost
 
@@ -97,6 +105,7 @@ uv run python -m review_triage.kaggle_bundle
 # 3. Baseline and evaluation
 uv run python -m review_triage.baseline data/predictions/teacher_full_v2/teacher_silver.csv dev
 uv run python -m review_triage.evaluate data/predictions/student_v1/student_dev.csv data/labels/gold_dev.csv
+uv run python -m review_triage.evaluate bootstrap data/labels/gold_test.csv     baseline=data/predictions/baseline_test.csv     teacher=data/predictions/teacher_full_v2/teacher_test.csv     student=data/predictions/student_v1/student_test.csv
 ```
 
 Local demo on CPU (~10 s per review; downloads the base model and the adapter):
@@ -116,7 +125,7 @@ src/review_triage/
   baseline.py      A: TF-IDF + logistic regression
   teacher.py       B: zero-shot inference on a T4
   student.py       C: QLoRA training and inference
-  evaluate.py      accuracy, macro-F1, valid-JSON rate
+  evaluate.py      accuracy, macro-F1, valid-JSON rate, paired bootstrap CIs
   kaggle_bundle.py dataset upload for Kaggle
 notebooks/         Kaggle notebooks for B and C
 data/labels/       gold dev/test labels

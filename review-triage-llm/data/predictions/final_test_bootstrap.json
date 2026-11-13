@@ -1,0 +1,227 @@
+{
+  "n": 200,
+  "n_resamples": 2000,
+  "ci_level": 0.95,
+  "categoria": {
+    "accuracy": {
+      "approaches": {
+        "baseline": {
+          "value": 0.775,
+          "low": 0.715,
+          "high": 0.83
+        },
+        "teacher": {
+          "value": 0.87,
+          "low": 0.82,
+          "high": 0.915
+        },
+        "student": {
+          "value": 0.855,
+          "low": 0.805,
+          "high": 0.9
+        }
+      },
+      "differences": {
+        "baseline - teacher": {
+          "value": -0.095,
+          "low": -0.15,
+          "high": -0.04
+        },
+        "baseline - student": {
+          "value": -0.08,
+          "low": -0.135,
+          "high": -0.03
+        },
+        "teacher - student": {
+          "value": 0.015,
+          "low": -0.015,
+          "high": 0.045
+        }
+      }
+    },
+    "macro_f1": {
+      "approaches": {
+        "baseline": {
+          "value": 0.6967,
+          "low": 0.6189,
+          "high": 0.7617
+        },
+        "teacher": {
+          "value": 0.7816,
+          "low": 0.7044,
+          "high": 0.8462
+        },
+        "student": {
+          "value": 0.7713,
+          "low": 0.6949,
+          "high": 0.8373
+        }
+      },
+      "differences": {
+        "baseline - teacher": {
+          "value": -0.085,
+          "low": -0.1582,
+          "high": -0.0117
+        },
+        "baseline - student": {
+          "value": -0.0747,
+          "low": -0.1528,
+          "high": -0.0003
+        },
+        "teacher - student": {
+          "value": 0.0103,
+          "low": -0.0335,
+          "high": 0.0583
+        }
+      }
+    }
+  },
+  "sentimento": {
+    "accuracy": {
+      "approaches": {
+        "baseline": {
+          "value": 0.795,
+          "low": 0.74,
+          "high": 0.845
+        },
+        "teacher": {
+          "value": 0.84,
+          "low": 0.785,
+          "high": 0.89
+        },
+        "student": {
+          "value": 0.8,
+          "low": 0.745,
+          "high": 0.855
+        }
+      },
+      "differences": {
+        "baseline - teacher": {
+          "value": -0.045,
+          "low": -0.105,
+          "high": 0.015
+        },
+        "baseline - student": {
+          "value": -0.005,
+          "low": -0.055,
+          "high": 0.045
+        },
+        "teacher - student": {
+          "value": 0.04,
+          "low": 0.01,
+          "high": 0.075
+        }
+      }
+    },
+    "macro_f1": {
+      "approaches": {
+        "baseline": {
+          "value": 0.7316,
+          "low": 0.662,
+          "high": 0.7951
+        },
+        "teacher": {
+          "value": 0.7701,
+          "low": 0.6973,
+          "high": 0.8319
+        },
+        "student": {
+          "value": 0.6938,
+          "low": 0.6235,
+          "high": 0.7583
+        }
+      },
+      "differences": {
+        "baseline - teacher": {
+          "value": -0.0385,
+          "low": -0.1217,
+          "high": 0.0448
+        },
+        "baseline - student": {
+          "value": 0.0378,
+          "low": -0.0263,
+          "high": 0.1082
+        },
+        "teacher - student": {
+          "value": 0.0763,
+          "low": 0.0193,
+          "high": 0.134
+        }
+      }
+    }
+  },
+  "urgencia": {
+    "accuracy": {
+      "approaches": {
+        "baseline": {
+          "value": 0.745,
+          "low": 0.685,
+          "high": 0.805
+        },
+        "teacher": {
+          "value": 0.82,
+          "low": 0.765,
+          "high": 0.87
+        },
+        "student": {
+          "value": 0.825,
+          "low": 0.77,
+          "high": 0.875
+        }
+      },
+      "differences": {
+        "baseline - teacher": {
+          "value": -0.075,
+          "low": -0.13,
+          "high": -0.02
+        },
+        "baseline - student": {
+          "value": -0.08,
+          "low": -0.135,
+          "high": -0.03
+        },
+        "teacher - student": {
+          "value": -0.005,
+          "low": -0.04,
+          "high": 0.03
+        }
+      }
+    },
+    "macro_f1": {
+      "approaches": {
+        "baseline": {
+          "value": 0.7353,
+          "low": 0.6755,
+          "high": 0.7959
+        },
+        "teacher": {
+          "value": 0.8138,
+          "low": 0.7572,
+          "high": 0.8651
+        },
+        "student": {
+          "value": 0.8185,
+          "low": 0.7637,
+          "high": 0.868
+        }
+      },
+      "differences": {
+        "baseline - teacher": {
+          "value": -0.0784,
+          "low": -0.1384,
+          "high": -0.0212
+        },
+        "baseline - student": {
+          "value": -0.0832,
+          "low": -0.1415,
+          "high": -0.0274
+        },
+        "teacher - student": {
+          "value": -0.0047,
+          "low": -0.0443,
+          "high": 0.0342
+        }
+      }
+    }
+  }
+}

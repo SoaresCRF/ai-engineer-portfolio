@@ -56,7 +56,7 @@ Speed on one Kaggle T4 GPU, both models 4-bit:
 
 The student matches the teacher on `categoria` and `urgencia` at 3.5× the batched throughput. It is worse on `sentimento`: the `neutro` class is hard for both models (teacher 16/40 correct, student 10/40), and the student pushes more neutral reviews to `negativo` or `positivo`. Batch-1 latency barely improves, because short generations on a T4 are dominated by per-token overhead, not model size.
 
-With 200 test reviews, differences of 1–2 points are within noise.
+A paired bootstrap over the 200 test reviews (95% CI) confirms the sentiment gap (teacher +4.0 accuracy points, CI [+1.0, +7.5]) and finds no significant teacher–student difference on `categoria` or `urgencia`.
 
 ## Usage
 
