@@ -64,4 +64,4 @@ Ao terminar, rode `uv run python -m review_triage.labeling import`.
 
 ## Checagem de consistência
 
-Depois do import, uma planilha extra com 30 dessas avaliações, sem os seus rótulos, será gerada para você rotular de novo. A taxa de acordo entre as duas rodadas entra no README como concordância consigo mesmo.
+Depois do import, uma planilha extra com 30 dessas avaliações, sem os seus rótulos, é gerada para você rotular de novo (`labeling recheck-export`). A taxa de acordo entre as duas rodadas entra no README como concordância consigo mesmo. Resultado: 30 de 30 iguais nos três campos ([results/self_agreement.json](../results/self_agreement.json)).

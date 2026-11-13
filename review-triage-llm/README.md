@@ -29,7 +29,7 @@ Definitions and tie-break rules (several problems: the most severe wins) are in 
 | Approach | What it is | Trained on |
 |---|---|---|
 | A. Baseline | TF-IDF + logistic regression, one classifier per field | 5,000 silver labels |
-| B. Teacher | [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), 4-bit, system prompt + 3 few-shot examples, no thinking | nothing |
+| B. Teacher | [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), 4-bit, system prompt + 6 few-shot examples, no thinking | nothing |
 | C. Student | [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B), QLoRA, system prompt only | 5,000 silver labels |
 
 ```mermaid
