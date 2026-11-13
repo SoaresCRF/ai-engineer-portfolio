@@ -33,7 +33,7 @@ Definitions and tie-break rules (several problems: the most severe wins) are in 
 - **Data:** reviews with text from the public [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 - **Gold:** 300 reviews labeled by hand, blind (text only, no star rating), split 100 dev / 200 test. Gold reviews never appear in the silver set or the few-shot examples (checked by tests and by the Kaggle bundle builder).
 - **Silver:** 5,000 other reviews labeled by the teacher (100% valid JSON). A and C both learn from them, so the comparison isolates the model, not the data.
-- **Discipline:** the prompt was revised once, on dev. The test set was scored once, after every decision was frozen ([data/predictions/final_test_eval.json](data/predictions/final_test_eval.json)).
+- **Discipline:** the prompt was revised once, on dev. The test set was scored once, on 2026-11-13, after every decision was frozen ([data/predictions/final_test_eval.json](data/predictions/final_test_eval.json)).
 - All three approaches share one parser (`review_triage.prompts.parse_output`), so valid-JSON rates are comparable.
 
 ## Results
