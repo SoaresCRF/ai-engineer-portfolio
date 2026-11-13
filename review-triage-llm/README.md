@@ -76,7 +76,7 @@ F1 per class on the test set (support in parentheses; confusion matrices are in 
 | Class | A. Baseline | B. Teacher | C. Student |
 |---|---|---|---|
 | `elogio_sem_problema` (68) | 0.87 | 0.98 | 0.96 |
-| `produto_errado_ou_incompleto` (36) | 0.80 | 0.90 | 0.85 |
+| `produto_errado_ou_incompleto` (36) | 0.80 | 0.89 | 0.85 |
 | `nao_recebido` (29) | 0.86 | 0.92 | 0.90 |
 | `defeito_ou_qualidade` (28) | 0.79 | 0.86 | 0.89 |
 | `outro` (18) | 0.31 | 0.42 | 0.36 |
