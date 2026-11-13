@@ -70,16 +70,22 @@ from review_triage.prompts import build_messages, parse_output
 
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-1.7B")
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-1.7B")
-model = PeftModel.from_pretrained(model, "SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora").merge_and_unload()
+model = PeftModel.from_pretrained(
+    model, "SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora"
+).merge_and_unload()
 
 review = "Comprei há 20 dias e até agora nada. Quero meu dinheiro de volta!"
 prompt = tokenizer.apply_chat_template(
     build_messages(review, few_shot=False),
-    tokenize=False, add_generation_prompt=True, enable_thinking=False,
+    tokenize=False,
+    add_generation_prompt=True,
+    enable_thinking=False,
 )
 inputs = tokenizer(prompt, return_tensors="pt")
 out = model.generate(**inputs, max_new_tokens=48, do_sample=False)
-print(parse_output(tokenizer.decode(out[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True)))
+print(
+    parse_output(tokenizer.decode(out[0, inputs["input_ids"].shape[1] :], skip_special_tokens=True))
+)
 ```
 
 Merged into a float32 base, the adapter runs on a laptop CPU at about 10 s per review.
