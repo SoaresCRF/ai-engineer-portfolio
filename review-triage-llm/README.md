@@ -46,7 +46,7 @@ flowchart LR
 
 - **Data:** the public [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce): 99,224 reviews, 40,977 with a comment, 36,709 after removing duplicates (median 62 characters). Emails, CPFs and phone numbers are masked by regex; personal names are not, as the source dataset is already public.
 - **Sampling:** gold and silver have the same number of reviews per star rating (1–5). In the raw data 48% of reviews are 5 stars, so complaints are over-represented here on purpose: the metrics describe a balanced mix, not production traffic, where accuracy is likely higher because easy praise dominates.
-- **Gold:** 300 reviews labeled by hand, blind (text only, no star rating), split 100 dev / 200 test. Gold reviews never appear in the silver set or the few-shot examples (checked by tests and by the Kaggle bundle builder).
+- **Gold:** 300 reviews labeled by hand, blind (text only, no star rating), split 100 dev / 200 test. A second blind pass over 30 random gold reviews matched the first on all three fields for all 30 ([results/self_agreement.json](results/self_agreement.json)); see the caveats under "What did not work". Gold reviews never appear in the silver set or the few-shot examples (checked by tests and by the Kaggle bundle builder).
 - **Silver:** 5,000 other reviews labeled by the teacher (100% valid JSON). A and C both learn from them, so the comparison isolates the model, not the data.
 - **Discipline:** the prompt was revised once, on dev. The test set was scored once, on 2026-11-13, after every decision was frozen ([results/final.json](results/final.json): quality, latency, throughput and cost of A, B and C in one file).
 - All three approaches share one parser (`review_triage.prompts.parse_output`), so valid-JSON rates are comparable.
@@ -164,7 +164,7 @@ This boundary is genuinely ambiguous: a human could defend `positivo`. It is a l
 | "Não é que o produto seja ruim, é que achei que era menor [...] Mas é uma ótima carteira." | `outro` / `positivo` / `baixa` | `produto_errado_ou_incompleto` / `neutro` / `media` | same as T | Personal taste is `outro`. Both models invent a defect and get all three fields wrong. |
 | "Péssimo serviço" | `outro` | `atendimento_vendedor` | `atendimento_vendedor` | Too vague to know whose service. The models' guess is plausible; the gold is a judgment call. |
 
-**Gold noise.** At least one gold label looks wrong on re-reading: "Adorei o produto... [as resenhas dizem que] vem com a luva térmica e certificado, porém a minha não veio nada além do manual" is gold `positivo` / `baixa`, models `negativo` / `media`. A missing item is a problem without a request, so by the guide `media` is right and the models are. With one labeler and no second pass, a few such errors are expected; they cut both ways and do not change the comparison.
+**Gold noise.** At least one gold label looks wrong on re-reading: "Adorei o produto... [as resenhas dizem que] vem com a luva térmica e certificado, porém a minha não veio nada além do manual" is gold `positivo` / `baixa`, models `negativo` / `media`. A missing item is a problem without a request, so by the guide `media` is right and the models are. With one labeler, a few such errors are expected; they cut both ways and do not change the comparison.
 
 ### Sanity checks against facts no labeler saw
 
@@ -188,7 +188,7 @@ What did not work, or was not tried:
 - One training run, no hyperparameter search. The student's ceiling is the teacher's agreement with humans; better silver labels (e.g. teacher self-consistency, or a few hundred human labels) would likely help more than tuning.
 - A free demo Space was planned, but Hugging Face now requires a paid plan for Gradio Spaces, so the demo runs locally.
 - The plan was to pick the student between two sizes with a quick dev test. To save GPU quota, Qwen3-1.7B was chosen without trying Qwen3-0.6B, which might be good enough on `categoria` and `urgencia` at a third of the size.
-- One human labeler, without a second pass to measure self-agreement. The annotated examples above show a few debatable gold labels.
+- One human labeler. The second blind pass agreed 30 of 30, but it was done the same day (memory helps), with 30 reviews the 95% lower bound on agreement is about 88%, and it measures consistency, not correctness: the gold-noise example above would be labeled the same way twice. A second, independent labeler would be the real test.
 - No constrained decoding (guided JSON): it was not needed, since every output parsed.
 
 ## Reproduce
@@ -203,6 +203,8 @@ uv run pytest
 uv run python -c "from pathlib import Path; from review_triage.data import download_raw; download_raw(Path('data/raw'))"
 uv run python -m review_triage.labeling export   # 300-review blind labeling sheet
 uv run python -m review_triage.labeling import   # validated gold_dev.csv / gold_test.csv
+uv run python -m review_triage.labeling recheck-export   # 30 gold reviews, labels hidden
+uv run python -m review_triage.labeling recheck-import data/labels/gold_recheck.csv   # self-agreement
 
 # 2. Kaggle bundle (texts only, no gold labels), then run the notebooks on Kaggle.
 #    Build it once before the teacher run and again after it, to add the silver labels.

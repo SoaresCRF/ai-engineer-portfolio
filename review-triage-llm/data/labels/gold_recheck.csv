@@ -1,0 +1,31 @@
+review_id,text,categoria,sentimento,urgencia
+9d0796cafe08bb0cb55874a82204d4c5,"A empresa precisa fazer um estudo dos correios para onde vão a mercadoria, ainda não recebi o produto pois o mesmo está preso desdo dia 22/11 em um correio de reputação ruim.",nao_recebido,negativo,alta
+83c1973edf0d7f69fe893a3d123eb2e5,um dos dois prudutos veio com defeito. cancelei o produto,defeito_ou_qualidade,negativo,alta
+221dd8583f1485b0bfa58753e9dbae47,Recebido apenas 1 unidade do produto. Sendo que comprei 2 (duas). Não consigo entrar em contato com a central para verificação.,produto_errado_ou_incompleto,negativo,alta
+859aa93d0c75ba706d381b03f563884d,tomar cuidado. não veio uma NF com o valor total da compra.,atendimento_vendedor,negativo,media
+17b8e11b72cd14fde38bfb145e694043,Recebi um produto similar ao que pedi e não veio nota fiscal na caixa,produto_errado_ou_incompleto,negativo,media
+e02b4ce57f76291650cfcd5cde6e1bb6,"Nao vale a pena a reclamação, mas encomendei um carticho preto e outro colorido e recebi dois pretos",produto_errado_ou_incompleto,neutro,media
+c7904f887693da0000f7fe5066d726cb,Não veio na caixa o moedor de pimenta,produto_errado_ou_incompleto,negativo,media
+a2002fa8143883ad76e2a5aa18fcb2c1,chegou rapido. boa entrega,elogio_sem_problema,positivo,baixa
+72093b147d797e6abbdf569bf07bf57f,Toalha do maior campeão do Brasil maravilhosa,elogio_sem_problema,positivo,baixa
+b1087c9530bba1f1aca49b91ee06af6a,"Recebi o produto perfeitamente e até antes do prazo esperado, eu recomendo.",elogio_sem_problema,positivo,baixa
+d9de70c2b76a47c50b9c8d5d0b8783f7,Produto entregue antes do prazo descrito Veio exatamente o que comprei Pode confiar,elogio_sem_problema,positivo,baixa
+317424786f416435834d8cea3d02112f,Os produtos são de ótima qualidade.,elogio_sem_problema,positivo,baixa
+1a41024a69f98c495962be70be0519ab,porem não recebi meus produtos Ainda,nao_recebido,negativo,alta
+3b5f3f3862edca0f641b27640c5aa17f,Produtos poderião ter um prazo mais curto para entrega.,atraso_entrega,neutro,baixa
+de315454bf99b99e3a442ed08f972313,Produto danificado. Recebi o produto com a caixa toda violada e o produto veio com avaria na regulagem de altura,defeito_ou_qualidade,negativo,media
+84fd4822a52f6b9979785b8b622cdbf9,"Bom produto,. Bom produto chegou rápido!",elogio_sem_problema,positivo,baixa
+5db0428467517d8eea2a259d187c8edc,Otimo. Recomendo a loja e os produtos são de ótima qualidade,elogio_sem_problema,positivo,baixa
+4157b2c159fb239f4b0bd8856138e4cf,"Comprei e paguei por um produto que nao veio,a oferta era de um combo com 2 pacotes,comprei e paguei por 2 combos,ou seja 4 pacotes,e me enviaram apenas 2 pacotes.quando vou receber o restante????????",produto_errado_ou_incompleto,negativo,alta
+49e3a388c41aec2711c27fe722b77154,Há uma grande dificuldade em contactar o fornecedor para resolver qualquer problema.,atendimento_vendedor,negativo,media
+a00038427ff0a7cc00e46913907d67fa,Muito bom. Poderia ser excelente se o suporte não tivesse vindo com defeito. Foi só o suporte. O restante está perfeito,defeito_ou_qualidade,positivo,baixa
+144adb6251deee040208e17ab8c0826a,"Ótimo produto. O relógio é lindo, minha esposa adorou.",elogio_sem_problema,positivo,baixa
+52ef81efad8a139dda777f6eb5b7c263,"Ótimo. Gostamos muito do produto,veio exatamente como consta no anuncio,chegou no prazo ,cor exata azul marinho,custo beneficio maravilhoso, excelente!!!!! Recomendamos simmmm😍😍😍",elogio_sem_problema,positivo,baixa
+422b20b6a634cb813a9de69f81b07c07,Nota Fiscal. O produto é bom porém a nota fiscal veio com o nome da pessoa que recebeu sendo que o pedido foi feito em meu cpf. Caso precise trocar ou fazer alguma coisa não vou poder porque está em outro nome,atendimento_vendedor,neutro,media
+b2d976dd8ce9f84823d532c7012e8e26,ate o momento nao foi entregue meu pedido,nao_recebido,negativo,alta
+415c84ed4e011fac81b2bd159a933c43,Não manda mais pelo correio o correio de Santa Catarina de Itajai e uma Bosta não entregam na residencia tem que ir buscar la....,outro,negativo,media
+69f89bb8a5a603dd3ef8e2087443bf18,gostei muito do produto atendeu todas as minhas expectativas.,elogio_sem_problema,positivo,baixa
+bd9fefd22d37f7517e49ff68f43def15,"Estava dentro do prazo, mas acho que poderia ter entregue antes.",atraso_entrega,neutro,baixa
+1c5126988da5a57e2c3f324d44ef0b82,Produto Ok. Produto entregue conforme anunciado. Bom custo beneficio!Recomendo!,elogio_sem_problema,positivo,baixa
+278a8e511b5be7848071f47011c52c9b,Pagamos para a entrega ser feita em nossa residência e não para retirarmos nos Correios.,outro,negativo,media
+2d92f1b2210a85ae62db52eaaf16ac82,boa. excelente,elogio_sem_problema,positivo,baixa
