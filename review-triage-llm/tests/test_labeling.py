@@ -2,7 +2,7 @@ import pandas as pd
 import pytest
 from openpyxl import load_workbook
 
-from review_triage.labeling import export_sheet, import_sheet
+from review_triage.labeling import export_sheet, import_sheet, self_agreement
 
 
 @pytest.fixture
@@ -68,3 +68,25 @@ def test_import_rejects_unlabeled_rows(sample, tmp_path):
 
     with pytest.raises(ValueError, match="1 rows still have empty labels"):
         import_sheet(sheet, sample_path)
+
+
+def test_self_agreement_counts_matching_labels_per_field():
+    first = pd.DataFrame(
+        {
+            "review_id": ["a", "b"],
+            "categoria": ["nao_recebido", "outro"],
+            "sentimento": ["negativo", "neutro"],
+            "urgencia": ["alta", "baixa"],
+        }
+    )
+    second = first.assign(sentimento=["negativo", "positivo"])
+
+    report = self_agreement(first, second)
+
+    assert report == {
+        "n": 2,
+        "categoria": 1.0,
+        "sentimento": 0.5,
+        "urgencia": 1.0,
+        "all_three": 0.5,
+    }

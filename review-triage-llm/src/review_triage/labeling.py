@@ -4,8 +4,11 @@ Usage:
     uv run python -m review_triage.labeling export   # data/raw -> sheet + sample metadata
     uv run python -m review_triage.labeling import [sheet]  # filled .xlsx or .csv export
                                                             # -> gold_dev.csv / gold_test.csv
+    uv run python -m review_triage.labeling recheck-export  # 30 gold reviews, labels hidden
+    uv run python -m review_triage.labeling recheck-import  # -> results/self_agreement.json
 """
 
+import json
 import sys
 from pathlib import Path
 
@@ -14,7 +17,7 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Alignment, Font
 from openpyxl.worksheet.datavalidation import DataValidation
 
-from review_triage.data import load_reviews, sample_gold, validate_labels
+from review_triage.data import SEED, load_reviews, sample_gold, validate_labels
 from review_triage.schema import LABEL_FIELDS
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
@@ -23,6 +26,11 @@ LABELS_DIR = PROJECT_DIR / "data" / "labels"
 SHEET_PATH = LABELS_DIR / "gold_labeling.xlsx"
 # Score and delivery facts stay out of the sheet so labels are blind to them.
 SAMPLE_PATH = LABELS_DIR / "gold_sample.csv"
+
+# Second blind pass over a random subset to measure how consistent the single labeler is.
+RECHECK_SHEET_PATH = LABELS_DIR / "gold_recheck.xlsx"
+RECHECK_SIZE = 30
+SELF_AGREEMENT_PATH = PROJECT_DIR / "results" / "self_agreement.json"
 
 SHEET_COLUMNS = ["review_id", "text", *LABEL_FIELDS]
 TEXT_COLUMN_WIDTH = 90
@@ -79,6 +87,21 @@ def import_sheet(sheet_path: Path, sample_path: Path) -> pd.DataFrame:
     return validate_labels(gold)
 
 
+def load_gold() -> pd.DataFrame:
+    return pd.concat(pd.read_csv(LABELS_DIR / f"gold_{s}.csv") for s in ("dev", "test"))
+
+
+def self_agreement(first: pd.DataFrame, second: pd.DataFrame) -> dict:
+    """Share of reviews where both labeling rounds agree, per field and on all three."""
+    merged = first.merge(second, on="review_id", suffixes=("_1", "_2"), validate="one_to_one")
+    same = pd.DataFrame({f: merged[f"{f}_1"] == merged[f"{f}_2"] for f in LABEL_FIELDS})
+    return {
+        "n": len(merged),
+        **{field: round(float(same[field].mean()), 3) for field in LABEL_FIELDS},
+        "all_three": round(float(same.all(axis=1).mean()), 3),
+    }
+
+
 def main(command: str, sheet_path: Path | None = None) -> None:
     LABELS_DIR.mkdir(parents=True, exist_ok=True)
     if command == "export":
@@ -94,6 +117,19 @@ def main(command: str, sheet_path: Path | None = None) -> None:
             out = LABELS_DIR / f"gold_{split}.csv"
             part.drop(columns="split").to_csv(out, index=False)
             print(f"wrote {len(part)} rows to {out}")
+    elif command == "recheck-export":
+        if RECHECK_SHEET_PATH.exists():
+            raise SystemExit(f"{RECHECK_SHEET_PATH} exists; refusing to overwrite labeling work")
+        export_sheet(load_gold().sample(n=RECHECK_SIZE, random_state=SEED), RECHECK_SHEET_PATH)
+        print(f"wrote {RECHECK_SIZE} reviews to {RECHECK_SHEET_PATH}")
+    elif command == "recheck-import":
+        second = validate_labels(read_sheet(sheet_path or RECHECK_SHEET_PATH).drop(columns="text"))
+        if second[list(LABEL_FIELDS)].isna().any(axis=None):
+            raise SystemExit("recheck sheet still has empty labels")
+        report = self_agreement(load_gold()[["review_id", *LABEL_FIELDS]], second)
+        SELF_AGREEMENT_PATH.parent.mkdir(exist_ok=True)
+        SELF_AGREEMENT_PATH.write_text(json.dumps(report, indent=2) + "\n")
+        print(json.dumps(report, indent=2))
     else:
         raise SystemExit(__doc__)
 
