@@ -1,0 +1,32 @@
+[project]
+name = "review-triage"
+version = "0.1.0"
+description = "Triage PT-BR customer reviews into structured JSON: classic baseline vs zero-shot LLM vs QLoRA fine-tuned small LLM"
+readme = "README.md"
+authors = [
+    { name = "SoaresCRF", email = "103540321+SoaresCRF@users.noreply.github.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "kagglehub>=1.0.3",
+    "openpyxl>=3.1.5",
+    "pandas>=3.1.1",
+    "pydantic>=2.14.3",
+    "scikit-learn>=1.9.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.5",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
