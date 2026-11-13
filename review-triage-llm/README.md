@@ -1,5 +1,7 @@
 # review-triage-llm
 
+[![tests](https://github.com/SoaresCRF/ai-engineer-portfolio/actions/workflows/review-triage.yml/badge.svg)](https://github.com/SoaresCRF/ai-engineer-portfolio/actions/workflows/review-triage.yml)
+
 **Can a small LLM fine-tuned with QLoRA match a 4.7× larger open LLM at triaging real Brazilian Portuguese customer reviews into structured JSON, at a fraction of the cost?**
 
 Short answer: on two of three fields, yes. A Qwen3-1.7B student trained on 5,000 labels produced by a few-shot Qwen3-8B teacher ties the teacher on `categoria` and `urgencia`, loses 4 accuracy points on `sentimento` (the only statistically clear gap), and runs 3.7× faster in batch. Both LLMs beat a TF-IDF baseline by 7–10 points on `categoria` and `urgencia`; on `sentimento`, neither LLM is clearly better than the baseline. Everything ran on free Kaggle T4s; the whole experiment would cost about $1.30 in rented GPU time.

@@ -1,0 +1,29 @@
+name: review-triage-llm
+
+on:
+  push:
+    branches: [main]
+    paths: ["review-triage-llm/**", ".github/workflows/review-triage.yml"]
+  pull_request:
+    paths: ["review-triage-llm/**", ".github/workflows/review-triage.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: review-triage-llm
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: "0.12.5"
+          working-directory: review-triage-llm
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest -q
