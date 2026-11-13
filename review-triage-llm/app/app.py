@@ -1,7 +1,8 @@
-"""Gradio demo for the QLoRA student on a free CPU Space.
+"""Local Gradio demo for the QLoRA student, on CPU.
 
-The Space ships a copy of review_triage/{__init__,schema,prompts}.py so the prompt and parser
-are byte-identical to the ones used in training and evaluation.
+Uses the same prompt and parser as training and evaluation (review_triage.prompts).
+Run from the project root:
+    uv run --with-requirements app/requirements.txt python app/app.py
 """
 
 import os
@@ -60,7 +61,8 @@ demo = gr.Interface(
     title="Triagem de avaliações PT-BR (Qwen3-1.7B + QLoRA)",
     description=(
         "Classifica uma avaliação de e-commerce em categoria, sentimento e urgência. "
-        "Modelo pequeno ajustado com rótulos de um Qwen3-8B. Em CPU grátis, cada resposta leva alguns segundos."
+        "Modelo pequeno ajustado com rótulos de um Qwen3-8B. "
+        "Em CPU, cada resposta leva cerca de 10 s."
     ),
     flagging_mode="never",
 )
