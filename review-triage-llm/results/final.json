@@ -22,7 +22,152 @@
       "latency_batch1_p50_s": 0.0021,
       "latency_batch1_p95_s": null,
       "reviews_per_s_batched": null,
-      "gpu_usd_per_1k_reviews": 0.0
+      "gpu_usd_per_1k_reviews": 0.0,
+      "per_class": {
+        "categoria": {
+          "support": {
+            "atraso_entrega": 14,
+            "nao_recebido": 29,
+            "produto_errado_ou_incompleto": 36,
+            "defeito_ou_qualidade": 28,
+            "atendimento_vendedor": 7,
+            "elogio_sem_problema": 68,
+            "outro": 18
+          },
+          "f1": {
+            "atraso_entrega": 0.703,
+            "nao_recebido": 0.862,
+            "produto_errado_ou_incompleto": 0.8,
+            "defeito_ou_qualidade": 0.786,
+            "atendimento_vendedor": 0.545,
+            "elogio_sem_problema": 0.873,
+            "outro": 0.308
+          },
+          "confusion": {
+            "atraso_entrega": {
+              "atraso_entrega": 13,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "nao_recebido": {
+              "atraso_entrega": 1,
+              "nao_recebido": 25,
+              "produto_errado_ou_incompleto": 1,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 1
+            },
+            "produto_errado_ou_incompleto": {
+              "atraso_entrega": 1,
+              "nao_recebido": 2,
+              "produto_errado_ou_incompleto": 30,
+              "defeito_ou_qualidade": 2,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "defeito_ou_qualidade": {
+              "atraso_entrega": 0,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 3,
+              "defeito_ou_qualidade": 22,
+              "atendimento_vendedor": 0,
+              "elogio_sem_problema": 1,
+              "outro": 2
+            },
+            "atendimento_vendedor": {
+              "atraso_entrega": 0,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 6,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "elogio_sem_problema": {
+              "atraso_entrega": 7,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 1,
+              "defeito_ou_qualidade": 2,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 55,
+              "outro": 1
+            },
+            "outro": {
+              "atraso_entrega": 1,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 4,
+              "defeito_ou_qualidade": 2,
+              "atendimento_vendedor": 5,
+              "elogio_sem_problema": 2,
+              "outro": 4
+            }
+          }
+        },
+        "sentimento": {
+          "support": {
+            "positivo": 62,
+            "neutro": 40,
+            "negativo": 98
+          },
+          "f1": {
+            "positivo": 0.835,
+            "neutro": 0.479,
+            "negativo": 0.881
+          },
+          "confusion": {
+            "positivo": {
+              "positivo": 53,
+              "neutro": 5,
+              "negativo": 4
+            },
+            "neutro": {
+              "positivo": 12,
+              "neutro": 17,
+              "negativo": 11
+            },
+            "negativo": {
+              "positivo": 0,
+              "neutro": 9,
+              "negativo": 89
+            }
+          }
+        },
+        "urgencia": {
+          "support": {
+            "baixa": 87,
+            "media": 68,
+            "alta": 45
+          },
+          "f1": {
+            "baixa": 0.852,
+            "media": 0.62,
+            "alta": 0.734
+          },
+          "confusion": {
+            "baixa": {
+              "baixa": 69,
+              "media": 16,
+              "alta": 2
+            },
+            "media": {
+              "baixa": 6,
+              "media": 40,
+              "alta": 22
+            },
+            "alta": {
+              "baixa": 0,
+              "media": 5,
+              "alta": 40
+            }
+          }
+        }
+      }
     },
     "B_teacher_qwen3_8b": {
       "n": 200,
@@ -43,7 +188,152 @@
       "latency_batch1_p50_s": 3.816,
       "latency_batch1_p95_s": 4.045,
       "reviews_per_s_batched": 0.71,
-      "gpu_usd_per_1k_reviews": 0.1369
+      "gpu_usd_per_1k_reviews": 0.1369,
+      "per_class": {
+        "categoria": {
+          "support": {
+            "atraso_entrega": 14,
+            "nao_recebido": 29,
+            "produto_errado_ou_incompleto": 36,
+            "defeito_ou_qualidade": 28,
+            "atendimento_vendedor": 7,
+            "elogio_sem_problema": 68,
+            "outro": 18
+          },
+          "f1": {
+            "atraso_entrega": 0.839,
+            "nao_recebido": 0.915,
+            "produto_errado_ou_incompleto": 0.895,
+            "defeito_ou_qualidade": 0.857,
+            "atendimento_vendedor": 0.571,
+            "elogio_sem_problema": 0.977,
+            "outro": 0.417
+          },
+          "confusion": {
+            "atraso_entrega": {
+              "atraso_entrega": 13,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "nao_recebido": {
+              "atraso_entrega": 1,
+              "nao_recebido": 27,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "produto_errado_ou_incompleto": {
+              "atraso_entrega": 0,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 34,
+              "defeito_ou_qualidade": 1,
+              "atendimento_vendedor": 0,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "defeito_ou_qualidade": {
+              "atraso_entrega": 0,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 2,
+              "defeito_ou_qualidade": 24,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 1
+            },
+            "atendimento_vendedor": {
+              "atraso_entrega": 0,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 6,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "elogio_sem_problema": {
+              "atraso_entrega": 2,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 0,
+              "elogio_sem_problema": 65,
+              "outro": 0
+            },
+            "outro": {
+              "atraso_entrega": 1,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 4,
+              "defeito_ou_qualidade": 3,
+              "atendimento_vendedor": 5,
+              "elogio_sem_problema": 0,
+              "outro": 5
+            }
+          }
+        },
+        "sentimento": {
+          "support": {
+            "positivo": 62,
+            "neutro": 40,
+            "negativo": 98
+          },
+          "f1": {
+            "positivo": 0.866,
+            "neutro": 0.533,
+            "negativo": 0.911
+          },
+          "confusion": {
+            "positivo": {
+              "positivo": 55,
+              "neutro": 3,
+              "negativo": 4
+            },
+            "neutro": {
+              "positivo": 10,
+              "neutro": 16,
+              "negativo": 14
+            },
+            "negativo": {
+              "positivo": 0,
+              "neutro": 1,
+              "negativo": 97
+            }
+          }
+        },
+        "urgencia": {
+          "support": {
+            "baixa": 87,
+            "media": 68,
+            "alta": 45
+          },
+          "f1": {
+            "baixa": 0.9,
+            "media": 0.723,
+            "alta": 0.818
+          },
+          "confusion": {
+            "baixa": {
+              "baixa": 72,
+              "media": 15,
+              "alta": 0
+            },
+            "media": {
+              "baixa": 1,
+              "media": 47,
+              "alta": 20
+            },
+            "alta": {
+              "baixa": 0,
+              "media": 0,
+              "alta": 45
+            }
+          }
+        }
+      }
     },
     "C_student_qwen3_1.7b_qlora": {
       "n": 200,
@@ -64,7 +354,152 @@
       "latency_batch1_p50_s": 3.091,
       "latency_batch1_p95_s": 3.323,
       "reviews_per_s_batched": 2.63,
-      "gpu_usd_per_1k_reviews": 0.037
+      "gpu_usd_per_1k_reviews": 0.037,
+      "per_class": {
+        "categoria": {
+          "support": {
+            "atraso_entrega": 14,
+            "nao_recebido": 29,
+            "produto_errado_ou_incompleto": 36,
+            "defeito_ou_qualidade": 28,
+            "atendimento_vendedor": 7,
+            "elogio_sem_problema": 68,
+            "outro": 18
+          },
+          "f1": {
+            "atraso_entrega": 0.812,
+            "nao_recebido": 0.897,
+            "produto_errado_ou_incompleto": 0.846,
+            "defeito_ou_qualidade": 0.889,
+            "atendimento_vendedor": 0.636,
+            "elogio_sem_problema": 0.955,
+            "outro": 0.364
+          },
+          "confusion": {
+            "atraso_entrega": {
+              "atraso_entrega": 13,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "nao_recebido": {
+              "atraso_entrega": 1,
+              "nao_recebido": 26,
+              "produto_errado_ou_incompleto": 1,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "produto_errado_ou_incompleto": {
+              "atraso_entrega": 0,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 33,
+              "defeito_ou_qualidade": 1,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "defeito_ou_qualidade": {
+              "atraso_entrega": 0,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 3,
+              "defeito_ou_qualidade": 24,
+              "atendimento_vendedor": 1,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "atendimento_vendedor": {
+              "atraso_entrega": 0,
+              "nao_recebido": 0,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 7,
+              "elogio_sem_problema": 0,
+              "outro": 0
+            },
+            "elogio_sem_problema": {
+              "atraso_entrega": 3,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 0,
+              "defeito_ou_qualidade": 0,
+              "atendimento_vendedor": 0,
+              "elogio_sem_problema": 64,
+              "outro": 0
+            },
+            "outro": {
+              "atraso_entrega": 1,
+              "nao_recebido": 1,
+              "produto_errado_ou_incompleto": 5,
+              "defeito_ou_qualidade": 1,
+              "atendimento_vendedor": 4,
+              "elogio_sem_problema": 2,
+              "outro": 4
+            }
+          }
+        },
+        "sentimento": {
+          "support": {
+            "positivo": 62,
+            "neutro": 40,
+            "negativo": 98
+          },
+          "f1": {
+            "positivo": 0.828,
+            "neutro": 0.351,
+            "negativo": 0.902
+          },
+          "confusion": {
+            "positivo": {
+              "positivo": 53,
+              "neutro": 6,
+              "negativo": 3
+            },
+            "neutro": {
+              "positivo": 13,
+              "neutro": 10,
+              "negativo": 17
+            },
+            "negativo": {
+              "positivo": 0,
+              "neutro": 1,
+              "negativo": 97
+            }
+          }
+        },
+        "urgencia": {
+          "support": {
+            "baixa": 87,
+            "media": 68,
+            "alta": 45
+          },
+          "f1": {
+            "baixa": 0.906,
+            "media": 0.742,
+            "alta": 0.807
+          },
+          "confusion": {
+            "baixa": {
+              "baixa": 72,
+              "media": 14,
+              "alta": 1
+            },
+            "media": {
+              "baixa": 0,
+              "media": 49,
+              "alta": 19
+            },
+            "alta": {
+              "baixa": 0,
+              "media": 1,
+              "alta": 44
+            }
+          }
+        }
+      }
     }
   },
   "one_off_gpu_usd": {

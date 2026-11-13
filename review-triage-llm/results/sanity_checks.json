@@ -1,0 +1,54 @@
+{
+  "human_gold_dev_test": {
+    "n": 300,
+    "mean_score_by_sentiment": {
+      "negativo": 2.01,
+      "neutro": 3.17,
+      "positivo": 4.41
+    },
+    "low_star_reviews_labeled_positivo": 0.017,
+    "high_star_reviews_labeled_negativo": 0.092,
+    "atraso_entrega_actually_late": 0.412,
+    "late_orders_labeled_atraso_entrega": 0.163,
+    "nao_recebido_actually_undelivered": 0.319
+  },
+  "teacher_silver": {
+    "n": 5000,
+    "mean_score_by_sentiment": {
+      "negativo": 2.14,
+      "neutro": 3.29,
+      "positivo": 4.42
+    },
+    "low_star_reviews_labeled_positivo": 0.018,
+    "high_star_reviews_labeled_negativo": 0.153,
+    "atraso_entrega_actually_late": 0.288,
+    "late_orders_labeled_atraso_entrega": 0.163,
+    "nao_recebido_actually_undelivered": 0.224
+  },
+  "teacher_test": {
+    "n": 200,
+    "mean_score_by_sentiment": {
+      "negativo": 2.12,
+      "neutro": 3.2,
+      "positivo": 4.49
+    },
+    "low_star_reviews_labeled_positivo": 0.0,
+    "high_star_reviews_labeled_negativo": 0.15,
+    "atraso_entrega_actually_late": 0.353,
+    "late_orders_labeled_atraso_entrega": 0.207,
+    "nao_recebido_actually_undelivered": 0.333
+  },
+  "student_test": {
+    "n": 200,
+    "mean_score_by_sentiment": {
+      "negativo": 2.14,
+      "neutro": 3.18,
+      "positivo": 4.48
+    },
+    "low_star_reviews_labeled_positivo": 0.0,
+    "high_star_reviews_labeled_negativo": 0.163,
+    "atraso_entrega_actually_late": 0.333,
+    "late_orders_labeled_atraso_entrega": 0.207,
+    "nao_recebido_actually_undelivered": 0.276
+  }
+}

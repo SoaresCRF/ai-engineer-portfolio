@@ -30,7 +30,20 @@ Definitions and tie-break rules (several problems: the most severe wins) are in 
 | B. Teacher | [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), 4-bit, system prompt + 3 few-shot examples, no thinking | nothing |
 | C. Student | [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B), QLoRA, system prompt only | 5,000 silver labels |
 
-- **Data:** reviews with text from the public [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+```mermaid
+flowchart LR
+    R[Olist reviews<br/>36,709 unique texts] --> G[Gold: 300 labeled by hand<br/>100 dev / 200 test]
+    R --> S[5,000 unlabeled reviews]
+    S --> B[B. Qwen3-8B few-shot<br/>teacher]
+    B --> SL[5,000 silver labels]
+    SL --> A[A. TF-IDF + logistic regression]
+    SL --> C[C. Qwen3-1.7B + QLoRA<br/>student]
+    A & B & C --> E[Scored once on gold test<br/>+ paired bootstrap CIs]
+    G --> E
+```
+
+- **Data:** the public [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce): 99,224 reviews, 40,977 with a comment, 36,709 after removing duplicates (median 62 characters). Emails, CPFs and phone numbers are masked by regex; personal names are not, as the source dataset is already public.
+- **Sampling:** gold and silver have the same number of reviews per star rating (1–5). In the raw data 48% of reviews are 5 stars, so complaints are over-represented here on purpose: the metrics describe a balanced mix, not production traffic, where accuracy is likely higher because easy praise dominates.
 - **Gold:** 300 reviews labeled by hand, blind (text only, no star rating), split 100 dev / 200 test. Gold reviews never appear in the silver set or the few-shot examples (checked by tests and by the Kaggle bundle builder).
 - **Silver:** 5,000 other reviews labeled by the teacher (100% valid JSON). A and C both learn from them, so the comparison isolates the model, not the data.
 - **Discipline:** the prompt was revised once, on dev. The test set was scored once, on 2026-11-13, after every decision was frozen ([results/final.json](results/final.json): quality, latency, throughput and cost of A, B and C in one file).
@@ -55,6 +68,26 @@ With 200 reviews, one review is 0.5 points. To separate real gaps from noise, a 
 | Student − baseline | **+8.0 [+3.0, +13.5]** | +0.5 [−4.5, +5.5] | **+8.0 [+3.0, +13.5]** |
 
 Bold: the CI excludes zero. The student's only real loss is sentiment (macro-F1 −7.6 [−13.4, −1.9]). And on sentiment, a TF-IDF model trained on the same silver labels is statistically as good as either LLM: extra model capacity buys little until `neutro` is better defined and labeled. The student agrees with the teacher on 93–94% of test reviews in each field.
+
+F1 per class on the test set (support in parentheses; confusion matrices are in [results/final.json](results/final.json)):
+
+| Class | A. Baseline | B. Teacher | C. Student |
+|---|---|---|---|
+| `elogio_sem_problema` (68) | 0.87 | 0.98 | 0.96 |
+| `produto_errado_ou_incompleto` (36) | 0.80 | 0.90 | 0.85 |
+| `nao_recebido` (29) | 0.86 | 0.92 | 0.90 |
+| `defeito_ou_qualidade` (28) | 0.79 | 0.86 | 0.89 |
+| `outro` (18) | 0.31 | 0.42 | 0.36 |
+| `atraso_entrega` (14) | 0.70 | 0.84 | 0.81 |
+| `atendimento_vendedor` (7) | 0.55 | 0.57 | 0.64 |
+| `negativo` (98) | 0.88 | 0.91 | 0.90 |
+| `positivo` (62) | 0.84 | 0.87 | 0.83 |
+| `neutro` (40) | 0.48 | 0.53 | **0.35** |
+| `baixa` (87) | 0.85 | 0.90 | 0.91 |
+| `media` (68) | 0.62 | 0.72 | 0.74 |
+| `alta` (45) | 0.73 | 0.82 | 0.81 |
+
+The student is the worst of the three on `neutro`, below the baseline. Classes with fewer than 20 examples (`outro`, `atraso_entrega`, `atendimento_vendedor`) have wide uncertainty; read them as direction, not as precise numbers.
 
 ### Speed and cost
 
@@ -131,11 +164,30 @@ This boundary is genuinely ambiguous: a human could defend `positivo`. It is a l
 
 **Gold noise.** At least one gold label looks wrong on re-reading: "Adorei o produto... [as resenhas dizem que] vem com a luva térmica e certificado, porém a minha não veio nada além do manual" is gold `positivo` / `baixa`, models `negativo` / `media`. A missing item is a problem without a request, so by the guide `media` is right and the models are. With one labeler and no second pass, a few such errors are expected; they cut both ways and do not change the comparison.
 
+### Sanity checks against facts no labeler saw
+
+The star rating and the delivery dates were hidden from the human labeler and from the models, so they give an independent check, including on the 5,000 silver labels that have no human reference ([results/sanity_checks.json](results/sanity_checks.json)):
+
+| | Human gold (300) | Teacher silver (5,000) | Teacher test | Student test |
+|---|---|---|---|---|
+| Mean stars: `negativo` / `neutro` / `positivo` | 2.0 / 3.2 / 4.4 | 2.1 / 3.3 / 4.4 | 2.1 / 3.2 / 4.5 | 2.1 / 3.2 / 4.5 |
+| 4–5 star reviews labeled `negativo` | 9% | 15% | 15% | 16% |
+| 1–2 star reviews labeled `positivo` | 2% | 2% | 0% | 0% |
+| `atraso_entrega` orders actually delivered late | 41% | 29% | 35% | 33% |
+| `nao_recebido` orders actually never delivered | 32% | 22% | 33% | 28% |
+
+- Sentiment tracks the stars for every label set, so the silver labels are sound in the large.
+- The models label 4–5 star reviews `negativo` almost twice as often as the human. This is the same negativity bias seen in `neutro`, now confirmed on 5,000 reviews without any human label.
+- Delivery facts match categories weakly even for the human: customers likely call a delivery "late" against their own expectation rather than the estimated date, and Olist sends the review survey around the estimated date, so most "not received" orders arrive afterwards. These checks are useful for sentiment, not as ground truth for delivery categories.
+
 What did not work, or was not tried:
 
 - The first prompt (`63b2f291`) scored 0.69 macro-F1 on dev sentiment (1 of 8 neutral right). Rewriting the `neutro` definition with concrete phrasings moved it to 0.82 on dev, but the test set shows the problem is only partly solved.
 - One training run, no hyperparameter search. The student's ceiling is the teacher's agreement with humans; better silver labels (e.g. teacher self-consistency, or a few hundred human labels) would likely help more than tuning.
 - A free demo Space was planned, but Hugging Face now requires a paid plan for Gradio Spaces, so the demo runs locally.
+- The plan was to pick the student between two sizes with a quick dev test. To save GPU quota, Qwen3-1.7B was chosen without trying Qwen3-0.6B, which might be good enough on `categoria` and `urgencia` at a third of the size.
+- One human labeler, without a second pass to measure self-agreement. The annotated examples above show a few debatable gold labels.
+- No constrained decoding (guided JSON): it was not needed, since every output parsed.
 
 ## Reproduce
 
@@ -152,7 +204,7 @@ uv run python -m review_triage.labeling import   # validated gold_dev.csv / gold
 
 # 2. Kaggle bundle (texts only, no gold labels), then run the notebooks on Kaggle
 uv run python -m review_triage.kaggle_bundle
-#    notebooks/02_teacher_labels.ipynb  -> data/predictions/teacher_full_v2/
+#    notebooks/02_teacher_labels.ipynb  -> data/predictions/teacher_full_v2/  (MODE = "dev" first, then "full")
 #    notebooks/03_train_qlora.ipynb     -> data/predictions/student_v1/
 
 # 3. Baseline and evaluation
@@ -165,6 +217,7 @@ uv run python -m review_triage.evaluate bootstrap data/labels/gold_test.csv \
     teacher=data/predictions/teacher_full_v2/teacher_test.csv \
     student=data/predictions/student_v1/student_test.csv > results/bootstrap_test.json
 uv run python -m review_triage.report   # results/final.json
+uv run python -m review_triage.sanity   # results/sanity_checks.json (needs data/raw)
 ```
 
 Local demo on CPU (~10 s per review; downloads the base model and the adapter):
@@ -186,11 +239,12 @@ src/review_triage/
   student.py       C: QLoRA training and inference
   evaluate.py      accuracy, macro-F1, valid-JSON rate, paired bootstrap CIs
   report.py        assembles results/final.json
+  sanity.py        label checks against star ratings and delivery dates
   kaggle_bundle.py dataset upload for Kaggle
 notebooks/         Kaggle notebooks for B and C
 data/labels/       gold dev/test labels
 data/predictions/  every model's predictions and run metadata
-results/           final test results and bootstrap CIs
+results/           final test results, bootstrap CIs and sanity checks
 hf/MODEL_CARD.md   Hugging Face model card
 app/app.py         Gradio demo
 ```

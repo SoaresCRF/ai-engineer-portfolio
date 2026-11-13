@@ -9,10 +9,12 @@ Usage:
 import json
 
 import pandas as pd
+from sklearn.metrics import f1_score
 
 from review_triage.baseline import PREDICTIONS_DIR
-from review_triage.evaluate import score
+from review_triage.evaluate import align, confusion, score
 from review_triage.labeling import LABELS_DIR, PROJECT_DIR
+from review_triage.schema import LABEL_FIELDS
 
 RESULTS_DIR = PROJECT_DIR / "results"
 TEST_EVALUATED_ON = "2026-11-13"  # the single test evaluation
@@ -53,12 +55,30 @@ def _speed_and_cost(run: dict) -> dict:
     }
 
 
+def _per_class(preds: pd.DataFrame, gold: pd.DataFrame) -> dict:
+    """F1 per class and confusion matrix (rows = gold, columns = predicted) for each field."""
+    merged = align(preds, gold)
+    out = {}
+    for field, enum in LABEL_FIELDS.items():
+        labels = [m.value for m in enum]
+        f1 = f1_score(
+            merged[field], merged[f"{field}_pred"], labels=labels, average=None, zero_division=0
+        )
+        out[field] = {
+            "support": merged[field].value_counts().reindex(labels, fill_value=0).to_dict(),
+            "f1": {label: round(float(v), 3) for label, v in zip(labels, f1, strict=True)},
+            "confusion": confusion(preds, gold, field).to_dict(orient="index"),
+        }
+    return out
+
+
 def build() -> dict:
     gold = pd.read_csv(LABELS_DIR / "gold_test.csv")
     runs = {
         name: json.loads((PREDICTIONS_DIR / run_file).read_text())
         for name, (_, run_file) in APPROACHES.items()
     }
+    preds = {name: pd.read_csv(PREDICTIONS_DIR / f) for name, (f, _) in APPROACHES.items()}
     teacher, student = runs["B_teacher_qwen3_8b"], runs["C_student_qwen3_1.7b_qlora"]
     return {
         "split": "test",
@@ -66,10 +86,11 @@ def build() -> dict:
         "cost_assumption": f"GPU time only, T4 at ${T4_USD_PER_HOUR}/h (Google Cloud on-demand)",
         "approaches": {
             name: {
-                **score(pd.read_csv(PREDICTIONS_DIR / preds_file), gold),
+                **score(preds[name], gold),
                 **_speed_and_cost(runs[name]),
+                "per_class": _per_class(preds[name], gold),
             }
-            for name, (preds_file, _) in APPROACHES.items()
+            for name in APPROACHES
         },
         "one_off_gpu_usd": {
             "teacher_silver_labeling": gpu_usd(teacher["splits"]["silver"]["seconds"]),
