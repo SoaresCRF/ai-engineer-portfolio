@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Data and model artifacts (large or licensed; published to Hugging Face instead)
+**/data/raw/
+**/data/interim/
+**/checkpoints/
+**/outputs/
+*.safetensors
+*.bin
+*.gguf
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
