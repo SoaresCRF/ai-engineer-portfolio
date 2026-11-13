@@ -8,6 +8,7 @@ import json
 import platform
 import statistics
 import time
+from importlib import metadata
 from pathlib import Path
 
 import pandas as pd
@@ -22,6 +23,7 @@ BATCH_SIZE = 16
 LATENCY_SAMPLE_SIZE = 30
 LATENCY_P95 = 0.95
 PROGRESS_EVERY_BATCHES = 20
+TRACKED_PACKAGES = ("torch", "transformers", "bitsandbytes", "peft", "trl")
 
 SPLIT_FILES = {"dev": "gold_dev.csv", "test": "gold_test.csv", "silver": "silver_pool.csv"}
 MODE_SPLITS = {"dev": ["dev"], "full": ["dev", "test", "silver"]}
@@ -32,8 +34,9 @@ def load_model(model_id: str = DEFAULT_MODEL, quantize_4bit: bool = True):
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
     tokenizer = AutoTokenizer.from_pretrained(model_id, padding_side="left")
-    # T4 (Turing) has no bfloat16, so compute in float16.
-    kwargs = {"device_map": "auto", "dtype": torch.float16}
+    # T4 (Turing) has no bfloat16, so compute in float16; CPU smoke tests need float32.
+    dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+    kwargs = {"device_map": "auto", "dtype": dtype}
     if quantize_4bit:
         kwargs["quantization_config"] = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -67,9 +70,11 @@ def _generate_batch(tokenizer, model, prompts: list[str]) -> list[str]:
     return tokenizer.batch_decode(out[:, enc["input_ids"].shape[1] :], skip_special_tokens=True)
 
 
-def generate(tokenizer, model, texts: list[str], batch_size: int = BATCH_SIZE) -> list[str]:
+def generate(
+    tokenizer, model, texts: list[str], batch_size: int = BATCH_SIZE, few_shot: bool = True
+) -> list[str]:
     """Raw completions in input order; batches are length-sorted to minimize padding."""
-    prompts = [render_prompt(tokenizer, t) for t in texts]
+    prompts = [render_prompt(tokenizer, t, few_shot) for t in texts]
     order = sorted(range(len(prompts)), key=lambda i: len(prompts[i]))
     outputs: list[str] = [""] * len(prompts)
     n_batches = -(-len(order) // batch_size)
@@ -84,16 +89,19 @@ def generate(tokenizer, model, texts: list[str], batch_size: int = BATCH_SIZE) -
     return outputs
 
 
-def single_item_latency(tokenizer, model, texts: list[str]) -> dict[str, float]:
+def single_item_latency(
+    tokenizer, model, texts: list[str], few_shot: bool = True
+) -> dict[str, float]:
     """Wall-clock seconds per review at batch size 1 (what one API call would feel like)."""
     import torch
 
     seconds = []
+    sync = torch.cuda.synchronize if torch.cuda.is_available() else lambda: None
     for text in texts:
-        torch.cuda.synchronize()
+        sync()
         start = time.perf_counter()
-        _generate_batch(tokenizer, model, [render_prompt(tokenizer, text)])
-        torch.cuda.synchronize()
+        _generate_batch(tokenizer, model, [render_prompt(tokenizer, text, few_shot)])
+        sync()
         seconds.append(time.perf_counter() - start)
     seconds.sort()
     return {
@@ -113,21 +121,24 @@ def to_prediction_frame(df: pd.DataFrame, raw: list[str]) -> pd.DataFrame:
     return out
 
 
-def _environment(model_id: str, quantize_4bit: bool) -> dict:
-    import bitsandbytes
+def _version(package: str) -> str | None:
+    try:
+        return metadata.version(package)
+    except metadata.PackageNotFoundError:
+        return None  # e.g. bitsandbytes/peft absent in a CPU smoke test
+
+
+def environment(model_id: str, quantize_4bit: bool) -> dict:
     import torch
-    import transformers
 
     return {
         "model_id": model_id,
         "quantize_4bit": quantize_4bit,
         "prompt_version": prompt_version(),
-        "gpu": torch.cuda.get_device_name(0),
+        "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
         "gpu_count": torch.cuda.device_count(),
         "python": platform.python_version(),
-        "torch": torch.__version__,
-        "transformers": transformers.__version__,
-        "bitsandbytes": bitsandbytes.__version__,
+        **{pkg: _version(pkg) for pkg in TRACKED_PACKAGES},
         "run_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
 
@@ -142,7 +153,7 @@ def run(
     """Predict every split for the mode; write teacher_<split>.csv and teacher_run.json."""
     output_dir.mkdir(parents=True, exist_ok=True)
     tokenizer, model = load_model(model_id, quantize_4bit)
-    report = {"mode": mode, **_environment(model_id, quantize_4bit), "splits": {}}
+    report = {"mode": mode, **environment(model_id, quantize_4bit), "splits": {}}
 
     for split in MODE_SPLITS[mode]:
         df = pd.read_csv(input_dir / SPLIT_FILES[split])
