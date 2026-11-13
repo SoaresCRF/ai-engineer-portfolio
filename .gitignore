@@ -17,6 +17,7 @@ venv/
 **/data/interim/
 **/checkpoints/
 **/outputs/
+**/adapter/
 *.safetensors
 *.bin
 *.gguf
