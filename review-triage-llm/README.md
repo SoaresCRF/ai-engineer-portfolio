@@ -83,7 +83,7 @@ F1 per class on the test set (support in parentheses; confusion matrices are in 
 | `atraso_entrega` (14) | 0.70 | 0.84 | 0.81 |
 | `atendimento_vendedor` (7) | 0.55 | 0.57 | 0.64 |
 | `negativo` (98) | 0.88 | 0.91 | 0.90 |
-| `positivo` (62) | 0.84 | 0.87 | 0.83 |
+| `positivo` (62) | 0.83 | 0.87 | 0.83 |
 | `neutro` (40) | 0.48 | 0.53 | **0.35** |
 | `baixa` (87) | 0.85 | 0.90 | 0.91 |
 | `media` (68) | 0.62 | 0.72 | 0.74 |

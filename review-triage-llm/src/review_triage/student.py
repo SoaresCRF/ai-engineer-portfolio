@@ -32,7 +32,8 @@ LEARNING_RATE = 2e-4
 BATCH_SIZE = 8
 GRAD_ACCUM_STEPS = 2  # effective batch 16
 WARMUP_RATIO = 0.03
-# System prompt (~450 tokens) + review + answer; no Olist review comes close to this.
+# System prompt (535 Qwen3 tokens) + review + answer: the longest silver example is
+# about 680 tokens, so nothing is truncated.
 MAX_LENGTH = 1024
 LOGGING_STEPS = 25
 SEED = 42
