@@ -184,7 +184,7 @@ The star rating and the delivery dates were hidden from the human labeler and fr
 
 What did not work, or was not tried:
 
-- The first prompt (`63b2f291`) scored 0.69 macro-F1 on dev sentiment (1 of 8 neutral right). Rewriting the `neutro` definition with concrete phrasings moved it to 0.82 on dev, but the test set shows the problem is only partly solved.
+- The first prompt (`63b2f291`, predictions in [data/predictions/teacher_dev_run1](data/predictions/teacher_dev_run1)) scored 0.69 macro-F1 on dev sentiment (1 of 8 neutral right). Rewriting the `neutro` definition with concrete phrasings moved it to 0.82 on dev, but the test set shows the problem is only partly solved.
 - One training run, no hyperparameter search. The student's ceiling is the teacher's agreement with humans; better silver labels (e.g. teacher self-consistency, or a few hundred human labels) would likely help more than tuning.
 - A free demo Space was planned, but Hugging Face now requires a paid plan for Gradio Spaces, so the demo runs locally.
 - The plan was to pick the student between two sizes with a quick dev test. To save GPU quota, Qwen3-1.7B was chosen without trying Qwen3-0.6B, which might be good enough on `categoria` and `urgencia` at a third of the size.

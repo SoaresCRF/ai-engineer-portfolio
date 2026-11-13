@@ -1,0 +1,17 @@
+{
+  "n": 100,
+  "categoria": {
+    "accuracy": 0.73,
+    "macro_f1": 0.6358
+  },
+  "sentimento": {
+    "accuracy": 0.85,
+    "macro_f1": 0.774
+  },
+  "urgencia": {
+    "accuracy": 0.78,
+    "macro_f1": 0.7722
+  },
+  "valid_rate": 1.0,
+  "latency_ms_p50_cpu": 2.01
+}
