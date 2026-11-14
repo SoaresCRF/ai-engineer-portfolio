@@ -1,4 +1,11 @@
-"""Passage-level retrieval metrics (chunk ranks are collapsed to passages)."""
+"""Passage-level retrieval metrics.
+
+Two units are mixed on purpose:
+- recall@k: k counts CHUNKS (the context the LLM sees); gold passages are
+  matched among the passages of those k chunks.
+- MRR / rank_first_gold: counted in PASSAGE positions after dedup, independent
+  of how many chunks precede the first gold passage.
+"""
 
 from collections.abc import Callable, Iterable
 from statistics import fmean
@@ -14,6 +21,11 @@ def passages_from_chunks(chunk_ids: list[str]) -> list[str]:
     return list(dict.fromkeys(c.rsplit("#", 1)[0] for c in chunk_ids))
 
 
+def _require_gold(gold_passages: set[str]) -> None:
+    if not gold_passages:
+        raise ValueError("gold_passages must not be empty")
+
+
 def _rank_first_gold(ranked_chunk_ids: list[str], gold: set[str]) -> int | None:
     for rank, passage in enumerate(passages_from_chunks(ranked_chunk_ids), start=1):
         if passage in gold:
@@ -22,12 +34,21 @@ def _rank_first_gold(ranked_chunk_ids: list[str], gold: set[str]) -> int | None:
 
 
 def recall_at_k(ranked_chunk_ids: list[str], gold_passages: set[str], k: int) -> float:
-    """k counts chunks (what the LLM sees); hits are counted per passage."""
+    """Fraction of gold passages found among the passages of the first k CHUNKS.
+
+    k counts chunks, i.e. the context the LLM sees, not passages.
+    """
+    _require_gold(gold_passages)
     found = set(passages_from_chunks(ranked_chunk_ids[:k]))
     return len(gold_passages & found) / len(gold_passages)
 
 
 def mrr(ranked_chunk_ids: list[str], gold_passages: set[str]) -> float:
+    """1 / rank of the first gold passage after dedup, in PASSAGE positions.
+
+    Independent of how many chunks come before it (A#0, A#1, B#0 -> B is rank 2).
+    """
+    _require_gold(gold_passages)
     rank = _rank_first_gold(ranked_chunk_ids, gold_passages)
     return 0.0 if rank is None else 1 / rank
 
