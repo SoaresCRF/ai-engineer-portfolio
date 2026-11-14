@@ -21,6 +21,12 @@ def restore_logging():
     root.setLevel(level)
 
 
+def test_setup_logging_quiets_http_clients(restore_logging):
+    tracing.setup_logging("INFO")
+    assert logging.getLogger("httpx").level == logging.WARNING
+    assert logging.getLogger("httpcore").level == logging.WARNING
+
+
 def test_span_records_duration(monkeypatch):
     clock = iter([100.0, 100.25])
     monkeypatch.setattr(tracing.time, "perf_counter", lambda: next(clock))
