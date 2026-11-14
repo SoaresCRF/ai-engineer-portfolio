@@ -2,7 +2,14 @@ from pathlib import Path
 
 import pytest
 
-from support_agent.corpus import decode_html, law_html_to_markdown, load_corpus, parse_markdown
+from support_agent.corpus import (
+    Passage,
+    chunk_passages,
+    decode_html,
+    law_html_to_markdown,
+    load_corpus,
+    parse_markdown,
+)
 
 FIXTURE = Path(__file__).parent / "fixtures" / "planalto_sample.html"
 
@@ -76,3 +83,47 @@ def test_decode_html_without_declaration_falls_back_to_cp1252():
 
 def test_text_inside_s_tag_is_kept(markdown):
     assert "§ 1º mantido" in markdown
+
+
+def _passage(text: str, passage_id: str = "cdc:art49") -> Passage:
+    return Passage(passage_id, "cdc", "CDC", "Art. 49", text)
+
+
+def test_short_passage_one_chunk():
+    chunks = chunk_passages([_passage("Short text.")])
+    assert [c.chunk_id for c in chunks] == ["cdc:art49#0"]
+    assert chunks[0].text == "CDC > Art. 49\nShort text."
+
+
+def test_long_passage_splits_on_blank_lines():
+    chunks = chunk_passages([_passage("\n\n".join(c * 700 for c in "abc"))])
+    assert len(chunks) >= 2
+    assert {c.passage_id for c in chunks} == {"cdc:art49"}
+    assert all(c.text.startswith("CDC > Art. 49\n") for c in chunks)
+
+
+def test_single_paragraph_over_limit_is_hard_split():
+    prefix = "CDC > Art. 49\n"
+    chunks = chunk_passages([_passage("x" * 4000)], max_chars=1500)
+    assert len(chunks) == 3
+    assert all(len(c.text) - len(prefix) <= 1500 for c in chunks)
+    assert "".join(c.text[len(prefix) :] for c in chunks) == "x" * 4000
+
+
+def test_oversized_paragraph_splits_on_sentence_boundary():
+    sentences = [f"Sentence number {i:02d} is here" for i in range(10)]
+    chunks = chunk_passages([_passage(". ".join(sentences))], max_chars=100)
+    assert len(chunks) > 1
+    assert all(c.text.split("\n", 1)[1].endswith(("here", "here.")) for c in chunks)
+
+
+def test_real_corpus_chunks_within_limit():
+    max_chars = 1500
+    passages = load_corpus(Path("corpus"))
+    chunks = chunk_passages(passages, max_chars=max_chars)
+    for c in chunks:
+        assert len(c.text.split("\n", 1)[1]) <= max_chars
+    assert len({c.chunk_id for c in chunks}) == len(chunks)
+    assert {c.passage_id for c in chunks} == {p.passage_id for p in passages}
+    split = len(chunks) - len({c.passage_id for c in chunks})
+    print(f"chunks={len(chunks)} passages={len(passages)} extra_from_splits={split}")

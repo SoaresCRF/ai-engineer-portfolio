@@ -164,6 +164,56 @@ def load_corpus(corpus_dir: Path) -> list[Passage]:
     return passages
 
 
+@dataclass(frozen=True)
+class Chunk:
+    chunk_id: str
+    passage_id: str
+    text: str
+
+
+DEFAULT_MAX_CHARS = 1500
+_PARAGRAPH_SEP = "\n\n"
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=\. )")  # keeps ". " at the end of each sentence
+
+
+def _pack(parts: list[str], sep: str, max_chars: int) -> list[str]:
+    """Greedily join parts with sep into groups of at most max_chars (parts must fit)."""
+    groups: list[str] = []
+    for part in parts:
+        if groups and len(groups[-1]) + len(sep) + len(part) <= max_chars:
+            groups[-1] += sep + part
+        else:
+            groups.append(part)
+    return groups
+
+
+def _split_paragraph(paragraph: str, max_chars: int) -> list[str]:
+    """Split an oversized paragraph on sentence boundaries; hard cut only as a last resort."""
+    pieces: list[str] = []
+    for sentence in _SENTENCE_SPLIT_RE.split(paragraph):
+        if len(sentence) > max_chars:  # no sentence boundary within the limit
+            pieces += [sentence[i : i + max_chars] for i in range(0, len(sentence), max_chars)]
+        else:
+            pieces.append(sentence)
+    return [group.strip() for group in _pack(pieces, "", max_chars)]
+
+
+def chunk_passages(passages: list[Passage], max_chars: int = DEFAULT_MAX_CHARS) -> list[Chunk]:
+    """Pack paragraphs into chunks of at most max_chars, excluding the title prefix."""
+    chunks: list[Chunk] = []
+    for passage in passages:
+        parts: list[str] = []
+        for paragraph in passage.text.split(_PARAGRAPH_SEP):
+            if len(paragraph) > max_chars:
+                parts += _split_paragraph(paragraph, max_chars)
+            else:
+                parts.append(paragraph)
+        prefix = f"{passage.doc_title} > {passage.heading}\n"
+        for i, body in enumerate(_pack(parts, _PARAGRAPH_SEP, max_chars)):
+            chunks.append(Chunk(f"{passage.passage_id}#{i}", passage.passage_id, prefix + body))
+    return chunks
+
+
 # Raw file name (saved manually: the site rejects non-browser clients) -> doc_id.
 RAW_FILES: dict[str, str] = {"cdc.html": "cdc", "d7962.html": "decreto_7962"}
 
