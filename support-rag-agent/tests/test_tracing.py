@@ -1,37 +1,71 @@
 import json
 import logging
-import time
+
+import pytest
 
 from support_agent import tracing
-from support_agent.llm import strip_think
+from support_agent.agent import AgentConfig, run_agent
+from support_agent.llm import AssistantTurn, ToolCall, strip_think
+from support_agent.orders import REFERENCE_NOW, connect
+from support_agent.tools import ToolContext
 
 
-def test_span_records_duration():
+@pytest.fixture
+def restore_logging():
+    root = logging.getLogger()
+    handlers, level = root.handlers[:], root.level
+    yield
+    root.handlers[:] = handlers
+    root.setLevel(level)
+
+
+def test_span_records_duration(monkeypatch):
+    clock = iter([100.0, 100.25])
+    monkeypatch.setattr(tracing.time, "perf_counter", lambda: next(clock))
     trace = tracing.Trace()
     with trace.span("work", kind="x"):
-        time.sleep(0.01)
+        pass
     (span,) = trace.to_dict()["spans"]
     assert span["name"] == "work"
     assert span["kind"] == "x"
-    assert span["duration_ms"] >= 10
+    assert span["duration_ms"] == 250.0
     assert span["start"]
 
 
-def test_log_has_request_id_and_no_content_by_default(capsys):
+def test_log_has_request_id_and_no_content_by_default(capsys, monkeypatch, restore_logging):
+    monkeypatch.setattr(tracing, "LOG_CONTENT", False)
     tracing.setup_logging("INFO")
     token = tracing.request_id_var.set("req-123")
+    secret_user_text = "meu cpf e 123.456.789-00"
+    turns = [AssistantTurn("", [ToolCall("t", "consultar_pedido", '{"pedido_id": "P1"}')])]
     try:
-        logging.getLogger("t").info("done", extra={"steps": 2})
+        run_agent(
+            [{"role": "user", "content": secret_user_text}],
+            ToolContext(conn=connect(":memory:"), customer_id="C001", now=REFERENCE_NOW),
+            AgentConfig(max_steps=1),
+            lambda q, k: [],
+            _OneShotLLM(turns),
+            "CANARY-xyz",
+            "nonce",
+        )
     finally:
         tracing.request_id_var.reset(token)
-    line = capsys.readouterr().err.strip()
-    entry = json.loads(line)
+    out = capsys.readouterr().err
+    entry = json.loads(out.strip().splitlines()[-1])
     assert entry["request_id"] == "req-123"
-    assert entry["level"] == "INFO"
-    assert entry["msg"] == "done"
-    assert entry["steps"] == 2
+    assert entry["level"] == "WARNING"
     assert entry["ts"]
-    assert tracing.LOG_CONTENT is False
+    assert "CANARY-xyz" not in out
+    assert secret_user_text not in out
+    assert "P1" not in out
+
+
+class _OneShotLLM:
+    def __init__(self, turns):
+        self.turns = turns
+
+    def chat(self, messages, tools):
+        return self.turns[0]
 
 
 def test_strip_think_removes_reasoning_block():
