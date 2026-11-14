@@ -1,3 +1,4 @@
+import asyncio
 import json
 import sqlite3
 from datetime import timedelta
@@ -6,7 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from support_agent import tracing
-from support_agent.api import create_app
+from support_agent.api import _SecurityMiddleware, create_app
 from support_agent.corpus import Chunk
 from support_agent.llm import AssistantTurn, ToolCall
 from support_agent.orders import REFERENCE_NOW, connect, generate, to_iso
@@ -96,6 +97,29 @@ def test_health(make_client):
     res = make_client().get("/health")
     assert res.status_code == 200
     assert res.json() == {"status": "ok"}
+
+
+def test_bearer_scheme_is_case_insensitive(make_client):
+    assert _chat(make_client(), headers={"Authorization": "bearer tok-c001"}).status_code == 200
+
+
+def test_401_advertises_bearer_scheme(make_client):
+    assert _chat(make_client(), headers={}).headers["WWW-Authenticate"] == "Bearer"
+
+
+def test_middleware_resets_request_id_var():
+    seen = []
+
+    async def app(scope, receive, send):
+        seen.append(tracing.request_id_var.get())
+        await send({"type": "http.response.start", "status": 200, "headers": []})
+
+    async def send(message):
+        pass
+
+    asyncio.run(_SecurityMiddleware(app)({"type": "http", "path": "/x"}, None, send))
+    assert seen[0] != "-"
+    assert tracing.request_id_var.get() == "-"
 
 
 def test_chat_happy_path(make_client):
@@ -218,7 +242,6 @@ def test_trace_appended_with_request_id(make_client, trace_path):
     trace = json.loads(lines[0])
     assert trace["request_id"] == res.headers["X-Request-ID"] == res.json()["request_id"]
     assert [s["name"] for s in trace["spans"]] == ["retrieve", "llm_call"]
-    assert tracing.request_id_var.get() == "-"  # reset after the request
 
 
 def test_chat_completed_log_has_no_content(make_client, caplog):

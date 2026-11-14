@@ -1,5 +1,7 @@
 import json
 import logging
+import re
+import sys
 
 import pytest
 
@@ -70,3 +72,15 @@ class _OneShotLLM:
 
 def test_strip_think_removes_reasoning_block():
     assert strip_think("<think>\nplan\n</think>\nOlá!") == "Olá!"
+
+
+def test_json_formatter_includes_exception_and_utc_z_timestamp():
+    try:
+        raise RuntimeError("boom-detail")
+    except RuntimeError:
+        record = logging.getLogger("x").makeRecord(
+            "x", logging.ERROR, __file__, 1, "unhandled", (), sys.exc_info()
+        )
+    payload = json.loads(tracing._JsonFormatter().format(record))
+    assert "RuntimeError: boom-detail" in payload["exc"]
+    assert re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}Z", payload["ts"])
