@@ -16,9 +16,9 @@ Depois que o restaurante começa a preparar o pedido, o cancelamento pelo client
 
 Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
 
-## 4 Cancelamento por pedido não entregue
+## 4 Pedido não entregue não é cancelamento
 
-Quando o pedido é encerrado como não entregue, ele é cancelado automaticamente e o reembolso é integral. Não é preciso pedir o cancelamento: basta registrar o reembolso pelo motivo pedido não entregue.
+Quando o pedido não chega, ele recebe o status não entregue; não é preciso nem possível cancelá-lo. O reembolso não é automático: o cliente abre a solicitação de reembolso pelo motivo não entregue e recebe o total pago, incluindo as taxas.
 
 ## 5 Prazo do estorno
 

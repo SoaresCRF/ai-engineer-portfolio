@@ -10,7 +10,7 @@ Alguns pedidos têm taxa de serviço, que cobre o funcionamento do app e do aten
 
 ## 3 Cupom de atraso
 
-O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega muito depois do horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
 
 ## 4 Cupom não é reembolso
 
@@ -18,8 +18,8 @@ Cupons são descontos para pedidos futuros. Eles não podem ser trocados por din
 
 ## 5 Taxas no reembolso
 
-Quando o pedido inteiro é reembolsado, como no pedido não entregue ou no cancelamento antes do preparo, a taxa de entrega e a taxa de serviço também são devolvidas. Quando apenas alguns itens são reembolsados, devolvemos o valor desses itens, e as taxas permanecem.
+Quando o pedido inteiro é reembolsado, como no pedido não entregue, no arrependimento ou no cancelamento antes do preparo, a taxa de entrega e a taxa de serviço também são devolvidas. Quando apenas alguns itens são reembolsados, devolvemos o preço unitário vezes a quantidade de cada item afetado, e as taxas permanecem.
 
 ## 6 Pedido pago com cupom
 
-Se parte do pedido foi paga com cupom, o reembolso considera apenas o valor efetivamente pago pelo cliente. O desconto do cupom é distribuído proporcionalmente entre os itens, e o reembolso nunca ultrapassa o que saiu do bolso do cliente.
+Se parte do pedido foi paga com cupom, o desconto não é rateado entre os itens. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, o valor é o total pago.
