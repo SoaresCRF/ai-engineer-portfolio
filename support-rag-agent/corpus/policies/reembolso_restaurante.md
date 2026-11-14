@@ -2,7 +2,7 @@
 
 ## 1 Quando o reembolso se aplica
 
-Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral.
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
 
 ## 2.1 Prazo para pedir reembolso de restaurante
 
@@ -18,7 +18,7 @@ O direito de arrependimento não se aplica a pedidos de restaurante. Refeições
 
 ## 4 Valor do reembolso de restaurante
 
-O valor é calculado a partir dos itens afetados: se faltou um item, devolvemos o preço desse item; se o problema atinge o pedido inteiro, devolvemos o total pago. O reembolso nunca é maior que o valor efetivamente pago pelo cliente, já descontados cupons e promoções. A taxa de entrega só é devolvida quando o pedido inteiro é reembolsado.
+O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas. Nos reembolsos de itens, a taxa de entrega não é devolvida.
 
 ## 5 Qualidade da refeição
 
