@@ -14,7 +14,7 @@ def markdown() -> str:
 
 def test_law_html_to_markdown_splits_articles(markdown):
     headings = [line.split()[1] for line in markdown.splitlines() if line.startswith("## ")]
-    assert headings == ["art1", "art10", "art49", "art54a"]
+    assert headings == ["art1", "art10", "art49", "art54a", "art60"]
     assert markdown.startswith("# Sample Law\n")
     assert "Presidência" not in markdown  # preamble dropped
 
@@ -72,3 +72,7 @@ def test_footer_after_signature_is_dropped(markdown):
 def test_decode_html_without_declaration_falls_back_to_cp1252():
     assert decode_html("ação".encode("cp1252"), None) == "ação"
     assert decode_html("ação".encode(), None) == "ação"
+
+
+def test_text_inside_s_tag_is_kept(markdown):
+    assert "§ 1º mantido" in markdown

@@ -18,7 +18,7 @@ LAW_TITLES: dict[str, str] = {
 SOURCES_FILE = "SOURCES.md"
 META_SNIFF_BYTES = 4096
 
-_SKIPPED_TAGS = {"strike", "s", "script", "style"}
+_SKIPPED_TAGS = {"strike", "script", "style"}
 _BLOCK_TAGS = {"p", "div", "br", "li", "tr", "h1", "h2", "h3", "h4", "h5", "h6", "table"}
 # "Art. 1º", "Art. 10.", "Art. 54-A." -> number plus optional letter suffix.
 _ARTICLE_RE = re.compile(r"^Art\.\s*(\d+)\s*[ºo°]?(?:\s*-\s*([A-Z]))?\b\.?", re.IGNORECASE)
