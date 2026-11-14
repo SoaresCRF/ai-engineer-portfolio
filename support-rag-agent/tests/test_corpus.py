@@ -85,6 +85,10 @@ def test_text_inside_s_tag_is_kept(markdown):
     assert "§ 1º mantido" in markdown
 
 
+def _squash(text: str) -> str:
+    return "".join(text.split())
+
+
 def _passage(text: str, passage_id: str = "cdc:art49") -> Passage:
     return Passage(passage_id, "cdc", "CDC", "Art. 49", text)
 
@@ -112,8 +116,10 @@ def test_single_paragraph_over_limit_is_hard_split():
 
 def test_oversized_paragraph_splits_on_sentence_boundary():
     sentences = [f"Sentence number {i:02d} is here" for i in range(10)]
-    chunks = chunk_passages([_passage(". ".join(sentences))], max_chars=100)
+    text = ". ".join(sentences)
+    chunks = chunk_passages([_passage(text)], max_chars=100)
     assert len(chunks) > 1
+    assert _squash("".join(c.text.split("\n", 1)[1] for c in chunks)) == _squash(text)
     assert all(c.text.split("\n", 1)[1].endswith(("here", "here.")) for c in chunks)
 
 
@@ -124,6 +130,11 @@ def test_real_corpus_chunks_within_limit():
     for c in chunks:
         assert len(c.text.split("\n", 1)[1]) <= max_chars
     assert len({c.chunk_id for c in chunks}) == len(chunks)
-    assert {c.passage_id for c in chunks} == {p.passage_id for p in passages}
-    split = len(chunks) - len({c.passage_id for c in chunks})
-    print(f"chunks={len(chunks)} passages={len(passages)} extra_from_splits={split}")
+    by_passage = {p.passage_id: [] for p in passages}
+    for c in chunks:
+        by_passage[c.passage_id].append(c)
+    assert all(by_passage.values())
+    for passage in passages:
+        assert _squash(
+            "".join(c.text.split("\n", 1)[1] for c in by_passage[passage.passage_id])
+        ) == _squash(passage.text)
