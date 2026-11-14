@@ -1,7 +1,7 @@
 # PLAN — review-triage-llm
 
-> Status: **concluído em 2026-11-13** (resultados no [README](README.md)) · Criado em 2026-11-12 · Prazo de entrega: **2026-11-17**
-> Restrições: custo zero (sem API paga, sem GPU própria), 5 dias.
+> Status: **concluído** (resultados no [README](README.md))
+> Restrições: custo zero (sem API paga, sem GPU própria).
 
 ## 1. Objetivo
 
@@ -40,7 +40,6 @@ A mesma tarefa é resolvida de três jeitos e todos são medidos no **mesmo conj
 - Qualquer serviço pago: APIs de LLM, GPU em nuvem.
 - API de produção, Docker e CI de deploy: isso é o Projeto 2.
 - Busca de hiperparâmetros: uma rodada de treino, no máximo um ajuste.
-- Artigo técnico e Projeto 2 antes de 17/11.
 - Ferramenta de anotação própria: rotular numa planilha basta.
 
 ### Anti-goals (fracasso mesmo se "funcionar")
@@ -122,19 +121,7 @@ review-triage-llm/
 └── tests/                     # schema, parsing de JSON, métricas, splits sem vazamento
 ```
 
-## 6. Cronograma (5 dias)
-
-| Dia | Eu (Claude) | Você |
-|-----|-------------|------|
-| **13/11 (qui)** | setup, script de dados, EDA, guia de rotulagem, planilha das 300 amostras | criar contas no **Kaggle** (verificar telefone) e no **Hugging Face**; começar a rotular |
-| **14/11 (sex)** | baseline A; notebook do professor B; prompt ajustado no dev | terminar as 300; rodar o notebook B no Kaggle (silver + zero-shot) |
-| **15/11 (sáb)** | notebook QLoRA; avaliação no dev | rodar o treino no Kaggle (~1–3 h de GPU) |
-| **16/11 (dom)** | avaliação **final** no test (uma vez); análise de erros; model card; Space | revisar os números; publicar no HF com o seu token |
-| **17/11 (seg)** | README final com tabela, diagrama e GIF | revisão final e inscrição |
-
-**Margem:** se algo atrasar, corta primeiro o ajuste extra do QLoRA, depois o Space (fica só o modelo no HF), depois o IC por bootstrap. O teste gold e a tabela A×B×C não são cortados.
-
-## 7. Critérios de entrega (Definition of Done)
+## 6. Critérios de entrega (Definition of Done)
 
 - [x] `results/final.json` com macro-F1, acurácia, JSON válido %, latência p50/p95, vazão e custo/1k estimado para A, B e C, todos no mesmo test gold.
 - [x] Test usado uma única vez, com a data registrada no README.
@@ -143,7 +130,7 @@ review-triage-llm/
 - [x] README do projeto com problema, arquitetura, como rodar, métricas, demo e o que não funcionou.
 - [x] Testes passando (`pytest`), lint limpo (`ruff`), nenhum segredo no repo.
 
-## 8. Riscos e mitigação
+## 7. Riscos e mitigação
 
 | Risco | Mitigação |
 |-------|-----------|
@@ -155,8 +142,7 @@ review-triage-llm/
 | O pequeno empata ou perde para B | resultado válido; o argumento vira qualidade × custo/latência |
 | Rotulagem humana inconsistente | guia com exemplos; reler 30 itens no fim e medir concordância consigo mesmo |
 
-## 9. Decisões tomadas
+## 8. Decisões tomadas
 
-- Prazo de 17/11/2026, com escopo cortado para caber.
 - Custo zero: Kaggle/Colab grátis, LLMs abertos e HF grátis.
 - Gold de 300 rotulado à mão e às cegas (dev 100 / test 200).
