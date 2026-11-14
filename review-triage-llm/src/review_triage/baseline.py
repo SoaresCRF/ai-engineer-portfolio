@@ -8,6 +8,7 @@ Usage:
 """
 
 import json
+import statistics
 import sys
 import time
 
@@ -64,7 +65,7 @@ def single_item_latency_ms(models: dict[str, Pipeline], texts: list[str]) -> flo
         for model in models.values():
             model.predict([text])
         timings.append((time.perf_counter() - start) * 1_000)
-    return float(pd.Series(timings).median())
+    return statistics.median(timings)
 
 
 def main(silver_path: str, split: str) -> None:

@@ -26,18 +26,18 @@ SILVER_LABELS = PROJECT_DIR / "data" / "predictions" / "teacher_full_v2" / "teac
 SILVER_LABEL_COLUMNS = [*TEXT_COLUMNS, "valid_json", *LABEL_FIELDS]
 
 
-def build(bundle_dir: Path = BUNDLE_DIR) -> Path:
-    if bundle_dir.exists():
-        shutil.rmtree(bundle_dir)
-    (bundle_dir / "review_triage").mkdir(parents=True)
+def build() -> Path:
+    if BUNDLE_DIR.exists():
+        shutil.rmtree(BUNDLE_DIR)
+    (BUNDLE_DIR / "review_triage").mkdir(parents=True)
 
     gold = {split: pd.read_csv(LABELS_DIR / f"gold_{split}.csv") for split in ("dev", "test")}
     gold_ids = set(pd.concat(gold.values())["review_id"])
     for split, df in gold.items():
-        df[TEXT_COLUMNS].to_csv(bundle_dir / f"gold_{split}.csv", index=False)
+        df[TEXT_COLUMNS].to_csv(BUNDLE_DIR / f"gold_{split}.csv", index=False)
 
     silver = sample_silver(load_reviews(RAW_DIR), exclude_ids=gold_ids)
-    silver[[*TEXT_COLUMNS, "review_score"]].to_csv(bundle_dir / "silver_pool.csv", index=False)
+    silver[[*TEXT_COLUMNS, "review_score"]].to_csv(BUNDLE_DIR / "silver_pool.csv", index=False)
     # The teacher run produces the silver labels, so its bundle is built without them;
     # rebuild after downloading teacher outputs to get the student's training data.
     n_labels = 0
@@ -45,13 +45,13 @@ def build(bundle_dir: Path = BUNDLE_DIR) -> Path:
         labels = pd.read_csv(SILVER_LABELS)
         if not gold_ids.isdisjoint(labels["review_id"]):
             raise ValueError(f"{SILVER_LABELS} contains gold reviews")
-        labels[SILVER_LABEL_COLUMNS].to_csv(bundle_dir / "teacher_silver.csv", index=False)
+        labels[SILVER_LABEL_COLUMNS].to_csv(BUNDLE_DIR / "teacher_silver.csv", index=False)
         n_labels = len(labels)
 
     for name in PACKAGE_FILES:
-        shutil.copy2(PACKAGE_DIR / name, bundle_dir / "review_triage" / name)
+        shutil.copy2(PACKAGE_DIR / name, BUNDLE_DIR / "review_triage" / name)
 
-    archive = shutil.make_archive(str(bundle_dir), "zip", root_dir=bundle_dir)
+    archive = shutil.make_archive(str(BUNDLE_DIR), "zip", root_dir=BUNDLE_DIR)
     print(
         f"gold dev/test: {len(gold['dev'])}/{len(gold['test'])}, "
         f"silver pool: {len(silver)}, silver labels: {n_labels or 'none yet (teacher run)'}"

@@ -14,10 +14,9 @@ import pandas as pd
 
 from review_triage.baseline import PREDICTIONS_DIR
 from review_triage.data import load_reviews
-from review_triage.labeling import LABELS_DIR, PROJECT_DIR
+from review_triage.labeling import LABELS_DIR, RAW_DIR, load_gold
 from review_triage.report import RESULTS_DIR
 
-RAW_DIR = PROJECT_DIR / "data" / "raw"
 LOW_SCORES = (1, 2)
 HIGH_SCORES = (4, 5)
 META = ["review_id", "review_score", "delivered", "late"]
@@ -49,7 +48,7 @@ def checks(df: pd.DataFrame) -> dict:
 
 
 def build() -> dict:
-    gold = pd.concat(pd.read_csv(LABELS_DIR / f"gold_{s}.csv") for s in ("dev", "test"))
+    gold = load_gold()
     gold_test = pd.read_csv(LABELS_DIR / "gold_test.csv")[META]
     silver = pd.read_csv(PREDICTIONS_DIR / "teacher_full_v2" / "teacher_silver.csv")
     silver = silver[silver["valid_json"].astype(bool)][LABELS]

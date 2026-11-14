@@ -67,7 +67,7 @@ def _per_class(preds: pd.DataFrame, gold: pd.DataFrame) -> dict:
         out[field] = {
             "support": merged[field].value_counts().reindex(labels, fill_value=0).to_dict(),
             "f1": {label: round(float(v), 3) for label, v in zip(labels, f1, strict=True)},
-            "confusion": confusion(preds, gold, field).to_dict(orient="index"),
+            "confusion": confusion(merged, field).to_dict(orient="index"),
         }
     return out
 

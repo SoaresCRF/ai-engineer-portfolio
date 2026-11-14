@@ -55,8 +55,8 @@ def score(preds: pd.DataFrame, gold: pd.DataFrame) -> dict:
     return report
 
 
-def confusion(preds: pd.DataFrame, gold: pd.DataFrame, field: str) -> pd.DataFrame:
-    merged = align(preds, gold)
+def confusion(merged: pd.DataFrame, field: str) -> pd.DataFrame:
+    """Confusion matrix (rows = gold, columns = predicted) on an align() frame."""
     labels = [m.value for m in LABEL_FIELDS[field]]
     matrix = confusion_matrix(merged[field], merged[f"{field}_pred"], labels=labels)
     return pd.DataFrame(matrix, index=labels, columns=labels)
@@ -72,7 +72,6 @@ def bootstrap(
     runs: dict[str, pd.DataFrame],
     gold: pd.DataFrame,
     n_resamples: int = BOOTSTRAP_RESAMPLES,
-    seed: int = BOOTSTRAP_SEED,
 ) -> dict:
     """Paired percentile bootstrap CIs for every approach and every pairwise difference.
 
@@ -81,7 +80,7 @@ def bootstrap(
     """
     aligned = {name: align(preds, gold) for name, preds in runs.items()}
     n = len(gold)
-    resamples = np.random.default_rng(seed).integers(0, n, size=(n_resamples, n))
+    resamples = np.random.default_rng(BOOTSTRAP_SEED).integers(0, n, size=(n_resamples, n))
     report = {"n": n, "n_resamples": n_resamples, "ci_level": CI_LEVEL}
     for field, enum in LABEL_FIELDS.items():
         labels = [m.value for m in enum]

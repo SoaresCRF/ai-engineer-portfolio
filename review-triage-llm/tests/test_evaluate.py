@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from review_triage.evaluate import bootstrap, confusion, score
+from review_triage.evaluate import align, bootstrap, confusion, score
 
 GOLD = pd.DataFrame(
     {
@@ -32,7 +32,7 @@ def test_missing_and_invalid_predictions_count_as_wrong():
 
 def test_confusion_uses_schema_order():
     preds = GOLD.assign(categoria=["outro", "nao_recebido", "outro", "outro"])
-    matrix = confusion(preds, GOLD, "categoria")
+    matrix = confusion(align(preds, GOLD), "categoria")
     assert matrix.loc["nao_recebido", "outro"] == 1
     assert matrix.loc["outro", "outro"] == 2
 

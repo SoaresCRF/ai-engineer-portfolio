@@ -83,28 +83,28 @@ def load_reviews(raw_dir: Path) -> pd.DataFrame:
     )
 
 
-def sample_gold(df: pd.DataFrame, seed: int = SEED) -> pd.DataFrame:
+def sample_gold(df: pd.DataFrame) -> pd.DataFrame:
     """Stratified-by-score sample for blind human labeling, with a fixed dev/test split."""
     per_score = GOLD_DEV_PER_SCORE + GOLD_TEST_PER_SCORE
     parts = []
     for score in SCORES:
-        picked = df[df["review_score"] == score].sample(n=per_score, random_state=seed)
+        picked = df[df["review_score"] == score].sample(n=per_score, random_state=SEED)
         picked = picked.assign(split=["dev"] * GOLD_DEV_PER_SCORE + ["test"] * GOLD_TEST_PER_SCORE)
         parts.append(picked)
     # Shuffle so the labeler can't infer the star score from position.
-    return pd.concat(parts).sample(frac=1, random_state=seed).reset_index(drop=True)
+    return pd.concat(parts).sample(frac=1, random_state=SEED).reset_index(drop=True)
 
 
 def sample_silver(
-    df: pd.DataFrame, exclude_ids: set[str], per_score: int = SILVER_PER_SCORE, seed: int = SEED
+    df: pd.DataFrame, exclude_ids: set[str], per_score: int = SILVER_PER_SCORE
 ) -> pd.DataFrame:
     """Training pool for LLM (silver) labels, balanced by score like the gold set."""
     pool = df[~df["review_id"].isin(exclude_ids)]
     parts = [
-        pool[pool["review_score"] == score].sample(n=per_score, random_state=seed)
+        pool[pool["review_score"] == score].sample(n=per_score, random_state=SEED)
         for score in SCORES
     ]
-    return pd.concat(parts).sample(frac=1, random_state=seed).reset_index(drop=True)
+    return pd.concat(parts).sample(frac=1, random_state=SEED).reset_index(drop=True)
 
 
 def validate_labels(df: pd.DataFrame) -> pd.DataFrame:
