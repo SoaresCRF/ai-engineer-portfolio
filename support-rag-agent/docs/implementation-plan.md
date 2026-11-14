@@ -84,7 +84,7 @@ support-rag-agent/
 
 ---
 
-### Tarefa 1: Esqueleto do projeto e CI
+### Task 1: Esqueleto do projeto e CI
 
 **Arquivos:**
 - Criar: `pyproject.toml`, `.python-version` (`3.11`), `.env.example`, `src/support_agent/__init__.py`, `tests/test_smoke.py`, `../.github/workflows/support-rag-agent.yml`
@@ -107,7 +107,7 @@ support-rag-agent/
 - [ ] **Passo 5:** Rodar `uv run ruff check . && uv run ruff format --check .`. Esperado: sem erros.
 - [ ] **Passo 6:** Commit `build(support-rag-agent): scaffold package, tooling and CI`.
 
-### Tarefa 2: Leis, do HTML do Planalto para Markdown
+### Task 2: Leis, do HTML do Planalto para Markdown
 
 **Arquivos:**
 - Criar: `src/support_agent/corpus.py`, `tests/test_corpus.py`, `tests/fixtures/planalto_sample.html`
@@ -149,7 +149,7 @@ support-rag-agent/
   - Conferir à mão: o CDC tem 119 artigos e o `art49` contém "sete dias".
 - [ ] **Passo 6:** Commit `feat(support-rag-agent): parse CDC and Decree 7962 into passages`.
 
-### Tarefa 3: Políticas fictícias e constantes de negócio
+### Task 3: Políticas fictícias e constantes de negócio
 
 **Arquivos:**
 - Criar: `src/support_agent/policy.py`, `corpus/policies/*.md` (8 arquivos), `tests/test_policy.py`
@@ -188,7 +188,7 @@ O reembolso por `nao_entregue` exige `status == "nao_entregue"` e é integral. O
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add fictional delivery policies and business rules`.
 
-### Tarefa 4: Chunking
+### Task 4: Chunking
 
 **Arquivos:**
 - Modificar: `src/support_agent/corpus.py`, `tests/test_corpus.py`
@@ -210,7 +210,7 @@ O reembolso por `nao_entregue` exige `status == "nao_entregue"` e é integral. O
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): chunk passages by paragraph`.
 
-### Tarefa 5: Busca (R1–R4)
+### Task 5: Busca (R1–R4)
 
 **Arquivos:**
 - Criar: `src/support_agent/retrieval.py`, `tests/test_retrieval.py`
@@ -245,7 +245,7 @@ O reembolso por `nao_entregue` exige `status == "nao_entregue"` e é integral. O
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add dense, BM25, hybrid and reranked retrieval`.
 
-### Tarefa 6: Métricas de busca e CLI de avaliação de busca
+### Task 6: Métricas de busca e CLI de avaliação de busca
 
 **Arquivos:**
 - Criar: `src/support_agent/scoring.py`, `tests/test_scoring.py`
@@ -266,7 +266,7 @@ O reembolso por `nao_entregue` exige `status == "nao_entregue"` e é integral. O
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add passage-level recall@k and MRR`.
 
-### Tarefa 7: Pedidos sintéticos em SQLite
+### Task 7: Pedidos sintéticos em SQLite
 
 **Arquivos:**
 - Criar: `src/support_agent/orders.py`, `tests/test_orders.py`
@@ -303,7 +303,7 @@ O reembolso por `nao_entregue` exige `status == "nao_entregue"` e é integral. O
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): generate synthetic orders in SQLite`.
 
-### Tarefa 8: Ferramentas e guarda
+### Task 8: Ferramentas e guarda
 
 **Arquivos:**
 - Criar: `src/support_agent/tools.py`, `tests/test_tools.py`
@@ -344,7 +344,7 @@ O valor reembolsado é calculado em código: soma dos `itens` informados (que pr
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add order tools with code-enforced refund guard`.
 
-### Tarefa 9: Tracing, prompts e laço do agente
+### Task 9: Tracing, prompts e laço do agente
 
 **Arquivos:**
 - Criar: `src/support_agent/tracing.py`, `prompts.py`, `llm.py`, `agent.py`, `tests/test_tracing.py`, `tests/test_agent.py`
@@ -398,7 +398,7 @@ O valor reembolsado é calculado em código: soma dos `itens` informados (que pr
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add tool-calling agent loop with layered injection defense`.
 
-### Tarefa 10: Smoke test do agente com LLM real (portão humano)
+### Task 10: Smoke test do agente com LLM real (portão humano)
 
 Valida o contrato do `OpenAIChatClient` antes de investir na API e na avaliação. Tool calling com modelos abertos é o maior risco técnico do PLAN.
 
@@ -413,7 +413,7 @@ Valida o contrato do `OpenAIChatClient` antes de investir na API e na avaliaçã
 - [ ] **Passo 3:** Gravar o resultado em `docs/dev_log.md`: versão do vLLM, ID do modelo, latência observada e problemas.
 - [ ] **Passo 4:** Commit `chore(support-rag-agent): add Kaggle notebook and record vLLM smoke test`.
 
-### Tarefa 11: API FastAPI
+### Task 11: API FastAPI
 
 **Arquivos:**
 - Criar: `src/support_agent/api.py`, `config/demo_tokens.json`, `tests/test_api.py`
@@ -455,7 +455,7 @@ Valida o contrato do `OpenAIChatClient` antes de investir na API e na avaliaçã
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): expose agent through FastAPI with auth and security headers`.
 
-### Tarefa 12: Docker
+### Task 12: Docker
 
 **Arquivos:**
 - Criar: `Dockerfile`, `.dockerignore`
@@ -474,7 +474,7 @@ Valida o contrato do `OpenAIChatClient` antes de investir na API e na avaliaçã
 - [ ] **Passo 3:** `docker run -d -p 8000:8000 -e LLM_BASE_URL=http://host.docker.internal:11434/v1 ...`. Esperado: `GET /health` → 200, e `docker logs` mostra linhas JSON com `request_id`.
 - [ ] **Passo 4:** Commit `build(support-rag-agent): add Dockerfile and CI image build`.
 
-### Tarefa 13: Schemas do conjunto de avaliação, split e congelamento
+### Task 13: Schemas do conjunto de avaliação, split e congelamento
 
 **Arquivos:**
 - Criar: `src/support_agent/eval_set.py`, `tests/test_eval_set.py`
@@ -510,7 +510,7 @@ Valida o contrato do `OpenAIChatClient` antes de investir na API e na avaliaçã
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add eval set schemas, stratified split and freeze check`.
 
-### Tarefa 14: Escrever e congelar o conjunto (portão humano)
+### Task 14: Escrever e congelar o conjunto (portão humano)
 
 Tamanhos do PLAN 4.1:
 
@@ -532,7 +532,7 @@ Tamanhos do PLAN 4.1:
 - [ ] **Passo 5:** `assign_splits`, `validate_all` e `freeze`. Rodar `uv run pytest -q`; esperado: `test_eval_set_is_frozen` passa sem skip.
 - [ ] **Passo 6:** Commit `test(support-rag-agent): freeze evaluation set`, com o SHA-256 do manifest no corpo da mensagem.
 
-### Tarefa 15: Harness de rodada e pontuação determinística
+### Task 15: Harness de rodada e pontuação determinística
 
 **Arquivos:**
 - Criar: `src/support_agent/run_eval.py`, `scripts/build_kaggle_bundle.py`
@@ -562,7 +562,7 @@ Tamanhos do PLAN 4.1:
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add eval runner, tool and attack scoring, paired bootstrap`.
 
-### Tarefa 16: Juiz
+### Task 16: Juiz
 
 **Arquivos:**
 - Criar: `src/support_agent/judge.py`, `tests/test_judge.py`
@@ -585,7 +585,7 @@ Tamanhos do PLAN 4.1:
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): add LLM judge prompt and verdict parsing`.
 
-### Tarefa 17: Rodadas de dev, notas humanas e validação do juiz (portão humano)
+### Task 17: Rodadas de dev, notas humanas e validação do juiz (portão humano)
 
 - [ ] **Passo 1:** Busca R1–R4 no dev, local em CPU, com `uv run python -m support_agent.report retrieval dev`. Grava `results/retrieval_dev.json`. Precisa da permissão para baixar bge-m3 e o reranker.
 - [ ] **Passo 2:** No Kaggle, rodadas de dev com o gerador:
@@ -603,7 +603,7 @@ Tamanhos do PLAN 4.1:
 - [ ] **Passo 5:** Ajustes no dev: `top_k ∈ {3, 5, 8}` e redação dos prompts. Toda mudança e todo resultado vão para `docs/dev_log.md`. Congelar `AgentConfig` final em `src/support_agent/final_config.py`.
 - [ ] **Passo 6:** Commit `chore(support-rag-agent): record dev runs, judge validation and frozen config`.
 
-### Tarefa 18: Relatório
+### Task 18: Relatório
 
 **Arquivos:**
 - Criar: `src/support_agent/report.py`, `tests/test_report.py`
@@ -624,14 +624,14 @@ Tamanhos do PLAN 4.1:
 - [ ] **Passo 4:** Rodar. Esperado: PASS.
 - [ ] **Passo 5:** Commit `feat(support-rag-agent): generate results and README tables from runs`.
 
-### Tarefa 19: Rodada única no test
+### Task 19: Rodada única no test
 
 - [ ] **Passo 1:** Conferir que `verify_frozen` passa e que `final_config.py` está commitado.
 - [ ] **Passo 2:** Rodar no Kaggle as mesmas 5 configs da Tarefa 17 com `split="test"`, mais a fase do juiz. Localmente, rodar `report retrieval test` e `report final`.
 - [ ] **Passo 3:** Registrar a data UTC da rodada em `results/final.json` (`test_run_utc`). **Não reexecutar nem ajustar nada depois disso.**
 - [ ] **Passo 4:** Commit `test(support-rag-agent): run frozen configs once on test set`.
 
-### Tarefa 20: README, demo e merge
+### Task 20: README, demo e merge
 
 **Arquivos:**
 - Criar: `README.md`, `docs/demo.gif`, `tests/test_readme.py`
