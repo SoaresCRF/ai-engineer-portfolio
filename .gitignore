@@ -30,3 +30,8 @@ Thumbs.db
 
 # Build outputs (e.g. Kaggle upload bundles)
 **/dist/
+
+# Support RAG agent: raw corpus, local order DB, caches
+**/corpus/raw/
+**/data/orders.sqlite
+**/.cache/
