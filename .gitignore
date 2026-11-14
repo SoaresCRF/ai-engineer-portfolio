@@ -30,6 +30,3 @@ Thumbs.db
 
 # Build outputs (e.g. Kaggle upload bundles)
 **/dist/
-
-# Personal planning notes (local only)
-PROJETOS_PORTFOLIO.md
