@@ -67,3 +67,19 @@ def test_retrieval_report():
 def test_report_empty_returns_none():
     rep = retrieval_report(lambda q, k: [], [Q("c", "q", [])])
     assert rep["n"] == 0 and rep["mrr"] is None and rep["recall@10"] is None
+
+
+def test_recall_counts_chunks_but_mrr_counts_passages():
+    ranked = ["A#0", "A#1", "A#2", "B#0"]
+    assert recall_at_k(ranked, {"B"}, 3) == 0.0
+    assert mrr(ranked, {"B"}) == 0.5
+
+
+def test_recall_rejects_empty_gold():
+    with pytest.raises(ValueError, match="gold_passages must not be empty"):
+        recall_at_k(["A#0"], set(), 1)
+
+
+def test_mrr_rejects_empty_gold():
+    with pytest.raises(ValueError, match="gold_passages must not be empty"):
+        mrr(["A#0"], set())
