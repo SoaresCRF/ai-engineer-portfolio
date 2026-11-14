@@ -1,0 +1,48 @@
+[project]
+name = "support-rag-agent"
+version = "0.1.0"
+description = "RAG + tool-calling customer-support assistant"
+readme = "README.md"
+authors = [
+    { name = "SoaresCRF", email = "103540321+SoaresCRF@users.noreply.github.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "bm25s>=0.3.16",
+    "fastapi>=0.162.7",
+    "numpy>=2.4.0",
+    "openai>=3.51.0",
+    "pydantic>=2.14.3",
+    "sentence-transformers>=6.3.0",
+    # Declared directly so [tool.uv.sources] applies: CPU-only wheels, no CUDA in CI/Docker.
+    "torch>=2.15.0",
+    "uvicorn>=0.54.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.5",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.uv.build-backend]
+module-name = "support_agent"

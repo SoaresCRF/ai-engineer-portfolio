@@ -1,0 +1,29 @@
+name: support-rag-agent
+
+on:
+  push:
+    branches: [main]
+    paths: ["support-rag-agent/**", ".github/workflows/support-rag-agent.yml"]
+  pull_request:
+    paths: ["support-rag-agent/**", ".github/workflows/support-rag-agent.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: support-rag-agent
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: "0.12.5"
+          working-directory: support-rag-agent
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest -q
