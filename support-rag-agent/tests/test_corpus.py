@@ -138,3 +138,25 @@ def test_real_corpus_chunks_within_limit():
         assert _squash(
             "".join(c.text.split("\n", 1)[1] for c in by_passage[passage.passage_id])
         ) == _squash(passage.text)
+
+
+STRUCTURE_HTML = """<html><body>
+<p>TÍTULO I</p><p>Dos Direitos</p>
+<p>CAPÍTULO I</p><p>Disposições Gerais</p>
+<p>Art. 1° Primeiro artigo.</p>
+<p>CAPÍTULO II</p><p>Da Política</p>
+<p>SEÇÃO I</p><p>Da Proteção</p>
+<p>Art. 2° Segundo artigo.</p>
+<p>CAPÍTULO III</p><p>Dos Direitos</p>
+<p>Art. 3° Terceiro artigo.</p>
+<p>Brasília, 1 de janeiro de 2000.</p></body></html>"""
+
+
+def test_structure_headings_move_into_article_titles():
+    md = law_html_to_markdown(STRUCTURE_HTML, "Sample")
+    art1 = md.split("## art1 ")[1].split("## art2 ")[0]
+    assert "CAPÍTULO" not in art1
+    assert "Da Política" not in art1
+    assert "## art1 Art. 1° — Capítulo I: Disposições Gerais\n" in md
+    assert "## art2 Art. 2° — Capítulo II: Da Política > Seção I: Da Proteção\n" in md
+    assert "## art3 Art. 3° — Capítulo III: Dos Direitos\n" in md  # new capítulo resets seção

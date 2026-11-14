@@ -21,10 +21,13 @@ META_SNIFF_BYTES = 4096
 _SKIPPED_TAGS = {"strike", "script", "style"}
 _BLOCK_TAGS = {"p", "div", "br", "li", "tr", "h1", "h2", "h3", "h4", "h5", "h6", "table"}
 # "Art. 1º", "Art. 10.", "Art. 54-A." -> number plus optional letter suffix.
-_ARTICLE_RE = re.compile(r"^Art\.\s*(\d+)\s*[ºo°]?(?:\s*-\s*([A-Z]))?\b\.?", re.IGNORECASE)
+_ARTICLE_RE = re.compile(r"^Art\.\s*(\d+)\s*[ºo°]?(?:\s*-\s*([A-Z]))?(?!\w)\.?", re.IGNORECASE)
 _EMPTY_BODY_RE = re.compile(r"^[\s.\-–—]*(\(?\s*(vetado|revogado)\s*\)?[\s.]*)?$", re.IGNORECASE)
 # Signature line ("Brasília, 11 de setembro de 1990; ...") ends the law text; footer follows.
 _SIGNATURE_RE = re.compile(r"^Bras[ií]lia,\s*\d")
+# "CAPÍTULO III", "SEÇÃO I", "CAPÍTULO VI-A": the next line holds the structure name.
+_STRUCTURE_RE = re.compile(r"^(TÍTULO|CAPÍTULO|SEÇÃO)\s+([IVXLCDM]+(?:-[A-Z])?|ÚNICO)\s*$")
+_STRUCTURE_LEVELS = {"TÍTULO": 0, "CAPÍTULO": 1, "SEÇÃO": 2}
 _META_CHARSET_RE = re.compile(rb"charset\s*=\s*[\"']?([\w-]+)", re.IGNORECASE)
 _HEADING_RE = re.compile(r"^## (\S+)\s*(.*)$")
 
@@ -100,27 +103,60 @@ def _is_empty_article(first_line: str, rest: list[str], prefix_end: int) -> bool
     return bool(_EMPTY_BODY_RE.match(body))
 
 
+class _Structure:
+    """Tracks the current título/capítulo/seção while scanning law lines."""
+
+    def __init__(self) -> None:
+        self._labels = ["", "", ""]
+        self._pending: int | None = None  # level whose name is on the next line
+
+    def consume(self, line: str) -> bool:
+        """Return True if the line is a structural heading or its name (not article text)."""
+        if self._pending is not None:
+            level, self._pending = self._pending, None
+            if not _ARTICLE_RE.match(line):
+                self._labels[level] += f": {line}"
+                return True
+        match = _STRUCTURE_RE.match(line)
+        if not match:
+            return False
+        level = _STRUCTURE_LEVELS[match.group(1)]
+        # A deeper level is reset whenever its parent changes.
+        label = f"{match.group(1).capitalize()} {match.group(2)}"
+        self._labels[level:] = [label] + [""] * (2 - level)
+        self._pending = level
+        return True
+
+    def title(self) -> str:
+        """Capítulo > seção; título only when the article sits outside any capítulo."""
+        return " > ".join(label for label in self._labels[1:] if label) or self._labels[0]
+
+
 def law_html_to_markdown(html: str, doc_title: str) -> str:
     collector = _LineCollector()
     collector.feed(html)
     collector.close()
 
-    articles: list[tuple[re.Match, list[str]]] = []
+    structure = _Structure()
+    articles: list[tuple[re.Match, list[str], str]] = []
     for line in collector.lines:
         if _SIGNATURE_RE.match(line):
             break
+        if structure.consume(line):
+            continue
         match = _ARTICLE_RE.match(line)
         if match:
-            articles.append((match, [line]))
+            articles.append((match, [line], structure.title()))
         elif articles:  # lines before the first article (preamble) are ignored
             articles[-1][1].append(line)
 
     parts = [f"# {doc_title}"]
-    for match, lines in articles:
+    for match, lines, context in articles:
         if _is_empty_article(lines[0], lines[1:], match.end()):
             continue
         label = match.group(0).strip().rstrip(".")
-        parts.append(f"## {_local_id(match)} {label}\n\n" + "\n\n".join(lines))
+        heading = f"{label} — {context}" if context else label
+        parts.append(f"## {_local_id(match)} {heading}\n\n" + "\n\n".join(lines))
     return "\n\n".join(parts) + "\n"
 
 
