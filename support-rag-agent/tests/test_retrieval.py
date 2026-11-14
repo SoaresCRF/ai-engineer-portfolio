@@ -106,3 +106,16 @@ def test_cache_invalidates_on_text_change(tmp_path):
 def test_importing_retrieval_does_not_load_sentence_transformers():
     code = "import sys, support_agent.retrieval; assert 'sentence_transformers' not in sys.modules"
     subprocess.run([sys.executable, "-c", code], check=True)
+
+
+def test_build_retriever_uses_precomputed_embeddings():
+    matrix = fake_embed([c.text for c in CHUNKS])
+    embedded: list[list[str]] = []
+
+    def spying_embed(texts):
+        embedded.append(texts)
+        return fake_embed(texts)
+
+    retrieve = build_retriever("dense", CHUNKS, spying_embed, None, embeddings=matrix)
+    assert [c.chunk_id for c in retrieve("frete expresso", 1)] == ["b#0"]
+    assert embedded == [["frete expresso"]]  # only the query was embedded, never the documents

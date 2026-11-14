@@ -84,6 +84,7 @@ def build_retriever(
     embed: Embedder | None,
     rerank: Scorer | None,
     candidates: int = DEFAULT_CANDIDATES,
+    embeddings: np.ndarray | None = None,  # precomputed document vectors (see cached_embeddings)
 ) -> Callable[[str, int], list[Chunk]]:
     if config != "bm25" and embed is None:
         raise ValueError(f"config {config!r} needs an embedder")
@@ -91,7 +92,7 @@ def build_retriever(
         raise ValueError("config 'hybrid_rerank' needs a reranker")
 
     by_id = {c.chunk_id: c for c in chunks}
-    dense = DenseIndex(chunks, embed) if config != "bm25" else None
+    dense = DenseIndex(chunks, embed, embeddings) if config != "bm25" else None
     bm25 = BM25Index(chunks) if config != "dense" else None
 
     def ids_for(query: str, k: int) -> list[str]:
