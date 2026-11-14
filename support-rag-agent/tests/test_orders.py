@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 import pytest
 
@@ -154,3 +154,21 @@ def test_cli_refuses_overwrite_without_force(tmp_path):
     with pytest.raises(SystemExit):
         main(["generate", str(db)])
     main(["generate", str(db), "--force"])
+
+
+def test_to_iso_rejects_naive_datetime():
+    with pytest.raises(ValueError):
+        to_iso(datetime(2026, 11, 1, 12, 0))
+
+
+def test_late_coupon_case_has_late_and_on_time(conn):
+    late = [
+        from_iso(o["delivered_at"]) - from_iso(o["promised_at"])
+        > timedelta(minutes=LATE_COUPON_MINUTES)
+        for o in _rows(
+            conn,
+            "SELECT promised_at, delivered_at FROM orders WHERE status='entregue' "
+            "AND store_type='restaurante' AND delivery_mode='propria'",
+        )
+    ]
+    assert any(late) and not all(late)
