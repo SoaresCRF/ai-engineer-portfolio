@@ -1,11 +1,8 @@
 """Corpus loading: Planalto law HTML -> Markdown passages, and Markdown -> Passage objects."""
 
-import hashlib
 import re
 import sys
-import urllib.request
 from dataclasses import dataclass
-from datetime import UTC, datetime
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -18,7 +15,6 @@ LAW_TITLES: dict[str, str] = {
     "decreto_7962": "Decreto nº 7.962/2013 (Comércio Eletrônico)",
 }
 
-USER_AGENT = "support-rag-agent/0.1"
 SOURCES_FILE = "SOURCES.md"
 META_SNIFF_BYTES = 4096
 
@@ -27,6 +23,8 @@ _BLOCK_TAGS = {"p", "div", "br", "li", "tr", "h1", "h2", "h3", "h4", "h5", "h6",
 # "Art. 1º", "Art. 10.", "Art. 54-A." -> number plus optional letter suffix.
 _ARTICLE_RE = re.compile(r"^Art\.\s*(\d+)\s*[ºo°]?(?:\s*-\s*([A-Z]))?\b\.?", re.IGNORECASE)
 _EMPTY_BODY_RE = re.compile(r"^[\s.\-–—]*(\(?\s*(vetado|revogado)\s*\)?[\s.]*)?$", re.IGNORECASE)
+# Signature line ("Brasília, 11 de setembro de 1990; ...") ends the law text; footer follows.
+_SIGNATURE_RE = re.compile(r"^Bras[ií]lia,\s*\d")
 _META_CHARSET_RE = re.compile(rb"charset\s*=\s*[\"']?([\w-]+)", re.IGNORECASE)
 _HEADING_RE = re.compile(r"^## (\S+)\s*(.*)$")
 
@@ -81,7 +79,13 @@ def decode_html(data: bytes, header_charset: str | None) -> str:
     charset = header_charset
     if not charset:
         match = _META_CHARSET_RE.search(data[:META_SNIFF_BYTES])
-        charset = match.group(1).decode("ascii") if match else "utf-8"
+        if match:
+            charset = match.group(1).decode("ascii")
+        else:
+            try:  # Planalto pages often declare nothing and are cp1252
+                return data.decode("utf-8")
+            except UnicodeDecodeError:
+                charset = "windows-1252"
     if charset.lower() in {"iso-8859-1", "latin-1", "latin1"}:
         charset = "windows-1252"  # superset; browsers treat them the same
     return data.decode(charset, errors="replace")
@@ -103,6 +107,8 @@ def law_html_to_markdown(html: str, doc_title: str) -> str:
 
     articles: list[tuple[re.Match, list[str]]] = []
     for line in collector.lines:
+        if _SIGNATURE_RE.match(line):
+            break
         match = _ARTICLE_RE.match(line)
         if match:
             articles.append((match, [line]))
@@ -158,31 +164,16 @@ def load_corpus(corpus_dir: Path) -> list[Passage]:
     return passages
 
 
-def _download(url: str) -> tuple[bytes, str | None, str]:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return response.read(), response.headers.get_content_charset(), response.geturl()
+# Raw file name (saved manually: the site rejects non-browser clients) -> doc_id.
+RAW_FILES: dict[str, str] = {"cdc.html": "cdc", "d7962.html": "decreto_7962"}
 
 
 def build_laws(corpus_dir: Path) -> None:
-    """Download each law, store raw HTML, write Markdown and record date + SHA-256 in SOURCES.md."""
-    raw_dir, laws_dir = corpus_dir / "raw", corpus_dir / "laws"
-    raw_dir.mkdir(parents=True, exist_ok=True)
-    laws_dir.mkdir(parents=True, exist_ok=True)
-    rows = [
-        "# Sources",
-        "",
-        "| doc_id | URL | downloaded (UTC) | SHA-256 of raw HTML |",
-        "|---|---|---|---|",
-    ]
-    for doc_id, url in LAW_SOURCES.items():
-        data, charset, final_url = _download(url)
-        (raw_dir / f"{doc_id}.html").write_bytes(data)
-        markdown = law_html_to_markdown(decode_html(data, charset), LAW_TITLES[doc_id])
-        (laws_dir / f"{doc_id}.md").write_text(markdown, encoding="utf-8")
-        stamp = datetime.now(UTC).strftime("%Y-%m-%d %H:%M")
-        rows.append(f"| {doc_id} | {final_url} | {stamp} | {hashlib.sha256(data).hexdigest()} |")
-    (laws_dir / SOURCES_FILE).write_text("\n".join(rows) + "\n", encoding="utf-8")
+    """Convert corpus/raw/*.html into corpus/laws/*.md. SOURCES.md is maintained by hand."""
+    for raw_name, doc_id in RAW_FILES.items():
+        data = (corpus_dir / "raw" / raw_name).read_bytes()
+        markdown = law_html_to_markdown(decode_html(data, None), LAW_TITLES[doc_id])
+        (corpus_dir / "laws" / f"{doc_id}.md").write_text(markdown, encoding="utf-8")
 
 
 if __name__ == "__main__":

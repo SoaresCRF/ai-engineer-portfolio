@@ -62,3 +62,13 @@ def test_decode_html_uses_meta_charset():
     html = "<meta charset=windows-1252><p>Art. 1º ação</p>".encode("cp1252")
     assert "Art. 1º ação" in decode_html(html, None)
     assert "ação" in decode_html("ação".encode("latin-1"), "iso-8859-1")
+
+
+def test_footer_after_signature_is_dropped(markdown):
+    assert "FOOTER SIGNATURE" not in markdown
+    assert "Brasília" not in markdown
+
+
+def test_decode_html_without_declaration_falls_back_to_cp1252():
+    assert decode_html("ação".encode("cp1252"), None) == "ação"
+    assert decode_html("ação".encode(), None) == "ação"
