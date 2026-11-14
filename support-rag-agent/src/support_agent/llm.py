@@ -44,7 +44,7 @@ class OpenAIChatClient:
     ) -> None:
         self._client = client or OpenAI(base_url=base_url, api_key=api_key)
         self._model = model
-        self._extra_body = QWEN3_EXTRA_BODY if extra_body is None else extra_body
+        self._extra_body = dict(QWEN3_EXTRA_BODY) if extra_body is None else extra_body
 
     def chat(self, messages: list[dict], tools: list[dict]) -> AssistantTurn:
         resp = self._client.chat.completions.create(
