@@ -90,6 +90,8 @@ def utc_now() -> datetime:
 
 
 def to_iso(dt: datetime) -> str:
+    if dt.tzinfo is None:
+        raise ValueError("naive datetime: timestamps must be timezone-aware (UTC)")
     return dt.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
