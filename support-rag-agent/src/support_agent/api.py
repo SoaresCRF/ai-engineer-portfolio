@@ -54,7 +54,7 @@ RATE_WINDOW_SECONDS = 60.0
 DEFAULT_RATE_LIMIT_PER_MIN = 30
 NONCE_BYTES = 8
 DENSE_MODEL = "BAAI/bge-m3"
-BEARER_PREFIX = "Bearer "
+BEARER_SCHEME = "bearer"  # matched case-insensitively (RFC 7235)
 DOC_PATHS = frozenset({"/docs", "/docs/oauth2-redirect", "/redoc", "/openapi.json"})
 BASE_SECURITY_HEADERS = {
     "x-content-type-options": "nosniff",
@@ -94,12 +94,13 @@ class ChatResponse(BaseModel):
 
 
 class ApiError(Exception):
-    def __init__(self, status: int, code: str) -> None:
-        self.status, self.code = status, code
+    def __init__(self, status: int, code: str, headers: dict[str, str] | None = None) -> None:
+        self.status, self.code, self.headers = status, code, headers
 
 
-def _error(status: int, code: str) -> JSONResponse:
-    return JSONResponse({"erro": code, "request_id": tracing.request_id_var.get()}, status)
+def _error(status: int, code: str, headers: dict[str, str] | None = None) -> JSONResponse:
+    body = {"erro": code, "request_id": tracing.request_id_var.get()}
+    return JSONResponse(body, status, headers)
 
 
 class RateLimiter:
@@ -197,20 +198,21 @@ def create_app(
 
     @app.exception_handler(ApiError)
     async def _api_error(_: Request, exc: ApiError) -> JSONResponse:
-        return _error(exc.status, exc.code)
+        return _error(exc.status, exc.code, exc.headers)
 
     @app.exception_handler(RequestValidationError)
     async def _invalid(_: Request, __: RequestValidationError) -> JSONResponse:
         return _error(422, "requisicao_invalida")  # the default body would echo customer text
 
     def authenticate(authorization: Annotated[str | None, Header()] = None) -> tuple[str, str]:
-        scheme_ok = bool(authorization) and authorization.startswith(BEARER_PREFIX)
-        supplied = authorization.removeprefix(BEARER_PREFIX) if scheme_ok else ""
+        scheme, _, supplied = (authorization or "").partition(" ")
+        if scheme.lower() != BEARER_SCHEME:
+            supplied = ""
         match = next(
             (t for t in tokens if hmac.compare_digest(t.encode(), supplied.encode())), None
         )
         if match is None:
-            raise ApiError(401, "nao_autorizado")
+            raise ApiError(401, "nao_autorizado", {"WWW-Authenticate": "Bearer"})
         if not limiter.allow(match):
             raise ApiError(429, "limite_excedido")
         return match, tokens[match]

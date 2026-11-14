@@ -39,11 +39,13 @@ class Trace:
 class _JsonFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
         payload = {
-            "ts": datetime.fromtimestamp(record.created, UTC).isoformat(),
+            "ts": datetime.fromtimestamp(record.created, UTC).strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
             "level": record.levelname,
             "msg": record.getMessage(),
             "request_id": request_id_var.get(),
         }
+        if record.exc_info:
+            payload["exc"] = self.formatException(record.exc_info)
         payload.update({k: v for k, v in vars(record).items() if k not in _STD_RECORD_ATTRS})
         return json.dumps(payload, ensure_ascii=False, default=str)
 
