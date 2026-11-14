@@ -1,0 +1,13 @@
+.venv
+.env*
+data/
+corpus/raw/
+notebooks/
+tests/
+docs/
+__pycache__
+*.pyc
+.ruff_cache
+.pytest_cache
+.git
+PLAN.md
