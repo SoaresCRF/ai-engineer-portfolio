@@ -64,4 +64,26 @@ Gate: Cohen's kappa >= 0.6 per criterion against 60 blind human grades (30 rows 
   `judge_tuning/<sha12>/<run>.verdicts.jsonl` (notebook section "Judge tuning"), then
   `python -m support_agent.judge agreement <dir>` scores them locally. The bundle ships
   `data/grading/key.json` only, never the human grades.
+- Metrics (graded subset, 60 rows): `correta` accuracy 0.283, kappa 0.051; `fiel` accuracy 0.383,
+  kappa 0.105. The judge said true on only 7/60 (`correta`) and 10/60 (`fiel`): strictness
+  overshot into false negatives.
+- Finding: the justifications invent contradictions (they claim the answer contradicts the
+  reference when it agrees). Phi-4 AWQ cannot verify pt-BR claims reliably; decision: switch the
+  judge model rather than tune the prompt further.
+
+### Prompt v3 (sha256 `aa3d2d0e79694ed9a89c94b0122b49401a24bb56f9b5f046019b76313c9a7cd9`)
+
+- Judge model: `casperhansen/mistral-small-24b-instruct-2501-awq` (Mistral Small 24B, 4-bit AWQ,
+  public, non-Qwen family). It does not fit one T4 with KV cache, so the judge server runs with
+  `--tensor-parallel-size 2` and `CUDA_VISIBLE_DEVICES=0,1` (accelerator must be GPU T4 x2);
+  `--dtype half` and `--max-model-len 8192` unchanged.
+- Prompt: balanced instead of strict. Still reason-first (`justificativa` first). Claim-by-claim
+  procedure (agrees / contradicts / not covered, supported by excerpts), then the flags.
+  `correta` is false only for a real contradiction (which must be quoted from both texts), a
+  missing decisive condition/number, or an invented fact that changes the outcome; paraphrase and
+  harmless extra detail are fine. `fiel_ao_contexto` is false only for a factual claim absent from
+  the excerpts (courtesy, offers of help and routing to support are not claims). "Na dúvida,
+  falso" removed. v2 rules for "not in the policies" and refused benign requests kept.
+- Examples: three synthetic ones (fictional delivery platform): all-true paraphrase, quoted
+  contradiction (`correta` false), unsupported claim with `correta` true and `fiel` false.
 - Metrics: pending Kaggle run.

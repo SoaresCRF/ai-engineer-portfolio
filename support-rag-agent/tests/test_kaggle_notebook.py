@@ -51,3 +51,9 @@ def test_judge_only_path_defines_every_name_it_uses():
         used = {n.id for n in loads if id(n) not in in_def}
         assert used <= defined, f"{cell_id} uses undefined {sorted(used - defined)}"
     assert late <= defined, f"functions use undefined {sorted(late - defined)}"
+
+
+def test_judge_server_uses_both_gpus_with_tensor_parallelism():
+    cells = {c["id"]: c for c in json.loads(NOTEBOOK.read_text(encoding="utf-8"))["cells"]}
+    src = "".join(cells["cell-10"]["source"])
+    assert '"--tensor-parallel-size"' in src and '"CUDA_VISIBLE_DEVICES": "0,1"' in src
