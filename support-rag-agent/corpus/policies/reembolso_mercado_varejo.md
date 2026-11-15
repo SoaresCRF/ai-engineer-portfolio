@@ -28,6 +28,6 @@ Ao registrar o arrependimento, o cliente recebe as instruções de devolução. 
 
 O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue e no arrependimento, o valor é o total pago.
 
-## 5 Produto de varejo com defeito
+## 5 Produto com defeito comprado em loja de varejo
 
-Se um produto de varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
+Se um produto comprado em uma loja do tipo varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
