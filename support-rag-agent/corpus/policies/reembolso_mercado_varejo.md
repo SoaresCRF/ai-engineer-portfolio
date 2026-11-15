@@ -10,7 +10,7 @@ Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso p
 
 ## 2.2 Prazo para reclamar de pedido de varejo
 
-Pedidos de varejo, como eletrônicos, utilidades domésticas, farmácia e pet, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
 
 ## 3.1 Direito de arrependimento
 
