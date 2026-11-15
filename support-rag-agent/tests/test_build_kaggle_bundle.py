@@ -18,6 +18,7 @@ def test_bundle_copies_needed_files_and_skips_raw_and_pycache(tmp_path):
         "src/pkg/__pycache__/a.pyc": "x",
         "corpus/policy.md": "p",
         "corpus/raw/big.html": "r",
+        "corpus/sub/raw/keep.txt": "k",
         "data/eval/manifest.json": "{}",
         "config/demo_tokens.json": "{}",
         "pyproject.toml": "[project]",
@@ -36,6 +37,7 @@ def test_bundle_copies_needed_files_and_skips_raw_and_pycache(tmp_path):
     assert copied == {
         "src/pkg/a.py",
         "corpus/policy.md",
+        "corpus/sub/raw/keep.txt",
         "data/eval/manifest.json",
         "config/demo_tokens.json",
         "pyproject.toml",

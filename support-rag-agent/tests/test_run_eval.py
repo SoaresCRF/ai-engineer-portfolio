@@ -8,7 +8,7 @@ from support_agent.agent import AgentConfig
 from support_agent.corpus import Chunk
 from support_agent.eval_set import Message, ToolScenario
 from support_agent.llm import AssistantTurn, ToolCall
-from support_agent.orders import REFERENCE_NOW, to_iso
+from support_agent.orders import REFERENCE_NOW, connect, generate, to_iso
 
 ORDER_ID = "P01001"
 CHUNKS = [Chunk("c1", "cdc:art49", "Arrependimento em 7 dias.")]
@@ -107,3 +107,27 @@ def test_run_writes_outputs_and_meta(setup):
     assert len(meta["manifest_sha256"]) == 64 and meta["config"]["top_k"] == 5
     with pytest.raises(FileExistsError):
         _run(ScriptedLLM([]), name=run_dir.name)
+
+
+def test_run_only_runs_requested_split(setup, monkeypatch):
+    setup(days_before_ref=0, n_items=2)
+    items = [_scenario("tool-dev"), _scenario("tool-test").model_copy(update={"split": "test"})]
+    monkeypatch.setattr(run_eval.eval_set, "load", lambda kind: items)
+    rows = _rows(_run(ScriptedLLM([_refund_turn(), AssistantTurn("ok")])))
+    assert [r["id"] for r in rows] == ["tool-dev"]
+
+
+def test_run_generates_db_with_reference_clock(setup, monkeypatch):
+    # Generated orders' timestamps derive from `now`: they must match the REFERENCE_NOW database.
+    setup(days_before_ref=0, n_items=1)
+    ref = connect(":memory:")
+    generate(ref, now=REFERENCE_NOW, extra_orders=[_injected(0)])
+    row = ref.execute(
+        "SELECT id, customer_id, created_at FROM orders WHERE id != ?", (ORDER_ID,)
+    ).fetchone()
+    scenario = _scenario("tool-gen").model_copy(update={"customer_id": row["customer_id"]})
+    monkeypatch.setattr(run_eval.eval_set, "load", lambda kind: [scenario])
+    args = json.dumps({"pedido_id": row["id"]})
+    consult = AssistantTurn("", [ToolCall("t1", "consultar_pedido", args)], 1, 1)
+    rows = _rows(_run(ScriptedLLM([consult, AssistantTurn("ok")])))
+    assert rows[0]["tool_outcomes"][0]["result"]["pedido"]["created_at"] == row["created_at"]
