@@ -169,3 +169,14 @@ def test_chat_omits_empty_tools(tools, sent):
     fake = SimpleNamespace(chat=SimpleNamespace(completions=completions))
     OpenAIChatClient("http://x", "m", client=fake).chat([{"role": "user", "content": "q"}], tools)
     assert ("tools" in completions.kwargs) is sent
+
+
+def test_verdict_json_schema_matches_parse_verdict():
+    from support_agent.judge import VERDICT_JSON_SCHEMA
+
+    props = VERDICT_JSON_SCHEMA["properties"]
+    types = {"boolean": True, "string": "ok"}
+    sample = {k: types[v["type"]] for k, v in props.items()}
+    assert set(VERDICT_JSON_SCHEMA["required"]) == set(props)
+    assert VERDICT_JSON_SCHEMA["additionalProperties"] is False
+    assert parse_verdict(json.dumps(sample)) == Verdict(True, True, True, "ok")

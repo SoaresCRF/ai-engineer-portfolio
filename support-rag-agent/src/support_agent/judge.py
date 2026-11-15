@@ -28,6 +28,17 @@ JUDGED_KINDS = ("policy_questions", "benign")  # tools and attacks are scored de
 NO_REFERENCE = "(sem referência)"
 NO_CONTEXT = "(nenhum trecho recuperado)"
 _VERDICT_KEYS = {"correta", "fiel_ao_contexto", "recusou", "justificativa"}
+_FLAG_KEYS = ("correta", "fiel_ao_contexto", "recusou")
+# Sent to vLLM as response_format so the judge can only emit a verdict parse_verdict accepts.
+VERDICT_JSON_SCHEMA = {
+    "type": "object",
+    "properties": {
+        **{k: {"type": "boolean"} for k in _FLAG_KEYS},
+        "justificativa": {"type": "string"},
+    },
+    "required": sorted(_VERDICT_KEYS),
+    "additionalProperties": False,
+}
 _FENCE_RE = re.compile(r"\A\s*```(?:json)?\s*(.*?)\s*```\s*\Z", re.DOTALL)
 
 # Kept in one constant so the dev log can version the exact rubric text (tuned in Task 17).
@@ -72,7 +83,7 @@ class Verdict:
 def build_judge_messages(
     question: str, reference: str | None, contexts: list[str], answer: str
 ) -> list[dict]:
-    # One user message, no system role: Gemma chat templates handle system turns poorly.
+    # One user message, no system role: some chat templates handle system turns poorly.
     prompt = JUDGE_PROMPT.format(
         question=question,
         reference=reference if reference is not None else NO_REFERENCE,
@@ -90,7 +101,7 @@ def parse_verdict(text: str) -> Verdict | None:
         return None
     if not isinstance(data, dict) or data.keys() != _VERDICT_KEYS:
         return None
-    flags = [data[k] for k in ("correta", "fiel_ao_contexto", "recusou")]
+    flags = [data[k] for k in _FLAG_KEYS]
     if not all(type(v) is bool for v in flags) or not isinstance(data["justificativa"], str):
         return None
     return Verdict(*flags, data["justificativa"])
