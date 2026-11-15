@@ -10,7 +10,7 @@ import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-from support_agent import eval_set
+from support_agent import eval_set, run_eval
 from support_agent.corpus import chunk_passages, load_corpus
 from support_agent.llm import ChatClient
 from support_agent.scoring import cohen_kappa
@@ -103,6 +103,10 @@ def _render(item) -> str:
     return "\n".join(f"{names[m.role]}: {m.content}" for m in item.messages)
 
 
+def prompt_sha256() -> str:
+    return hashlib.sha256(JUDGE_PROMPT.encode("utf-8")).hexdigest()
+
+
 def _chunk_texts() -> dict[str, str]:
     return {c.chunk_id: c.text for c in chunk_passages(load_corpus(CORPUS_DIR))}
 
@@ -135,6 +139,7 @@ def judge_run(run_dir: Path, llm: ChatClient) -> Path:
                 "valid": verdict is not None,
                 "verdict": asdict(verdict) if verdict else None,
                 "raw": raw,
+                "prompt_sha256": prompt_sha256(),  # ties each kappa to the rubric that judged
             }
             f.write(json.dumps(out, ensure_ascii=False) + "\n")
             f.flush()
@@ -182,7 +187,7 @@ def export_grading_sheet(run_dirs: list[Path], n: int = 60, seed: int = 17) -> P
                     "fiel": "",
                 }
             )
-            key[chave] = {"run": run_dir.name, "run_dir": str(run_dir), "id": row["id"]}
+            key[chave] = {"run": run_dir.name, "id": row["id"]}
     key_path.write_text(json.dumps(key, ensure_ascii=False, indent=1), encoding="utf-8")
     return sheet_path
 
@@ -193,37 +198,58 @@ def _grade(value: str, chave: str, column: str) -> bool:
     return value == "1"
 
 
+def _read_sheet(sheet_path: Path) -> list[dict]:
+    # Excel pt-BR re-saves CSV with ";", so sniff between the two delimiters.
+    text = sheet_path.read_text(encoding="utf-8-sig")
+    delimiter = csv.Sniffer().sniff(text.splitlines()[0], delimiters=",;").delimiter
+    reader = csv.DictReader(text.splitlines(keepends=True), delimiter=delimiter)
+    missing = {"chave", "correta", "fiel"} - set(reader.fieldnames or [])
+    if missing:
+        raise ValueError(f"sheet header lacks columns: {sorted(missing)}")
+    return list(reader)
+
+
 def judge_agreement(sheet_path: Path, key_path: Path) -> Path:
     """Accuracy and Cohen's kappa of the judge against the human grades, per criterion."""
-    with sheet_path.open(encoding="utf-8-sig", newline="") as f:
-        rows = list(csv.DictReader(f))
+    rows = _read_sheet(sheet_path)
     key = json.loads(key_path.read_text(encoding="utf-8"))
     blank = [r["chave"] for r in rows if not r["correta"].strip() or not r["fiel"].strip()]
     if blank:
         raise ValueError(f"ungraded rows (fill correta and fiel): {blank}")
-    verdicts: dict[Path, dict] = {}
+    verdicts: dict[str, dict] = {}
     human = {"correta": [], "fiel_ao_contexto": []}
     judged = {"correta": [], "fiel_ao_contexto": []}
     skipped: list[str] = []
+    hashes: set[str | None] = set()
     for r in rows:
         chave = r["chave"]
         c, fiel = (
             _grade(r["correta"].strip(), chave, "correta"),
             _grade(r["fiel"].strip(), chave, "fiel"),
         )
-        run_dir = Path(key[chave]["run_dir"])
-        if run_dir not in verdicts:
-            lines = (run_dir / "verdicts.jsonl").read_text(encoding="utf-8").splitlines()
-            verdicts[run_dir] = {v["id"]: v for v in map(json.loads, lines)}
-        v = verdicts[run_dir][key[chave]["id"]]
+        if chave not in key:
+            raise ValueError(f"{chave}: not in {key_path.name}")
+        run, item_id = key[chave]["run"], key[chave]["id"]
+        if run not in verdicts:
+            lines = (run_eval.RUNS_DIR / run / "verdicts.jsonl").read_text(encoding="utf-8")
+            verdicts[run] = {v["id"]: v for v in map(json.loads, lines.splitlines())}
+        if item_id not in verdicts[run]:
+            raise ValueError(f"{chave}: id {item_id!r} missing from {run}/verdicts.jsonl")
+        v = verdicts[run][item_id]
+        hashes.add(v.get("prompt_sha256"))
         if not v["valid"]:
             skipped.append(chave)  # reported, not silently dropped
             continue
         for name, human_value in (("correta", c), ("fiel_ao_contexto", fiel)):
             human[name].append(human_value)
             judged[name].append(v["verdict"][name])
+    if len(hashes) != 1 or None in hashes:
+        raise ValueError(
+            f"verdicts must carry one prompt_sha256, found: {sorted(map(str, hashes))}"
+        )
+    (sha,) = hashes
     report = {
-        "judge_prompt_sha256": hashlib.sha256(JUDGE_PROMPT.encode("utf-8")).hexdigest(),
+        "judge_prompt_sha256": sha,
         "n_rows": len(rows),
         "skipped_invalid": skipped,
     }
@@ -235,7 +261,10 @@ def judge_agreement(sheet_path: Path, key_path: Path) -> Path:
             "kappa": cohen_kappa(h, j) if h else None,
         }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    path = RESULTS_DIR / "judge_agreement.json"
+    # One file per prompt version so every tuning round stays on record.
+    path = RESULTS_DIR / f"judge_agreement_{sha[:12]}.json"
+    if path.exists():
+        raise FileExistsError(path)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     return path
 
