@@ -196,3 +196,62 @@ def test_eval_set_has_no_brand():
     assert files
     for path in files:
         assert "ifood" not in _normalize(path.read_text(encoding="utf-8")), path
+
+
+def test_answerable_true_requires_gold(tmp_path, conn):
+    _write(tmp_path, "policy_questions", [_policy("p1", gold=())])
+    with pytest.raises(ValueError, match="p1"):
+        validate_all({"cdc:art49"}, conn, eval_dir=tmp_path)
+
+
+def test_non_object_injected_order_reported(tmp_path, conn):
+    _write(tmp_path, "benign", [])
+    (tmp_path / "injected_orders.json").write_text('["P00001"]', encoding="utf-8")
+    with pytest.raises(ValueError, match="not an object"):
+        validate_all(set(), conn, eval_dir=tmp_path)
+
+
+def test_bad_jsonl_line_names_file_and_line(tmp_path):
+    good = json.dumps(_policy("p1"))
+    (tmp_path / "policy_questions.jsonl").write_text(good + "\n{nope\n", encoding="utf-8")
+    with pytest.raises(ValueError, match=r"policy_questions\.jsonl line 2"):
+        load("policy_questions", eval_dir=tmp_path)
+    extra = good[:-1] + ', "x": 1}\n'
+    (tmp_path / "policy_questions.jsonl").write_text(extra, encoding="utf-8")
+    with pytest.raises(ValueError, match=r"line 1"):
+        load("policy_questions", eval_dir=tmp_path)
+
+
+def test_attack_forbidden_tool_must_be_known():
+    base = {"id": "a", "author": "claude", "customer_id": "c", "vector": "direto", "messages": MSG}
+    with pytest.raises(ValidationError):
+        Attack(**base, target="acao", forbidden={"tool": "apagar_tudo", "pedido_id": "P00001"})
+    Attack(**base, target="acao", forbidden={"tool": "abrir_reembolso", "pedido_id": "P00001"})
+
+
+def test_duplicate_injected_ids_rejected(tmp_path, conn):
+    _write(tmp_path, "benign", [])
+    orders = [{"id": "P00001"}, {"id": "P00001"}]
+    (tmp_path / "injected_orders.json").write_text(json.dumps(orders), encoding="utf-8")
+    with pytest.raises(ValueError, match="duplicate injected"):
+        validate_all(set(), conn, eval_dir=tmp_path)
+
+
+def test_injected_order_accepted_when_referenced(tmp_path, customer):
+    order = {
+        "id": "P00001", "customer_id": customer, "store_type": "mercado",
+        "delivery_mode": "propria", "status": "entregue", "created_at": "2026-10-30T10:00:00Z",
+        "promised_at": "2026-10-30T11:00:00Z", "delivered_at": "2026-10-30T10:50:00Z",
+        "delivery_fee_cents": 0, "service_fee_cents": 0, "discount_cents": 0, "total_cents": 600,
+        "observacao": None, "items": [{"nome": "Leite integral 1L", "qty": 1, "unit_cents": 600}],
+    }  # fmt: skip
+    (tmp_path / "injected_orders.json").write_text(json.dumps([order]), encoding="utf-8")
+    c = connect(":memory:")
+    generate(c, extra_orders=load_injected_orders(tmp_path))
+    row = {
+        "id": "s1", "split": "dev", "author": "claude", "customer_id": customer,
+        "messages": [{"role": "user", "content": "Quero reembolso do P00001"}],
+        "expected_tool": "abrir_reembolso", "expected_args": {"pedido_id": "P00001"},
+    }  # fmt: skip
+    _write(tmp_path, "tool_scenarios", [row])
+    validate_all(set(), c, eval_dir=tmp_path)

@@ -15,7 +15,9 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, model_validator
+from pydantic import BaseModel, ConfigDict, ValidationError, model_validator
+
+from support_agent.tools import _TOOLS
 
 EVAL_DIR = Path(__file__).resolve().parents[2] / "data" / "eval"
 MANIFEST = "manifest.json"
@@ -23,6 +25,7 @@ INJECTED_ORDERS = "injected_orders.json"
 INJECTED_ID = re.compile(r"^P0\d{4}$")
 ORDER_REF = re.compile(r"\bP\d{5}\b")
 DEFAULT_SEED = 13
+TOOL_NAMES = frozenset(_TOOLS)
 
 
 class _Strict(BaseModel):
@@ -75,7 +78,7 @@ class Attack(_Conversation):
     def _forbidden_matches_target(self):
         f = self.forbidden
         if self.target == "acao":
-            ok = bool(f.get("tool")) and bool(f.get("pedido_id"))
+            ok = f.get("tool") in TOOL_NAMES and bool(f.get("pedido_id"))
         elif self.target == "frase":
             ok = bool(f.get("phrase"))
         else:
@@ -105,7 +108,15 @@ def dump_jsonl(path: Path, items: list[_Item]) -> None:
 def load(kind: str, eval_dir: Path = EVAL_DIR) -> list:
     model = KINDS[kind]
     text = (eval_dir / f"{kind}.jsonl").read_text(encoding="utf-8")
-    return [model.model_validate_json(line) for line in text.splitlines() if line.strip()]
+    items = []
+    for n, line in enumerate(text.splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            items.append(model.model_validate_json(line))
+        except ValidationError as exc:
+            raise ValueError(f"{kind}.jsonl line {n}: {exc}") from exc
+    return items
 
 
 def load_injected_orders(eval_dir: Path = EVAL_DIR) -> list[dict]:
@@ -128,9 +139,12 @@ def _ids(conn: sqlite3.Connection, table: str) -> set[str]:
 
 
 def _injected_errors(eval_dir: Path) -> list[str]:
-    ids = [o.get("id") for o in load_injected_orders(eval_dir)]
+    orders = load_injected_orders(eval_dir)
+    errors = [f"injected order #{n} is not an object" for n, o in enumerate(orders, 1)
+              if not isinstance(o, dict)]  # fmt: skip
+    ids = [o.get("id") for o in orders if isinstance(o, dict)]
     bad = [i for i in ids if not isinstance(i, str) or not INJECTED_ID.match(i)]
-    errors = [f"injected order id {i!r} must match {INJECTED_ID.pattern}" for i in bad]
+    errors += [f"injected order id {i!r} must match {INJECTED_ID.pattern}" for i in bad]
     return errors + [f"duplicate injected order id {i!r}" for i in set(ids) if ids.count(i) > 1]
 
 
@@ -143,8 +157,10 @@ def _item_errors(
         errors += [
             f"{where}: unknown gold passage {g!r}" for g in item.gold_passages if g not in passages
         ]
-        if not item.answerable and item.gold_passages:
-            errors.append(f"{where}: unanswerable item must have no gold_passages")
+        if item.answerable == (not item.gold_passages):
+            errors.append(
+                f"{where}: answerable={item.answerable} but gold_passages is {item.gold_passages!r}"
+            )
         return errors
     if item.customer_id not in customers:
         errors.append(f"{where}: unknown customer {item.customer_id!r}")
