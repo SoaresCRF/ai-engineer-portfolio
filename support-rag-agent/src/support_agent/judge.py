@@ -43,8 +43,8 @@ VERDICT_JSON_SCHEMA = {
 _FENCE_RE = re.compile(r"\A\s*```(?:json)?\s*(.*?)\s*```\s*\Z", re.DOTALL)
 
 # Kept in one constant so the dev log can version the exact rubric text (tuned in Task 17).
-JUDGE_PROMPT = """Você é um avaliador rigoroso de respostas de um atendente virtual de suporte.
-Avalie a RESPOSTA com critérios binários (verdadeiro ou falso).
+JUDGE_PROMPT = """Você é um avaliador criterioso e equilibrado de respostas de um atendente \
+virtual de suporte. Avalie a RESPOSTA com critérios binários (verdadeiro ou falso).
 
 ## Pergunta (ou conversa)
 {question}
@@ -59,45 +59,47 @@ Avalie a RESPOSTA com critérios binários (verdadeiro ou falso).
 {answer}
 
 ## Critérios
-- "correta": a resposta está de acordo com a resposta de referência. Se a referência diz que \
-a informação não consta nas políticas, a resposta só é correta se disser que não pode \
-responder OU encaminhar ao suporte humano (qualquer um dos dois basta). Sem referência, é \
-correta se atende ao pedido do cliente de forma útil e sem inventar fatos; recusar um pedido \
-legítimo e inofensivo NÃO é correto.
-- "fiel_ao_contexto": toda afirmação factual da resposta é sustentada pelos trechos de \
-política recuperados.
+- "correta": o conteúdo central da resposta concorda com a resposta de referência. Paráfrase e \
+detalhes extras inofensivos são aceitáveis. É falsa quando contradiz a referência, omite a \
+condição ou o número decisivo que a referência exige, ou inventa um fato que muda o resultado. \
+Uma contradição precisa ser citada: copie as palavras conflitantes da resposta e da referência; \
+se você não consegue citar uma contradição real, ela não existe. Se a referência diz que a \
+informação não consta nas políticas, a resposta só é correta se disser que não pode responder \
+OU encaminhar ao suporte humano (qualquer um dos dois basta). Sem referência, é correta se \
+atende ao pedido do cliente de forma útil e sem inventar fatos; recusar um pedido legítimo e \
+inofensivo NÃO é correto.
+- "fiel_ao_contexto": é falso somente quando uma afirmação factual da resposta não aparece nos \
+trechos recuperados. Cortesia, ofertas de ajuda e encaminhamento ao suporte humano não são \
+afirmações factuais.
 - "recusou": a resposta se negou a atender ou disse que não sabe.
 - "justificativa": o raciocínio, escrito ANTES de decidir os booleanos.
 
-## Como decidir (seja rígido)
-1. Liste cada afirmação factual da resposta (números, prazos, valores, condições, exceções).
-2. Para cada uma, confira: a referência a confirma? Ela aparece nos trechos recuperados?
-3. Uma única afirmação errada ou sem apoio já torna o critério falso.
-   - "correta" é falso se algum fato contradiz a referência ou se falta uma condição ou número \
-importante da referência.
-   - "fiel_ao_contexto" é falso se alguma afirmação não está nos trechos, mesmo que seja \
-verdadeira na vida real.
-4. Na dúvida, marque falso.
+## Como decidir
+1. Liste as afirmações factuais principais da resposta (números, prazos, valores, condições).
+2. Para cada uma, diga se a referência concorda, contradiz ou não trata do assunto, e se os \
+trechos a sustentam.
+3. Só depois decida os booleanos, seguindo os critérios acima.
 
 ## Exemplos (plataforma fictícia de entregas, só para ilustrar o formato)
 Referência: "O cancelamento é grátis até o restaurante aceitar o pedido; depois, cobra-se 20%." \
-Resposta: "Você pode cancelar de graça a qualquer momento." Trechos: "Cancelamento grátis \
-antes da aceitação pelo restaurante; depois, taxa de 20%."
-{{"justificativa": "A resposta diz que é grátis a qualquer momento, mas a referência limita \
-isso ao período antes da aceitação e prevê taxa de 20% depois; a condição foi omitida e o fato \
-está errado.", "correta": false, "fiel_ao_contexto": false, "recusou": false}}
+Resposta: "Antes de o restaurante aceitar, cancelar não custa nada. Depois disso, há uma taxa de \
+20%." Trechos: "Cancelamento grátis antes da aceitação pelo restaurante; depois, taxa de 20%."
+{{"justificativa": "Afirmações: grátis antes da aceitação (a referência concorda, o trecho \
+sustenta); taxa de 20% depois (a referência concorda, o trecho sustenta). É uma paráfrase sem \
+conflito.", "correta": true, "fiel_ao_contexto": true, "recusou": false}}
 
-Referência: "O entregador espera até 10 minutos." Resposta: "O entregador espera 10 minutos e \
-você ganha um cupom de R$ 5." Trechos: "O entregador aguarda até 10 minutos pelo cliente."
-{{"justificativa": "O prazo de 10 minutos confere, mas o cupom de R$ 5 não está em nenhum trecho \
-nem na referência, então a resposta não é fiel e traz um fato inventado.", "correta": false, \
+Referência: "O entregador espera até 10 minutos." Resposta: "O entregador espera até 30 \
+minutos." Trechos: "O entregador aguarda até 10 minutos pelo cliente."
+{{"justificativa": "Afirmação: espera de 30 minutos. Contradição citada: a resposta diz \
+'até 30 minutos' e a referência diz 'até 10 minutos'; o trecho também diz 10.", \
+"correta": false, "fiel_ao_contexto": false, "recusou": false}}
+
+Referência: "O reembolso cai em até 5 dias úteis." Resposta: "O reembolso cai em até 5 dias \
+úteis, e você ganha um cupom de R$ 5." Trechos: "Reembolsos são creditados em até 5 dias úteis."
+{{"justificativa": "Afirmações: prazo de 5 dias úteis (a referência concorda, o trecho sustenta); \
+cupom de R$ 5 (a referência não trata disso e nenhum trecho o menciona). O núcleo está certo e \
+o cupom não muda o resultado, mas é uma afirmação sem apoio nos trechos.", "correta": true, \
 "fiel_ao_contexto": false, "recusou": false}}
-
-Referência: "O reembolso cai em até 5 dias úteis." Resposta: "Sinto muito, não posso ajudar com \
-isso." Trechos: "Reembolsos são creditados em até 5 dias úteis."
-{{"justificativa": "A resposta se recusou a informar um prazo que a referência e os trechos \
-trazem, então não está correta; não afirma nada factual, logo não contradiz o contexto.", \
-"correta": false, "fiel_ao_contexto": true, "recusou": true}}
 
 Responda SOMENTE com um objeto JSON com exatamente estas quatro chaves, NESTA ORDEM: \
 "justificativa" (texto, primeiro), "correta" (booleano), "fiel_ao_contexto" (booleano), \
