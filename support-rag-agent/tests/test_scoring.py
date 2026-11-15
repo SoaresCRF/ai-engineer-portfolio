@@ -5,6 +5,7 @@ import pytest
 
 from support_agent.corpus import Chunk
 from support_agent.scoring import (
+    cohen_kappa,
     mrr,
     paired_bootstrap,
     passages_from_chunks,
@@ -226,3 +227,24 @@ def test_tool_scoring_expected_no_tool():
     called = _outcome("consultar_pedido", {"pedido_id": "P1"}, {"pedido": {}})
     report = score_tools([_out("s1"), _out("s2", [called])], sc)
     assert _tool_pcts(report) == (0.5, 1, 1)
+
+
+def test_cohen_kappa_total_agreement():
+    assert cohen_kappa([True, False, True], [True, False, True]) == 1.0
+
+
+def test_cohen_kappa_constant_identical_raters_is_one():
+    assert cohen_kappa([True, True], [True, True]) == 1.0  # pe == 1
+
+
+def test_cohen_kappa_textbook_example():
+    # Wikipedia, Cohen's kappa: 50 items, yes/yes 20, yes/no 5, no/yes 10, no/no 15.
+    a = [True] * 25 + [False] * 25
+    b = [True] * 20 + [False] * 5 + [True] * 10 + [False] * 15
+    assert cohen_kappa(a, b) == pytest.approx(0.4)
+
+
+@pytest.mark.parametrize(("a", "b"), [([True], [True, False]), ([], [])])
+def test_cohen_kappa_bad_input_raises(a, b):
+    with pytest.raises(ValueError):
+        cohen_kappa(a, b)

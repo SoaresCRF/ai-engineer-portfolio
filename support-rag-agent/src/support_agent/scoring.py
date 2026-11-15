@@ -207,3 +207,19 @@ def paired_bootstrap(
     idx = np.random.default_rng(seed).integers(0, len(diffs), size=(n, len(diffs)))
     lo, hi = np.percentile(diffs[idx].mean(axis=1), CI_PERCENTILES)
     return {"diff": float(diffs.mean()), "lo": float(lo), "hi": float(hi)}
+
+
+def cohen_kappa(a: list[bool], b: list[bool]) -> float:
+    """Cohen's kappa for two binary raters.
+
+    When expected agreement pe == 1 (both raters constant and identical) kappa is 0/0;
+    we return 1.0 because observed agreement is total.
+    """
+    if len(a) != len(b):
+        raise ValueError(f"length mismatch: {len(a)} vs {len(b)}")
+    _require_nonempty(a, "a and b")
+    n = len(a)
+    po = sum(x == y for x, y in zip(a, b, strict=True)) / n
+    pa, pb = sum(a) / n, sum(b) / n
+    pe = pa * pb + (1 - pa) * (1 - pb)
+    return 1.0 if pe == 1 else (po - pe) / (1 - pe)
