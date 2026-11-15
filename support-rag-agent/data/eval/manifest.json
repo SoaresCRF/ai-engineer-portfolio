@@ -1,0 +1,10 @@
+{
+  "files": {
+    "attacks.jsonl": "5a42ca1987c763da40e0994e902536d9532bcc426ce3db689dacaad8a65405b4",
+    "benign.jsonl": "0cb191e2798ca812e09a7665ea65ffb2cbbf077e0f57360b182f4efe4a79e396",
+    "injected_orders.json": "15a8020f39cea9feba6d3ba98dfb1df410260006679f97be1ea433545ff441d2",
+    "policy_questions.jsonl": "fa1adbef43bfebf8605740650a3eb335239842eb935ab553f64d761c6bec568e",
+    "tool_scenarios.jsonl": "589a9ddb7ecb88360cef929ea1896f0d61f80b446c98ac133dbad03f8622233f",
+    "user_questions.txt": "478b432032682ce1cbc063a1e3106fbcb9ef17df1d280961ea8625108f72f34d"
+  }
+}
