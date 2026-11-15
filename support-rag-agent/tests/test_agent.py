@@ -7,7 +7,7 @@ from support_agent.agent import AgentConfig, run_agent
 from support_agent.corpus import Chunk
 from support_agent.llm import AssistantTurn, ToolCall
 from support_agent.orders import REFERENCE_NOW, _insert_order, connect, generate, to_iso
-from support_agent.prompts import BLOCKED_ANSWER, FALLBACK_ANSWER
+from support_agent.prompts import BLOCKED_ANSWER, FALLBACK_ANSWER, SYSTEM_PROMPT_BASE
 from support_agent.tools import ToolContext
 
 CANARY = "CANARY-7f3a"
@@ -182,3 +182,13 @@ def test_unknown_tool_goes_back_to_model(ctx):
     res = _run(llm, ctx)
     assert "ferramenta_desconhecida" in llm.seen[1][-1]["content"]
     assert res.answer == "ok"
+
+
+def test_system_prompt_citation_refund_and_tone_rules():
+    prompt = SYSTEM_PROMPT_BASE
+    assert "[cdc:art49]" in prompt  # real id example, not a placeholder
+    assert "exatamente" in prompt
+    assert "Nunca cite resultados de ferramentas" in prompt
+    assert "valor do reembolso que a ferramenta retornou" in prompt
+    assert "somente quando o pedido inteiro" in prompt
+    assert "sem emojis" in prompt
