@@ -35,3 +35,4 @@ Thumbs.db
 **/corpus/raw/
 **/data/orders.sqlite
 **/.cache/
+**/data/cache/
