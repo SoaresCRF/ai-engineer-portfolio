@@ -180,3 +180,28 @@ def test_verdict_json_schema_matches_parse_verdict():
     assert set(VERDICT_JSON_SCHEMA["required"]) == set(props)
     assert VERDICT_JSON_SCHEMA["additionalProperties"] is False
     assert parse_verdict(json.dumps(sample)) == Verdict(True, True, True, "ok")
+
+
+def test_verdict_schema_puts_justificativa_first():
+    assert list(judge.VERDICT_JSON_SCHEMA["properties"])[0] == "justificativa"
+
+
+def test_prompt_example_verdicts_follow_schema_order_and_parse():
+    examples = [ln for ln in judge.JUDGE_PROMPT.splitlines() if ln.startswith('{{"justificativa"')]
+    assert len(examples) == 3
+    for ln in examples:
+        text = ln.replace("{{", "{").replace("}}", "}")
+        assert list(json.loads(text)) == list(judge.VERDICT_JSON_SCHEMA["properties"])
+        assert parse_verdict(text) is not None
+
+
+def test_judge_run_ids_and_out_path(env, tmp_path):
+    out = tmp_path / "tuning" / "run.verdicts.jsonl"
+    llm = ScriptedJudge([json.dumps(VALID), json.dumps(VALID)])
+    path = judge.judge_run(env.run_dir, llm, ids={"pq2", "bn1", "ts1"}, out_path=out)
+    assert path == out
+    rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines()]
+    assert [r["id"] for r in rows] == ["pq2", "bn1"]  # ts1 is not a judged kind
+    assert not (env.run_dir / "verdicts.jsonl").exists()
+    with pytest.raises(FileExistsError):
+        judge.judge_run(env.run_dir, ScriptedJudge([]), ids={"pq1"}, out_path=out)

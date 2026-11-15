@@ -32,9 +32,10 @@ _FLAG_KEYS = ("correta", "fiel_ao_contexto", "recusou")
 # Sent to vLLM as response_format so the judge can only emit a verdict parse_verdict accepts.
 VERDICT_JSON_SCHEMA = {
     "type": "object",
+    # Order matters: vLLM structured outputs follow it, so the reasoning comes before the flags.
     "properties": {
-        **{k: {"type": "boolean"} for k in _FLAG_KEYS},
         "justificativa": {"type": "string"},
+        **{k: {"type": "boolean"} for k in _FLAG_KEYS},
     },
     "required": sorted(_VERDICT_KEYS),
     "additionalProperties": False,
@@ -60,16 +61,47 @@ Avalie a RESPOSTA com critérios binários (verdadeiro ou falso).
 ## Critérios
 - "correta": a resposta está de acordo com a resposta de referência. Se a referência diz que \
 a informação não consta nas políticas, a resposta só é correta se disser que não pode \
-responder ou encaminhar ao suporte humano. Sem referência, é correta se atende ao pedido do \
-cliente de forma útil e sem inventar fatos.
+responder OU encaminhar ao suporte humano (qualquer um dos dois basta). Sem referência, é \
+correta se atende ao pedido do cliente de forma útil e sem inventar fatos; recusar um pedido \
+legítimo e inofensivo NÃO é correto.
 - "fiel_ao_contexto": toda afirmação factual da resposta é sustentada pelos trechos de \
-política recuperados. Afirmação sem apoio nos trechos torna falso.
+política recuperados.
 - "recusou": a resposta se negou a atender ou disse que não sabe.
-- "justificativa": uma frase curta explicando o veredicto.
+- "justificativa": o raciocínio, escrito ANTES de decidir os booleanos.
 
-Responda SOMENTE com um objeto JSON com exatamente estas quatro chaves: \
-"correta" (booleano), "fiel_ao_contexto" (booleano), "recusou" (booleano), \
-"justificativa" (texto). Nenhum texto fora do JSON."""
+## Como decidir (seja rígido)
+1. Liste cada afirmação factual da resposta (números, prazos, valores, condições, exceções).
+2. Para cada uma, confira: a referência a confirma? Ela aparece nos trechos recuperados?
+3. Uma única afirmação errada ou sem apoio já torna o critério falso.
+   - "correta" é falso se algum fato contradiz a referência ou se falta uma condição ou número \
+importante da referência.
+   - "fiel_ao_contexto" é falso se alguma afirmação não está nos trechos, mesmo que seja \
+verdadeira na vida real.
+4. Na dúvida, marque falso.
+
+## Exemplos (plataforma fictícia de entregas, só para ilustrar o formato)
+Referência: "O cancelamento é grátis até o restaurante aceitar o pedido; depois, cobra-se 20%." \
+Resposta: "Você pode cancelar de graça a qualquer momento." Trechos: "Cancelamento grátis \
+antes da aceitação pelo restaurante; depois, taxa de 20%."
+{{"justificativa": "A resposta diz que é grátis a qualquer momento, mas a referência limita \
+isso ao período antes da aceitação e prevê taxa de 20% depois; a condição foi omitida e o fato \
+está errado.", "correta": false, "fiel_ao_contexto": false, "recusou": false}}
+
+Referência: "O entregador espera até 10 minutos." Resposta: "O entregador espera 10 minutos e \
+você ganha um cupom de R$ 5." Trechos: "O entregador aguarda até 10 minutos pelo cliente."
+{{"justificativa": "O prazo de 10 minutos confere, mas o cupom de R$ 5 não está em nenhum trecho \
+nem na referência, então a resposta não é fiel e traz um fato inventado.", "correta": false, \
+"fiel_ao_contexto": false, "recusou": false}}
+
+Referência: "O reembolso cai em até 5 dias úteis." Resposta: "Sinto muito, não posso ajudar com \
+isso." Trechos: "Reembolsos são creditados em até 5 dias úteis."
+{{"justificativa": "A resposta se recusou a informar um prazo que a referência e os trechos \
+trazem, então não está correta; não afirma nada factual, logo não contradiz o contexto.", \
+"correta": false, "fiel_ao_contexto": true, "recusou": true}}
+
+Responda SOMENTE com um objeto JSON com exatamente estas quatro chaves, NESTA ORDEM: \
+"justificativa" (texto, primeiro), "correta" (booleano), "fiel_ao_contexto" (booleano), \
+"recusou" (booleano). Nenhum texto fora do JSON."""
 
 
 @dataclass
@@ -122,8 +154,11 @@ def _chunk_texts() -> dict[str, str]:
     return {c.chunk_id: c.text for c in chunk_passages(load_corpus(CORPUS_DIR))}
 
 
-def judge_run(run_dir: Path, llm: ChatClient) -> Path:
-    path = run_dir / "verdicts.jsonl"
+def judge_run(
+    run_dir: Path, llm: ChatClient, ids: set[str] | None = None, out_path: Path | None = None
+) -> Path:
+    """Judge a run's outputs; `ids` limits which ones, `out_path` redirects the verdicts file."""
+    path = out_path or run_dir / "verdicts.jsonl"
     if path.exists():
         raise FileExistsError(path)  # verdicts are evidence, never overwritten
     chunks = _chunk_texts()
@@ -131,10 +166,11 @@ def judge_run(run_dir: Path, llm: ChatClient) -> Path:
     outputs = (run_dir / "outputs.jsonl").read_text(encoding="utf-8").splitlines()
     invalid: list[str] = []
     # No try/except per item: an infra failure aborts rather than leaving a biased partial set.
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8", newline="\n") as f:
         for line in outputs:
             row = json.loads(line)
-            if row["kind"] not in JUDGED_KINDS:
+            if row["kind"] not in JUDGED_KINDS or (ids is not None and row["id"] not in ids):
                 continue
             item = items[row["kind"]][row["id"]]
             reference = getattr(item, "reference_answer", None)
@@ -220,8 +256,11 @@ def _read_sheet(sheet_path: Path) -> list[dict]:
     return list(reader)
 
 
-def judge_agreement(sheet_path: Path, key_path: Path) -> Path:
-    """Accuracy and Cohen's kappa of the judge against the human grades, per criterion."""
+def judge_agreement(sheet_path: Path, key_path: Path, verdicts_dir: Path | None = None) -> Path:
+    """Accuracy and Cohen's kappa of the judge against the human grades, per criterion.
+
+    verdicts_dir holds <run>.verdicts.jsonl files (tuning rounds); default is each run's own.
+    """
     rows = _read_sheet(sheet_path)
     key = json.loads(key_path.read_text(encoding="utf-8"))
     blank = [r["chave"] for r in rows if not r["correta"].strip() or not r["fiel"].strip()]
@@ -242,10 +281,15 @@ def judge_agreement(sheet_path: Path, key_path: Path) -> Path:
             raise ValueError(f"{chave}: not in {key_path.name}")
         run, item_id = key[chave]["run"], key[chave]["id"]
         if run not in verdicts:
-            lines = (run_eval.RUNS_DIR / run / "verdicts.jsonl").read_text(encoding="utf-8")
+            vpath = (
+                verdicts_dir / f"{run}.verdicts.jsonl"
+                if verdicts_dir
+                else run_eval.RUNS_DIR / run / "verdicts.jsonl"
+            )
+            lines = vpath.read_text(encoding="utf-8")
             verdicts[run] = {v["id"]: v for v in map(json.loads, lines.splitlines())}
         if item_id not in verdicts[run]:
-            raise ValueError(f"{chave}: id {item_id!r} missing from {run}/verdicts.jsonl")
+            raise ValueError(f"{chave}: id {item_id!r} missing from {vpath.name}")
         v = verdicts[run][item_id]
         hashes.add(v.get("prompt_sha256"))
         if not v["valid"]:
@@ -281,10 +325,11 @@ def judge_agreement(sheet_path: Path, key_path: Path) -> Path:
 
 
 if __name__ == "__main__":
-    # usage: python -m support_agent.judge sheet <run_dir> <run_dir> | agreement
+    # usage: python -m support_agent.judge sheet <run_dir> <run_dir> | agreement [verdicts_dir]
     if len(sys.argv) == 4 and sys.argv[1] == "sheet":
         print(export_grading_sheet([Path(sys.argv[2]), Path(sys.argv[3])]))
-    elif len(sys.argv) == 2 and sys.argv[1] == "agreement":
-        print(judge_agreement(GRADING_DIR / "sheet.csv", GRADING_DIR / "key.json"))
+    elif len(sys.argv) in (2, 3) and sys.argv[1] == "agreement":
+        vdir = Path(sys.argv[2]) if len(sys.argv) == 3 else None
+        print(judge_agreement(GRADING_DIR / "sheet.csv", GRADING_DIR / "key.json", vdir))
     else:
-        raise SystemExit("usage: judge sheet <run_dir> <run_dir> | judge agreement")
+        raise SystemExit("usage: judge sheet <run_dir> <run_dir> | judge agreement [verdicts_dir]")

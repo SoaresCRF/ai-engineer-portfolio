@@ -241,3 +241,23 @@ def test_agreement_unknown_chave_and_missing_id_raise(env, tmp_path):
     key_path.write_text(json.dumps(key), encoding="utf-8")
     with pytest.raises(ValueError, match="pq999"):
         judge.judge_agreement(graded, key_path)
+
+
+def test_agreement_reads_verdicts_dir(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"))
+    tuning = tmp_path / "tuning"
+    tuning.mkdir()
+    new_sha = "cd34ef56ab12" + "1" * 52
+    for run in env.runs:
+        lines = (run / "verdicts.jsonl").read_text(encoding="utf-8").splitlines()
+        rows = [json.loads(line) | {"prompt_sha256": new_sha} for line in lines]
+        (tuning / f"{run.name}.verdicts.jsonl").write_text(
+            "".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8"
+        )
+        (run / "verdicts.jsonl").unlink()  # the default location must not be consulted
+    out = judge.judge_agreement(graded, key_path, tuning)
+    assert out.name == f"judge_agreement_{new_sha[:12]}.json"
+    with pytest.raises(FileExistsError):
+        judge.judge_agreement(graded, key_path, tuning)
+    with pytest.raises(FileNotFoundError):
+        judge.judge_agreement(graded, key_path)
