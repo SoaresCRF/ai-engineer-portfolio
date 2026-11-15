@@ -165,10 +165,11 @@ def _item_errors(
         return errors
     if item.customer_id not in customers:
         errors.append(f"{where}: unknown customer {item.customer_id!r}")
-    # A not-found scenario needs an order id that does not exist, so absence is expected there.
+    refs = _order_refs(item)
+    # A not-found scenario targets an order id that does not exist; only that id may be absent.
     if isinstance(item, ToolScenario) and item.expected_status == NOT_FOUND_STATUS:
-        return errors
-    return errors + [f"{where}: unknown order {o!r}" for o in sorted(_order_refs(item) - orders)]
+        refs.discard(item.expected_args.get("pedido_id"))
+    return errors + [f"{where}: unknown order {o!r}" for o in sorted(refs - orders)]
 
 
 def validate_all(
