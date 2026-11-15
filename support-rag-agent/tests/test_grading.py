@@ -1,15 +1,15 @@
 import csv
-import hashlib
 import json
 from types import SimpleNamespace
 
 import pytest
 
-from support_agent import eval_set, judge
+from support_agent import eval_set, judge, run_eval
 from support_agent.corpus import chunk_passages, load_corpus
 from support_agent.eval_set import PolicyQuestion
 
 N_ITEMS = 8
+SHA = "ab12cd34ef56" + "0" * 52
 
 
 def _write_run(path, name, chunk_id):
@@ -60,6 +60,7 @@ def env(tmp_path, monkeypatch):
     monkeypatch.setattr(judge, "EVAL_DIR", eval_dir)
     monkeypatch.setattr(judge, "GRADING_DIR", grading)
     monkeypatch.setattr(judge, "RESULTS_DIR", results)
+    monkeypatch.setattr(run_eval, "RUNS_DIR", tmp_path)
     runs = [_write_run(tmp_path, n, chunk.chunk_id) for n in ("run_a", "run_b")]
     return SimpleNamespace(runs=runs, chunk=chunk, grading=grading, results=results)
 
@@ -122,10 +123,10 @@ def _verdict(correta, fiel):
     return {"correta": correta, "fiel_ao_contexto": fiel, "recusou": False, "justificativa": "x"}
 
 
-def _grade(env, tmp_path, human, invalid=()):
+def _grade(env, tmp_path, human, invalid=(), shas=(SHA, SHA), delimiter=","):
     """Export, write all-true verdicts per run, return a graded sheet copy. human(chave)->(c, f)."""
     sheet = judge.export_grading_sheet(env.runs, n=8)
-    for run in env.runs:
+    for run, sha in zip(env.runs, shas, strict=True):
         lines = []
         for i in range(N_ITEMS):
             bad = f"{run.name}/pq{i}" in invalid
@@ -137,6 +138,7 @@ def _grade(env, tmp_path, human, invalid=()):
                         "valid": not bad,
                         "verdict": None if bad else _verdict(True, True),
                         "raw": "",
+                        "prompt_sha256": sha,
                     }
                 )
             )
@@ -146,7 +148,7 @@ def _grade(env, tmp_path, human, invalid=()):
         r["correta"], r["fiel"] = human(r["chave"])
     graded = tmp_path / "graded.csv"
     with graded.open("w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0]))
+        w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter=delimiter)
         w.writeheader()
         w.writerows(rows)
     return graded, env.grading / "key.json"
@@ -158,7 +160,8 @@ def test_agreement_accuracy_kappa_and_prompt_sha(env, tmp_path):
     out = judge.judge_agreement(graded, key_path)
     rep = json.loads(out.read_text(encoding="utf-8"))
     assert out.parent == env.results
-    assert rep["judge_prompt_sha256"] == hashlib.sha256(judge.JUDGE_PROMPT.encode()).hexdigest()
+    assert out.name == f"judge_agreement_{SHA[:12]}.json"
+    assert rep["judge_prompt_sha256"] == SHA
     assert rep["correta"] == {"n": 8, "accuracy": 0.75, "kappa": 0.0}  # constant judge: pe == po
     assert rep["fiel_ao_contexto"] == {"n": 8, "accuracy": 1.0, "kappa": 1.0}
     assert rep["skipped_invalid"] == []
@@ -185,4 +188,56 @@ def test_agreement_blank_grades_raise_listing_keys(env, tmp_path):
 def test_agreement_bad_value_raises_naming_key(env, tmp_path, bad):
     graded, key_path = _grade(env, tmp_path, lambda k: (bad if k == "g05" else "1", "1"))
     with pytest.raises(ValueError, match="g05"):
+        judge.judge_agreement(graded, key_path)
+
+
+def test_key_has_no_paths(env):
+    judge.export_grading_sheet(env.runs, n=8)
+    key = json.loads((env.grading / "key.json").read_text(encoding="utf-8"))
+    assert all(set(v) == {"run", "id"} for v in key.values())
+
+
+def test_agreement_mixed_prompt_hashes_raise(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"), shas=(SHA, "f" * 64))
+    with pytest.raises(ValueError, match="prompt_sha256"):
+        judge.judge_agreement(graded, key_path)
+
+
+def test_agreement_missing_hash_raises(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"), shas=(None, None))
+    with pytest.raises(ValueError, match="prompt_sha256"):
+        judge.judge_agreement(graded, key_path)
+
+
+def test_agreement_refuses_overwrite_per_prompt_version(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"))
+    judge.judge_agreement(graded, key_path)
+    with pytest.raises(FileExistsError):
+        judge.judge_agreement(graded, key_path)
+
+
+def test_agreement_reads_semicolon_sheet(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"), delimiter=";")
+    rep = json.loads(judge.judge_agreement(graded, key_path).read_text(encoding="utf-8"))
+    assert rep["correta"]["n"] == 8
+
+
+def test_agreement_missing_columns_raise(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"))
+    text = graded.read_text(encoding="utf-8-sig").replace("fiel", "outra", 1)
+    graded.write_text(text, encoding="utf-8-sig")
+    with pytest.raises(ValueError, match="fiel"):
+        judge.judge_agreement(graded, key_path)
+
+
+def test_agreement_unknown_chave_and_missing_id_raise(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"))
+    key = json.loads(key_path.read_text(encoding="utf-8"))
+    del key["g02"]
+    key_path.write_text(json.dumps(key), encoding="utf-8")
+    with pytest.raises(ValueError, match="g02"):
+        judge.judge_agreement(graded, key_path)
+    key["g02"] = {"run": "run_a", "id": "pq999"}
+    key_path.write_text(json.dumps(key), encoding="utf-8")
+    with pytest.raises(ValueError, match="pq999"):
         judge.judge_agreement(graded, key_path)

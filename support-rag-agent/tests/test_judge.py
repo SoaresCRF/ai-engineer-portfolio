@@ -129,6 +129,7 @@ def test_judge_run_writes_rows_skips_kinds_and_keeps_invalid(env, caplog):
     assert [r["valid"] for r in rows] == [True, False, True]
     assert rows[0]["verdict"] == VALID and rows[1]["verdict"] is None
     assert rows[1]["raw"] == "lixo"
+    assert {r["prompt_sha256"] for r in rows} == {judge.prompt_sha256()}
     assert "pq2" in caplog.text
     assert all(tools == [] for _, tools in llm.calls)
     first, _, third = (c[0][0]["content"] for c in llm.calls)
