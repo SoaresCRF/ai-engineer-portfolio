@@ -9,7 +9,7 @@ from support_agent.agent import AgentConfig
 from support_agent.corpus import Chunk
 from support_agent.eval_set import Message, PolicyQuestion, ToolScenario
 from support_agent.llm import AssistantTurn
-from support_agent.retrieval import tokenize_pt
+from support_agent.retrieval import build_retriever, tokenize_pt
 
 DIMS = 64
 CHUNKS = [
@@ -115,12 +115,14 @@ def test_precompute_covers_every_runner_query(tmp_path, monkeypatch):
     assert "qual o status?" in queried  # last user message of a multi-turn item
 
 
-def test_cached_retriever_slices_and_matches_live(tmp_path):
+@pytest.mark.parametrize("config", retrieval_cache.CACHED_CONFIGS)
+def test_cached_retriever_matches_live_ranking_for_every_k(tmp_path, config):
     cache = json.loads(_precompute(tmp_path).read_text(encoding="utf-8"))
-    cached = retrieval_cache.cached_retriever(cache, "dense", CHUNKS)
-    full = cached("prazo do frete expresso", 3)
-    assert [c.chunk_id for c in cached("prazo do frete expresso", 1)] == [full[0].chunk_id]
-    assert full[0].chunk_id == "b#0"
+    cached = retrieval_cache.cached_retriever(cache, config, CHUNKS)
+    live = build_retriever(config, CHUNKS, fake_embed, fake_rerank)
+    for query in retrieval_cache.runner_queries("dev"):
+        for k in range(1, retrieval_cache.CACHED_K + 1):
+            assert [c.chunk_id for c in cached(query, k)] == [c.chunk_id for c in live(query, k)]
 
 
 def test_cached_retriever_miss_raises(tmp_path):
