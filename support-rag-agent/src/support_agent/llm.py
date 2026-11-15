@@ -47,12 +47,14 @@ class OpenAIChatClient:
         self._extra_body = dict(QWEN3_EXTRA_BODY) if extra_body is None else extra_body
 
     def chat(self, messages: list[dict], tools: list[dict]) -> AssistantTurn:
+        # vLLM/OpenAI may reject tools=[], so the parameter is left out when there are none.
+        kwargs = {"tools": tools} if tools else {}
         resp = self._client.chat.completions.create(
             model=self._model,
             messages=messages,
-            tools=tools,
             temperature=0,
             extra_body=self._extra_body,
+            **kwargs,
         )
         msg = resp.choices[0].message
         calls = [
