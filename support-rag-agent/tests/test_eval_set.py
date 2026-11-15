@@ -276,3 +276,17 @@ def test_absent_order_allowed_only_in_not_found_scenario(tmp_path, conn, custome
     _write(tmp_path, "benign", [benign])
     with pytest.raises(ValueError, match="P00099"):
         validate_all(set(), conn, eval_dir=tmp_path)
+
+
+def test_not_found_exemption_covers_only_the_target_order(tmp_path, conn, customer):
+    row = {
+        "id": "s1", "split": "dev", "author": "claude", "customer_id": customer,
+        "messages": [{"role": "user", "content": "Quero reembolso do P00099, não do P00098"}],
+        "expected_tool": "abrir_reembolso",
+        "expected_args": {"pedido_id": "P00099", "motivo": "nao_entregue"},
+        "expected_status": "recusado:pedido_nao_encontrado",
+    }  # fmt: skip
+    _write(tmp_path, "tool_scenarios", [row])
+    with pytest.raises(ValueError, match="P00098") as exc:
+        validate_all(set(), conn, eval_dir=tmp_path)
+    assert "P00099" not in str(exc.value)
