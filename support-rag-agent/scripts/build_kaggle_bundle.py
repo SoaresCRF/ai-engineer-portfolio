@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DIRS = ("src", "corpus", "data/eval", "config")
+DIRS = ("src", "corpus", "data/eval", "data/retrieval_cache", "config")
 FILES = ("pyproject.toml", "uv.lock")  # the notebook finds the project through pyproject.toml
 IGNORE = ("__pycache__", "*.pyc")
 
