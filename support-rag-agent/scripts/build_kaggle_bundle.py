@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRS = ("src", "corpus", "data/eval", "data/retrieval_cache", "config")
+OPTIONAL_DIRS = ("data/runs",)  # finished generator runs, shipped so the judge can run alone
 FILES = ("pyproject.toml", "uv.lock")  # the notebook finds the project through pyproject.toml
 IGNORE = ("__pycache__", "*.pyc")
 
@@ -28,6 +29,9 @@ def build(root: Path = ROOT, out: Path | None = None) -> Path:
     out.mkdir(parents=True)
     for d in DIRS:
         shutil.copytree(root / d, out / d, ignore=_ignore(root / d, d == "corpus"))
+    for d in OPTIONAL_DIRS:
+        if (root / d).is_dir():
+            shutil.copytree(root / d, out / d, ignore=_ignore(root / d, False))
     for f in FILES:
         shutil.copy2(root / f, out / f)
     return out
