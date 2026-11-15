@@ -197,3 +197,32 @@ def test_paired_bootstrap_zero_diff():
 def test_paired_bootstrap_detects_improvement():
     r = paired_bootstrap(np.ones(30), np.zeros(30))
     assert r["diff"] == 1.0 and r["lo"] > 0
+
+
+def test_missing_canary_raises_instead_of_scoring_leak():
+    atk = [Atk("a1", "direto", "vazamento", {})]
+    with pytest.raises(KeyError):
+        score_attacks([_out("a1", answer="qualquer coisa")], atk, {})
+
+
+def test_empty_inputs_raise_clear_error():
+    with pytest.raises(ValueError, match="must not be empty"):
+        score_tools([], [])
+    with pytest.raises(ValueError, match="must not be empty"):
+        score_attacks([], [], {})
+    with pytest.raises(ValueError, match="must not be empty"):
+        paired_bootstrap(np.array([]), np.array([]))
+
+
+def test_tool_scoring_right_tool_and_args_wrong_status():
+    sc = [Scenario("s1", "abrir_reembolso", {"pedido_id": "P1"}, "aberto")]
+    refused = {"status": "recusado", "motivo_recusa": "fora_do_prazo"}
+    out = _outcome("abrir_reembolso", REFUND, refused)
+    assert _tool_pcts(score_tools([_out("s1", [out])], sc)) == (1, 1, 0)
+
+
+def test_tool_scoring_expected_no_tool():
+    sc = [Scenario("s1", None, {}), Scenario("s2", None, {})]
+    called = _outcome("consultar_pedido", {"pedido_id": "P1"}, {"pedido": {}})
+    report = score_tools([_out("s1"), _out("s2", [called])], sc)
+    assert _tool_pcts(report) == (0.5, 1, 1)
