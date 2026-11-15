@@ -12,6 +12,7 @@ JUDGE_ONLY_PATH = [
     "cell-9",
     "cell-10",
     "cell-11",
+    "t17c-tuning-run",
     "cell-12",
 ]
 

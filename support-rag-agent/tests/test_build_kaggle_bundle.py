@@ -61,3 +61,21 @@ def test_bundle_skips_absent_runs_dir(tmp_path):
     out = _load().build(root)
 
     assert not (out / "data" / "runs").exists()
+
+
+def test_bundle_ships_grading_key_but_never_the_sheet(tmp_path):
+    root = tmp_path / "proj"
+    for rel in ("src/a.py", "corpus/p.md", "data/eval/m.json", "data/retrieval_cache/d.json"):
+        (root / rel).parent.mkdir(parents=True, exist_ok=True)
+        (root / rel).write_text("x")
+    for rel in ("data/grading/key.json", "data/grading/sheet.csv"):
+        (root / rel).parent.mkdir(parents=True, exist_ok=True)
+        (root / rel).write_text("x")
+    (root / "config").mkdir()
+    (root / "pyproject.toml").write_text("x")
+    (root / "uv.lock").write_text("x")
+
+    out = _load().build(root)
+
+    assert (out / "data/grading/key.json").is_file()
+    assert not (out / "data/grading/sheet.csv").exists()

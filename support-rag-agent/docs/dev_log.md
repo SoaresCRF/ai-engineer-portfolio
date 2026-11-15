@@ -33,3 +33,35 @@ Environment: Kaggle, Python 3.13 image, GPU T4 x2 with vLLM pinned to GPU 0
   emoji. Carry to prompt tuning (wording and tone).
 - The summary cell was not executed under Run All on the first pass; running it manually worked.
   Cause unknown, not blocking.
+
+## Judge validation (Task 17c)
+
+Judge: `stelterlab/phi-4-AWQ` (vLLM 0.32.0, T4), structured output through `response_format`.
+Gate: Cohen's kappa >= 0.6 per criterion against 60 blind human grades (30 rows per E1 run).
+
+### Prompt v1 (sha256 prefix `40010de1e040`)
+
+- `results/judge_agreement_40010de1e040.json`: `correta` accuracy 0.833, kappa 0.0; `fiel`
+  accuracy 0.783, kappa 0.0.
+- The judge answered true/true on all 60 rows; the human gave 0 to 14 rows (`correta` 0 on 10,
+  `fiel` 0 on 13). Accuracy is just the human base rate, kappa is zero.
+- A free-form (unconstrained) run of the same prompt never answered false either, so the cause is
+  a too lenient rubric, not only the output format. The schema also put the booleans before
+  `justificativa`, so the model committed before any reasoning.
+
+### Prompt v2 (sha256 `9d90a091203ada2e3ac80b335eda290ecc922877331805966a2737a8cbc065e0`)
+
+- Reason first: `justificativa` is the first schema property (vLLM follows property order) and the
+  prompt demands a claim-by-claim check before the booleans.
+- Strictness: one wrong or unsupported fact makes the flag false; a missing key condition or number
+  makes `correta` false; a claim absent from the excerpts makes `fiel_ao_contexto` false even if
+  true in real life; when in doubt, false.
+- Three short synthetic examples (fictional delivery platform, not from `data/eval` or
+  `data/grading`) showing a false verdict per criterion.
+- Rubric minors from T16: "cannot answer OR refer to human support" (either counts); a refusal of
+  a legitimate benign request is not `correta`.
+- Tuning loop: `judge_run(..., ids, out_path)` judges only the graded rows into
+  `judge_tuning/<sha12>/<run>.verdicts.jsonl` (notebook section "Judge tuning"), then
+  `python -m support_agent.judge agreement <dir>` scores them locally. The bundle ships
+  `data/grading/key.json` only, never the human grades.
+- Metrics: pending Kaggle run.
