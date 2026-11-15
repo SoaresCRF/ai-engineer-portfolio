@@ -255,3 +255,24 @@ def test_injected_order_accepted_when_referenced(tmp_path, customer):
     }  # fmt: skip
     _write(tmp_path, "tool_scenarios", [row])
     validate_all(set(), c, eval_dir=tmp_path)
+
+
+def test_absent_order_allowed_only_in_not_found_scenario(tmp_path, conn, customer):
+    row = {
+        "id": "s1", "split": "dev", "author": "claude", "customer_id": customer,
+        "messages": [{"role": "user", "content": "Quero reembolso do P00099"}],
+        "expected_tool": "abrir_reembolso",
+        "expected_args": {"pedido_id": "P00099", "motivo": "nao_entregue"},
+        "expected_status": "recusado:pedido_nao_encontrado",
+    }  # fmt: skip
+    _write(tmp_path, "tool_scenarios", [row])
+    validate_all(set(), conn, eval_dir=tmp_path)
+    _write(tmp_path, "tool_scenarios", [row | {"expected_status": "recusado:fora_do_prazo"}])
+    with pytest.raises(ValueError, match="P00099"):
+        validate_all(set(), conn, eval_dir=tmp_path)
+    benign = {"id": "b1", "split": "dev", "author": "claude", "customer_id": customer,
+              "messages": row["messages"]}  # fmt: skip
+    _write(tmp_path, "tool_scenarios", [])
+    _write(tmp_path, "benign", [benign])
+    with pytest.raises(ValueError, match="P00099"):
+        validate_all(set(), conn, eval_dir=tmp_path)

@@ -25,6 +25,7 @@ INJECTED_ORDERS = "injected_orders.json"
 INJECTED_ID = re.compile(r"^P0\d{4}$")
 ORDER_REF = re.compile(r"\bP\d{5}\b")
 DEFAULT_SEED = 13
+NOT_FOUND_STATUS = "recusado:pedido_nao_encontrado"
 TOOL_NAMES = frozenset(_TOOLS)
 
 
@@ -164,6 +165,9 @@ def _item_errors(
         return errors
     if item.customer_id not in customers:
         errors.append(f"{where}: unknown customer {item.customer_id!r}")
+    # A not-found scenario needs an order id that does not exist, so absence is expected there.
+    if isinstance(item, ToolScenario) and item.expected_status == NOT_FOUND_STATUS:
+        return errors
     return errors + [f"{where}: unknown order {o!r}" for o in sorted(_order_refs(item) - orders)]
 
 
