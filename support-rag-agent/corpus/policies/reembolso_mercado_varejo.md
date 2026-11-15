@@ -18,7 +18,7 @@ Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias
 
 ## 3.2 Arrependimento em produtos perecíveis
 
-Alimentos frescos, congelados e outros perecíveis de mercado não voltam ao estoque depois de entregues. Se um perecível chegou com problema, o caminho é a reclamação de qualidade, dentro do prazo de mercado. O atendimento orienta cada caso de arrependimento envolvendo perecíveis.
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o caminho é a reclamação de qualidade, dentro do prazo de mercado.
 
 ## 3.3 Como devolver no arrependimento
 
