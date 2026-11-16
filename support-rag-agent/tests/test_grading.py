@@ -261,3 +261,40 @@ def test_agreement_reads_verdicts_dir(env, tmp_path):
         judge.judge_agreement(graded, key_path, tuning)
     with pytest.raises(FileNotFoundError):
         judge.judge_agreement(graded, key_path)
+
+
+def test_grading_dir_for_keeps_dev_legacy_location(env):
+    assert judge.grading_dir_for("dev") == env.grading
+    assert judge.grading_dir_for("test") == env.grading / "test"
+
+
+def test_sheet_out_dir_per_split_does_not_touch_dev(env):
+    sheet = judge.export_grading_sheet(env.runs, n=8, out_dir=judge.grading_dir_for("test"))
+    assert sheet == env.grading / "test" / "sheet.csv"
+    assert (env.grading / "test" / "key.json").exists()
+    assert not (env.grading / "sheet.csv").exists()
+    with pytest.raises(FileExistsError):
+        judge.export_grading_sheet(env.runs, n=8, out_dir=judge.grading_dir_for("test"))
+
+
+def test_agreement_file_named_per_split_and_never_overwritten(env, tmp_path):
+    graded, key_path = _grade(env, tmp_path, lambda k: ("1", "1"))
+    dev = judge.judge_agreement(graded, key_path)
+    test = judge.judge_agreement(graded, key_path, split="test")
+    assert dev.name == f"judge_agreement_{SHA[:12]}.json"
+    assert test.name == f"judge_agreement_{SHA[:12]}_test.json"
+    with pytest.raises(FileExistsError):
+        judge.judge_agreement(graded, key_path, split="test")
+
+
+def test_cli_sheet_and_agreement_use_split_dir(env, monkeypatch):
+    export = judge.export_grading_sheet  # fixture runs hold 8 items, the CLI default is 60
+    monkeypatch.setattr(
+        judge, "export_grading_sheet", lambda r, out_dir: export(r, 8, out_dir=out_dir)
+    )
+    sheet = judge._cli(["sheet", str(env.runs[0]), str(env.runs[1]), "test"])
+    assert sheet == env.grading / "test" / "sheet.csv"
+    with pytest.raises(ValueError, match="ungraded"):
+        judge._cli(["agreement", "--split", "test"])
+    with pytest.raises(SystemExit):
+        judge._cli(["agreement", "a", "b", "c"])

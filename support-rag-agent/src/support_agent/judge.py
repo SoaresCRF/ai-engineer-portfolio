@@ -22,6 +22,7 @@ EVAL_DIR = eval_set.EVAL_DIR
 ROOT = Path(__file__).resolve().parents[2]
 GRADING_DIR = ROOT / "data" / "grading"
 RESULTS_DIR = ROOT / "results"
+DEV_SPLIT = "dev"
 SHEET_COLUMNS = ["chave", "pergunta", "referencia", "contexto", "resposta", "correta", "fiel"]
 CONTEXT_SEPARATOR = "\n\n---\n\n"
 JUDGED_KINDS = ("policy_questions", "benign")  # tools and attacks are scored deterministically
@@ -197,11 +198,19 @@ def judge_run(
     return path
 
 
-def export_grading_sheet(run_dirs: list[Path], n: int = 60, seed: int = 17) -> Path:
+def grading_dir_for(split: str) -> Path:
+    """Dev keeps the legacy flat location (committed); other splits get their own subdirectory."""
+    return GRADING_DIR if split == DEV_SPLIT else GRADING_DIR / split
+
+
+def export_grading_sheet(
+    run_dirs: list[Path], n: int = 60, seed: int = 17, out_dir: Path | None = None
+) -> Path:
     """Blind sheet: n/2 policy answers per run, shuffled together, no run or verdict info."""
     if n % 2 or len(run_dirs) != 2:
         raise ValueError("need an even n and exactly two run dirs (the two E1 configs)")
-    sheet_path, key_path = GRADING_DIR / "sheet.csv", GRADING_DIR / "key.json"
+    out_dir = GRADING_DIR if out_dir is None else out_dir  # read at call time (tests patch it)
+    sheet_path, key_path = out_dir / "sheet.csv", out_dir / "key.json"
     for path in (sheet_path, key_path):
         if path.exists():
             raise FileExistsError(path)  # grades are evidence, never overwritten
@@ -215,7 +224,7 @@ def export_grading_sheet(run_dirs: list[Path], n: int = 60, seed: int = 17) -> P
         pool = sorted((r for r in rows if r["kind"] == "policy_questions"), key=lambda r: r["id"])
         picked += [(run_dir, r) for r in rng.sample(pool, n // 2)]
     rng.shuffle(picked)
-    GRADING_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
     key = {}
     with sheet_path.open("w", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=SHEET_COLUMNS)
@@ -258,7 +267,9 @@ def _read_sheet(sheet_path: Path) -> list[dict]:
     return list(reader)
 
 
-def judge_agreement(sheet_path: Path, key_path: Path, verdicts_dir: Path | None = None) -> Path:
+def judge_agreement(
+    sheet_path: Path, key_path: Path, verdicts_dir: Path | None = None, split: str = DEV_SPLIT
+) -> Path:
     """Accuracy and Cohen's kappa of the judge against the human grades, per criterion.
 
     verdicts_dir holds <run>.verdicts.jsonl files (tuning rounds); default is each run's own.
@@ -319,19 +330,35 @@ def judge_agreement(sheet_path: Path, key_path: Path, verdicts_dir: Path | None 
         }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     # One file per prompt version so every tuning round stays on record.
-    path = RESULTS_DIR / f"judge_agreement_{sha[:12]}.json"
+    suffix = "" if split == DEV_SPLIT else f"_{split}"
+    path = RESULTS_DIR / f"judge_agreement_{sha[:12]}{suffix}.json"
     if path.exists():
         raise FileExistsError(path)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     return path
 
 
-if __name__ == "__main__":
-    # usage: python -m support_agent.judge sheet <run_dir> <run_dir> | agreement [verdicts_dir]
-    if len(sys.argv) == 4 and sys.argv[1] == "sheet":
-        print(export_grading_sheet([Path(sys.argv[2]), Path(sys.argv[3])]))
-    elif len(sys.argv) in (2, 3) and sys.argv[1] == "agreement":
-        vdir = Path(sys.argv[2]) if len(sys.argv) == 3 else None
-        print(judge_agreement(GRADING_DIR / "sheet.csv", GRADING_DIR / "key.json", vdir))
+def _cli(args: list[str]) -> Path:
+    # usage: judge sheet <run_dir> <run_dir> [split] | judge agreement [verdicts_dir] [--split S]
+    if len(args) in (3, 4) and args[0] == "sheet":
+        split = args[3] if len(args) == 4 else DEV_SPLIT
+        return export_grading_sheet([Path(args[1]), Path(args[2])], out_dir=grading_dir_for(split))
+    elif args[:1] == ["agreement"]:
+        split = DEV_SPLIT
+        if "--split" in args:
+            at = args.index("--split")
+            split, args = args[at + 1], args[:at] + args[at + 2 :]
+        if len(args) not in (1, 2):
+            raise SystemExit("usage: judge agreement [verdicts_dir] [--split S]")
+        gdir = grading_dir_for(split)
+        vdir = Path(args[1]) if len(args) == 2 else None
+        return judge_agreement(gdir / "sheet.csv", gdir / "key.json", vdir, split)
     else:
-        raise SystemExit("usage: judge sheet <run_dir> <run_dir> | judge agreement [verdicts_dir]")
+        raise SystemExit(
+            "usage: judge sheet <run_dir> <run_dir> [split] | "
+            "judge agreement [verdicts_dir] [--split S]"
+        )
+
+
+if __name__ == "__main__":
+    print(_cli(sys.argv[1:]))
