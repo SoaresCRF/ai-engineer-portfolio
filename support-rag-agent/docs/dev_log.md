@@ -105,10 +105,10 @@ a valid measure (the judge answered true on every row).
 
 Blind human grades on the dev answers, 30 rows per config.
 
-| Retrieval       | n  | `correta`    | `fiel_ao_contexto` |
-|-----------------|----|--------------|--------------------|
-| dense           | 30 | 25/30 (0.833) | 22/30 (0.733)     |
-| hybrid_rerank   | 30 | 25/30 (0.833) | 25/30 (0.833)     |
+| Retrieval     | n  | `correta`     | `fiel_ao_contexto` |
+|---------------|----|---------------|--------------------|
+| dense         | 30 | 25/30 (0.833) | 22/30 (0.733)      |
+| hybrid_rerank | 30 | 25/30 (0.833) | 25/30 (0.833)      |
 
 n is small (30 per config): the `fiel` difference is 3 rows and is not statistically meaningful.
 

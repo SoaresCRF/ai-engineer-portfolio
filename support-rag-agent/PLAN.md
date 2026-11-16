@@ -260,3 +260,12 @@ support-rag-agent/
 - Você escreve ~30 perguntas de controle de viés e dá ~60 notas humanas para validar o juiz.
 - Tamanho do conjunto como na seção 4.1 (~300 itens).
 - Demo local com Ollama.
+
+## Mudanças durante a execução (2026-11-16)
+
+O texto acima é o plano original e não foi reescrito. O que mudou na execução:
+
+- **Juiz:** o Gemma 3 12B não roda na T4: o vLLM 0.32 recusa `gemma3` em float16 (instabilidade numérica) e a T4 não tem bfloat16. Depois veio o `stelterlab/phi-4-AWQ` (prompts v1 e v2, sem concordância) e, por fim, o `casperhansen/mistral-small-24b-instruct-2501-awq`, servido com tensor parallel nas duas T4 (Kaggle "GPU T4 x2"). Histórico em `docs/dev_log.md`.
+- **Portão de kappa não atingido:** com o prompt v3, kappa `correta` / `fiel_ao_contexto` = 0,48 / 0,20 no dev e 0,36 / 0,44 no test, abaixo de 0,6. As notas humanas cegas (60 no dev, 60 no test) viraram a medida primária da qualidade das respostas; o juiz é secundário e sempre aparece com modelo, kappa e "não validado". Isso contraria o anti-goal da seção 2 ("o número do juiz não entra no README"): os números do juiz aparecem, mas rotulados assim, e nenhuma conclusão se apoia só neles.
+- **`top_k` e prompts não foram ajustados:** sem uma medida validada de qualidade de resposta, ficaram no padrão (`top_k=5`, prompts sem mudança). A configuração congelada está em `src/support_agent/final_config.py`.
+- **Nomes dos arquivos de resultado (por split):** `results/judge_agreement_{sha12}.json` (dev) e `results/judge_agreement_{sha12}_{split}.json` (outros splits), com `sha12` = prefixo do SHA-256 do prompt do juiz; `results/final_{split}.json` em vez de `results/final.json`; `results/readme_tables_{split}.md` em vez de `results/readme_tables.md`. O teste do README confere as tabelas contra `results/readme_tables_test.md`.
