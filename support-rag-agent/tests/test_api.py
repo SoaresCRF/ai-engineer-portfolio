@@ -117,9 +117,13 @@ def test_middleware_resets_request_id_var():
     async def send(message):
         pass
 
-    asyncio.run(_SecurityMiddleware(app)({"type": "http", "path": "/x"}, None, send))
+    async def main():
+        await _SecurityMiddleware(app)({"type": "http", "path": "/x"}, None, send)
+        # Same context on purpose: asyncio.run copies it, so a check outside could not see a leak.
+        return tracing.request_id_var.get()
+
+    assert asyncio.run(main()) == "-"
     assert seen[0] != "-"
-    assert tracing.request_id_var.get() == "-"
 
 
 def test_chat_happy_path(make_client):

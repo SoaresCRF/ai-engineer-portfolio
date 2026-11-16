@@ -5,6 +5,20 @@ TABLES = "results/readme_tables_test.md"
 MARKER = f"<!-- from {TABLES} -->"
 
 
+def _table_blocks(text: str) -> list[str]:
+    """Every block of consecutive `|` lines."""
+    blocks, current = [], []
+    for line in text.splitlines():
+        if line.startswith("|"):
+            current.append(line)
+        elif current:
+            blocks.append("\n".join(current))
+            current = []
+    if current:
+        blocks.append("\n".join(current))
+    return blocks
+
+
 def _marked_tables(readme: str) -> list[str]:
     """Each table block (consecutive `|` lines) that follows a MARKER line."""
     lines = readme.splitlines()
@@ -27,8 +41,9 @@ def _marked_tables(readme: str) -> list[str]:
 def test_readme_tables_match_results():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     source = (ROOT / TABLES).read_text(encoding="utf-8")
+    source_blocks = _table_blocks(source)
     tables = _marked_tables(readme)
     assert tables, f"no table marked with {MARKER}"
     for table in tables:
         assert table, "a marker is not followed by a table"
-        assert table in source, f"table not found verbatim in {TABLES}:\n{table}"
+        assert table in source_blocks, f"table not found verbatim in {TABLES}:\n{table}"
