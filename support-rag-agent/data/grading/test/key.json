@@ -1,0 +1,242 @@
+{
+ "g01": {
+  "run": "e1_rerank_test",
+  "id": "pol-014"
+ },
+ "g02": {
+  "run": "e1_dense_test",
+  "id": "pol-027"
+ },
+ "g03": {
+  "run": "e1_dense_test",
+  "id": "usr-27"
+ },
+ "g04": {
+  "run": "e1_dense_test",
+  "id": "pol-060"
+ },
+ "g05": {
+  "run": "e1_rerank_test",
+  "id": "pol-090"
+ },
+ "g06": {
+  "run": "e1_rerank_test",
+  "id": "pol-063"
+ },
+ "g07": {
+  "run": "e1_dense_test",
+  "id": "pol-031"
+ },
+ "g08": {
+  "run": "e1_dense_test",
+  "id": "usr-15"
+ },
+ "g09": {
+  "run": "e1_dense_test",
+  "id": "pol-143"
+ },
+ "g10": {
+  "run": "e1_rerank_test",
+  "id": "pol-114"
+ },
+ "g11": {
+  "run": "e1_rerank_test",
+  "id": "usr-08"
+ },
+ "g12": {
+  "run": "e1_dense_test",
+  "id": "pol-133"
+ },
+ "g13": {
+  "run": "e1_rerank_test",
+  "id": "pol-077"
+ },
+ "g14": {
+  "run": "e1_rerank_test",
+  "id": "pol-133"
+ },
+ "g15": {
+  "run": "e1_rerank_test",
+  "id": "pol-087"
+ },
+ "g16": {
+  "run": "e1_dense_test",
+  "id": "pol-035"
+ },
+ "g17": {
+  "run": "e1_rerank_test",
+  "id": "usr-12"
+ },
+ "g18": {
+  "run": "e1_rerank_test",
+  "id": "pol-125"
+ },
+ "g19": {
+  "run": "e1_dense_test",
+  "id": "pol-013"
+ },
+ "g20": {
+  "run": "e1_dense_test",
+  "id": "pol-009"
+ },
+ "g21": {
+  "run": "e1_rerank_test",
+  "id": "pol-097"
+ },
+ "g22": {
+  "run": "e1_dense_test",
+  "id": "pol-137"
+ },
+ "g23": {
+  "run": "e1_dense_test",
+  "id": "pol-088"
+ },
+ "g24": {
+  "run": "e1_rerank_test",
+  "id": "pol-006"
+ },
+ "g25": {
+  "run": "e1_rerank_test",
+  "id": "pol-012"
+ },
+ "g26": {
+  "run": "e1_rerank_test",
+  "id": "pol-068"
+ },
+ "g27": {
+  "run": "e1_rerank_test",
+  "id": "pol-071"
+ },
+ "g28": {
+  "run": "e1_dense_test",
+  "id": "pol-041"
+ },
+ "g29": {
+  "run": "e1_dense_test",
+  "id": "pol-052"
+ },
+ "g30": {
+  "run": "e1_rerank_test",
+  "id": "pol-103"
+ },
+ "g31": {
+  "run": "e1_rerank_test",
+  "id": "pol-110"
+ },
+ "g32": {
+  "run": "e1_dense_test",
+  "id": "pol-111"
+ },
+ "g33": {
+  "run": "e1_dense_test",
+  "id": "pol-066"
+ },
+ "g34": {
+  "run": "e1_dense_test",
+  "id": "pol-141"
+ },
+ "g35": {
+  "run": "e1_dense_test",
+  "id": "pol-103"
+ },
+ "g36": {
+  "run": "e1_dense_test",
+  "id": "pol-081"
+ },
+ "g37": {
+  "run": "e1_dense_test",
+  "id": "pol-145"
+ },
+ "g38": {
+  "run": "e1_rerank_test",
+  "id": "pol-146"
+ },
+ "g39": {
+  "run": "e1_rerank_test",
+  "id": "pol-141"
+ },
+ "g40": {
+  "run": "e1_rerank_test",
+  "id": "usr-22"
+ },
+ "g41": {
+  "run": "e1_rerank_test",
+  "id": "pol-023"
+ },
+ "g42": {
+  "run": "e1_dense_test",
+  "id": "pol-057"
+ },
+ "g43": {
+  "run": "e1_rerank_test",
+  "id": "pol-016"
+ },
+ "g44": {
+  "run": "e1_dense_test",
+  "id": "pol-075"
+ },
+ "g45": {
+  "run": "e1_dense_test",
+  "id": "usr-29"
+ },
+ "g46": {
+  "run": "e1_rerank_test",
+  "id": "pol-074"
+ },
+ "g47": {
+  "run": "e1_rerank_test",
+  "id": "pol-120"
+ },
+ "g48": {
+  "run": "e1_rerank_test",
+  "id": "usr-14"
+ },
+ "g49": {
+  "run": "e1_rerank_test",
+  "id": "usr-06"
+ },
+ "g50": {
+  "run": "e1_dense_test",
+  "id": "pol-021"
+ },
+ "g51": {
+  "run": "e1_rerank_test",
+  "id": "pol-044"
+ },
+ "g52": {
+  "run": "e1_dense_test",
+  "id": "usr-08"
+ },
+ "g53": {
+  "run": "e1_dense_test",
+  "id": "pol-051"
+ },
+ "g54": {
+  "run": "e1_dense_test",
+  "id": "pol-113"
+ },
+ "g55": {
+  "run": "e1_dense_test",
+  "id": "pol-105"
+ },
+ "g56": {
+  "run": "e1_rerank_test",
+  "id": "pol-028"
+ },
+ "g57": {
+  "run": "e1_rerank_test",
+  "id": "pol-111"
+ },
+ "g58": {
+  "run": "e1_dense_test",
+  "id": "pol-084"
+ },
+ "g59": {
+  "run": "e1_rerank_test",
+  "id": "pol-145"
+ },
+ "g60": {
+  "run": "e1_dense_test",
+  "id": "pol-061"
+ }
+}
