@@ -9,6 +9,7 @@ Portfolio projects focused on applied GenAI / LLM engineering, themed around foo
 | Folder | Project | Status |
 |--------|---------|--------|
 | [`review-triage-llm/`](review-triage-llm/) | Fine-tuning a small LLM to triage PT-BR customer reviews into structured JSON (category, sentiment, urgency), compared against a classic baseline and a large zero-shot LLM. Model on [Hugging Face](https://huggingface.co/SoaresCRF/qwen3-1.7b-review-triage-ptbr-lora) | Done |
+| [`support-rag-agent/`](support-rag-agent/) | PT-BR customer-support agent with RAG (hybrid search + reranker) and tool calling on open models, with a FastAPI/Docker API and a prompt-injection evaluation of layered defenses (prompt, spotlighting, code guard, output filter) | Done |
 
 ## Conventions
 
