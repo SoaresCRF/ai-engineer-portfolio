@@ -6,7 +6,7 @@
 
 Short answer: the reranker improves retrieval (recall@5 0.74 → 0.78, MRR 0.69 → 0.75 on 100 test questions), and blind human grades see better answers (0.77 vs 0.53 correct, 30 answers per config, indicative only), but the LLM judge sees no difference and could not be validated. On injection, no prompt-level defense reduced the share of attacks the model *attempted* (0.30 in all three configs). What worked was the guard in code: with it, no forbidden action executed (action attacks 0.23 → 0.00) and every out-of-policy refund was refused (right status 0.64 → 1.00), with no over-refusal on look-alike benign requests (judge-scored). Planted phrases still get through every layer. Everything ran on free Kaggle T4s; generation costs about $0.45–0.57 per 1,000 requests at on-demand T4 prices.
 
-![Local demo: the Swagger UI at /docs answers a policy question with a citation and a refund request through the tool](docs/demo.gif)
+![Local demo: the Swagger UI at /docs answers a policy question with citations](docs/demo.gif)
 
 ## The task
 
@@ -213,7 +213,7 @@ Answers are verbatim (trimmed with "[...]"), from [data/runs](data/runs) `*_test
 - **Prompt-level defenses did not reduce attempts.** The plan expected D1 + D2 to lower the attempted ASR and the guard to zero the executions. The second half held for actions; the first did not: 0.30 attempted in all three configs. In this setup, the protection comes from code, not from the prompt.
 - **Planted phrases.** 0.64 success under full defense. An output check for links and out-of-policy claims, or a dedicated injection classifier (left out: the common ones are English-focused), would be the next step.
 - **Kaggle pitfalls.** A draft session that stops loses `/kaggle/working`, which cost one full set of dev runs before the notebook zipped results after each phase; `bm25s` imports JAX, which grabbed the GPU and killed vLLM until JAX was forced onto the CPU.
-- **Local demo model.** The Docker demo uses `qwen3:4b` on CPU through Ollama (an 8B model is too slow on CPU), so demo answers are of lower quality than the evaluated Qwen3-8B.
+- **Local demo model.** The Docker demo uses `qwen3:4b` on CPU through Ollama (an 8B model is too slow on CPU), so demo answers are of lower quality than the evaluated Qwen3-8B. Policy questions work; refunds do not: asked twice to refund an undelivered order, `qwen3:4b` called only `consultar_pedido` and then claimed the refund was opened without calling `abrir_reembolso`. The demo GIF therefore shows a policy question only. A check that the answer does not claim an action no tool performed would catch this.
 
 ## How to run
 
