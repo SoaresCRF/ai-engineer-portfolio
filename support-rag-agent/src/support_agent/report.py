@@ -6,10 +6,10 @@ from pathlib import Path
 
 import numpy as np
 
-from support_agent import eval_set, judge, run_eval
+from support_agent import ROOT, eval_set, judge, run_eval
 from support_agent.corpus import Chunk
 from support_agent.retrieval import Embedder, RetrievalConfig, Scorer, build_retriever
-from support_agent.retrieval_cache import ROOT, default_setup
+from support_agent.retrieval_cache import default_setup
 from support_agent.scoring import paired_bootstrap, retrieval_report, score_attacks, score_tools
 
 RESULTS_DIR = ROOT / "results"

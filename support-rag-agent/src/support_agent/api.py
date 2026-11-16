@@ -40,6 +40,7 @@ from support_agent.corpus import chunk_passages, load_corpus
 from support_agent.llm import ChatClient, OpenAIChatClient
 from support_agent.orders import REFERENCE_NOW, connect, utc_now
 from support_agent.retrieval import (
+    DENSE_MODEL,
     RetrievalConfig,
     build_retriever,
     cached_embeddings,
@@ -54,7 +55,6 @@ MAX_CONTENT_CHARS = 2000
 RATE_WINDOW_SECONDS = 60.0
 DEFAULT_RATE_LIMIT_PER_MIN = 30
 NONCE_BYTES = 8
-DENSE_MODEL = "BAAI/bge-m3"
 DOC_PATHS = frozenset({"/docs", "/docs/oauth2-redirect", "/redoc", "/openapi.json"})
 BASE_SECURITY_HEADERS = {
     "x-content-type-options": "nosniff",

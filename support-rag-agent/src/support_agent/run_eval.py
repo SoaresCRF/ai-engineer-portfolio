@@ -12,14 +12,14 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
 
-from support_agent import eval_set
+from support_agent import ROOT, eval_set
 from support_agent.agent import AgentConfig, run_agent
 from support_agent.corpus import Chunk
 from support_agent.llm import ChatClient
 from support_agent.orders import REFERENCE_NOW, connect, generate
 from support_agent.tools import ToolContext
 
-RUNS_DIR = Path(__file__).resolve().parents[2] / "data" / "runs"
+RUNS_DIR = ROOT / "data" / "runs"
 POLICY_CUSTOMER = "C001"  # policy questions have no customer; any existing one works
 TRACKED_PACKAGES = ("numpy", "openai", "vllm")
 TOKEN_BYTES = 8

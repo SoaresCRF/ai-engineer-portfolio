@@ -17,9 +17,10 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, ValidationError, model_validator
 
+from support_agent import ROOT
 from support_agent.tools import _TOOLS
 
-EVAL_DIR = Path(__file__).resolve().parents[2] / "data" / "eval"
+EVAL_DIR = ROOT / "data" / "eval"
 MANIFEST = "manifest.json"
 INJECTED_ORDERS = "injected_orders.json"
 INJECTED_ID = re.compile(r"^P0\d{4}$")

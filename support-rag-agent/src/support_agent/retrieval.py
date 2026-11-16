@@ -19,6 +19,7 @@ RetrievalConfig = Literal["dense", "bm25", "hybrid", "hybrid_rerank"]
 RRF_K = 60
 DEFAULT_CANDIDATES = 20
 CACHE_KEY_LENGTH = 16
+DENSE_MODEL = "BAAI/bge-m3"
 
 # Written without accents: compared after accent stripping.
 PT_STOPWORDS = frozenset(
@@ -125,7 +126,7 @@ def cached_embeddings(
 
 
 def load_models(
-    dense_name: str = "BAAI/bge-m3", rerank_name: str = "BAAI/bge-reranker-v2-m3"
+    dense_name: str = DENSE_MODEL, rerank_name: str = "BAAI/bge-reranker-v2-m3"
 ) -> tuple[Embedder, Scorer]:
     # Lazy import: sentence_transformers pulls in torch, which slows every import of this module.
     from sentence_transformers import CrossEncoder, SentenceTransformer

@@ -6,10 +6,8 @@ from dataclasses import dataclass
 from html.parser import HTMLParser
 from pathlib import Path
 
-LAW_SOURCES: dict[str, str] = {
-    "cdc": "https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm",
-    "decreto_7962": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/decreto/d7962.htm",
-}
+from support_agent import ROOT
+
 LAW_TITLES: dict[str, str] = {
     "cdc": "Código de Defesa do Consumidor (Lei nº 8.078/1990)",
     "decreto_7962": "Decreto nº 7.962/2013 (Comércio Eletrônico)",
@@ -265,4 +263,4 @@ def build_laws(corpus_dir: Path) -> None:
 if __name__ == "__main__":
     if sys.argv[1:] != ["build-laws"]:
         sys.exit("usage: python -m support_agent.corpus build-laws")
-    build_laws(Path(__file__).resolve().parents[2] / "corpus")
+    build_laws(ROOT / "corpus")
