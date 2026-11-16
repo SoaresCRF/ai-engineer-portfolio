@@ -1,6 +1,6 @@
 # PLAN — support-rag-agent
 
-> Status: **aprovado, em implementação**
+> Status: **concluído** (resultados no [README](README.md))
 > Restrições: custo zero (sem API paga, sem GPU paga), só dados públicos ou sintéticos, sem marca de terceiros.
 
 ## 1. Objetivo
