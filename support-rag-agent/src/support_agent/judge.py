@@ -10,16 +10,15 @@ import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-from support_agent import eval_set, run_eval
+from support_agent import ROOT, eval_set, run_eval
 from support_agent.corpus import chunk_passages, load_corpus
 from support_agent.llm import ChatClient
 from support_agent.scoring import cohen_kappa
 
 log = logging.getLogger(__name__)
 
-CORPUS_DIR = Path(__file__).resolve().parents[2] / "corpus"
+CORPUS_DIR = ROOT / "corpus"
 EVAL_DIR = eval_set.EVAL_DIR
-ROOT = Path(__file__).resolve().parents[2]
 GRADING_DIR = ROOT / "data" / "grading"
 RESULTS_DIR = ROOT / "results"
 DEV_SPLIT = "dev"

@@ -12,9 +12,10 @@ from pathlib import Path
 
 import numpy as np
 
-from support_agent import eval_set
+from support_agent import ROOT, eval_set
 from support_agent.corpus import Chunk, chunk_passages, load_corpus
 from support_agent.retrieval import (
+    DENSE_MODEL,
     Embedder,
     RetrievalConfig,
     Scorer,
@@ -24,10 +25,6 @@ from support_agent.retrieval import (
 )
 from support_agent.run_eval import _conversation
 
-# Same model as api.DENSE_MODEL (so the embedding cache is shared); not imported from api because
-# api pulls fastapi, which the Kaggle notebook does not install.
-DENSE_MODEL = "BAAI/bge-m3"
-ROOT = Path(__file__).resolve().parents[2]
 CORPUS_DIR = ROOT / "corpus"
 EMBEDDING_CACHE_DIR = ROOT / "data" / "cache"  # same default as api.py CACHE_DIR
 RETRIEVAL_CACHE_DIR = ROOT / "data" / "retrieval_cache"
