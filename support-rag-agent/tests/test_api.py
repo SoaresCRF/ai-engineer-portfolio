@@ -271,3 +271,10 @@ def test_build_app_from_env_requires_variables(monkeypatch):
     monkeypatch.delenv("LLM_BASE_URL", raising=False)
     with pytest.raises(RuntimeError, match="LLM_BASE_URL"):
         build_app_from_env()
+
+
+def test_openapi_declares_bearer_security_for_chat(make_client):
+    schema = make_client().get("/openapi.json").json()
+    schemes = schema["components"]["securitySchemes"]
+    assert any(s["type"] == "http" and s["scheme"] == "bearer" for s in schemes.values())
+    assert schema["paths"]["/chat"]["post"]["security"]
