@@ -1,0 +1,15 @@
+{
+ "judge_prompt_sha256": "aa3d2d0e79694ed9a89c94b0122b49401a24bb56f9b5f046019b76313c9a7cd9",
+ "n_rows": 60,
+ "skipped_invalid": [],
+ "correta": {
+  "n": 60,
+  "accuracy": 0.8833333333333333,
+  "kappa": 0.4750000000000001
+ },
+ "fiel_ao_contexto": {
+  "n": 60,
+  "accuracy": 0.7,
+  "kappa": 0.20471281296023533
+ }
+}

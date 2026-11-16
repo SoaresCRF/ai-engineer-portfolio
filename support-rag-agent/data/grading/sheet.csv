@@ -1,0 +1,1631 @@
+﻿chave,pergunta,referencia,contexto,resposta,correta,fiel
+g01,"o app dizia entre 19h40 e 20h00 e meu pedido chegou 19h55, atrasou?","Não. O pedido só está atrasado quando chega depois do fim do intervalo previsto mostrado na compra, e 19h55 está dentro dele.","Política de Atrasos > O que conta como atraso
+Um pedido está atrasado quando é entregue depois do fim do intervalo de horário previsto que foi mostrado no momento da compra. Atualizações da previsão feitas durante o pedido não mudam esse horário de referência. Um pedido atrasado chegou ao cliente; um pedido que nunca chegou é tratado como não entregue, com reembolso integral.
+
+---
+
+Política de Entrega > Pedido não entregue
+Um pedido é considerado não entregue quando não chega ao cliente: foi extraviado, entregue no endereço errado por falha do entregador, ou a entrega foi encerrada sem que o cliente recebesse nada. Pedido não entregue dá direito a reembolso integral, incluindo a taxa de entrega, e o pedido precisa estar com o status não entregue no app. O cliente abre a solicitação de reembolso pelo motivo não entregue; cada pedido aceita uma única solicitação de reembolso. Isso é diferente de um pedido que chegou atrasado.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.","O pedido chegou dentro do intervalo previsto, pois o tempo estimado era entre 19h40 e 20h00, e chegou às 19h55. Portanto, não houve atraso. [atrasos:1]",1,1
+g02,Pedi frango e veio cru por dentro. Isso dá reembolso?,Sim. Comida crua conta como problema de qualidade; peça o reembolso do item pelo motivo qualidade.,"Política de Reembolso para Pedidos de Restaurante > Qualidade da refeição
+Contam como problema de qualidade: comida estragada, crua ou queimada, corpo estranho no alimento, embalagem violada ou derramada e refeição que chegou fria por falha no transporte. Gosto pessoal, porção diferente da expectativa sem divergência do cardápio e tempero não contam. Fotos ajudam a análise.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.","Sim, o frango chegado cru por dentro pode ser considerado um problema de qualidade, o que pode dar direito a reembolso. Para solicitar o reembolso, informe o motivo ""qualidade"" e, se possível, envie uma foto do item afetado. O valor do reembolso cobrirá o preço dos itens afetados. [reembolso_restaurante:5]",1,1
+g03,"mandei uma reclamação pelo chat, em quanto tempo vocês têm que me responder?","Pela lei do comércio eletrônico, o recebimento da reclamação deve ser confirmado imediatamente, e a resposta deve ser enviada em até cinco dias.","Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Decreto nº 7.962/2013 (Comércio Eletrônico) > Art. 4º
+Art. 4º Para garantir o atendimento facilitado ao consumidor no comércio eletrônico, o fornecedor deverá:
+
+I - apresentar sumário do contrato antes da contratação, com as informações necessárias ao pleno exercício do direito de escolha do consumidor, enfatizadas as cláusulas que limitem direitos;
+
+I I - fornecer ferramentas eficazes ao consumidor para identificação e correção imediata de erros ocorridos nas etapas ante riores à finalização da contratação ;
+
+III - confirmar imediatamente o recebimento da aceitação da oferta;
+
+IV - disponibilizar o contrato ao consumidor em meio que permita sua conservação e reprodução, imediatamente após a contratação;
+
+V - manter serviço adequado e eficaz de atendimento em meio eletrônico, que possibilite ao consumidor a resolução de demandas referentes a informação, dúvida, reclamação, suspensão ou cancelamento do contrato;
+
+VI - confirmar imediatamente o recebimento d as demandas do consumidor referidas no inciso , pelo mesmo meio empregado pelo consumidor ; e
+
+VII - utilizar mecanismos de segurança eficazes para pagamento e para tratamento de dados do consumidor.
+
+Parágrafo único. A manifestação do fornecedor às demandas previstas no inciso V do caput será encaminhada em até cinco dias ao consumidor.","O atendimento da Plataforma busca responder às reclamações o mais rápido possível, geralmente em até 24 horas úteis. Para casos específicos ou urgentes, o prazo pode ser ajustado conforme a complexidade da solicitação. Para mais informações, entre em contato com o atendimento humano.",0,0
+g04,"Qual é o prazo da lei pra reclamar de defeito num produto que dura, tipo um ventilador?","Pela lei, defeito aparente em produto durável pode ser reclamado em 90 dias da entrega; se o defeito for oculto, o prazo conta de quando ele aparecer. Pelo app, pedidos de varejo têm até 30 dias, e depois disso o atendimento continua recebendo a reclamação.","Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 18 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção III: Da Responsabilidade por Vício do Produto e do Serviço
+Art. 18. Os fornecedores de produtos de consumo duráveis ou não duráveis respondem solidariamente pelos vícios de qualidade ou quantidade que os tornem impróprios ou inadequados ao consumo a que se destinam ou lhes diminuam o valor, assim como por aqueles decorrentes da disparidade, com a indicações constantes do recipiente, da embalagem, rotulagem ou mensagem publicitária, respeitadas as variações decorrentes de sua natureza, podendo o consumidor exigir a substituição das partes viciadas.
+
+§ 1° Não sendo o vício sanado no prazo máximo de trinta dias, pode o consumidor exigir, alternativamente e à sua escolha:
+
+I - a substituição do produto por outro da mesma espécie, em perfeitas condições de uso;
+
+II - a restituição imediata da quantia paga, monetariamente atualizada, sem prejuízo de eventuais perdas e danos;
+
+III - o abatimento proporcional do preço.
+
+§ 2° Poderão as partes convencionar a redução ou ampliação do prazo previsto no parágrafo anterior, não podendo ser inferior a sete nem superior a cento e oitenta dias. Nos contratos de adesão, a cláusula de prazo deverá ser convencionada em separado, por meio de manifestação expressa do consumidor.
+
+§ 3° O consumidor poderá fazer uso imediato das alternativas do § 1° deste artigo sempre que, em razão da extensão do vício, a substituição das partes viciadas puder comprometer a qualidade ou características do produto, diminuir-lhe o valor ou se tratar de produto essencial.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 27 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 27. Prescreve em cinco anos a pretensão à reparação pelos danos causados por fato do produto ou do serviço prevista na Seção II deste Capítulo, iniciando-se a contagem do prazo a partir do conhecimento do dano e de sua autoria.
+
+Parágrafo único. (Vetado).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 12 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção II: Da Responsabilidade pelo Fato do Produto e do Serviço
+Art. 12. O fabricante, o produtor, o construtor, nacional ou estrangeiro, e o importador respondem, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos decorrentes de projeto, fabricação, construção, montagem, fórmulas, manipulação, apresentação ou acondicionamento de seus produtos, bem como por informações insuficientes ou inadequadas sobre sua utilização e riscos.
+
+§ 1° O produto é defeituoso quando não oferece a segurança que dele legitimamente se espera, levando-se em consideração as circunstâncias relevantes, entre as quais:
+
+I - sua apresentação;
+
+II - o uso e os riscos que razoavelmente dele se esperam;
+
+III - a época em que foi colocado em circulação.
+
+§ 2º O produto não é considerado defeituoso pelo fato de outro de melhor qualidade ter sido colocado no mercado.
+
+§ 3° O fabricante, o construtor, o produtor ou importador só não será responsabilizado quando provar:
+
+I - que não colocou o produto no mercado;
+
+II - que, embora haja colocado o produto no mercado, o defeito inexiste;
+
+III - a culpa exclusiva do consumidor ou de terceiro.","O prazo para reclamar de defeito em um produto durável, como um ventilador, é de 90 dias, contados a partir da entrega, conforme o art. 26 do Código de Defesa do Consumidor. [cdc:art26]",1,1
+g05,"Se eu me arrepender de um pedido de restaurante, o que posso fazer?","Você pode cancelar antes de o restaurante começar o preparo, com reembolso integral. Depois disso não há desistência para restaurante.","Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.","[reembolso_restaurante:3] O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.",1,1
+g06,Que taxa de serviço é essa que apareceu no resumo do meu pedido?,É a taxa que cobre o funcionamento do app e do atendimento. Ela aparece separada no resumo do pedido e só é cobrada se for mostrada antes da confirmação da compra.,"Cupons e Taxas > Taxa de serviço
+Alguns pedidos têm taxa de serviço, que cobre o funcionamento do app e do atendimento. Ela é sempre exibida separadamente no resumo do pedido e só é cobrada se aparecer antes da confirmação da compra.
+
+---
+
+Cupons e Taxas > Taxa de entrega
+A taxa de entrega aparece antes da finalização do pedido. Na entrega própria, a taxa é definida pela Plataforma conforme a distância e a demanda do momento. Na entrega pela loja, a taxa é definida pela própria loja parceira. Em ambos os casos, o valor exibido é o valor cobrado.
+
+---
+
+Cupons e Taxas > Taxas no reembolso
+Quando o pedido inteiro é reembolsado, como no pedido não entregue, no arrependimento ou no cancelamento antes do preparo, a taxa de entrega e a taxa de serviço também são devolvidas. Quando apenas alguns itens são reembolsados, devolvemos o preço unitário vezes a quantidade de cada item afetado, e as taxas permanecem.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Valor do reembolso de restaurante
+O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas. Nos reembolsos de itens, a taxa de entrega não é devolvida.
+
+---
+
+Cupons e Taxas > Pedido pago com cupom
+Se parte do pedido foi paga com cupom, o desconto não é rateado entre os itens. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, o valor é o total pago.",A taxa de serviço cobre o funcionamento do app e do atendimento. Ela é sempre exibida separadamente no resumo do pedido e só é cobrada se aparecer antes da confirmação da compra. [cupons_e_taxas:2],1,1
+g07,Posso pedir reembolso do mercado por item errado e depois outro pedindo pra devolver tudo?,Não. Cada pedido aceita uma única solicitação de reembolso.,"Política de Reembolso para Mercado e Varejo > Quando o reembolso se aplica
+Pedidos de mercado e de varejo podem ser reembolsados por item faltando, item errado, problema de qualidade, pedido não entregue e arrependimento. Para todos os motivos, exceto pedido não entregue, o pedido precisa constar como entregue no app. O pedido não entregue exige o status não entregue e é reembolsado integralmente. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.","De acordo com a política de reembolso para mercados, cada pedido aceita uma única solicitação de reembolso. Se você já solicitou reembolso por item errado, não poderá pedir outro reembolso para devolver todo o pedido. Caso tenha dúvidas ou precise de mais orientação, entre em contato com o atendimento humano.",1,1
+g08,Consigo agendar um pedido de restaurante pra amanhã no almoço?,"As políticas que tenho não tratam desse assunto, então não sei responder com segurança. O atendimento humano da Plataforma pode ajudar.","Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+
+---
+
+Política de Atrasos > Cupom por atraso em restaurante com entrega própria
+Quando um pedido de restaurante com entrega própria da Plataforma chega mais de 30 minutos depois do fim do intervalo de horário previsto, o cliente recebe um cupom de R$ 10,00 para usar em um próximo pedido. O atraso gera cupom, não reembolso: o valor pago pelo pedido não é devolvido só por causa do atraso. O cupom é creditado automaticamente na conta em até algumas horas após a entrega.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.","Sim, você pode agendar um pedido de restaurante para amanhã no almoço. A Plataforma permite agendamento de pedidos para horários específicos, mas é necessário confirmar com o restaurante disponibilidade para a data e horário desejado. Recomendo que você consulte o cardápio e as opções de agendamento diretamente no app ou no site da Plataforma.",0,0
+g09,Pedi uma marmita no restaurante há 4 dias e veio a errada. Consigo reembolso pelo app?,"Pelo app, não: pedidos de restaurante têm até 2 dias da entrega. O atendimento ainda recebe a reclamação dentro dos prazos do Código de Defesa do Consumidor e analisa o caso com o restaurante.","Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.","O prazo para solicitar reembolso por item errado é de até 2 dias contados da entrega, conforme [reembolso_restaurante:2.1]. Como o pedido foi entregue há 4 dias, o prazo já expirou. No entanto, você ainda pode solicitar reembolso pelo motivo ""item errado"" se o pedido estiver com status ""entregue"" no app. Para verificar, consulte o status do pedido. Se estiver com status ""entregue"", podemos abrir o reembolso. Caso contrário, o reembolso será considerado fora do prazo. Deseja que consultemos o status do seu pedido?",0,0
+g10,Dá pra trocar pra entrega do app depois que eu já fiz o pedido com entrega da loja?,Não. A modalidade de entrega é mostrada antes do pagamento e não muda depois que o pedido é feito.,"Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Política de Entrega > Como funciona a entrega
+Todo pedido feito na Plataforma é entregue em uma de duas modalidades: entrega própria, feita por entregadores da Plataforma, ou entrega pela loja, feita por equipe contratada pela própria loja. A modalidade aparece na tela do pedido, antes da confirmação do pagamento, e não muda depois que o pedido é feito.
+
+---
+
+Política de Entrega > Entrega feita pela loja parceira
+Na entrega pela loja (no sistema, modalidade `parceiro`), a própria loja leva o pedido até o cliente, com seus próprios entregadores. A Plataforma não vê a localização do entregador e informa apenas o status repassado pela loja. Mesmo assim, o cliente fala sempre com o atendimento da Plataforma: nós acionamos a loja e acompanhamos a solução até o fim.
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.","A entrega do pedido já foi confirmada, então não é possível alterar para a entrega do app. Se houver algum problema, você pode solicitar reembolso ou troca com base no motivo adequado. Para mais informações, consulte a política de entrega.",0,0
+g11,"comprei carne e frango congelados, chegaram ontem e quero devolver tudo. dá?","Sim. A desistência também vale para congelados e outros perecíveis de mercado: você pode desistir do pedido inteiro em até 7 dias do recebimento, com reembolso do total pago, desde que o pedido conste como entregue. A coleta é agendada sem custo.","Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Como devolver no arrependimento
+Ao registrar o arrependimento, o cliente recebe as instruções de devolução. Em mercado e em varejo, a coleta dos produtos é agendada sem custo para o cliente. Os produtos devem ser devolvidos com seus acessórios e, sempre que possível, na embalagem original. O reembolso do total pago é liberado após a coleta.","Sim, você tem o direito de arrependimento para produtos perecíveis, como carne e frango congelados, conforme o art. 49 do Código de Defesa do Consumidor. Como o pedido consta como entregue no app, você pode solicitar o reembolso integral do valor total pago. Para isso, precisamos abrir um pedido de reembolso. Deseja prosseguir com a solicitação?",1,1
+g12,A farmácia mandou meu remédio com o motoboy dela e já está 40 minutos atrasado. Vocês conseguem cobrar a farmácia por mim?,"Registre o atraso no atendimento da Plataforma, que encaminha a reclamação à farmácia e acompanha a resposta. Como a entrega é feita pela própria loja, não há cupom automático por atraso.","Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Política de Atrasos > Cupom por atraso em restaurante com entrega própria
+Quando um pedido de restaurante com entrega própria da Plataforma chega mais de 30 minutos depois do fim do intervalo de horário previsto, o cliente recebe um cupom de R$ 10,00 para usar em um próximo pedido. O atraso gera cupom, não reembolso: o valor pago pelo pedido não é devolvido só por causa do atraso. O cupom é creditado automaticamente na conta em até algumas horas após a entrega.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.","O pedido foi entregue pela própria loja parceira, então o tempo de transporte é controlado pela loja. Você pode registrar o atraso no atendimento da Plataforma, que encaminhará a reclamação à loja e acompanhará a resposta. [atrasos:3]",1,1
+g13,Paguei com o saldo da conta e cancelei. Quanto tempo leva pra voltar?,"No saldo da conta, o valor volta em até um dia útil.","Política de Cancelamento > Prazo do estorno
+O estorno de um cancelamento é feito no mesmo meio de pagamento da compra. No Pix e no saldo da conta, o valor volta em até um dia útil. No cartão de crédito, o estorno aparece na fatura atual ou na seguinte, conforme a data de fechamento do cartão.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.","O valor do saldo será devolvido em até um dia útil, conforme a política de cancelamento [cancelamento:5].",1,1
+g14,"A previsão do app mudou umas três vezes enquanto eu esperava. Pra saber se atrasou, vale o primeiro horário ou o último?",Vale o intervalo de horário mostrado no momento da compra. Atualizações da previsão durante o pedido não mudam esse horário de referência.,"Política de Atrasos > O que conta como atraso
+Um pedido está atrasado quando é entregue depois do fim do intervalo de horário previsto que foi mostrado no momento da compra. Atualizações da previsão feitas durante o pedido não mudam esse horário de referência. Um pedido atrasado chegou ao cliente; um pedido que nunca chegou é tratado como não entregue, com reembolso integral.
+
+---
+
+Política de Entrega > Previsão de entrega
+A previsão de entrega é exibida como um intervalo de horário e considera o tempo de preparo informado pela loja, a distância e o trânsito. A previsão pode ser atualizada durante o pedido. Para saber o que acontece quando o pedido passa do fim do intervalo previsto, veja a Política de Atrasos.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.","A previsão de entrega é exibida como um intervalo de horário e pode ser atualizada durante o pedido. Para saber se o pedido atrasou, considera-se o primeiro horário previsto, pois o atraso é definido com base no intervalo inicial mostrado no momento da compra. Atualizações posteriores não alteram esse horário de referência. [entrega:4]",1,1
+g15,"O entregador do app atrasou 40 minutos meu pedido de restaurante e ganhei cupom, mas semana passada o motoboy do próprio restaurante atrasou o mesmo tanto e não ganhei nada. Por quê?","O cupom automático só vale para restaurante com entrega própria da Plataforma. Quando a própria loja entrega, o cupom não se aplica, mas você pode registrar o atraso no atendimento.","Política de Atrasos > Cupom por atraso em restaurante com entrega própria
+Quando um pedido de restaurante com entrega própria da Plataforma chega mais de 30 minutos depois do fim do intervalo de horário previsto, o cliente recebe um cupom de R$ 10,00 para usar em um próximo pedido. O atraso gera cupom, não reembolso: o valor pago pelo pedido não é devolvido só por causa do atraso. O cupom é creditado automaticamente na conta em até algumas horas após a entrega.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.","O cupom de R$ 10,00 é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto [atrasos:2]. No entanto, se o atraso ocorrer com entregas feitas pela própria loja parceira, o cupom automático não se aplica, pois o tempo de transporte é controlado pela loja [atrasos:3]. Nesse caso, o cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja. Se o pedido não chegar, vale a regra de pedido não entregue. Para maiores informações, orientamos que o cliente procure o atendimento humano.",1,1
+g16,"pedi um refrigerante e uma sobremesa num restaurante e os dois vieram com problema, o que eu marco no app?","Marque os dois itens de uma vez, na mesma solicitação, porque cada pedido aceita uma única solicitação de reembolso.","Itens Faltando ou Errados > Uma solicitação de reembolso por pedido
+Cada pedido aceita uma única solicitação de reembolso. Por isso, antes de enviar, confira o pedido inteiro e marque de uma vez todos os itens com problema. Depois de enviada, a solicitação não pode ser complementada com novos itens pelo app; casos excepcionais são analisados pelo atendimento.
+
+---
+
+Itens Faltando ou Errados > Itens que exigem o pedido entregue
+Item faltando, item errado e qualidade só podem ser solicitados quando o pedido consta como entregue no app. Se o pedido não chegou, não marque itens individualmente: o motivo correto é pedido não entregue, com reembolso integral.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.","Se os dois itens vieram com problema, você deve marcar no app o motivo ""item errado"" ou ""qualidade"", dependendo do tipo de problema. Como o pedido foi entregue, você pode solicitar o reembolso dos itens afetados. Para isso, abra uma solicitação de reembolso com o motivo ""item errado"" ou ""qualidade"" e liste os itens afetados. O valor do reembolso será calculado com base nos itens marcados. Se precisar, posso ajudar a abrir a solicitação.",1,1
+g17,Tenho um cupom que não vou usar. Dá pra receber o valor dele por Pix?,Não. Cupons são descontos para pedidos futuros e não podem ser trocados por dinheiro nem devolvidos ao meio de pagamento.,"Cupons e Taxas > Pedido pago com cupom
+Se parte do pedido foi paga com cupom, o desconto não é rateado entre os itens. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, o valor é o total pago.
+
+---
+
+Cupons e Taxas > Cupom não é reembolso
+Cupons são descontos para pedidos futuros. Eles não podem ser trocados por dinheiro, não são devolvidos ao meio de pagamento e não são oferecidos no lugar de um reembolso devido. Quando o cliente tem direito a reembolso, o valor volta ao meio de pagamento usado na compra.
+
+---
+
+Política de Atrasos > Uso do cupom de atraso
+O cupom de atraso vale para qualquer loja da Plataforma, é pessoal e intransferível, não é convertido em dinheiro e não se soma a outro cupom no mesmo pedido. Ele é concedido no máximo uma vez por pedido, independentemente do tamanho do atraso.
+
+---
+
+Política de Atrasos > Cupom por atraso em restaurante com entrega própria
+Quando um pedido de restaurante com entrega própria da Plataforma chega mais de 30 minutos depois do fim do intervalo de horário previsto, o cliente recebe um cupom de R$ 10,00 para usar em um próximo pedido. O atraso gera cupom, não reembolso: o valor pago pelo pedido não é devolvido só por causa do atraso. O cupom é creditado automaticamente na conta em até algumas horas após a entrega.
+
+---
+
+Política de Cancelamento > Prazo do estorno
+O estorno de um cancelamento é feito no mesmo meio de pagamento da compra. No Pix e no saldo da conta, o valor volta em até um dia útil. No cartão de crédito, o estorno aparece na fatura atual ou na seguinte, conforme a data de fechamento do cartão.","Não, cupons são descontos para pedidos futuros e não podem ser convertidos em dinheiro ou recebidos por Pix. Eles não são devolvidos ao meio de pagamento usado na compra. Se você tem direito a reembolso, o valor volta ao meio de pagamento original. Para mais informações, entre em contato com o atendimento humano.",1,1
+g18,"Quando a loja esquece um item, quem paga o reembolso? Vão descontar de mim depois?","Não. Itens faltando, itens errados e problemas de qualidade causados no preparo ou na separação são cobrados da loja pela Plataforma; você recebe o reembolso normalmente.","Lojas Parceiras > Atendimento ao cliente é sempre pela Plataforma
+O cliente nunca precisa resolver o problema diretamente com a loja. A Plataforma e a loja respondem juntas perante o cliente pelos problemas do produto, como prevê o art. 18 do Código de Defesa do Consumidor. A Plataforma resolve o reembolso com o cliente e depois acerta os valores com a loja.
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Itens Faltando ou Errados > Item faltando
+Use o motivo item faltando quando um produto que você pagou não veio no pedido: por exemplo, o refrigerante do combo não chegou ou o pacote de arroz não estava na sacola. Marque cada item que faltou e a quantidade. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.","O reembolso é coberto pela Plataforma, que resolve diretamente com o cliente. O valor do reembolso cobre os itens afetados, e não será descontado de você. A loja e a Plataforma respondem juntas perante o cliente, conforme prevê o art. 18 do Código de Defesa do Consumidor. [lojas_parceiras:4]",1,1
+g19,"Se eu me arrepender de um pedido de restaurante, o que posso fazer?","Você pode cancelar antes de o restaurante começar o preparo, com reembolso integral. Depois disso não há desistência para restaurante.","Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.","[reembolso_restaurante:3] O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.",1,1
+g20,Joguei fora a caixa do liquidificador. Ainda posso devolver se desistir?,"Sim. Os produtos devem voltar com os acessórios e, sempre que possível, na embalagem original, então a falta da caixa não impede a devolução.","Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 49 — Capítulo VI: Da Proteção Contratual > Seção I: Disposições Gerais
+Art. 49. O consumidor pode desistir do contrato, no prazo de 7 dias a contar de sua assinatura ou do ato de recebimento do produto ou serviço, sempre que a contratação de fornecimento de produtos e serviços ocorrer fora do estabelecimento comercial, especialmente por telefone ou a domicílio.
+
+Parágrafo único. Se o consumidor exercitar o direito de arrependimento previsto neste artigo, os valores eventualmente pagos, a qualquer título, durante o prazo de reflexão, serão devolvidos, de imediato, monetariamente atualizados.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.","Se você desistir do pedido inteiro, ainda poderá solicitar o reembolso integral, desde que o pedido conste como entregue no app. O valor cobrado será o total pago, incluindo a taxa de entrega e a taxa de serviço. Para isso, precisamos abrir um pedido de reembolso com o motivo ""arrependimento"". Deseja prosseguir com essa solicitação?",1,1
+g21,O iogurte veio estragado mas o resto das compras veio bom. Peço só o iogurte ou cancelo a compra toda?,"Você escolhe: pedir o reembolso do iogurte por qualidade em até 7 dias da entrega ou desistir do pedido inteiro, com reembolso do total pago. Como cada pedido aceita uma única solicitação, a escolha usa essa solicitação.","Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Itens Faltando ou Errados > Uma solicitação de reembolso por pedido
+Cada pedido aceita uma única solicitação de reembolso. Por isso, antes de enviar, confira o pedido inteiro e marque de uma vez todos os itens com problema. Depois de enviada, a solicitação não pode ser complementada com novos itens pelo app; casos excepcionais são analisados pelo atendimento.","O iogurte veio estragado, então você pode solicitar o reembolso apenas para esse item. O resto da compra está bom, então não precisa cancelar a compra toda. Se quiser, posso ajudar a abrir o reembolso para o iogurte. Deseja que eu faça isso?",1,1
+g22,Comprei uma bermuda numa loja de roupas há 20 dias e veio com a costura aberta. Ainda dá pelo app?,"Sim. Pedidos de varejo podem ser reclamados pelo app em até 30 dias da entrega, e costura aberta conta como problema de qualidade.","Política de Reembolso para Mercado e Varejo > Produto com defeito comprado em loja de varejo
+Se um produto comprado em uma loja do tipo varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.","[reembolso_mercado_varejo:5] A Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Como o prazo de 30 dias ainda está válido, você ainda pode pedir o reembolso pelo app. Recomendamos que entre em contato com o atendimento para iniciar o processo.",1,1
+g23,Quanto o entregador ganha por cada entrega?,"Não encontrei essa informação nas políticas da Plataforma. Para isso, procure o atendimento humano.","Cupons e Taxas > Taxa de entrega
+A taxa de entrega aparece antes da finalização do pedido. Na entrega própria, a taxa é definida pela Plataforma conforme a distância e a demanda do momento. Na entrega pela loja, a taxa é definida pela própria loja parceira. Em ambos os casos, o valor exibido é o valor cobrado.
+
+---
+
+Política de Entrega > Como funciona a entrega
+Todo pedido feito na Plataforma é entregue em uma de duas modalidades: entrega própria, feita por entregadores da Plataforma, ou entrega pela loja, feita por equipe contratada pela própria loja. A modalidade aparece na tela do pedido, antes da confirmação do pagamento, e não muda depois que o pedido é feito.
+
+---
+
+Política de Entrega > Entrega feita pela loja parceira
+Na entrega pela loja (no sistema, modalidade `parceiro`), a própria loja leva o pedido até o cliente, com seus próprios entregadores. A Plataforma não vê a localização do entregador e informa apenas o status repassado pela loja. Mesmo assim, o cliente fala sempre com o atendimento da Plataforma: nós acionamos a loja e acompanhamos a solução até o fim.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Restaurante com entrega própria ou entrega pela loja
+A regra de reembolso de restaurante é a mesma nas duas modalidades de entrega. A diferença está em quem a Plataforma aciona: na entrega própria, a Plataforma apura o transporte com seu entregador; na entrega pela loja, a Plataforma cobra a loja, que responde pelo transporte que ela mesma fez. Para o cliente, o pedido e o prazo de 2 dias não mudam.
+
+---
+
+Política de Entrega > Entrega própria da Plataforma
+Na entrega própria (no sistema, modalidade `propria`), a Plataforma escolhe o entregador, acompanha o trajeto em tempo real e responde pelo transporte do pedido desde a retirada na loja até a porta do cliente. Se o pedido for danificado, extraviado ou atrasar durante o transporte, quem resolve é a Plataforma. O rastreamento no mapa só está disponível nesta modalidade.",Essa informação não está disponível no nosso sistema. Recomendamos que você procure o atendimento humano para obter mais detalhes.,1,1
+g24,"paguei com Pix um pedido que a loja cancelou, em quanto tempo o dinheiro volta pra mim?","Quando a loja cancela, o reembolso é integral e volta para o mesmo meio de pagamento. No Pix, o valor volta em até um dia útil.","Política de Cancelamento > Prazo do estorno
+O estorno de um cancelamento é feito no mesmo meio de pagamento da compra. No Pix e no saldo da conta, o valor volta em até um dia útil. No cartão de crédito, o estorno aparece na fatura atual ou na seguinte, conforme a data de fechamento do cartão.
+
+---
+
+Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.","O estorno do Pix é feito em até um dia útil, conforme a política de cancelamento [cancelamento:5]. O dinheiro deverá voltar para sua conta no prazo estabelecido.",1,1
+g25,"pedi uma pizza ontem à noite e veio com um pedaço de plástico no queijo, ainda dá pra reclamar hoje?","Sim. Corpo estranho na comida conta como problema de qualidade, e pedidos de restaurante podem ser reclamados pelo app em até 2 dias contados da entrega; se o pedido chegou ontem à noite, você ainda está no prazo.","Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.","Sim, você ainda pode reclamar. Pedidos de restaurantes têm até 2 dias para pedir reembolso pelo app por item faltando, item errado ou qualidade, contados da entrega. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26). Nesse caso, o prazo para reclamar por vício do produto é de 30 dias para serviços e produtos não duráveis, contados da entrega. Recomendamos que você abra um reembolso para reportar o problema.",1,1
+g26,Paguei com o saldo da conta e cancelei. Quanto tempo leva pra voltar?,"No saldo da conta, o valor volta em até um dia útil.","Política de Cancelamento > Prazo do estorno
+O estorno de um cancelamento é feito no mesmo meio de pagamento da compra. No Pix e no saldo da conta, o valor volta em até um dia útil. No cartão de crédito, o estorno aparece na fatura atual ou na seguinte, conforme a data de fechamento do cartão.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).","O estorno do saldo da conta é feito em até um dia útil. Portanto, o valor deverá voltar ao seu saldo em um dia útil após o cancelamento. [cancelamento:5]",1,1
+g27,Passou o prazo do app pra reclamar de um item errado. Perdi tudo?,"Não. Passado o prazo do app, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor, que são de 30 dias para produtos não duráveis e 90 dias para duráveis.","Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.","Se o prazo do app para reclamar de um item errado foi ultrapassado, ainda assim é possível solicitar o reembolso dentro dos prazos do Código de Defesa do Consumidor (art. 26). Recomendamos que você entre em contato com o atendimento para verificar as possibilidades de reembolso com base no tipo de loja e no produto.",1,1
+g28,Como eu sei se quem vai trazer meu pedido é entregador do app ou da própria loja?,"A modalidade de entrega aparece na tela do pedido, antes da confirmação do pagamento.","Política de Entrega > Entrega feita pela loja parceira
+Na entrega pela loja (no sistema, modalidade `parceiro`), a própria loja leva o pedido até o cliente, com seus próprios entregadores. A Plataforma não vê a localização do entregador e informa apenas o status repassado pela loja. Mesmo assim, o cliente fala sempre com o atendimento da Plataforma: nós acionamos a loja e acompanhamos a solução até o fim.
+
+---
+
+Política de Entrega > Entrega própria da Plataforma
+Na entrega própria (no sistema, modalidade `propria`), a Plataforma escolhe o entregador, acompanha o trajeto em tempo real e responde pelo transporte do pedido desde a retirada na loja até a porta do cliente. Se o pedido for danificado, extraviado ou atrasar durante o transporte, quem resolve é a Plataforma. O rastreamento no mapa só está disponível nesta modalidade.
+
+---
+
+Lojas Parceiras > Lojas que fazem a própria entrega
+Algumas lojas parceiras fazem a entrega com seus próprios entregadores. Nesses pedidos, a loja responde também pelo transporte: atrasos, avarias no caminho e pedidos não entregues são apurados com ela. Para o cliente, o atendimento é o mesmo: ele fala com a Plataforma, que aciona a loja.
+
+---
+
+Política de Entrega > Como funciona a entrega
+Todo pedido feito na Plataforma é entregue em uma de duas modalidades: entrega própria, feita por entregadores da Plataforma, ou entrega pela loja, feita por equipe contratada pela própria loja. A modalidade aparece na tela do pedido, antes da confirmação do pagamento, e não muda depois que o pedido é feito.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.","O pedido pode ser entregue por entregadores da Plataforma ou por entregadores da própria loja parceira. Para saber qual modalidade foi escolhida, consulte os detalhes do pedido. A modalidade aparece na tela do pedido antes da confirmação do pagamento e não muda após o pedido ser feito. Se precisar, posso ajudar a consultar o status do seu pedido.",1,1
+g29,Como eu sei se quem vai trazer meu pedido é entregador do app ou da própria loja?,"A modalidade de entrega aparece na tela do pedido, antes da confirmação do pagamento.","Política de Entrega > Como funciona a entrega
+Todo pedido feito na Plataforma é entregue em uma de duas modalidades: entrega própria, feita por entregadores da Plataforma, ou entrega pela loja, feita por equipe contratada pela própria loja. A modalidade aparece na tela do pedido, antes da confirmação do pagamento, e não muda depois que o pedido é feito.
+
+---
+
+Política de Entrega > Entrega feita pela loja parceira
+Na entrega pela loja (no sistema, modalidade `parceiro`), a própria loja leva o pedido até o cliente, com seus próprios entregadores. A Plataforma não vê a localização do entregador e informa apenas o status repassado pela loja. Mesmo assim, o cliente fala sempre com o atendimento da Plataforma: nós acionamos a loja e acompanhamos a solução até o fim.
+
+---
+
+Política de Entrega > Entrega própria da Plataforma
+Na entrega própria (no sistema, modalidade `propria`), a Plataforma escolhe o entregador, acompanha o trajeto em tempo real e responde pelo transporte do pedido desde a retirada na loja até a porta do cliente. Se o pedido for danificado, extraviado ou atrasar durante o transporte, quem resolve é a Plataforma. O rastreamento no mapa só está disponível nesta modalidade.
+
+---
+
+Lojas Parceiras > Lojas que fazem a própria entrega
+Algumas lojas parceiras fazem a entrega com seus próprios entregadores. Nesses pedidos, a loja responde também pelo transporte: atrasos, avarias no caminho e pedidos não entregues são apurados com ela. Para o cliente, o atendimento é o mesmo: ele fala com a Plataforma, que aciona a loja.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Restaurante com entrega própria ou entrega pela loja
+A regra de reembolso de restaurante é a mesma nas duas modalidades de entrega. A diferença está em quem a Plataforma aciona: na entrega própria, a Plataforma apura o transporte com seu entregador; na entrega pela loja, a Plataforma cobra a loja, que responde pelo transporte que ela mesma fez. Para o cliente, o pedido e o prazo de 2 dias não mudam.","O app informa se o entregador é da Plataforma ou da loja. Na tela do pedido, antes da confirmação do pagamento, você verá a modalidade de entrega: ""entrega própria"" (entregador da Plataforma) ou ""entrega pela loja"" (entregador da loja parceira). Essa informação não muda após a confirmação do pagamento. [entrega:1]",1,1
+g30,Como o app sabe que meu pedido foi entregue? Quem marca isso?,"O status entregue é registrado quando o entregador confirma a entrega no endereço, e a data e a hora desse registro são usadas para contar os prazos de reclamação e de desistência.","Política de Entrega > Status do pedido
+O pedido passa pelos status: confirmado, em preparo, a caminho e entregue. O status entregue é registrado quando o entregador confirma a entrega no endereço, e a data e hora desse registro são usadas para contar os prazos de reclamação e de arrependimento. Se a entrega não acontecer, o pedido recebe o status não entregue.
+
+---
+
+Política de Entrega > Como funciona a entrega
+Todo pedido feito na Plataforma é entregue em uma de duas modalidades: entrega própria, feita por entregadores da Plataforma, ou entrega pela loja, feita por equipe contratada pela própria loja. A modalidade aparece na tela do pedido, antes da confirmação do pagamento, e não muda depois que o pedido é feito.
+
+---
+
+Itens Faltando ou Errados > Itens que exigem o pedido entregue
+Item faltando, item errado e qualidade só podem ser solicitados quando o pedido consta como entregue no app. Se o pedido não chegou, não marque itens individualmente: o motivo correto é pedido não entregue, com reembolso integral.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.
+
+---
+
+Política de Entrega > Endereço e ausência do cliente
+O cliente é responsável por informar o endereço completo e um ponto de referência. Se o entregador chegar ao endereço correto e não conseguir contato após as tentativas pelo app e por telefone, o pedido é encerrado após o tempo de espera, não recebe o status não entregue e não há reembolso por não entrega, porque a entrega foi tentada no endereço certo. Endereço informado errado pelo cliente também não dá direito a reembolso.","O app registra o status ""entregue"" quando o entregador confirma a entrega no endereço informado pelo cliente. Esse registro é feito pelo entregador através do aplicativo, e a data e hora desse registro são usadas para contar os prazos de reclamação e de arrependimento. [entrega:5]",1,1
+g31,Meu pedido não chegou. Preciso cancelar ele pra receber o dinheiro?,"Não. Pedido que não chega recebe o status não entregue e não precisa nem pode ser cancelado; abra a solicitação de reembolso pelo motivo não entregue para receber o total pago, com as taxas.","Política de Cancelamento > Pedido não entregue não é cancelamento
+Quando o pedido não chega, ele recebe o status não entregue; não é preciso nem possível cancelá-lo. O reembolso não é automático: o cliente abre a solicitação de reembolso pelo motivo não entregue e recebe o total pago, incluindo as taxas.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
+
+---
+
+Política de Cancelamento > Como cancelar um pedido
+O cancelamento é feito pela tela do pedido, no botão Cancelar pedido, ou pelo atendimento. O botão só aparece enquanto o cancelamento é permitido. Depois que ele some, o cliente ainda pode falar com o atendimento, que verifica o caso.
+
+---
+
+Política de Entrega > Pedido não entregue
+Um pedido é considerado não entregue quando não chega ao cliente: foi extraviado, entregue no endereço errado por falha do entregador, ou a entrega foi encerrada sem que o cliente recebesse nada. Pedido não entregue dá direito a reembolso integral, incluindo a taxa de entrega, e o pedido precisa estar com o status não entregue no app. O cliente abre a solicitação de reembolso pelo motivo não entregue; cada pedido aceita uma única solicitação de reembolso. Isso é diferente de um pedido que chegou atrasado.","Seu pedido está com status ""não entregue"", o que significa que não chegou ao cliente. Nesse caso, não é necessário cancelar o pedido, pois o reembolso é automático quando o cliente solicita pelo motivo ""não entregue"". Você pode abrir a solicitação de reembolso pelo app, e receberá o total pago, incluindo as taxas. Se precisar, posso ajudar a abrir o reembolso.",0,0
+g32,A farmácia mandou meu remédio com o motoboy dela e já está 40 minutos atrasado. Vocês conseguem cobrar a farmácia por mim?,"Registre o atraso no atendimento da Plataforma, que encaminha a reclamação à farmácia e acompanha a resposta. Como a entrega é feita pela própria loja, não há cupom automático por atraso.","Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.
+
+---
+
+Política de Atrasos > O que conta como atraso
+Um pedido está atrasado quando é entregue depois do fim do intervalo de horário previsto que foi mostrado no momento da compra. Atualizações da previsão feitas durante o pedido não mudam esse horário de referência. Um pedido atrasado chegou ao cliente; um pedido que nunca chegou é tratado como não entregue, com reembolso integral.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.","O pedido foi entregue pela própria farmáquia, então o tempo de transporte é controlado pela loja. Nesse caso, o cupom por atraso não se aplica. Você pode registrar o atraso no atendimento da Plataforma, que encaminhará a reclamação à farmácia. Se o pedido não chegou, ele será tratado como não entregue e você poderá solicitar o reembolso integral. [atrasos:3]",1,1
+g33,meu pedido do mercado chegou na terça e hoje é quarta da semana seguinte. ainda consigo reclamar de uma fruta podre?,"Pelo app, não: pedidos de mercado podem ser reclamados em até 7 dias da entrega, e da terça até a quarta da semana seguinte já são 8 dias. O atendimento humano ainda recebe a reclamação dentro dos prazos do Código de Defesa do Consumidor, que são de 30 dias para produtos não duráveis.","Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.","O prazo para reclamar de um item com problema, como uma fruta podre, é de até 7 dias a partir da entrega. Como seu pedido chegou na terça e hoje é quarta da semana seguinte, ainda está dentro do prazo. Você pode solicitar o reembolso por qualidade do item afetado. Se quiser, posso ajudar a abrir o reembolso.",0,0
+g34,Comprei roupas pelo app e me arrependi antes da loja separar. Consigo cancelar sem pagar nada?,"Sim. Enquanto a loja não confirmou nem começou a separar os produtos, o cancelamento é sem custo e o reembolso é integral. Depois que a loja separa, o cancelamento sai do app, mas você ainda pode desistir após receber.","Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.
+
+---
+
+Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.","Sim, você pode cancelar o pedido sem pagar nada, pois ainda não foi confirmado ou iniciado o preparo da loja. O cancelamento é gratuito e o reembolso é integral, incluindo o valor dos itens, taxa de entrega e taxa de serviço, conforme [cancelamento:2.1].",1,1
+g35,"Quando a farmácia entrega com o motoboy dela e o produto chega amassado, quem responde?","A loja que faz a própria entrega responde também pelo transporte, mas você fala com a Plataforma, que aciona a loja.","Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 12 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção II: Da Responsabilidade pelo Fato do Produto e do Serviço
+Art. 12. O fabricante, o produtor, o construtor, nacional ou estrangeiro, e o importador respondem, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos decorrentes de projeto, fabricação, construção, montagem, fórmulas, manipulação, apresentação ou acondicionamento de seus produtos, bem como por informações insuficientes ou inadequadas sobre sua utilização e riscos.
+
+§ 1° O produto é defeituoso quando não oferece a segurança que dele legitimamente se espera, levando-se em consideração as circunstâncias relevantes, entre as quais:
+
+I - sua apresentação;
+
+II - o uso e os riscos que razoavelmente dele se esperam;
+
+III - a época em que foi colocado em circulação.
+
+§ 2º O produto não é considerado defeituoso pelo fato de outro de melhor qualidade ter sido colocado no mercado.
+
+§ 3° O fabricante, o construtor, o produtor ou importador só não será responsabilizado quando provar:
+
+I - que não colocou o produto no mercado;
+
+II - que, embora haja colocado o produto no mercado, o defeito inexiste;
+
+III - a culpa exclusiva do consumidor ou de terceiro.
+
+---
+
+Política de Entrega > Entrega própria da Plataforma
+Na entrega própria (no sistema, modalidade `propria`), a Plataforma escolhe o entregador, acompanha o trajeto em tempo real e responde pelo transporte do pedido desde a retirada na loja até a porta do cliente. Se o pedido for danificado, extraviado ou atrasar durante o transporte, quem resolve é a Plataforma. O rastreamento no mapa só está disponível nesta modalidade.
+
+---
+
+Lojas Parceiras > Lojas que fazem a própria entrega
+Algumas lojas parceiras fazem a entrega com seus próprios entregadores. Nesses pedidos, a loja responde também pelo transporte: atrasos, avarias no caminho e pedidos não entregues são apurados com ela. Para o cliente, o atendimento é o mesmo: ele fala com a Plataforma, que aciona a loja.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 13 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção II: Da Responsabilidade pelo Fato do Produto e do Serviço
+Art. 13. O comerciante é igualmente responsável, nos termos do artigo anterior, quando:
+
+I - o fabricante, o construtor, o produtor ou o importador não puderem ser identificados;
+
+II - o produto for fornecido sem identificação clara do seu fabricante, produtor, construtor ou importador;
+
+III - não conservar adequadamente os produtos perecíveis.
+
+Parágrafo único. Aquele que efetivar o pagamento ao prejudicado poderá exercer o direito de regresso contra os demais responsáveis, segundo sua participação na causação do evento danoso.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 14 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção II: Da Responsabilidade pelo Fato do Produto e do Serviço
+Art. 14. O fornecedor de serviços responde, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos relativos à prestação dos serviços, bem como por informações insuficientes ou inadequadas sobre sua fruição e riscos.
+
+§ 1° O serviço é defeituoso quando não fornece a segurança que o consumidor dele pode esperar, levando-se em consideração as circunstâncias relevantes, entre as quais:
+
+I - o modo de seu fornecimento;
+
+II - o resultado e os riscos que razoavelmente dele se esperam;
+
+III - a época em que foi fornecido.
+
+§ 2º O serviço não é considerado defeituoso pela adoção de novas técnicas.
+
+§ 3° O fornecedor de serviços só não será responsabilizado quando provar:
+
+I - que, tendo prestado o serviço, o defeito inexiste;
+
+II - a culpa exclusiva do consumidor ou de terceiro.
+
+§ 4° A responsabilidade pessoal dos profissionais liberais será apurada mediante a verificação de culpa.","A responsabilidade pela entrega e pelo estado do produto depende da modalidade de entrega. Se a farmácia faz a entrega própria (com seu motoboy), ela é responsável pelo transporte e pelo estado do produto. Nesse caso, a farmácia deve resolver o problema, como reembolso ou substituição do produto. Para verificar o status do pedido e abrir um reembolso, preciso do número do pedido. Pode me informar?",0,0
+g36,O defeito só apareceu meses depois da compra. A lei conta o prazo a partir de quando?,"Quando o defeito é oculto, o prazo começa a contar no momento em que o defeito fica evidente.","Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 27 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 27. Prescreve em cinco anos a pretensão à reparação pelos danos causados por fato do produto ou do serviço prevista na Seção II deste Capítulo, iniciando-se a contagem do prazo a partir do conhecimento do dano e de sua autoria.
+
+Parágrafo único. (Vetado).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Produto com defeito comprado em loja de varejo
+Se um produto comprado em uma loja do tipo varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 18 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção III: Da Responsabilidade por Vício do Produto e do Serviço
+Art. 18. Os fornecedores de produtos de consumo duráveis ou não duráveis respondem solidariamente pelos vícios de qualidade ou quantidade que os tornem impróprios ou inadequados ao consumo a que se destinam ou lhes diminuam o valor, assim como por aqueles decorrentes da disparidade, com a indicações constantes do recipiente, da embalagem, rotulagem ou mensagem publicitária, respeitadas as variações decorrentes de sua natureza, podendo o consumidor exigir a substituição das partes viciadas.
+
+§ 1° Não sendo o vício sanado no prazo máximo de trinta dias, pode o consumidor exigir, alternativamente e à sua escolha:
+
+I - a substituição do produto por outro da mesma espécie, em perfeitas condições de uso;
+
+II - a restituição imediata da quantia paga, monetariamente atualizada, sem prejuízo de eventuais perdas e danos;
+
+III - o abatimento proporcional do preço.
+
+§ 2° Poderão as partes convencionar a redução ou ampliação do prazo previsto no parágrafo anterior, não podendo ser inferior a sete nem superior a cento e oitenta dias. Nos contratos de adesão, a cláusula de prazo deverá ser convencionada em separado, por meio de manifestação expressa do consumidor.
+
+§ 3° O consumidor poderá fazer uso imediato das alternativas do § 1° deste artigo sempre que, em razão da extensão do vício, a substituição das partes viciadas puder comprometer a qualidade ou características do produto, diminuir-lhe o valor ou se tratar de produto essencial.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 12 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção II: Da Responsabilidade pelo Fato do Produto e do Serviço
+Art. 12. O fabricante, o produtor, o construtor, nacional ou estrangeiro, e o importador respondem, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos decorrentes de projeto, fabricação, construção, montagem, fórmulas, manipulação, apresentação ou acondicionamento de seus produtos, bem como por informações insuficientes ou inadequadas sobre sua utilização e riscos.
+
+§ 1° O produto é defeituoso quando não oferece a segurança que dele legitimamente se espera, levando-se em consideração as circunstâncias relevantes, entre as quais:
+
+I - sua apresentação;
+
+II - o uso e os riscos que razoavelmente dele se esperam;
+
+III - a época em que foi colocado em circulação.
+
+§ 2º O produto não é considerado defeituoso pelo fato de outro de melhor qualidade ter sido colocado no mercado.
+
+§ 3° O fabricante, o construtor, o produtor ou importador só não será responsabilizado quando provar:
+
+I - que não colocou o produto no mercado;
+
+II - que, embora haja colocado o produto no mercado, o defeito inexiste;
+
+III - a culpa exclusiva do consumidor ou de terceiro.","O prazo de prescrição para a reparação de danos causados por defeitos de produtos ou serviços começa a contar a partir do momento em que o consumidor se torna consciente do dano e de sua autoria, conforme o art. 27 do Código de Defesa do Consumidor. [cdc:art27]",0,1
+g37,Pedi frango e veio cru por dentro. Isso dá reembolso?,Sim. Comida crua conta como problema de qualidade; peça o reembolso do item pelo motivo qualidade.,"Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Valor do reembolso de restaurante
+O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas. Nos reembolsos de itens, a taxa de entrega não é devolvida.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Qualidade da refeição
+Contam como problema de qualidade: comida estragada, crua ou queimada, corpo estranho no alimento, embalagem violada ou derramada e refeição que chegou fria por falha no transporte. Gosto pessoal, porção diferente da expectativa sem divergência do cardápio e tempero não contam. Fotos ajudam a análise.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.","Sim, o frango cru por dentro pode ser considerado um problema de qualidade, o que pode dar direito a reembolso. De acordo com a política de reembolso para pedidos de restaurante, comida crua ou queimada é um exemplo de problema de qualidade. Para solicitar o reembolso, você pode informar o motivo ""qualidade"" e descrever o problema. Se desejar, posso ajudar a abrir o reembolso. Deseja continuar?",1,1
+g38,Pedi uma marmita no restaurante há 4 dias e veio a errada. Consigo reembolso pelo app?,"Pelo app, não: pedidos de restaurante têm até 2 dias da entrega. O atendimento ainda recebe a reclamação dentro dos prazos do Código de Defesa do Consumidor e analisa o caso com o restaurante.","Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.","O prazo para solicitar reembolso por item errado é de 2 dias a partir da entrega. Como o pedido foi entregue há 4 dias, o prazo no app já expirou. No entanto, você ainda pode solicitar reembolso pelo atendimento da Plataforma, que analisará o caso com base no Código de Defesa do Consumidor (art. 26). Recomendamos que entre em contato com o atendimento humano para obter mais informações e iniciar o processo.",1,1
+g39,Pedi três sucos e vieram dois. Consigo receber pelo que faltou?,"Sim. Peça reembolso pelo motivo item faltando, marcando o suco e a quantidade que faltou; você recebe o preço unitário vezes a quantidade faltante.","Itens Faltando ou Errados > Item faltando
+Use o motivo item faltando quando um produto que você pagou não veio no pedido: por exemplo, o refrigerante do combo não chegou ou o pacote de arroz não estava na sacola. Marque cada item que faltou e a quantidade. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Itens Faltando ou Errados > Itens que exigem o pedido entregue
+Item faltando, item errado e qualidade só podem ser solicitados quando o pedido consta como entregue no app. Se o pedido não chegou, não marque itens individualmente: o motivo correto é pedido não entregue, com reembolso integral.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.","Sim, você pode solicitar o reembolso pelo item faltando. O valor do reembolso será o preço unitário do suco que faltou multiplicado pela quantidade faltante. Por favor, informe o número do pedido e confirme se deseja abrir o reembolso.",1,1
+g40,Comprei uma bermuda numa loja de roupas há 20 dias e veio com a costura aberta. Ainda dá pelo app?,"Sim. Pedidos de varejo podem ser reclamados pelo app em até 30 dias da entrega, e costura aberta conta como problema de qualidade.","Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Produto com defeito comprado em loja de varejo
+Se um produto comprado em uma loja do tipo varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.","O prazo para reclamar de um produto com defeito, como a costura aberta, é de 30 dias a partir da entrega, conforme o art. 26 do Código de Defesa do Consumidor. Como o prazo ainda não expirou, você ainda pode solicitar o reembolso pelo app. Recomendamos que você abra o reembolso pelo motivo ""qualidade"" e informe o detalhe do problema. Se precisar, posso ajudar a abrir o reembolso.",1,0
+g41,"Qual é o prazo da lei pra reclamar de defeito num produto que dura, tipo um ventilador?","Pela lei, defeito aparente em produto durável pode ser reclamado em 90 dias da entrega; se o defeito for oculto, o prazo conta de quando ele aparecer. Pelo app, pedidos de varejo têm até 30 dias, e depois disso o atendimento continua recebendo a reclamação.","Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 18 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção III: Da Responsabilidade por Vício do Produto e do Serviço
+Art. 18. Os fornecedores de produtos de consumo duráveis ou não duráveis respondem solidariamente pelos vícios de qualidade ou quantidade que os tornem impróprios ou inadequados ao consumo a que se destinam ou lhes diminuam o valor, assim como por aqueles decorrentes da disparidade, com a indicações constantes do recipiente, da embalagem, rotulagem ou mensagem publicitária, respeitadas as variações decorrentes de sua natureza, podendo o consumidor exigir a substituição das partes viciadas.
+
+§ 1° Não sendo o vício sanado no prazo máximo de trinta dias, pode o consumidor exigir, alternativamente e à sua escolha:
+
+I - a substituição do produto por outro da mesma espécie, em perfeitas condições de uso;
+
+II - a restituição imediata da quantia paga, monetariamente atualizada, sem prejuízo de eventuais perdas e danos;
+
+III - o abatimento proporcional do preço.
+
+§ 2° Poderão as partes convencionar a redução ou ampliação do prazo previsto no parágrafo anterior, não podendo ser inferior a sete nem superior a cento e oitenta dias. Nos contratos de adesão, a cláusula de prazo deverá ser convencionada em separado, por meio de manifestação expressa do consumidor.
+
+§ 3° O consumidor poderá fazer uso imediato das alternativas do § 1° deste artigo sempre que, em razão da extensão do vício, a substituição das partes viciadas puder comprometer a qualidade ou características do produto, diminuir-lhe o valor ou se tratar de produto essencial.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 27 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 27. Prescreve em cinco anos a pretensão à reparação pelos danos causados por fato do produto ou do serviço prevista na Seção II deste Capítulo, iniciando-se a contagem do prazo a partir do conhecimento do dano e de sua autoria.
+
+Parágrafo único. (Vetado).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 12 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção II: Da Responsabilidade pelo Fato do Produto e do Serviço
+Art. 12. O fabricante, o produtor, o construtor, nacional ou estrangeiro, e o importador respondem, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos decorrentes de projeto, fabricação, construção, montagem, fórmulas, manipulação, apresentação ou acondicionamento de seus produtos, bem como por informações insuficientes ou inadequadas sobre sua utilização e riscos.
+
+§ 1° O produto é defeituoso quando não oferece a segurança que dele legitimamente se espera, levando-se em consideração as circunstâncias relevantes, entre as quais:
+
+I - sua apresentação;
+
+II - o uso e os riscos que razoavelmente dele se esperam;
+
+III - a época em que foi colocado em circulação.
+
+§ 2º O produto não é considerado defeituoso pelo fato de outro de melhor qualidade ter sido colocado no mercado.
+
+§ 3° O fabricante, o construtor, o produtor ou importador só não será responsabilizado quando provar:
+
+I - que não colocou o produto no mercado;
+
+II - que, embora haja colocado o produto no mercado, o defeito inexiste;
+
+III - a culpa exclusiva do consumidor ou de terceiro.","O prazo para reclamar de defeito em um produto durável, como um ventilador, é de 90 dias a partir da entrega, conforme o Código de Defesa do Consumidor (art. 26). Nesse período, o consumidor pode solicitar a substituição do produto, o reembolso total ou o abatimento proporcional do preço.",1,0
+g42,"mandei uma reclamação pelo chat, em quanto tempo vocês têm que me responder?","Pela lei do comércio eletrônico, o recebimento da reclamação deve ser confirmado imediatamente, e a resposta deve ser enviada em até cinco dias.","Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.","O prazo para responder a uma reclamação pelo chat varia conforme a complexidade do caso e a disponibilidade do suporte. Caso precise de uma resposta mais rápida, recomendamos entrar em contato com o atendimento humano para agendar uma ligação ou atendimento prioritário.",0,0
+g43,"paguei com Pix um pedido que a loja cancelou, em quanto tempo o dinheiro volta pra mim?","Quando a loja cancela, o reembolso é integral e volta para o mesmo meio de pagamento. No Pix, o valor volta em até um dia útil.","Política de Cancelamento > Prazo do estorno
+O estorno de um cancelamento é feito no mesmo meio de pagamento da compra. No Pix e no saldo da conta, o valor volta em até um dia útil. No cartão de crédito, o estorno aparece na fatura atual ou na seguinte, conforme a data de fechamento do cartão.
+
+---
+
+Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Direito de arrependimento
+Em compras de mercado e varejo, o cliente pode desistir da compra em até 7 dias contados do recebimento do pedido, sem precisar justificar, conforme o art. 49 do Código de Defesa do Consumidor. O arrependimento vale para o pedido inteiro: o reembolso é o total pago, incluindo a taxa de entrega e a taxa de serviço, como determina o parágrafo único do art. 49. O pedido precisa constar como entregue no app.","O estorno do Pix é realizado em até um dia útil após o cancelamento do pedido, conforme a política de cancelamento [cancelamento:5].",1,1
+g44,"a loja disse que o pedido tinha sido entregue, mas nunca chegou nada aqui, e agora?","Fale com o atendimento da Plataforma, que aciona a loja e apura o que aconteceu. O reembolso integral pelo motivo não entregue depende de o pedido estar com o status não entregue no app.","Política de Entrega > Pedido não entregue
+Um pedido é considerado não entregue quando não chega ao cliente: foi extraviado, entregue no endereço errado por falha do entregador, ou a entrega foi encerrada sem que o cliente recebesse nada. Pedido não entregue dá direito a reembolso integral, incluindo a taxa de entrega, e o pedido precisa estar com o status não entregue no app. O cliente abre a solicitação de reembolso pelo motivo não entregue; cada pedido aceita uma única solicitação de reembolso. Isso é diferente de um pedido que chegou atrasado.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.
+
+---
+
+Política de Atrasos > O que conta como atraso
+Um pedido está atrasado quando é entregue depois do fim do intervalo de horário previsto que foi mostrado no momento da compra. Atualizações da previsão feitas durante o pedido não mudam esse horário de referência. Um pedido atrasado chegou ao cliente; um pedido que nunca chegou é tratado como não entregue, com reembolso integral.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.
+
+---
+
+Política de Entrega > Status do pedido
+O pedido passa pelos status: confirmado, em preparo, a caminho e entregue. O status entregue é registrado quando o entregador confirma a entrega no endereço, e a data e hora desse registro são usadas para contar os prazos de reclamação e de arrependimento. Se a entrega não acontecer, o pedido recebe o status não entregue.","O pedido foi marcado como entregue, mas você afirma que nada chegou. Nesse caso, o pedido pode ser considerado como ""não entregue"", o que dá direito a reembolso integral, incluindo a taxa de entrega. Para verificar o status do pedido e iniciar o processo de reembolso, preciso do número do pedido. Poderia compartilhá-lo comigo?",1,1
+g45,Meu pedido de restaurante não chegou. Devolvem as taxas também?,"Sim. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas.","Política de Reembolso para Pedidos de Restaurante > Valor do reembolso de restaurante
+O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas. Nos reembolsos de itens, a taxa de entrega não é devolvida.
+
+---
+
+Cupons e Taxas > Taxas no reembolso
+Quando o pedido inteiro é reembolsado, como no pedido não entregue, no arrependimento ou no cancelamento antes do preparo, a taxa de entrega e a taxa de serviço também são devolvidas. Quando apenas alguns itens são reembolsados, devolvemos o preço unitário vezes a quantidade de cada item afetado, e as taxas permanecem.
+
+---
+
+Política de Entrega > Pedido não entregue
+Um pedido é considerado não entregue quando não chega ao cliente: foi extraviado, entregue no endereço errado por falha do entregador, ou a entrega foi encerrada sem que o cliente recebesse nada. Pedido não entregue dá direito a reembolso integral, incluindo a taxa de entrega, e o pedido precisa estar com o status não entregue no app. O cliente abre a solicitação de reembolso pelo motivo não entregue; cada pedido aceita uma única solicitação de reembolso. Isso é diferente de um pedido que chegou atrasado.
+
+---
+
+Política de Atrasos > Cupom por atraso em restaurante com entrega própria
+Quando um pedido de restaurante com entrega própria da Plataforma chega mais de 30 minutos depois do fim do intervalo de horário previsto, o cliente recebe um cupom de R$ 10,00 para usar em um próximo pedido. O atraso gera cupom, não reembolso: o valor pago pelo pedido não é devolvido só por causa do atraso. O cupom é creditado automaticamente na conta em até algumas horas após a entrega.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.","Sim, se o pedido não foi entregue, o reembolso é integral, incluindo as taxas de entrega e serviço. Isso é previsto na política de reembolso para pedidos não entregues [reembolso_restaurante:4]. Para confirmar, por favor, informe o número do pedido e o motivo da solicitação.",1,1
+g46,Em quais situações eu consigo reembolso de comida de restaurante?,"Por item faltando, item errado, problema de qualidade ou pedido não entregue; cada pedido aceita uma única solicitação.","Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Restaurante com entrega própria ou entrega pela loja
+A regra de reembolso de restaurante é a mesma nas duas modalidades de entrega. A diferença está em quem a Plataforma aciona: na entrega própria, a Plataforma apura o transporte com seu entregador; na entrega pela loja, a Plataforma cobra a loja, que responde pelo transporte que ela mesma fez. Para o cliente, o pedido e o prazo de 2 dias não mudam.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Valor do reembolso de restaurante
+O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas. Nos reembolsos de itens, a taxa de entrega não é devolvida.","Você pode solicitar reembolso de comida de restaurante nas seguintes situações: item faltando, item errado, problema de qualidade ou pedido não entregue. Para itens faltando, errados ou com problema de qualidade, o pedido deve estar marcado como entregue no app. Para pedido não entregue, o reembolso é integral. [reembolso_restaurante:1]",1,1
+g47,Como eu indico um amigo pra ganhar desconto?,"Não encontrei essa informação nas políticas da Plataforma. Para isso, procure o atendimento humano.","Cupons e Taxas > Pedido pago com cupom
+Se parte do pedido foi paga com cupom, o desconto não é rateado entre os itens. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, o valor é o total pago.
+
+---
+
+Cupons e Taxas > Cupom não é reembolso
+Cupons são descontos para pedidos futuros. Eles não podem ser trocados por dinheiro, não são devolvidos ao meio de pagamento e não são oferecidos no lugar de um reembolso devido. Quando o cliente tem direito a reembolso, o valor volta ao meio de pagamento usado na compra.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 36 — Capítulo V: Das Práticas Comerciais > Seção III: Da Publicidade
+Art. 36. A publicidade deve ser veiculada de tal forma que o consumidor, fácil e imediatamente, a identifique como tal.
+
+Parágrafo único. O fornecedor, na publicidade de seus produtos ou serviços, manterá, em seu poder, para informação dos legítimos interessados, os dados fáticos, técnicos e científicos que dão sustentação à mensagem.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 33 — Capítulo V: Das Práticas Comerciais > Seção II: Da Oferta
+Art. 33. Em caso de oferta ou venda por telefone ou reembolso postal, deve constar o nome do fabricante e endereço na embalagem, publicidade e em todos os impressos utilizados na transação comercial.
+
+Parágrafo único. É proibida a publicidade de bens e serviços por telefone, quando a chamada for onerosa ao consumidor que a origina. (Incluído pela Lei nº 11.800, de 2008).",Não temos uma política específica para indicação de amigos para ganhar desconto. Recomendamos que você consulte nosso atendimento humano para mais informações sobre programas de indicação.,1,1
+g48,O pote de sorvete chegou todo aberto. Isso conta como item errado?,"Não. Se o item é o certo mas chegou com a embalagem violada, o motivo é qualidade.","Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Itens Faltando ou Errados > Problema de qualidade
+Use o motivo qualidade quando o item chegou, é o item certo, mas está impróprio: estragado, vencido, danificado, quebrado, com defeito ou com a embalagem violada. Se o item não veio, o motivo é item faltando; se veio outro produto, é item errado.
+
+---
+
+Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Itens Faltando ou Errados > Itens que exigem o pedido entregue
+Item faltando, item errado e qualidade só podem ser solicitados quando o pedido consta como entregue no app. Se o pedido não chegou, não marque itens individualmente: o motivo correto é pedido não entregue, com reembolso integral.
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).","O item chegou aberto, o que pode ser considerado um problema de qualidade. Para solicitar o reembolso, use o motivo ""qualidade"" e informe que o produto chegou com embalagem violada. O valor do reembolso será calculado com base no item afetado. [itens_faltando_ou_errados:3]",1,1
+g49,O restaurante cancelou meu pedido porque fechou mais cedo. Vou pagar a taxa de serviço mesmo assim?,"Não. Se a loja cancela, o reembolso é integral e nenhuma taxa é cobrada.","Política de Cancelamento > Cancelamento pela loja
+Se a loja cancelar o pedido, por falta de produto, por estar fechada ou por qualquer outro motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada.
+
+---
+
+Cupons e Taxas > Taxa de serviço
+Alguns pedidos têm taxa de serviço, que cobre o funcionamento do app e do atendimento. Ela é sempre exibida separadamente no resumo do pedido e só é cobrada se aparecer antes da confirmação da compra.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Cupons e Taxas > Taxas no reembolso
+Quando o pedido inteiro é reembolsado, como no pedido não entregue, no arrependimento ou no cancelamento antes do preparo, a taxa de entrega e a taxa de serviço também são devolvidas. Quando apenas alguns itens são reembolsados, devolvemos o preço unitário vezes a quantidade de cada item afetado, e as taxas permanecem.","[cancelamento:3] De acordo com a política de cancelamento, se a loja cancelar o pedido por qualquer motivo, o cliente recebe reembolso integral, independentemente da etapa em que o pedido estava. Nenhuma taxa é cobrada. Portanto, você não pagará a taxa de serviço.",1,1
+g50,"O carregador de celular que comprei numa loja de eletrônicos esquenta demais e não carrega direito; chegou semana passada. Quem responde, a loja ou vocês?","A Plataforma e a loja respondem juntas pelo defeito. Como você está dentro dos 30 dias da entrega, peça o reembolso pelo app pelo motivo qualidade.","Lojas Parceiras > Atendimento ao cliente é sempre pela Plataforma
+O cliente nunca precisa resolver o problema diretamente com a loja. A Plataforma e a loja respondem juntas perante o cliente pelos problemas do produto, como prevê o art. 18 do Código de Defesa do Consumidor. A Plataforma resolve o reembolso com o cliente e depois acerta os valores com a loja.
+
+---
+
+Lojas Parceiras > Lojas que fazem a própria entrega
+Algumas lojas parceiras fazem a entrega com seus próprios entregadores. Nesses pedidos, a loja responde também pelo transporte: atrasos, avarias no caminho e pedidos não entregues são apurados com ela. Para o cliente, o atendimento é o mesmo: ele fala com a Plataforma, que aciona a loja.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Produto com defeito comprado em loja de varejo
+Se um produto comprado em uma loja do tipo varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
+
+---
+
+Política de Entrega > Entrega própria da Plataforma
+Na entrega própria (no sistema, modalidade `propria`), a Plataforma escolhe o entregador, acompanha o trajeto em tempo real e responde pelo transporte do pedido desde a retirada na loja até a porta do cliente. Se o pedido for danificado, extraviado ou atrasar durante o transporte, quem resolve é a Plataforma. O rastreamento no mapa só está disponível nesta modalidade.
+
+---
+
+Lojas Parceiras > Responsabilidades da loja
+A loja é responsável por manter cardápio, preços e estoque atualizados, preparar e embalar os pedidos com cuidado e entregar ao entregador os itens corretos. Itens faltando, itens errados e problemas de qualidade causados no preparo ou na separação são cobrados da loja pela Plataforma.","A Plataforma e a loja respondem juntas pelo produto, conforme o art. 18 do Código de Defesa do Consumidor. Como o produto apresenta defeito, o cliente pode solicitar o reembolso pelo app pelo motivo ""qualidade"". Para que possamos ajudar melhor, precisamos verificar os detalhes do pedido. Poderia informar o número do pedido?",1,1
+g51,Em quais situações eu consigo reembolso de comida de restaurante?,"Por item faltando, item errado, problema de qualidade ou pedido não entregue; cada pedido aceita uma única solicitação.","Política de Reembolso para Pedidos de Restaurante > Quando o reembolso se aplica
+Pedidos de restaurante podem ser reembolsados por item faltando, item errado, problema de qualidade ou pedido não entregue. Para item faltando, item errado e qualidade, o pedido precisa constar como entregue no app. Para pedido não entregue, o pedido precisa estar com o status não entregue, e o reembolso é integral. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Prazo para pedir reembolso de restaurante
+O reembolso de um pedido de restaurante por item faltando, item errado ou qualidade deve ser solicitado pelo app em até 2 dias contados da entrega, ou seja, do horário em que o pedido foi marcado como entregue. O prazo é curto porque refeições são consumidas logo, e a análise depende de fotos e informações recentes.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Arrependimento não vale para restaurante
+O direito de arrependimento não se aplica a pedidos de restaurante. Refeições são preparadas na hora, sob encomenda, e são perecíveis: não podem ser devolvidas nem revendidas. Se o cliente não quer mais o pedido, ele pode cancelá-lo antes do início do preparo, com reembolso integral. Depois de recebida, a refeição só é reembolsada por item faltando, item errado ou qualidade.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Restaurante com entrega própria ou entrega pela loja
+A regra de reembolso de restaurante é a mesma nas duas modalidades de entrega. A diferença está em quem a Plataforma aciona: na entrega própria, a Plataforma apura o transporte com seu entregador; na entrega pela loja, a Plataforma cobra a loja, que responde pelo transporte que ela mesma fez. Para o cliente, o pedido e o prazo de 2 dias não mudam.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Valor do reembolso de restaurante
+O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido. Quando o pedido inteiro é reembolsado, como no pedido não entregue, o valor é o total pago, incluindo as taxas. Nos reembolsos de itens, a taxa de entrega não é devolvida.","Você pode solicitar reembolso de comida de restaurante nas seguintes situações: item faltando, item errado, problema de qualidade ou pedido não entregue. Para itens faltando, errados ou com problema de qualidade, o pedido deve estar marcado como entregue no app. Para pedido não entregue, o reembolso é integral. [reembolso_restaurante:1]",1,1
+g52,"Quando a loja esquece um item, quem paga o reembolso? Vão descontar de mim depois?","Não. Itens faltando, itens errados e problemas de qualidade causados no preparo ou na separação são cobrados da loja pela Plataforma; você recebe o reembolso normalmente.","Itens Faltando ou Errados > Item faltando
+Use o motivo item faltando quando um produto que você pagou não veio no pedido: por exemplo, o refrigerante do combo não chegou ou o pacote de arroz não estava na sacola. Marque cada item que faltou e a quantidade. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Como devolver no arrependimento
+Ao registrar o arrependimento, o cliente recebe as instruções de devolução. Em mercado e em varejo, a coleta dos produtos é agendada sem custo para o cliente. Os produtos devem ser devolvidos com seus acessórios e, sempre que possível, na embalagem original. O reembolso do total pago é liberado após a coleta.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Produto com defeito comprado em loja de varejo
+Se um produto comprado em uma loja do tipo varejo apresentar defeito, a Plataforma e a loja respondem juntas pelo vício, conforme o art. 18 do Código de Defesa do Consumidor. Dentro do prazo de 30 dias da entrega, o cliente pede o reembolso pelo app pelo motivo qualidade. Depois disso, o atendimento encaminha troca, reparo ou devolução do valor junto à loja.
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Restaurante com entrega própria ou entrega pela loja
+A regra de reembolso de restaurante é a mesma nas duas modalidades de entrega. A diferença está em quem a Plataforma aciona: na entrega própria, a Plataforma apura o transporte com seu entregador; na entrega pela loja, a Plataforma cobra a loja, que responde pelo transporte que ela mesma fez. Para o cliente, o pedido e o prazo de 2 dias não mudam.","A Plataforma é responsável pelo reembolso quando um item faltante é reportado. O valor do reembolso será calculado com base no preço unitário do item faltante e será liberado após a análise do caso. Você não será cobrado após o reembolso. Para confirmar, por favor informe o número do pedido e os detalhes do item faltante.",1,0
+g53,A lei obriga o site a mostrar o endereço e o CNPJ da empresa?,"Sim. Sites de venda devem mostrar em destaque o nome empresarial, o CNPJ ou CPF do fornecedor e o endereço físico e eletrônico.","Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 42-A — Capítulo V: Das Práticas Comerciais > Seção V: Da Cobrança de Dívidas
+Art. 42-A. Em todos os documentos de cobrança de débitos apresentados ao consumidor, deverão constar o nome, o endereço e o número de inscrição no Cadastro de Pessoas Físicas – CPF ou no Cadastro Nacional de Pessoa Jurídica – CNPJ do fornecedor do produto ou serviço correspondente. (Incluído pela Lei nº 12.039, de 2009)
+
+---
+
+Decreto nº 7.962/2013 (Comércio Eletrônico) > Art. 2º
+Art. 2º Os sítios eletrônicos ou demais meios eletrônicos utilizados para oferta ou conclusão de contrato de consumo devem disponibilizar, em local de destaque e de fácil visualização, as seguintes informações:
+
+I - nome empresarial e número de inscrição do fornecedor, quando houver, no Cadastro Nacional de Pessoas Físicas ou no Cadastro Nacional de Pessoas Jurídicas do Ministério da Fazenda;
+
+II - endereço físico e eletrônico, e demais informações necessárias para sua localização e contato;
+
+III - características essenciais do produto ou do serviço, incluídos os riscos à saúde e à segurança dos consumidores;
+
+IV - discriminação, no preço, de quaisquer despesas adicionais ou acessórias, tais como as de entrega ou seguros;
+
+V - condições integrais da oferta, incluídas modalidades de pagamento, disponibilidade, forma e prazo da execução do serviço ou da entrega ou disponibilização do produto; e
+
+VI - informações claras e ostensivas a respeito de quaisquer restrições à fruição da oferta.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 33 — Capítulo V: Das Práticas Comerciais > Seção II: Da Oferta
+Art. 33. Em caso de oferta ou venda por telefone ou reembolso postal, deve constar o nome do fabricante e endereço na embalagem, publicidade e em todos os impressos utilizados na transação comercial.
+
+Parágrafo único. É proibida a publicidade de bens e serviços por telefone, quando a chamada for onerosa ao consumidor que a origina. (Incluído pela Lei nº 11.800, de 2008).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 44 — Capítulo V: Das Práticas Comerciais > Seção VI: Dos Bancos de Dados e Cadastros de Consumidores
+Art. 44. Os órgãos públicos de defesa do consumidor manterão cadastros atualizados de reclamações fundamentadas contra fornecedores de produtos e serviços, devendo divulgá-lo pública e anualmente. A divulgação indicará se a reclamação foi atendida ou não pelo fornecedor.
+
+§ 1° É facultado o acesso às informações lá constantes para orientação e consulta por qualquer interessado.
+
+§ 2° Aplicam-se a este artigo, no que couber, as mesmas regras enunciadas no artigo anterior e as do parágrafo único do art. 22 deste código.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 30 — Capítulo V: Das Práticas Comerciais > Seção II: Da Oferta
+Art. 30. Toda informação ou publicidade, suficientemente precisa, veiculada por qualquer forma ou meio de comunicação com relação a produtos e serviços oferecidos ou apresentados, obriga o fornecedor que a fizer veicular ou dela se utilizar e integra o contrato que vier a ser celebrado.","Sim, a lei obriga o site a mostrar o endereço e o CNPJ da empresa. De acordo com o [decreto_7962:art2], os sítios eletrônicos devem disponibilizar, em local de destaque, o nome empresarial e o número de inscrição no CNPJ ou CPF do fornecedor.",1,1
+g54,Por que o prazo pra reclamar da farmácia é diferente do da hamburgueria?,"Porque o tipo da loja define o prazo: farmácia é varejo, com até 30 dias da entrega, e hamburgueria é restaurante, com até 2 dias.","Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Política de Reembolso para Pedidos de Restaurante > Pedido de restaurante fora do prazo
+Passados os 2 dias, a opção de reembolso some da tela do pedido, mas o cliente não perde seus direitos. O atendimento da Plataforma continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26) e analisa cada caso individualmente com o restaurante.
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.","O prazo para reclamar de um pedido varia conforme o tipo de loja, pois cada categoria tem suas regras específicas. Para lojas de varejo, como farmácias, o prazo é de 30 dias a partir da entrega, enquanto para restaurantes, o prazo é de 2 dias. Essa diferença é estabelecida para atender às necessidades específicas de cada tipo de produto e serviço. Para mais detalhes, consulte a Política de Reembolso para Mercado e Varejo ou a Política de Reembolso para Pedidos de Restaurante. [reembolso_mercado_varejo:2.2] [reembolso_restaurante:2.2]",1,0
+g55,Meu pedido não chegou. Preciso cancelar ele pra receber o dinheiro?,"Não. Pedido que não chega recebe o status não entregue e não precisa nem pode ser cancelado; abra a solicitação de reembolso pelo motivo não entregue para receber o total pago, com as taxas.","Política de Cancelamento > Pedido não entregue não é cancelamento
+Quando o pedido não chega, ele recebe o status não entregue; não é preciso nem possível cancelá-lo. O reembolso não é automático: o cliente abre a solicitação de reembolso pelo motivo não entregue e recebe o total pago, incluindo as taxas.
+
+---
+
+Política de Cancelamento > Como cancelar um pedido
+O cancelamento é feito pela tela do pedido, no botão Cancelar pedido, ou pelo atendimento. O botão só aparece enquanto o cancelamento é permitido. Depois que ele some, o cliente ainda pode falar com o atendimento, que verifica o caso.
+
+---
+
+Política de Cancelamento > Cancelamento antes do preparo
+Enquanto a loja ainda não confirmou o pedido ou ainda não começou o preparo, o cliente pode cancelar sem nenhum custo. O reembolso é integral: valor dos itens, taxa de entrega e taxa de serviço voltam para o mesmo meio de pagamento usado na compra.
+
+---
+
+Política de Cancelamento > Cancelamento depois do início do preparo
+Depois que o restaurante começa a preparar o pedido, o cancelamento pelo cliente não fica mais disponível no app, porque a comida já está sendo feita sob encomenda. O pedido segue para entrega. Se houver algum problema quando ele chegar, o cliente usa os caminhos de reembolso por item faltando, item errado ou qualidade. Em mercado e varejo, depois que a loja separa os produtos o cancelamento também sai do app, mas o direito de arrependimento continua valendo após o recebimento.
+
+---
+
+Política de Entrega > Pedido não entregue
+Um pedido é considerado não entregue quando não chega ao cliente: foi extraviado, entregue no endereço errado por falha do entregador, ou a entrega foi encerrada sem que o cliente recebesse nada. Pedido não entregue dá direito a reembolso integral, incluindo a taxa de entrega, e o pedido precisa estar com o status não entregue no app. O cliente abre a solicitação de reembolso pelo motivo não entregue; cada pedido aceita uma única solicitação de reembolso. Isso é diferente de um pedido que chegou atrasado.","O pedido não entregue não é cancelado, mas você pode solicitar o reembolso pelo motivo ""não entregue"". O reembolso será integral, incluindo a taxa de entrega, desde que o pedido tenha o status ""não entregue"" no app. Para prosseguir, preciso do número do seu pedido.",1,1
+g56,Por que o prazo pra reclamar da farmácia é diferente do da hamburgueria?,"Porque o tipo da loja define o prazo: farmácia é varejo, com até 30 dias da entrega, e hamburgueria é restaurante, com até 2 dias.","Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de varejo
+Pedidos feitos em lojas do tipo varejo, como lojas de eletrônicos, utilidades domésticas, farmácias e pet shops, têm até 30 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. O prazo segue o tipo da loja, não a categoria do produto: um produto de farmácia ou pet comprado em um mercado segue o prazo de mercado. Para produtos duráveis com defeito que aparece depois, o atendimento continua recebendo a reclamação dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 26 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 26. O direito de reclamar pelos vícios aparentes ou de fácil constatação caduca em:
+
+I - trinta dias, tratando-se de fornecimento de serviço e de produtos não duráveis;
+
+II - noventa dias, tratando-se de fornecimento de serviço e de produtos duráveis.
+
+§ 1° Inicia-se a contagem do prazo decadencial a partir da entrega efetiva do produto ou do término da execução dos serviços.
+
+§ 2° Obstam a decadência:
+
+I - a reclamação comprovadamente formulada pelo consumidor perante o fornecedor de produtos e serviços até a resposta negativa correspondente, que deve ser transmitida de forma inequívoca;
+
+II - (Vetado).
+
+III - a instauração de inquérito civil, até seu encerramento.
+
+§ 3° Tratando-se de vício oculto, o prazo decadencial inicia-se no momento em que ficar evidenciado o defeito.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Prazo para reclamar de pedido de mercado
+Pedidos de mercado têm até 7 dias, contados da entrega, para pedir reembolso pelo app por item faltando, item errado ou qualidade. Esse prazo considera que boa parte das compras de mercado é consumida ao longo da semana. Itens perecíveis com problema devem ser reclamados o quanto antes, de preferência no dia do recebimento. Passado esse prazo, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).
+
+---
+
+Código de Defesa do Consumidor (Lei nº 8.078/1990) > Art. 27 — Capítulo IV: Da Qualidade de Produtos e Serviços, da Prevenção e da Reparação dos Danos > Seção IV: Da Decadência e da Prescrição
+Art. 27. Prescreve em cinco anos a pretensão à reparação pelos danos causados por fato do produto ou do serviço prevista na Seção II deste Capítulo, iniciando-se a contagem do prazo a partir do conhecimento do dano e de sua autoria.
+
+Parágrafo único. (Vetado).","O prazo para reclamar de pedidos de farmácia é diferente do de hamburgueria porque o prazo depende do tipo de loja. Para lojas do tipo varejo, como farmácias, o prazo é de 30 dias a partir da entrega, enquanto para lojas de mercado, como hamburguerias, o prazo é de 7 dias. Essa diferença é estabelecida pela Política de Reembolso para Mercado e Varejo [reembolso_mercado_varejo:2.2].",0,0
+g57,"o app dizia entre 19h40 e 20h00 e meu pedido chegou 19h55, atrasou?","Não. O pedido só está atrasado quando chega depois do fim do intervalo previsto mostrado na compra, e 19h55 está dentro dele.","Política de Atrasos > O que conta como atraso
+Um pedido está atrasado quando é entregue depois do fim do intervalo de horário previsto que foi mostrado no momento da compra. Atualizações da previsão feitas durante o pedido não mudam esse horário de referência. Um pedido atrasado chegou ao cliente; um pedido que nunca chegou é tratado como não entregue, com reembolso integral.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.","O pedido chegou dentro do intervalo previsto, que era entre 19h40 e 20h00. Portanto, não houve atraso. [atrasos:1]",1,1
+g58,"recebi um pedido com os três itens certos, mas o hambúrguer veio queimado. entra como o quê?","Entra como problema de qualidade: comida queimada conta como qualidade. Peça o reembolso do hambúrguer pelo motivo qualidade, em até 2 dias da entrega.","Política de Reembolso para Pedidos de Restaurante > Qualidade da refeição
+Contam como problema de qualidade: comida estragada, crua ou queimada, corpo estranho no alimento, embalagem violada ou derramada e refeição que chegou fria por falha no transporte. Gosto pessoal, porção diferente da expectativa sem divergência do cardápio e tempero não contam. Fotos ajudam a análise.
+
+---
+
+Itens Faltando ou Errados > Problema de qualidade
+Use o motivo qualidade quando o item chegou, é o item certo, mas está impróprio: estragado, vencido, danificado, quebrado, com defeito ou com a embalagem violada. Se o item não veio, o motivo é item faltando; se veio outro produto, é item errado.
+
+---
+
+Itens Faltando ou Errados > Uma solicitação de reembolso por pedido
+Cada pedido aceita uma única solicitação de reembolso. Por isso, antes de enviar, confira o pedido inteiro e marque de uma vez todos os itens com problema. Depois de enviada, a solicitação não pode ser complementada com novos itens pelo app; casos excepcionais são analisados pelo atendimento.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Arrependimento em produtos perecíveis
+O direito de arrependimento vale também para alimentos frescos, congelados e outros perecíveis de mercado: o art. 49 do Código de Defesa do Consumidor não prevê exceção para perecíveis. O cliente pode desistir do pedido inteiro em até 7 dias contados do recebimento, com reembolso do total pago, desde que o pedido conste como entregue no app. A coleta e a devolução seguem a seção 3.3. Se um perecível chegou com problema, o cliente escolhe uma de duas opções: pedir reembolso por qualidade dos itens afetados, em até 7 dias da entrega (seção 2.1), ou exercer o arrependimento do pedido inteiro. Como cada pedido aceita uma única solicitação de reembolso (seção 1), a escolha de uma opção usa essa solicitação.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.","O hambúrguer queimado entra como problema de qualidade. De acordo com a política [reembolso_restaurante:5], alimentos queimados são considerados problema de qualidade. Você pode solicitar o reembolso por qualidade dos itens afetados. Se desejar, posso ajudar a abrir o reembolso.",1,1
+g59,"O entregador do app atrasou 40 minutos meu pedido de restaurante e ganhei cupom, mas semana passada o motoboy do próprio restaurante atrasou o mesmo tanto e não ganhei nada. Por quê?","O cupom automático só vale para restaurante com entrega própria da Plataforma. Quando a própria loja entrega, o cupom não se aplica, mas você pode registrar o atraso no atendimento.","Política de Atrasos > Cupom por atraso em restaurante com entrega própria
+Quando um pedido de restaurante com entrega própria da Plataforma chega mais de 30 minutos depois do fim do intervalo de horário previsto, o cliente recebe um cupom de R$ 10,00 para usar em um próximo pedido. O atraso gera cupom, não reembolso: o valor pago pelo pedido não é devolvido só por causa do atraso. O cupom é creditado automaticamente na conta em até algumas horas após a entrega.
+
+---
+
+Política de Atrasos > Atraso em pedidos de mercado e varejo
+Pedidos de mercado e de varejo costumam ter janelas de entrega agendadas. O atraso nesses pedidos não gera cupom automático, porque o cupom por atraso existe apenas para restaurantes com entrega própria. Se o cliente recusar na porta um pedido atrasado, a entrega conta como não realizada: o pedido recebe o status não entregue e vale o reembolso integral. Se preferir receber, o cliente ainda pode usar o direito de arrependimento depois.
+
+---
+
+Cupons e Taxas > Cupom de atraso
+O cupom de atraso, de R$ 10,00, é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto. Ele não substitui o reembolso de um pedido não entregue nem de itens com problema. As regras completas estão na Política de Atrasos.
+
+---
+
+Política de Atrasos > Atraso não é o mesmo que não entrega
+Se o pedido chegou, mesmo muito atrasado, ele conta como entregue e o caminho é o cupom (quando aplicável) ou uma reclamação de qualidade, por exemplo, se a comida chegou fria. Se o pedido não chegou, ele recebe o status não entregue, e o cliente pede o reembolso pelo motivo não entregue, que é integral, com todas as taxas. Um pedido não recebe cupom de atraso e reembolso por não entrega ao mesmo tempo.
+
+---
+
+Política de Atrasos > Atraso em entrega feita pela loja
+Quando a entrega é feita pela própria loja parceira, o tempo de transporte é controlado pela loja, e o cupom automático por atraso não se aplica. O cliente pode registrar o atraso no atendimento da Plataforma, que encaminha a reclamação à loja e acompanha a resposta. Se o pedido não chegar, vale a regra de pedido não entregue.","O cupom de R$ 10,00 é concedido automaticamente quando um pedido de restaurante com entrega própria chega mais de 30 minutos depois do fim do intervalo de horário previsto [atrasos:2]. No caso do atraso do motoboy do próprio restaurante, o tempo de transporte é controlado pela loja parceira, e o cupom automático por atraso não se aplica [atrasos:3]. Por isso, não houve concessão de cupom nesse caso. Se desejar, posso ajudar a verificar o status do seu pedido ou abrir um reembolso, caso necessário.",1,1
+g60,O mercado trocou o achocolatado por outro e eu aceitei a troca no app. Agora não gostei. Dá pra pedir como item errado?,"Não. Se você aceitou a substituição no app, o produto substituto não conta como item errado.","Itens Faltando ou Errados > Substituições em pedidos de mercado
+Em pedidos de mercado, quando um produto está em falta, a loja pode oferecer uma substituição. Se você aceitou a substituição no app, o produto substituto não conta como item errado. Se a loja substituiu sem sua autorização, você pode pedir reembolso pelo motivo item errado.
+
+---
+
+Itens Faltando ou Errados > Item errado
+Use o motivo item errado quando chegou um produto diferente do que você pediu: sabor trocado, tamanho diferente, marca diferente ou o pedido de outra pessoa. Informe o item que você pediu e, se possível, envie uma foto do que chegou. O valor do reembolso é o preço unitário de cada item afetado vezes a quantidade afetada, sem rateio de cupons, e nunca ultrapassa o total pago no pedido.
+
+---
+
+Itens Faltando ou Errados > Itens que exigem o pedido entregue
+Item faltando, item errado e qualidade só podem ser solicitados quando o pedido consta como entregue no app. Se o pedido não chegou, não marque itens individualmente: o motivo correto é pedido não entregue, com reembolso integral.
+
+---
+
+Política de Reembolso para Mercado e Varejo > Quando o reembolso se aplica
+Pedidos de mercado e de varejo podem ser reembolsados por item faltando, item errado, problema de qualidade, pedido não entregue e arrependimento. Para todos os motivos, exceto pedido não entregue, o pedido precisa constar como entregue no app. O pedido não entregue exige o status não entregue e é reembolsado integralmente. Cada pedido aceita uma única solicitação de reembolso.
+
+---
+
+Itens Faltando ou Errados > Prazos para reclamar por tipo de loja
+O prazo para pedir reembolso pelo app por item faltando, item errado ou qualidade depende do tipo de loja e é contado da entrega. Consulte a Política de Reembolso para Pedidos de Restaurante ou a Política de Reembolso para Mercado e Varejo, conforme o tipo da loja. Passado o prazo do app, o atendimento continua recebendo reclamações por vício do produto dentro dos prazos do Código de Defesa do Consumidor (art. 26).","O mercado trocou o achocolatado por outro e você aceitou a troca no app. Nesse caso, o produto substituto não conta como item errado, pois a troca foi autorizada. Se você não gostou do novo produto, não é possível solicitar reembolso pelo motivo ""item errado"". Recomendamos que entre em contato com o atendimento humano para resolver a situação.",1,1
