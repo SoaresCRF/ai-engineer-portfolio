@@ -28,9 +28,10 @@ from pathlib import Path
 from typing import Annotated, Literal
 from uuid import uuid4
 
-from fastapi import Depends, FastAPI, Header, Request
+from fastapi import Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from support_agent import tracing
@@ -54,7 +55,6 @@ RATE_WINDOW_SECONDS = 60.0
 DEFAULT_RATE_LIMIT_PER_MIN = 30
 NONCE_BYTES = 8
 DENSE_MODEL = "BAAI/bge-m3"
-BEARER_SCHEME = "bearer"  # matched case-insensitively (RFC 7235)
 DOC_PATHS = frozenset({"/docs", "/docs/oauth2-redirect", "/redoc", "/openapi.json"})
 BASE_SECURITY_HEADERS = {
     "x-content-type-options": "nosniff",
@@ -204,10 +204,15 @@ def create_app(
     async def _invalid(_: Request, __: RequestValidationError) -> JSONResponse:
         return _error(422, "requisicao_invalida")  # the default body would echo customer text
 
-    def authenticate(authorization: Annotated[str | None, Header()] = None) -> tuple[str, str]:
-        scheme, _, supplied = (authorization or "").partition(" ")
-        if scheme.lower() != BEARER_SCHEME:
-            supplied = ""
+    # Declared as a security scheme so Swagger's Authorize button can send the token
+    # (Swagger drops plain header parameters named Authorization). auto_error=False
+    # keeps our generic 401 body; non-Bearer schemes arrive here as None.
+    bearer = HTTPBearer(auto_error=False)
+
+    def authenticate(
+        credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(bearer)] = None,
+    ) -> tuple[str, str]:
+        supplied = credentials.credentials if credentials else ""
         match = next(
             (t for t in tokens if hmac.compare_digest(t.encode(), supplied.encode())), None
         )
