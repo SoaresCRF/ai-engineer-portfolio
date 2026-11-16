@@ -86,4 +86,45 @@ Gate: Cohen's kappa >= 0.6 per criterion against 60 blind human grades (30 rows 
   falso" removed. v2 rules for "not in the policies" and refused benign requests kept.
 - Examples: three synthetic ones (fictional delivery platform): all-true paraphrase, quoted
   contradiction (`correta` false), unsupported claim with `correta` true and `fiel` false.
-- Metrics: pending Kaggle run.
+- Metrics (graded subset, 60 rows, 0 invalid): `correta` accuracy 0.883, kappa 0.475; `fiel`
+  accuracy 0.700, kappa 0.205. Confusion (h = human, j = judge, 1 = true):
+  - `correta`: h1j1 49, h1j0 1, h0j1 6, h0j0 4.
+  - `fiel`: h1j1 36, h1j0 11, h0j1 7, h0j0 6.
+
+### Decision
+
+Tuning stopped after three prompt versions (user decision 2026-11-15). Neither criterion reaches
+the kappa >= 0.6 gate, so the judge is not validated. The 60 blind human grades are the primary
+measure of answer quality; the LLM judge is secondary and always reported together with its kappa.
+Only 10 of 60 rows have `correta` = 0, so the `correta` kappa is unstable.
+
+The Phi-4 v1 full-run verdicts were moved to `results/judge_attempts/phi4_v1_full/`; they are not
+a valid measure (the judge answered true on every row).
+
+## E1 dev results - human grades (Task 17c)
+
+Blind human grades on the dev answers, 30 rows per config.
+
+| Retrieval       | n  | `correta`    | `fiel_ao_contexto` |
+|-----------------|----|--------------|--------------------|
+| dense           | 30 | 25/30 (0.833) | 22/30 (0.733)     |
+| hybrid_rerank   | 30 | 25/30 (0.833) | 25/30 (0.833)     |
+
+n is small (30 per config): the `fiel` difference is 3 rows and is not statistically meaningful.
+
+## Final config (Task 17c)
+
+`src/support_agent/final_config.py`: `FINAL_CONFIG = AgentConfig(retrieval="hybrid_rerank",
+top_k=5, defense="full")`; `max_steps` keeps the `AgentConfig` default.
+
+- Answer quality is measured by the human grades. The judge is not validated, so `top_k` and the
+  prompt wording are not tuned on answer quality, and new human grades per variant are out of
+  scope. Prompts are unchanged.
+- `retrieval = "hybrid_rerank"`: best on every retrieval metric (dev, n=60 answerable,
+  `results/retrieval_dev.json`): recall@3 0.718, recall@5 0.843, recall@10 0.882, MRR 0.741.
+  For comparison dense has recall@5 0.711 and MRR 0.662, bm25 recall@5 0.435, hybrid recall@5
+  0.678. Human `fiel`: 22/30 dense vs 25/30 rerank.
+- `top_k = 5` (plan default): k=3 loses 12.5 points of recall vs k=5; k=8 sits between @5 and @10
+  (at most +3.9 points) at the cost of longer context in an 8192-token window.
+- `defense = "full"`: the layered defense is the system under test in E2; its dev results are
+  reported in T18, not tuned here.
