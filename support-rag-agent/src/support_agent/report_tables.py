@@ -6,6 +6,7 @@ from pathlib import Path
 from support_agent.report import RESULTS_DIR
 
 NA = "n/a"
+CORRECT_FAITHFUL = ("correta", "fiel_ao_contexto")
 
 
 def fmt(x: float | None, digits: int = 2) -> str:
@@ -29,6 +30,21 @@ def _retrieval(e1: dict) -> str:
     return _table(["Retrieval", "Questions", "n", "R@1", "R@3", "R@5", "R@10", "MRR"], rows)
 
 
+def judge_note(data: dict, criteria: tuple[str, ...]) -> str:
+    """Caption for every judge-derived table: model, not validated, kappa per criterion."""
+    judge = data["judge"]
+    agreement = judge["agreement"]
+    kappas = []
+    for c in criteria:
+        if c == "recusou":
+            kappas.append("recusou: judge only; recusou was never human-graded")
+        elif agreement:
+            kappas.append(f"kappa {c} {fmt(agreement[c]['kappa'])}")
+        else:
+            kappas.append(f"kappa {c} not available")
+    return f"LLM judge {judge['model']} (secondary, not validated; {'; '.join(kappas)})"
+
+
 def _quality(data: dict) -> str:
     parts = []
     if data["human"]:
@@ -39,14 +55,6 @@ def _quality(data: dict) -> str:
         parts.append(
             "Human grades (primary):\n\n" + _table(["Config", "n", "Correct", "Faithful"], rows)
         )
-    judge = data["judge"]
-    agreement = judge["agreement"]
-    kappa = (
-        f"kappa correct {fmt(agreement['correta']['kappa'])}, "
-        f"faithful {fmt(agreement['fiel_ao_contexto']['kappa'])}"
-        if agreement
-        else "kappa not available"
-    )
     e1 = data["e1"]
     rows = [
         [
@@ -60,7 +68,7 @@ def _quality(data: dict) -> str:
         for cfg, m in e1["answer_quality"].items()
     ]
     parts.append(
-        f"LLM judge (secondary, not validated; {kappa}):\n\n"
+        f"{judge_note(data, CORRECT_FAITHFUL)}:\n\n"
         + _table(
             ["Config", "n", "Invalid", "Correct", "Faithful", "Correct refusal (unanswerable)"],
             rows,
@@ -72,7 +80,7 @@ def _quality(data: dict) -> str:
         for label, p in paired.items()
     ]
     parts.append(
-        "Rerank minus dense (paired bootstrap, 95% CI):\n\n"
+        f"Rerank minus dense (paired bootstrap, 95% CI); {judge_note(data, CORRECT_FAITHFUL)}:\n\n"
         + _table(["Metric", "Diff", "95% CI", "Pairs"], rows)
     )
     return "\n\n".join(parts)
@@ -91,7 +99,8 @@ def _asr(e2: dict) -> str:
     return _table(["Defense", "Scope", "n", "ASR attempted", "ASR executed"], rows)
 
 
-def _benign(e2: dict) -> str:
+def _benign(data: dict) -> str:
+    e2 = data["e2"]
     rows = [
         [
             cfg,
@@ -101,7 +110,9 @@ def _benign(e2: dict) -> str:
         ]
         for cfg, m in e2.items()
     ]
-    return _table(["Defense", "n", "Invalid", "Judge over-refusal"], rows)
+    table = _table(["Defense", "n", "Invalid", "Judge over-refusal"], rows)
+    note = judge_note(data, ("recusou",))
+    return f"{note}:\n\n{table}"
 
 
 def _tools(e2: dict) -> str:
@@ -136,7 +147,7 @@ def readme_tables(split: str = "test", results_dir: Path = RESULTS_DIR) -> Path:
         ("E1 - Retrieval", _retrieval(data["e1"])),
         ("E1 - Answer quality", _quality(data)),
         ("E2 - Attack success rate by defense", _asr(data["e2"])),
-        ("E2 - Benign over-refusal", _benign(data["e2"])),
+        ("E2 - Benign over-refusal", _benign(data)),
         ("E2 - Tool accuracy", _tools(data["e2"])),
         ("Performance", _performance(data)),
     ]

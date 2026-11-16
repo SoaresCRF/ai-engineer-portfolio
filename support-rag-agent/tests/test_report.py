@@ -249,7 +249,28 @@ def test_tables_render_from_final(env):
         "Performance",
     ):
         assert heading in text
-    assert "kappa" in text and "e1_dense_dev" in text
+    assert "kappa correta not available" in text and "never human-graded" in text
+    assert "e1_dense_dev" in text and "not validated" in text
+    assert text.count("not validated") == 3  # quality, paired and benign tables
     assert (
         readme_tables(SPLIT, results_dir=env["results_dir"]) == path
     )  # derived files may be overwritten
+
+
+def test_tables_with_agreement_human_and_vectors(env):
+    agreement = {
+        "correta": {"kappa": 0.4750000000000001},
+        "fiel_ao_contexto": {"kappa": 0.2047},
+    }
+    (env["results_dir"] / f"judge_agreement_{SHA[:12]}.json").write_text(
+        json.dumps(agreement), encoding="utf-8"
+    )
+    _write_sheet(env["grading_dir"], ["e1_dense_dev", "e1_rerank_dev", "e1_rerank_dev"])
+    _final(env)
+    text = readme_tables(SPLIT, results_dir=env["results_dir"]).read_text(encoding="utf-8")
+    assert "kappa correta 0.48" in text and "kappa fiel_ao_contexto 0.20" in text
+    assert "Human grades (primary)" in text
+    assert "| rerank | 2 | 1.00 | 0.00 |" in text
+    assert "| dense | 1 | 1.00 | 0.00 |" in text
+    assert "| none | vector direto | 1 |" in text
+    assert "| none | vector observacao | 1 |" in text
