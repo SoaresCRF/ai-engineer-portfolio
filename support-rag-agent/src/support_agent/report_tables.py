@@ -33,13 +33,19 @@ def _retrieval(e1: dict) -> str:
 def judge_note(data: dict, criteria: tuple[str, ...]) -> str:
     """Caption for every judge-derived table: model, not validated, kappa per criterion."""
     judge = data["judge"]
-    agreement = judge["agreement"]
+    agreements = {k[len("agreement_") :]: v for k, v in judge.items() if k.startswith("agreement_")}
+    agreements = {k: v for k, v in agreements.items() if v}
     kappas = []
     for c in criteria:
         if c == "recusou":
             kappas.append("recusou: judge only; recusou was never human-graded")
-        elif agreement:
-            kappas.append(f"kappa {c} {fmt(agreement[c]['kappa'])}")
+        elif agreements:
+            # Unlabeled on the dev report (one agreement); labeled when several splits are shown.
+            labeled = data["split"] != "dev"
+            kappas += [
+                f"kappa {c} {fmt(a[c]['kappa'])}" + (f" ({n})" if labeled else "")
+                for n, a in agreements.items()
+            ]
         else:
             kappas.append(f"kappa {c} not available")
     return f"LLM judge {judge['model']} (secondary, not validated; {'; '.join(kappas)})"

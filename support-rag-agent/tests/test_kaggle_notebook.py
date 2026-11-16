@@ -57,3 +57,14 @@ def test_judge_server_uses_both_gpus_with_tensor_parallelism():
     cells = {c["id"]: c for c in json.loads(NOTEBOOK.read_text(encoding="utf-8"))["cells"]}
     src = "".join(cells["cell-10"]["source"])
     assert '"--tensor-parallel-size"' in src and '"CUDA_VISIBLE_DEVICES": "0,1"' in src
+
+
+def test_eval_runs_derive_from_split_and_use_final_config():
+    cells = {c["id"]: c for c in json.loads(NOTEBOOK.read_text(encoding="utf-8"))["cells"]}
+    src = "".join(cells["acae54e37e7d407bbb7b55eff062a284"]["source"])
+    assert 'SPLIT = "test"' in src and "FINAL_CONFIG" in src
+    for name in ("e1_dense", "e1_rerank", "e2_none", "e2_prompt", "e2_full"):
+        assert f'f"{name}_{{SPLIT}}"' in src
+    assert "_dev" not in src and "AgentConfig(" not in src
+    for cell_id in ("70e3b35e", "10185d26023b46108eb7d9f57d49d2b3"):
+        assert "{SPLIT}" in "".join(cells[cell_id]["source"])

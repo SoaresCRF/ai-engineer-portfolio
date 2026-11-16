@@ -1,13 +1,16 @@
 import csv
 import json
+import sys
 
 import pytest
 
-from support_agent import report
+from support_agent import judge, report
 from support_agent.report_tables import fmt, readme_tables
 
 SHA = "ab12cd34ef56" + "0" * 52
 SPLIT = "dev"
+DEFAULT_DATE = "2026-01-02T00:00:00Z"
+EARLIEST = {"name": "e2_none", "date": "2026-01-01T08:30:00Z"}
 RETRIEVAL_ROW = {
     "n": 2,
     "recall@1": 0.5,
@@ -112,7 +115,8 @@ def _write_run(runs_dir, name, kinds, verdicts):
     (run / "outputs.jsonl").write_text(
         "".join(json.dumps(o) + "\n" for o in outs), encoding="utf-8"
     )
-    meta = {"canary": {"a2": "CANARY-x"}}
+    date = EARLIEST["date"] if name.startswith(EARLIEST["name"]) else DEFAULT_DATE
+    meta = {"canary": {"a2": "CANARY-x"}, "date": date}
     (run / "meta.json").write_text(json.dumps(meta), encoding="utf-8")
     (run / "verdicts.jsonl").write_text(
         "".join(json.dumps(v) + "\n" for v in verdicts), encoding="utf-8"
@@ -121,6 +125,10 @@ def _write_run(runs_dir, name, kinds, verdicts):
 
 @pytest.fixture
 def env(tmp_path):
+    return _make_env(tmp_path)
+
+
+def _make_env(tmp_path):
     runs, results, grading, eval_dir = (
         tmp_path / "runs",
         tmp_path / "results",
@@ -154,7 +162,7 @@ def _final(env):
 
 def test_final_content(env):
     data = json.loads(_final(env).read_text(encoding="utf-8"))
-    assert data["judge"]["validated"] is False and data["judge"]["agreement"] is None
+    assert data["judge"]["validated"] is False and data["judge"]["agreement_dev"] is None
     assert data["human"] is None
     assert data["e1"]["answer_quality"]["dense"]["judge_correct_rate"] == 1.0
     assert data["e1"]["paired_rerank_minus_dense"]["judge_correct"]["diff"] == 0.0
@@ -201,7 +209,7 @@ def test_final_refuses_overwrite(env):
 
 
 def _write_sheet(grading, key_runs, graded=True):
-    grading.mkdir()
+    grading.mkdir(parents=True)
     key = {f"g{i}": {"run": r, "id": "p1"} for i, r in enumerate(key_runs, 1)}
     (grading / "key.json").write_text(json.dumps(key), encoding="utf-8")
     with (grading / "sheet.csv").open("w", encoding="utf-8-sig", newline="") as f:
@@ -274,3 +282,29 @@ def test_tables_with_agreement_human_and_vectors(env):
     assert "| dense | 1 | 1.00 | 0.00 |" in text
     assert "| none | vector direto | 1 |" in text
     assert "| none | vector observacao | 1 |" in text
+
+
+def test_run_utc_is_earliest_meta_date(env):
+    data = json.loads(_final(env).read_text(encoding="utf-8"))
+    assert data["run_utc"] == EARLIEST["date"]
+    assert "test_run_utc" not in data
+
+
+def test_final_test_uses_test_grading_dir_and_both_agreements(tmp_path, monkeypatch):
+    monkeypatch.setattr(sys.modules[__name__], "SPLIT", "test")
+    env = _make_env(tmp_path)
+    monkeypatch.setattr(judge, "GRADING_DIR", tmp_path / "grading_root")
+    _write_sheet(judge.grading_dir_for("test"), ["e1_dense_test", "e1_rerank_test"])
+    for suffix, kappa in (("", 0.4), ("_test", 0.7)):
+        (env["results_dir"] / f"judge_agreement_{SHA[:12]}{suffix}.json").write_text(
+            json.dumps({k: {"kappa": kappa} for k in ("correta", "fiel_ao_contexto")}),
+            encoding="utf-8",
+        )
+    env.pop("grading_dir")  # the default must resolve to <GRADING_DIR>/test
+    data = json.loads(report.final("test", **env).read_text(encoding="utf-8"))
+    assert data["human"]["dense"]["correta"]["n"] == 1
+    assert data["judge"]["agreement_dev"]["correta"]["kappa"] == 0.4
+    assert data["judge"]["agreement_test"]["correta"]["kappa"] == 0.7
+    assert data["test_run_utc"] == data["run_utc"] == EARLIEST["date"]
+    text = readme_tables("test", results_dir=env["results_dir"]).read_text(encoding="utf-8")
+    assert "kappa correta 0.40 (dev); kappa correta 0.70 (test)" in text

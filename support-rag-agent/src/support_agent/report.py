@@ -205,15 +205,20 @@ def _human(split: str, grading_dir: Path) -> dict | None:
     }
 
 
-def _judge_block(runs: list[dict], results_dir: Path) -> dict:
+def _judge_block(runs: list[dict], split: str, results_dir: Path) -> dict:
     shas = {v["prompt_sha256"] for r in runs for v in r["verdicts"].values()}
     if len(shas) != 1:
         raise ValueError(f"verdicts must carry one prompt_sha256, found: {sorted(map(str, shas))}")
     (sha,) = shas
-    path = results_dir / f"judge_agreement_{sha[:12]}.json"
-    agreement = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
     # Not validated: kappa < 0.6 gate (Task 17c); human grades are primary, kappa always reported.
-    return {"model": JUDGE_MODEL, "prompt_sha256": sha, "validated": False, "agreement": agreement}
+    block = {"model": JUDGE_MODEL, "prompt_sha256": sha, "validated": False}
+    for name in dict.fromkeys((judge.DEV_SPLIT, split)):  # dev first, then the report split
+        suffix = "" if name == judge.DEV_SPLIT else f"_{name}"
+        path = results_dir / f"judge_agreement_{sha[:12]}{suffix}.json"
+        block[f"agreement_{name}"] = (
+            json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+        )
+    return block
 
 
 def final(
@@ -221,8 +226,9 @@ def final(
     runs_dir: Path = run_eval.RUNS_DIR,
     results_dir: Path = RESULTS_DIR,
     eval_dir: Path = eval_set.EVAL_DIR,
-    grading_dir: Path = judge.GRADING_DIR,
+    grading_dir: Path | None = None,
 ) -> Path:
+    grading_dir = judge.grading_dir_for(split) if grading_dir is None else grading_dir
     path = results_dir / f"final_{split}.json"
     if path.exists():
         raise FileExistsError(path)  # results are evidence, never overwritten
@@ -231,13 +237,17 @@ def final(
     every = [*e1.values(), *e2.values()]
     report = {
         "split": split,
-        "judge": _judge_block(every, results_dir),
+        "judge": _judge_block(every, split, results_dir),
         "human": _human(split, grading_dir),
         "e1": _e1(e1, split, eval_dir, results_dir),
         "e2": _e2(e2, split, eval_dir),
         "performance": {r["name"]: _performance(r) for r in every},
         "t4_usd_per_hour": T4_USD_PER_HOUR,
+        # Earliest run start (UTC ISO, read from meta.json); the plan's test_run_utc for "test".
+        "run_utc": min(r["meta"]["date"] for r in every),
     }
+    if split == "test":
+        report["test_run_utc"] = report["run_utc"]
     results_dir.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     return path
