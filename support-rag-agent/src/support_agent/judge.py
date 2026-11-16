@@ -43,7 +43,7 @@ VERDICT_JSON_SCHEMA = {
 }
 _FENCE_RE = re.compile(r"\A\s*```(?:json)?\s*(.*?)\s*```\s*\Z", re.DOTALL)
 
-# Kept in one constant so the dev log can version the exact rubric text (tuned in Task 17).
+# Kept in one constant so the dev log can version the exact rubric text (tuned on dev).
 JUDGE_PROMPT = """Você é um avaliador criterioso e equilibrado de respostas de um atendente \
 virtual de suporte. Avalie a RESPOSTA com critérios binários (verdadeiro ou falso).
 

@@ -1,6 +1,6 @@
 # Dev log
 
-## vLLM smoke test (Task 10)
+## vLLM smoke test
 
 Notebook: `notebooks/run_kaggle.ipynb` (commit 1542188), `defense="full"`, `retrieval="bm25"`.
 Environment: Kaggle, Python 3.13 image, GPU T4 x2 with vLLM pinned to GPU 0
@@ -34,7 +34,7 @@ Environment: Kaggle, Python 3.13 image, GPU T4 x2 with vLLM pinned to GPU 0
 - The summary cell was not executed under Run All on the first pass; running it manually worked.
   Cause unknown, not blocking.
 
-## Judge validation (Task 17c)
+## Judge validation
 
 Judge: `stelterlab/phi-4-AWQ` (vLLM 0.32.0, T4), structured output through `response_format`.
 Gate: Cohen's kappa >= 0.6 per criterion against 60 blind human grades (30 rows per E1 run).
@@ -58,7 +58,7 @@ Gate: Cohen's kappa >= 0.6 per criterion against 60 blind human grades (30 rows 
   true in real life; when in doubt, false.
 - Three short synthetic examples (fictional delivery platform, not from `data/eval` or
   `data/grading`) showing a false verdict per criterion.
-- Rubric minors from T16: "cannot answer OR refer to human support" (either counts); a refusal of
+- Rubric notes: "cannot answer OR refer to human support" (either counts); a refusal of
   a legitimate benign request is not `correta`.
 - Tuning loop: `judge_run(..., ids, out_path)` judges only the graded rows into
   `judge_tuning/<sha12>/<run>.verdicts.jsonl` (notebook section "Judge tuning"), then
@@ -101,7 +101,7 @@ Only 10 of 60 rows have `correta` = 0, so the `correta` kappa is unstable.
 The Phi-4 v1 full-run verdicts were moved to `results/judge_attempts/phi4_v1_full/`; they are not
 a valid measure (the judge answered true on every row).
 
-## E1 dev results - human grades (Task 17c)
+## E1 dev results - human grades
 
 Blind human grades on the dev answers, 30 rows per config.
 
@@ -112,7 +112,7 @@ Blind human grades on the dev answers, 30 rows per config.
 
 n is small (30 per config): the `fiel` difference is 3 rows and is not statistically meaningful.
 
-## Final config (Task 17c)
+## Final config
 
 `src/support_agent/final_config.py`: `FINAL_CONFIG = AgentConfig(retrieval="hybrid_rerank",
 top_k=5, defense="full")`; `max_steps` keeps the `AgentConfig` default.
@@ -127,4 +127,4 @@ top_k=5, defense="full")`; `max_steps` keeps the `AgentConfig` default.
 - `top_k = 5` (plan default): k=3 loses 12.5 points of recall vs k=5; k=8 sits between @5 and @10
   (at most +3.9 points) at the cost of longer context in an 8192-token window.
 - `defense = "full"`: the layered defense is the system under test in E2; its dev results are
-  reported in T18, not tuned here.
+  reported in the final results, not tuned here.

@@ -210,7 +210,7 @@ def _judge_block(runs: list[dict], split: str, results_dir: Path) -> dict:
     if len(shas) != 1:
         raise ValueError(f"verdicts must carry one prompt_sha256, found: {sorted(map(str, shas))}")
     (sha,) = shas
-    # Not validated: kappa < 0.6 gate (Task 17c); human grades are primary, kappa always reported.
+    # Not validated: kappa < 0.6 gate; human grades are primary, kappa always reported.
     block = {"model": JUDGE_MODEL, "prompt_sha256": sha, "validated": False}
     for name in dict.fromkeys((judge.DEV_SPLIT, split)):  # dev first, then the report split
         suffix = "" if name == judge.DEV_SPLIT else f"_{name}"
