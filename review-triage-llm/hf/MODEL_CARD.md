@@ -23,7 +23,7 @@ A LoRA adapter for [Qwen/Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) tha
 {"categoria": "nao_recebido", "sentimento": "negativo", "urgencia": "alta"}
 ```
 
-It is the "student" of a teacher/student experiment. [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), prompted with six few-shot examples and no fine-tuning, labeled 5,000 reviews. This 4.7× smaller model was then fine-tuned on those silver labels. Both models were scored against 300 reviews labeled by hand.
+It is the "student" of a teacher/student experiment. [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B), prompted with six few-shot examples and no fine-tuning, labeled 5,000 reviews. This 4.7× smaller model was then fine-tuned on those silver labels. Both models were scored against a hand-labeled gold set of 300 reviews: 100 for development (prompt revision and training choices) and 200 for the test set, scored once.
 
 The prompt and the output parser ship with this repo in `review_triage/` (`prompts.py`, `schema.py`). Code, labeling guide, notebooks and evaluation: [review-triage-llm on GitHub](https://github.com/SoaresCRF/ai-engineer-portfolio/tree/main/review-triage-llm).
 
@@ -88,7 +88,7 @@ print(
 )
 ```
 
-Merged into a float32 base, the adapter runs on a laptop CPU at about 10 s per review.
+Merged into a float32 base, the adapter runs on a laptop CPU at about 10 s per review (a rough figure from the demo, not a benchmark; quantized CPU builds such as GGUF were not tested).
 
 ## Training
 
